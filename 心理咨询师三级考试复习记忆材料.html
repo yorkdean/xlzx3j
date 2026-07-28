@@ -1,0 +1,2006 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>心理咨询师三级考试复习记忆材料 · 官方大纲重构版</title>
+<style>
+  :root {
+    --primary: #2563eb;
+    --primary-light: #dbeafe;
+    --primary-dark: #1e40af;
+    --accent: #7c3aed;
+    --accent-light: #ede9fe;
+    --bg: #f8fafc;
+    --card-bg: #ffffff;
+    --text: #1e293b;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+    --code-bg: #f1f5f9;
+    --success: #16a34a;
+    --warning: #d97706;
+    --danger: #dc2626;
+    --sidebar-w: 260px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    font-size: 15px;
+  }
+  .header {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    color: #fff;
+    padding: 32px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  }
+  .header h1 { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+  .header .subtitle { font-size: 14px; opacity: 0.9; }
+  .header .exam-info { display: flex; gap: 16px; margin-top: 12px; flex-wrap: wrap; }
+  .header .badge { background: rgba(255,255,255,0.2); border-radius: 6px; padding: 4px 12px; font-size: 13px; }
+  .container { display: flex; max-width: 1200px; margin: 0 auto; }
+  .sidebar {
+    width: var(--sidebar-w);
+    position: sticky;
+    top: 120px;
+    height: calc(100vh - 120px);
+    overflow-y: auto;
+    padding: 20px 12px;
+    border-right: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .sidebar h3 { font-size: 12px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; padding-left: 8px; }
+  .sidebar nav a {
+    display: block; padding: 6px 12px; text-decoration: none; color: var(--text);
+    font-size: 13px; border-radius: 6px; margin-bottom: 2px; transition: all 0.15s;
+  }
+  .sidebar nav a:hover { background: var(--primary-light); color: var(--primary-dark); }
+  .sidebar .section-label {
+    font-size: 11px; font-weight: 700; color: var(--accent);
+    text-transform: uppercase; margin-top: 16px; margin-bottom: 4px; padding-left: 8px;
+  }
+  .main { flex: 1; padding: 24px 40px; max-width: calc(100% - var(--sidebar-w)); }
+  .section {
+    background: var(--card-bg); border-radius: 12px; padding: 28px 32px;
+    margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); border: 1px solid var(--border);
+  }
+  .section h2 {
+    font-size: 20px; color: var(--primary-dark); border-bottom: 3px solid var(--primary);
+    padding-bottom: 10px; margin-bottom: 20px; cursor: pointer; display: flex; align-items: center; gap: 8px;
+  }
+  .section h2 .toggle { font-size: 14px; color: var(--text-muted); transition: transform 0.2s; }
+  .section.collapsed .toggle { transform: rotate(-90deg); }
+  .section.collapsed .section-body { display: none; }
+  .section h3 {
+    font-size: 17px; color: var(--accent); margin-top: 24px; margin-bottom: 12px;
+    padding-left: 12px; border-left: 4px solid var(--accent);
+  }
+  .section h4 { font-size: 15px; color: var(--text); margin-top: 16px; margin-bottom: 8px; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+  th { background: var(--primary); color: #fff; padding: 10px 14px; text-align: left; font-weight: 600; }
+  td { padding: 8px 14px; border-bottom: 1px solid var(--border); }
+  tr:nth-child(even) td { background: #f8fafc; }
+  tr:hover td { background: var(--primary-light); }
+  pre { background: var(--code-bg); border: 1px solid var(--border); border-radius: 8px; padding: 16px; overflow-x: auto; margin: 12px 0; font-size: 13px; line-height: 1.6; }
+  code { background: var(--code-bg); padding: 2px 6px; border-radius: 4px; font-size: 13px; }
+  .callout { background: var(--accent-light); border-left: 4px solid var(--accent); border-radius: 4px; padding: 12px 16px; margin: 12px 0; font-size: 14px; }
+  .callout.warn { background: #fef3c7; border-color: var(--warning); }
+  .callout.key { background: var(--primary-light); border-color: var(--primary); }
+  ul, ol { padding-left: 24px; margin: 8px 0; }
+  li { margin-bottom: 4px; }
+  strong { color: var(--primary-dark); }
+  .part-divider { text-align: center; margin: 32px 0 20px; padding: 16px; background: linear-gradient(135deg, var(--primary-light), var(--accent-light)); border-radius: 12px; }
+  .part-divider h2 { color: var(--primary-dark); font-size: 18px; border: none; display: inline; }
+  @media (max-width: 768px) {
+    .sidebar { display: none; }
+    .main { max-width: 100%; padding: 16px; }
+    .section { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>中国心理学会心理咨询师水平评价考试（三级）复习记忆材料</h1>
+  <div class="subtitle">依据官方大纲重构版 · 心理学综合 + 咨询实务</div>
+  <div class="exam-info">
+    <span class="badge">心理学综合：单选150+多选50+判断50</span>
+    <span class="badge">咨询实务：单选140+多选60+案例10</span>
+    <span class="badge">两科≥60分合格 · 单科3年有效</span>
+  </div>
+</div>
+
+<div class="container">
+  <div class="sidebar">
+    <div class="section-label">上篇：心理学综合</div>
+    <nav>
+      <a href="#sec1">1. 心理学导论</a>
+      <a href="#sec2">2. 社会心理学</a>
+      <a href="#sec3">3. 人格心理学</a>
+      <a href="#sec4">4. 发展心理学</a>
+      <a href="#sec5">5. 异常心理学</a>
+      <a href="#sec6">6. 咨询心理学</a>
+    </nav>
+    <div class="section-label">下篇：咨询实务</div>
+    <nav>
+      <a href="#sec7">7. 心理测量与评估</a>
+      <a href="#sec8">8. 心理咨询通用技术</a>
+      <a href="#sec9">9. 认知行为咨询(CBT)</a>
+      <a href="#sec10">10. 人本主义咨询方法</a>
+      <a href="#sec11">11. 团体心理辅导</a>
+      <a href="#sec12">12. 心理咨询伦理实务</a>
+      <a href="#sec13">13. 心理危机干预(Ⅰ)</a>
+    </nav>
+    <div class="section-label">附录</div>
+    <nav>
+      <a href="#sec14">14. 高频考点速记表</a>
+    </nav>
+  </div>
+
+  <div class="main">
+
+    <div class="part-divider"><h2>上篇：心理学综合（理论科目）</h2></div>
+
+    <!-- Section 1: 心理学导论 -->
+    <div class="section" id="sec1">
+      <h2><span class="toggle">▼</span> 一、心理学导论</h2>
+      <div class="section-body">
+        <h3>1.1 心理学的研究对象与方法</h3>
+        <p><strong>心理学的研究对象：</strong>心理现象及其规律。</p>
+        <p><strong>心理现象的结构：</strong></p>
+        <pre>心理现象
+├── 心理过程（动态）
+│   ├── 认知过程：感觉、知觉、记忆、思维、言语、想象
+│   ├── 情绪情感过程：喜怒哀惧等
+│   └── 意志过程：自觉确定目的，克服困难
+├── 心理状态（相对静止）
+│   └── 注意、灵感、疲劳等
+└── 个性心理（稳定）
+    ├── 个性倾向性：需要、动机、兴趣、信念、价值观
+    └── 个性心理特征：能力、气质、性格</pre>
+        <div class="callout key">记忆口诀："过程状态个性"——认知情绪意志是过程，注意是状态，倾向性和特征是个性。</div>
+        <p><strong>心理学简史：</strong></p>
+        <table>
+          <tr><th>阶段</th><th>时间</th><th>代表人物</th><th>核心观点</th></tr>
+          <tr><td>构造主义</td><td>1879年起</td><td>冯特、铁钦纳</td><td>研究意识的构造（元素）</td></tr>
+          <tr><td>机能主义</td><td>19世纪末</td><td>詹姆斯、杜威</td><td>研究意识的功能</td></tr>
+          <tr><td>行为主义</td><td>20世纪初</td><td>华生、斯金纳</td><td>只研究可观察的行为</td></tr>
+          <tr><td>格式塔心理学</td><td>20世纪初</td><td>韦特海默、考夫卡</td><td>整体大于部分之和</td></tr>
+          <tr><td>精神分析</td><td>19世纪末</td><td>弗洛伊德</td><td>研究无意识（潜意识）</td></tr>
+          <tr><td>人本主义</td><td>20世纪中</td><td>马斯洛、罗杰斯</td><td>强调人的潜能和自我实现</td></tr>
+          <tr><td>认知心理学</td><td>20世纪50年代</td><td>奈瑟、皮亚杰</td><td>研究认知过程（信息加工）</td></tr>
+        </table>
+        <div class="callout key">重点：1879年冯特在莱比锡大学建立第一个心理学实验室，标志科学心理学诞生。</div>
+
+        <h3>1.2 心理活动的生理基础</h3>
+        <p><strong>神经系统构造：</strong>中枢神经系统（脑：大脑、间脑、脑干、小脑 + 脊髓）；周围神经系统（12对脑神经 + 31对脊神经）。</p>
+        <table>
+          <tr><th>区域</th><th>功能</th></tr>
+          <tr><td>额叶</td><td>运动控制、语言表达（布洛卡区）、思维决策</td></tr>
+          <tr><td>顶叶</td><td>躯体感觉</td></tr>
+          <tr><td>颞叶</td><td>听觉、语言理解（威尔尼克区）</td></tr>
+          <tr><td>枕叶</td><td>视觉</td></tr>
+        </table>
+        <table>
+          <tr><th>左半球</th><th>右半球</th></tr>
+          <tr><td>言语、阅读、书写、逻辑推理</td><td>空间知觉、音乐、美术、情绪表达</td></tr>
+          <tr><td>积极情绪</td><td>消极情绪</td></tr>
+        </table>
+        <p><strong>巴甫洛夫高级神经活动学说：</strong>基本过程：兴奋与抑制；反射弧：感受器→传入神经→中枢神经→传出神经→效应器。两种信号系统：第一信号系统（具体刺激，人与动物共有）；第二信号系统（语词，人类特有）。</p>
+        <table>
+          <tr><th>神经活动类型</th><th>强度</th><th>平衡性</th><th>灵活性</th><th>对应气质</th></tr>
+          <tr><td>强·平衡·灵活</td><td>强</td><td>平衡</td><td>灵活</td><td>多血质</td></tr>
+          <tr><td>强·平衡·不灵活</td><td>强</td><td>平衡</td><td>不灵活</td><td>黏液质</td></tr>
+          <tr><td>强·不平衡</td><td>强</td><td>不平衡</td><td>—</td><td>胆汁质</td></tr>
+          <tr><td>弱</td><td>弱</td><td>—</td><td>—</td><td>抑郁质</td></tr>
+        </table>
+
+        <h3>1.3 感觉与知觉</h3>
+        <p><strong>感觉：</strong>人脑对直接作用于感觉器官的客观事物个别属性的反映。<strong>知觉：</strong>人脑对客观事物整体的反映。</p>
+        <table>
+          <tr><th>规律</th><th>含义</th></tr>
+          <tr><td>感受性与感觉阈限</td><td>成反比关系：阈限越低，感受性越高</td></tr>
+          <tr><td>绝对感觉阈限</td><td>刚刚能引起感觉的最小刺激强度</td></tr>
+          <tr><td>差别感觉阈限</td><td>韦伯定律：ΔI/I = K</td></tr>
+          <tr><td>感觉适应</td><td>刺激持续作用下感受性变化（如暗适应）</td></tr>
+          <tr><td>感觉对比</td><td>不同刺激作用于同一感受器官，感受性变化</td></tr>
+          <tr><td>联觉</td><td>一种刺激引起多种感觉</td></tr>
+        </table>
+        <p>视觉：可见光波长380-780nm。色觉理论：杨-赫尔姆霍兹三色说（红绿蓝）、黑林对立过程理论。听觉：声波频率16-20000Hz。</p>
+        <table>
+          <tr><th>知觉特性</th><th>含义</th></tr>
+          <tr><td>整体性</td><td>格式塔原则：接近、相似、连续、封闭</td></tr>
+          <tr><td>选择性</td><td>从背景中选择出对象</td></tr>
+          <tr><td>恒常性</td><td>条件变化知觉映象保持稳定（大小、形状、颜色、明度）</td></tr>
+          <tr><td>理解性</td><td>用已有经验解释知觉对象</td></tr>
+        </table>
+        <p><strong>知觉种类：</strong>空间知觉、时间知觉、运动知觉（似动现象：φ现象、诱发运动、自主运动、运动后效）、错觉。</p>
+
+        <h3>1.4 记忆</h3>
+        <p><strong>记忆的过程：</strong>识记 → 保持 → 再认/回忆（再现）。</p>
+        <table>
+          <tr><th>阶段</th><th>保持时间</th><th>容量</th><th>编码方式</th></tr>
+          <tr><td>瞬时记忆（感觉记忆）</td><td>0.25-2秒</td><td>大</td><td>物理特征</td></tr>
+          <tr><td>短时记忆</td><td>5秒-1分钟</td><td>7±2组块</td><td>听觉编码为主</td></tr>
+          <tr><td>长时记忆</td><td>1分钟以上至终生</td><td>无限</td><td>语义编码为主</td></tr>
+        </table>
+        <div class="callout key">重点：短时记忆容量7±2（米勒提出"组块"概念）。遗忘规律（艾宾浩斯遗忘曲线）：先快后慢。前摄抑制=前干扰后；倒摄抑制=后干扰前。系列位置效应：首因效应+近因效应。</div>
+
+        <h3>1.5 思维</h3>
+        <p><strong>思维特征：</strong>间接性（借助媒介）、概括性（抽取共同特征）。<strong>思维过程：</strong>分析与综合、比较与分类、抽象与概括。</p>
+        <p><strong>问题解决：</strong>四阶段：发现问题→分析问题→提出假设→检验假设。影响因素：迁移（正/负）、原型启发、定势（功能固着）、动机强度（耶克斯-多德森定律：中等强度最好）。</p>
+        <p><strong>概念形成：</strong>布鲁纳人工概念实验，策略有保守性聚焦、冒险性聚焦、同时性扫描、继时性扫描。</p>
+
+        <h3>1.6 言语</h3>
+        <p><strong>言语 vs 语言：</strong>语言是社会现象（交际工具）；言语是个体现象（心理活动）。</p>
+        <table>
+          <tr><th>中枢</th><th>位置</th><th>受损表现</th></tr>
+          <tr><td>布洛卡区（运动性言语中枢）</td><td>左额叶</td><td>表达性失语症：能听懂但说不出</td></tr>
+          <tr><td>威尔尼克区（听觉性言语中枢）</td><td>左颞叶</td><td>接受性失语症：能说话但听不懂</td></tr>
+          <tr><td>视觉性言语中枢（阅读中枢）</td><td>左顶叶</td><td>失读症</td></tr>
+          <tr><td>书写性言语中枢</td><td>左额叶</td><td>失写症</td></tr>
+        </table>
+        <div class="callout key">记忆口诀："布说威听"——布洛卡管说，威尔尼克管听。</div>
+
+        <h3>1.7 表象与想象</h3>
+        <p><strong>表象：</strong>感知过的事物在头脑中再现的形象。特征：直观性、概括性、可操作性（心理旋转实验）。</p>
+        <p><strong>想象的种类：</strong>无意想象（梦、幻觉）；有意想象（再造想象、创造想象、幻想：科学幻想、理想、空想）。</p>
+
+        <h3>1.8 情绪与情感</h3>
+        <table>
+          <tr><th>维度</th><th>情绪</th><th>情感</th></tr>
+          <tr><td>需要</td><td>生理需要</td><td>社会需要</td></tr>
+          <tr><td>发生</td><td>早（人与动物共有）</td><td>晚（人类特有）</td></tr>
+          <tr><td>稳定性</td><td>情境性、短暂</td><td>深刻性、稳定</td></tr>
+        </table>
+        <table>
+          <tr><th>情绪状态</th><th>特点</th></tr>
+          <tr><td>心境</td><td>微弱、持久、弥漫性</td></tr>
+          <tr><td>激情</td><td>强烈、短暂、爆发性</td></tr>
+          <tr><td>应激</td><td>对意外刺激的适应性反应</td></tr>
+        </table>
+        <p><strong>情感分类：</strong>道德感、美感、理智感。</p>
+        <table>
+          <tr><th>理论</th><th>代表人物</th><th>核心观点</th></tr>
+          <tr><td>詹姆斯-兰格理论</td><td>詹姆斯、兰格</td><td>情绪是对生理变化的知觉</td></tr>
+          <tr><td>坎农-巴德理论</td><td>坎农、巴德</td><td>生理反应和情绪体验同时产生</td></tr>
+          <tr><td>沙赫特-辛格理论</td><td>沙赫特、辛格</td><td>情绪=生理唤醒×认知标签</td></tr>
+          <tr><td>阿诺德评定-兴奋理论</td><td>阿诺德</td><td>情绪产生于对刺激的评估</td></tr>
+          <tr><td>拉扎勒斯认知-评价理论</td><td>拉扎勒斯</td><td>情绪是人与环境相互作用的产物</td></tr>
+          <tr><td>伊扎德动机-分化理论</td><td>伊扎德</td><td>情绪具有动机功能</td></tr>
+        </table>
+
+        <h3>1.9 意识与注意</h3>
+        <p><strong>意识水平：</strong>无意识（潜意识）→ 前意识 → 意识。<strong>注意：</strong>心理活动对一定对象的指向和集中。注意不是独立的心理过程，是伴随心理过程的状态。</p>
+        <table>
+          <tr><th>注意种类</th><th>特点</th></tr>
+          <tr><td>无意注意</td><td>无预定目的、不需意志努力</td></tr>
+          <tr><td>有意注意</td><td>有预定目的、需意志努力</td></tr>
+          <tr><td>有意后注意</td><td>有目的、不需意志努力</td></tr>
+        </table>
+        <table>
+          <tr><th>注意品质</th><th>含义</th></tr>
+          <tr><td>广度（范围）</td><td>同一时间内能清楚把握的对象数量</td></tr>
+          <tr><td>稳定性</td><td>注意保持在一定对象上的时间</td></tr>
+          <tr><td>转移</td><td>主动从一对象转向另一对象</td></tr>
+          <tr><td>分配</td><td>同时指向多种活动</td></tr>
+        </table>
+        <div class="callout key">区分：注意分散（被动、消极）≠ 注意转移（主动、积极）。</div>
+
+        <h3>1.10 需要与动机</h3>
+        <div class="callout key">马斯洛需要层次口诀："生安爱尊现"——生理→安全→归属与爱→尊重→自我实现。前四层为缺失性需要，最高层为成长性需要。</div>
+        <p><strong>动机产生条件：</strong>内在条件（需要）+ 外在条件（诱因）。</p>
+        <p><strong>动机理论：</strong>本能理论（麦独孤）、驱力减少理论（赫尔）、唤醒理论（赫布和柏林）、期望价值理论（托尔曼）、成就动机理论（阿特金森：追求成功vs避免失败）、归因理论（韦纳：内部-外部、稳定-不稳定、可控-不可控）。</p>
+
+        <h3>1.11 能力</h3>
+        <p><strong>能力分类：</strong>一般能力（智力）vs 特殊能力；流体能力（先天、20岁后下降）vs 晶体能力（后天、持续增长）；模仿能力 vs 创造能力。</p>
+        <table>
+          <tr><th>理论</th><th>代表人物</th><th>核心内容</th></tr>
+          <tr><td>二因素论</td><td>斯皮尔曼</td><td>G因素（一般）+ S因素（特殊）</td></tr>
+          <tr><td>群因素论</td><td>瑟斯顿</td><td>7种基本心理能力</td></tr>
+          <tr><td>三维结构模型</td><td>吉尔福特</td><td>内容×操作×产物=120种智力</td></tr>
+          <tr><td>流体-晶体智力</td><td>卡特尔</td><td>流体智力（先天）+ 晶体智力（后天）</td></tr>
+          <tr><td>多元智力理论</td><td>加德纳</td><td>8种智力</td></tr>
+          <tr><td>三元智力理论</td><td>斯腾伯格</td><td>组合性+经验性+实用性智力</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Section 2: 社会心理学 -->
+    <div class="section" id="sec2">
+      <h2><span class="toggle">▼</span> 二、社会心理学</h2>
+      <div class="section-body">
+        <h3>2.1 社会化与自我概念</h3>
+        <p><strong>社会化：</strong>个体从自然人成长为社会人的过程。</p>
+        <p><strong>社会化类型：</strong>早期社会化（儿童期）、预期社会化（青年期）、继续社会化（成年后）、再社会化（改变原有价值观，如罪犯改造）。</p>
+        <p><strong>社会化载体：</strong>家庭、学校、大众传媒、参照群体。</p>
+        <p><strong>自我概念：</strong>个体对自己存在状态的认知。<strong>自我结构（詹姆斯）：</strong>物质自我、社会自我、心理自我。<strong>功能：</strong>保持内在一致性、解释经验、决定期望。</p>
+
+        <h3>2.2 社会知觉与印象管理</h3>
+        <table>
+          <tr><th>效应</th><th>含义</th></tr>
+          <tr><td>首因效应</td><td>第一印象（对陌生人）</td></tr>
+          <tr><td>近因效应</td><td>最新信息（对熟人）</td></tr>
+          <tr><td>光环效应（晕轮）</td><td>一好百好、一坏百坏</td></tr>
+          <tr><td>刻板印象</td><td>对群体的固定看法</td></tr>
+          <tr><td>投射效应</td><td>以己度人</td></tr>
+        </table>
+        <p><strong>印象管理策略：</strong>逢迎/讨好、自我抬高、显示、申辩/辩护、威胁。</p>
+
+        <h3>2.3 社会动机与社交情绪</h3>
+        <p><strong>主要社会动机：</strong>亲和动机、成就动机、权力动机、侵犯动机、利他动机。</p>
+        <table>
+          <tr><th>社交情绪</th><th>含义</th></tr>
+          <tr><td>社交焦虑</td><td>与他人交往时感到不舒服、不自然</td></tr>
+          <tr><td>妒忌</td><td>与他人比较发现自己不如时产生的复杂情绪</td></tr>
+          <tr><td>羞耻</td><td>个体觉得自己不好时产生的痛苦体验</td></tr>
+          <tr><td>内疚</td><td>个体觉得自己伤害了他人时产生的体验</td></tr>
+        </table>
+
+        <h3>2.4 态度</h3>
+        <div class="callout key">ABC模型：A情感+B行为倾向+C认知。情感成分是态度的核心。形成三阶段：依从→认同→内化。</div>
+        <table>
+          <tr><th>理论</th><th>代表人物</th><th>核心内容</th></tr>
+          <tr><td>平衡理论</td><td>海德</td><td>P-O-X三角关系平衡</td></tr>
+          <tr><td>认知失调理论</td><td>费斯廷格</td><td>认知不一致产生紧张</td></tr>
+          <tr><td>社会交换理论</td><td>霍曼斯</td><td>基于收益与代价的比较</td></tr>
+        </table>
+
+        <h3>2.5 沟通与人际关系</h3>
+        <p><strong>人际沟通结构：</strong>信息源→信息→通道→信息接收者→反馈→障碍→背景。</p>
+        <table>
+          <tr><th>距离类型</th><th>范围</th><th>适用</th></tr>
+          <tr><td>亲密距离</td><td>0-0.45m</td><td>亲密关系</td></tr>
+          <tr><td>个人距离</td><td>0.45-1.2m</td><td>朋友</td></tr>
+          <tr><td>社交距离</td><td>1.2-3.6m</td><td>工作关系</td></tr>
+          <tr><td>公众距离</td><td>3.6m以上</td><td>公共场合</td></tr>
+        </table>
+        <p><strong>人际吸引因素：</strong>外貌、相似性、互补性、邻近性、熟悉性。</p>
+
+        <h3>2.6 社会影响</h3>
+        <table>
+          <tr><th>概念</th><th>含义</th><th>实验</th></tr>
+          <tr><td>从众</td><td>群体压力下行为与群体一致</td><td>阿希线段判断实验</td></tr>
+          <tr><td>服从</td><td>在直接命令下做出行为</td><td>米尔格拉姆电击实验</td></tr>
+          <tr><td>社会促进</td><td>他人在场提高效率</td><td>—</td></tr>
+          <tr><td>社会抑制</td><td>他人在场降低效率</td><td>—</td></tr>
+          <tr><td>社会懈怠</td><td>群体中个体努力下降</td><td>责任分散</td></tr>
+          <tr><td>群体极化</td><td>讨论后观点更极端</td><td>—</td></tr>
+          <tr><td>群体思维</td><td>追求一致而忽视不同意见</td><td>贾尼斯提出</td></tr>
+        </table>
+        <p><strong>从众类型：</strong>真从众、权宜从众、反从众。</p>
+
+        <h3>2.7 群体心理</h3>
+        <p><strong>群体分类：</strong>正式群体 vs 非正式群体；大群体 vs 小群体；实属群体 vs 参照群体。</p>
+        <p><strong>角色冲突：</strong>角色内冲突、角色间冲突。</p>
+      </div>
+    </div>
+
+    <!-- Section 3: 人格心理学 -->
+    <div class="section" id="sec3">
+      <h2><span class="toggle">▼</span> 三、人格心理学</h2>
+      <div class="section-body">
+        <div class="callout warn">⚠️ 注意：官方大纲将人格心理学独立为单独模块。</div>
+
+        <h3>3.1 人格概述</h3>
+        <p><strong>人格：</strong>各种心理特征的总和，是各种心理特性的相对稳定的组织结构。</p>
+        <p><strong>人格特征：</strong>①独特性（"人心不同，各如其面"）②整体性（各成分有机统一）③稳定性（跨时间和跨情境）④功能性（决定行为方式）⑤自然性与社会性的统一。</p>
+
+        <h3>3.2 气质</h3>
+        <p>气质是先天的，无好坏之分。表现在心理活动的强度、速度、灵活性与指向性等方面。</p>
+        <table>
+          <tr><th>气质类型</th><th>特点</th><th>神经类型</th><th>代表</th></tr>
+          <tr><td>胆汁质</td><td>精力旺盛、冲动、直率</td><td>强·不平衡</td><td>张飞</td></tr>
+          <tr><td>多血质</td><td>活泼好动、反应快、不稳定</td><td>强·平衡·灵活</td><td>王熙凤</td></tr>
+          <tr><td>黏液质</td><td>安静稳重、迟缓、踏实</td><td>强·平衡·不灵活</td><td>林冲</td></tr>
+          <tr><td>抑郁质</td><td>敏感细腻、孤僻、多愁善感</td><td>弱</td><td>林黛玉</td></tr>
+        </table>
+        <div class="callout key">记忆口诀："胆多黏抑"——张飞、王熙凤、林冲、林黛玉。气质无好坏之分，不决定成就。</div>
+
+        <h3>3.3 性格</h3>
+        <p>性格是人格的核心，是后天形成的，有好坏之分。人对现实的稳定态度和习惯化了的行为方式。</p>
+        <p><strong>性格结构特征：</strong>①态度特征（对人对事的态度，如诚实、自私）②意志特征（自觉控制行为，如果断、犹豫）③情绪特征（情绪的控制与表现，如乐观、悲观）④理智特征（认知活动中的特点，如独立思考、盲从）。</p>
+
+        <h3>3.4 人格特质理论</h3>
+        <table>
+          <tr><th>理论</th><th>代表人物</th><th>核心内容</th></tr>
+          <tr><td>特质论</td><td>奥尔波特</td><td>共同特质 + 个人特质（首要、中心、次要）</td></tr>
+          <tr><td>16PF</td><td>卡特尔</td><td>16种根源特质，因素分析法</td></tr>
+          <tr><td>大五人格</td><td>科斯塔&麦格雷</td><td>OCEAN</td></tr>
+          <tr><td>人格类型论</td><td>荣格</td><td>内倾型 + 外倾型</td></tr>
+        </table>
+        <table>
+          <tr><th>大五维度</th><th>高分特征</th><th>低分特征</th></tr>
+          <tr><td>O 开放性</td><td>好奇、创造、审美</td><td>保守、务实、传统</td></tr>
+          <tr><td>C 尽责性</td><td>有序、负责、自律</td><td>随意、松散</td></tr>
+          <tr><td>E 外倾性</td><td>热情、社交、活跃</td><td>安静、内向</td></tr>
+          <tr><td>A 宜人性</td><td>信任、利他、合作</td><td>多疑、竞争</td></tr>
+          <tr><td>N 神经质</td><td>焦虑、情绪不稳</td><td>平静、稳定</td></tr>
+        </table>
+
+        <h3>3.5 精神分析人格理论</h3>
+        <table>
+          <tr><th>结构</th><th>原则</th><th>功能</th></tr>
+          <tr><td>本我（Id）</td><td>快乐原则</td><td>先天本能冲动，追求即时满足</td></tr>
+          <tr><td>自我（Ego）</td><td>现实原则</td><td>调节本我与超我，适应现实</td></tr>
+          <tr><td>超我（Superego）</td><td>道德原则</td><td>内化的道德标准，追求完美</td></tr>
+        </table>
+        <table>
+          <tr><th>防御机制</th><th>含义</th></tr>
+          <tr><td>压抑</td><td>将痛苦经历推入潜意识（最基本的防御机制）</td></tr>
+          <tr><td>投射</td><td>将自己不接受的欲望归因于他人</td></tr>
+          <tr><td>合理化（文饰）</td><td>为不可接受的行为找借口（酸葡萄/甜柠檬）</td></tr>
+          <tr><td>反向形成</td><td>以相反行为表现真实欲望</td></tr>
+          <tr><td>升华</td><td>将不可接受的欲望转化为社会认可的行为</td></tr>
+          <tr><td>替代（置换）</td><td>将情绪发泄到安全对象上</td></tr>
+          <tr><td>否认</td><td>拒绝承认痛苦现实</td></tr>
+          <tr><td>退化</td><td>退回早期发展阶段的行为方式</td></tr>
+          <tr><td>认同</td><td>采纳他人特征</td></tr>
+          <tr><td>固着</td><td>停留在某一发展阶段</td></tr>
+        </table>
+
+        <h3>3.6 人本主义人格理论</h3>
+        <p><strong>马斯洛自我实现理论：</strong>自我实现是人格发展的最高目标。自我实现者特征：准确感知现实、自我接纳、自然自发性、问题中心、有高峰体验、深层人际关系、创造性。</p>
+        <p><strong>罗杰斯自我理论：</strong>自我概念 vs 理想自我；自我不协调=自我概念与经验不一致；价值条件化导致自我不协调；无条件积极关注促进自我协调。</p>
+
+        <h3>3.7 人格测评</h3>
+        <p>主要方法见"心理测量与评估"模块中的相关量表：MMPI、16PF、EPQ、罗夏墨迹测验、TAT。</p>
+      </div>
+    </div>
+
+    <!-- Section 4: 发展心理学 -->
+    <div class="section" id="sec4">
+      <h2><span class="toggle">▼</span> 四、发展心理学</h2>
+      <div class="section-body">
+        <h3>4.1 概述</h3>
+        <p><strong>心理发展基本性质：</strong>连续性与阶段性统一、方向性和顺序性、不平衡性（关键期/敏感期）、个体差异性。</p>
+        <p><strong>关键期（洛伦兹）：</strong>印刻现象。在特定时期对特定刺激特别敏感，错过则难以弥补。</p>
+
+        <h3>4.2 主要发展理论</h3>
+        <p><strong>皮亚杰认知发展理论：</strong>核心概念：图式、同化（将新信息纳入已有图式）、顺应（改变图式以适应新信息）、平衡。</p>
+        <table>
+          <tr><th>阶段</th><th>年龄</th><th>特点</th></tr>
+          <tr><td>感知运动阶段</td><td>0-2岁</td><td>通过感觉动作认识世界，获得客体永久性</td></tr>
+          <tr><td>前运算阶段</td><td>2-7岁</td><td>象征性思维，自我中心，不可逆，泛灵论</td></tr>
+          <tr><td>具体运算阶段</td><td>7-11岁</td><td>守恒概念获得，去自我中心，可逆性</td></tr>
+          <tr><td>形式运算阶段</td><td>11岁以上</td><td>抽象逻辑思维，假设演绎推理</td></tr>
+        </table>
+        <div class="callout key">重点：客体永久性（9-12个月出现）、自我中心（三山实验）、守恒（7岁左右获得）。</div>
+
+        <p><strong>埃里克森心理社会发展理论：</strong></p>
+        <table>
+          <tr><th>阶段</th><th>年龄</th><th>发展任务</th><th>人格品质</th></tr>
+          <tr><td>婴儿期</td><td>0-1.5岁</td><td>信任 vs 不信任</td><td>希望</td></tr>
+          <tr><td>儿童早期</td><td>1.5-3岁</td><td>自主 vs 羞怯疑虑</td><td>意志</td></tr>
+          <tr><td>学前期</td><td>3-6岁</td><td>主动 vs 内疚</td><td>目的</td></tr>
+          <tr><td>学龄期</td><td>6-12岁</td><td>勤奋 vs 自卑</td><td>能力</td></tr>
+          <tr><td>青年期</td><td>12-18岁</td><td>同一性 vs 角色混乱</td><td>忠诚</td></tr>
+          <tr><td>早期成人</td><td>18-25岁</td><td>亲密 vs 孤独</td><td>爱</td></tr>
+          <tr><td>成人中期</td><td>25-65岁</td><td>繁衍 vs 停滞</td><td>关心</td></tr>
+          <tr><td>成人后期</td><td>65岁以上</td><td>完善 vs 绝望</td><td>智慧</td></tr>
+        </table>
+        <div class="callout key">记忆口诀："信自主勤同亲繁完"</div>
+
+        <p><strong>维果茨基社会文化理论：</strong>最近发展区（现有水平与可能达到水平的差距）；"教学应当走在发展的前面"；言语是思维的工具。</p>
+        <p><strong>班杜拉社会学习理论：</strong>观察学习四过程（注意、保持、再现、动机）；自我效能感；替代强化、直接强化、自我强化。</p>
+        <p><strong>科尔伯格道德发展理论：</strong></p>
+        <table>
+          <tr><th>水平</th><th>阶段</th><th>内容</th></tr>
+          <tr><td>前习俗水平</td><td>1.惩罚与服从</td><td>避免惩罚</td></tr>
+          <tr><td></td><td>2.功利取向</td><td>满足自己的需要</td></tr>
+          <tr><td>习俗水平</td><td>3.好孩子取向</td><td>获得他人赞许</td></tr>
+          <tr><td></td><td>4.维护社会秩序</td><td>遵守法律和秩序</td></tr>
+          <tr><td>后习俗水平</td><td>5.社会契约</td><td>法律可修改以维护社会利益</td></tr>
+          <tr><td></td><td>6.普遍伦理</td><td>以普遍道德原则为标准</td></tr>
+        </table>
+
+        <h3>4.3 婴儿期（0-3岁）</h3>
+        <p><strong>动作发展规律：</strong>头尾原则、近远原则、大小原则。时间线：2月抬头、6月坐、8月爬、12月站走、24月跑跳。口诀："二抬四翻六会坐，七滚八爬周会走"。</p>
+        <p><strong>依恋发展（鲍尔比/安斯沃斯）：</strong></p>
+        <table>
+          <tr><th>阶段</th><th>年龄</th><th>特点</th></tr>
+          <tr><td>无差别的社会反应</td><td>0-3月</td><td>对所有人反应相同</td></tr>
+          <tr><td>有差别的社会反应</td><td>3-6月</td><td>对母亲更偏爱</td></tr>
+          <tr><td>特殊情感联结</td><td>6月-2岁</td><td>对母亲形成依恋，分离焦虑</td></tr>
+          <tr><td>目标调整的伙伴关系</td><td>2岁后</td><td>理解母亲需要</td></tr>
+        </table>
+        <p><strong>依恋类型（安斯沃斯陌生情境法）：</strong>安全型(B型,~65%)、回避型(A型,~20%)、反抗型/矛盾型(C型,~10-15%)。</p>
+
+        <h3>4.4 幼儿期（3-6岁）</h3>
+        <p><strong>游戏是主导活动。</strong>游戏种类：机能游戏、象征性游戏（角色扮演）、规则性游戏。</p>
+        <p><strong>思维特点：</strong>具体形象思维为主、自我中心、泛灵论、不可逆性。<strong>第一反抗期（3-4岁）：</strong>幼儿要求独立，常说"不"。</p>
+
+        <h3>4.5 童年期（6-12岁）</h3>
+        <p><strong>学习成为主导活动。</strong>思维发展：从具体形象思维向抽象逻辑思维过渡，转折年龄约9-10岁（四年级）。记忆发展：有意识记超过无意识记（约7-8岁转折）、意义识记超过机械识记。</p>
+
+        <h3>4.6 青春期（12-18岁）</h3>
+        <p><strong>思维发展：</strong>抽象逻辑思维占导、形式运算阶段、假设演绎推理。<strong>自我意识特点：</strong>强烈关注形象、重视同伴评价、自我意识高涨、出现"成人感"。<strong>第二反抗期：</strong>硬抵抗、软抵抗、反抗迁移。</p>
+        <p><strong>同一性发展（玛西亚）：</strong>同一性获得（经探索并承诺）、延缓（探索中未承诺）、早闭（未探索但承诺，接受安排）、扩散（既未探索也未承诺）。</p>
+
+        <h3>4.7 青年期（18-35岁）</h3>
+        <p>抽象逻辑思维成熟、辩证思维发展、创造性思维高峰。发展任务（埃里克森）：亲密 vs 孤独。</p>
+
+        <h3>4.8 中年期（35-60岁）</h3>
+        <p>晶体智力继续增长、流体智力开始下降。中年危机：事业与家庭冲突、身体机能下降、"空巢"问题、更年期。发展任务：繁衍 vs 停滞。</p>
+
+        <h3>4.9 老年期（60岁以上）</h3>
+        <p>感知觉退化、近期记忆差远期记忆好、晶体智力维持流体智力下降。发展任务：完善 vs 绝望。<strong>老化理论：</strong>离脱理论（自然退出社会角色）、活动理论（保持社会活动有利于身心健康）。</p>
+      </div>
+    </div>
+
+    <!-- Section 5: 异常心理学 -->
+    <div class="section" id="sec5">
+      <h2><span class="toggle">▼</span> 五、异常心理学</h2>
+      <div class="section-body">
+        <div class="callout warn">⚠️ 注意：官方模块名称为"异常心理学"。</div>
+
+        <h3>5.1 心理正常与异常的区分</h3>
+        <div class="callout key">三原则："统一、协调、稳定"——主客观统一性、内在协调性、人格相对稳定性。</div>
+        <pre>心理活动
+├── 心理正常
+│   ├── 心理健康
+│   └── 心理不健康
+│       ├── 一般心理问题
+│       ├── 严重心理问题
+│       └── 神经症性心理问题（可疑神经症）
+└── 心理异常（精神障碍）
+    ├── 神经症
+    ├── 重性精神障碍
+    └── 人格障碍等</pre>
+        <div class="callout key">重点区分：心理不健康 ≠ 心理异常。一般/严重/神经症性心理问题属于心理正常但不健康。</div>
+
+        <h3>5.2 常见异常心理症状</h3>
+        <h4>感知障碍</h4>
+        <table>
+          <tr><th>类型</th><th>具体表现</th></tr>
+          <tr><td>感觉过敏</td><td>对刺激感受性异常增高</td></tr>
+          <tr><td>感觉减退</td><td>对刺激感受性降低</td></tr>
+          <tr><td>感觉倒错</td><td>对刺激产生相反感觉</td></tr>
+          <tr><td>内感性不适</td><td>体内产生各种不适感</td></tr>
+        </table>
+        <p><strong>知觉障碍：</strong>错觉（对客观事物的歪曲知觉，正常人也可有）vs 幻觉（无客观刺激产生的知觉）。幻觉按感觉器官：幻听（最常见）、幻视、幻嗅、幻味、幻触、内脏性幻觉。按来源：真性幻觉（外部）、假性幻觉（内部）。</p>
+        <h4>思维障碍</h4>
+        <p><strong>思维形式障碍：</strong>思维奔逸、思维迟缓、思维贫乏、思维散漫、思维破裂、思维不连贯、思维中断、思维插入、思维被夺、思维云集、病理性赘述。<strong>思维内容障碍：</strong>妄想、超价观念、强迫观念。</p>
+        <table>
+          <tr><th>常见妄想</th><th>含义</th></tr>
+          <tr><td>被害妄想</td><td>坚信被跟踪、迫害</td></tr>
+          <tr><td>关系妄想</td><td>认为无关事件与自己有关</td></tr>
+          <tr><td>夸大妄想</td><td>坚信自己有非凡能力</td></tr>
+          <tr><td>罪恶妄想</td><td>坚信自己犯了罪</td></tr>
+          <tr><td>疑病妄想</td><td>坚信自己患了不治之症</td></tr>
+          <tr><td>嫉妒妄想</td><td>坚信配偶不忠</td></tr>
+          <tr><td>钟情妄想</td><td>坚信被他人爱恋</td></tr>
+          <tr><td>物理影响妄想</td><td>认为自己被外力控制</td></tr>
+          <tr><td>被洞悉感</td><td>认为自己的想法被别人知道</td></tr>
+        </table>
+        <div class="callout key">妄想特征：坚信不疑、自我卷入、个人独有、不可动摇。</div>
+        <h4>情感障碍</h4>
+        <table>
+          <tr><th>类型</th><th>具体表现</th></tr>
+          <tr><td>情感高涨</td><td>心情异常愉快</td></tr>
+          <tr><td>情感低落</td><td>心情异常低落</td></tr>
+          <tr><td>焦虑</td><td>无明确对象的恐惧</td></tr>
+          <tr><td>恐惧</td><td>有明确对象的害怕</td></tr>
+          <tr><td>情感淡漠</td><td>对外界刺激无反应</td></tr>
+          <tr><td>情感倒错</td><td>情感反应与刺激不协调</td></tr>
+        </table>
+        <h4>意志行为障碍</h4>
+        <table>
+          <tr><th>类型</th><th>具体表现</th></tr>
+          <tr><td>意志增强/减退/缺乏</td><td>意志活动的异常</td></tr>
+          <tr><td>木僵</td><td>不动不语不吃不喝</td></tr>
+          <tr><td>刻板动作</td><td>重复单一动作</td></tr>
+          <tr><td>模仿动作</td><td>模仿他人动作</td></tr>
+          <tr><td>强迫动作</td><td>明知不必要但无法控制</td></tr>
+          <tr><td>违拗症</td><td>对要求做出相反反应</td></tr>
+        </table>
+        <p><strong>自知力：</strong>对自身精神状态的认识和判断能力。自知力完整是病情好转的标志。</p>
+
+        <h3>5.3 常见精神障碍</h3>
+        <h4>神经症</h4>
+        <p><strong>神经症特征：</strong>持久的精神冲突；痛苦感明显，主动求医；自知力完整；无器质性病变基础；社会功能受损但基本保持。</p>
+        <table>
+          <tr><th>类型</th><th>核心症状</th></tr>
+          <tr><td>焦虑症</td><td>广泛性焦虑、惊恐发作</td></tr>
+          <tr><td>恐惧症</td><td>场所恐惧、社交恐惧、特定恐惧</td></tr>
+          <tr><td>强迫症</td><td>强迫观念 + 强迫行为</td></tr>
+          <tr><td>疑病症</td><td>坚信自己患病，反复就医</td></tr>
+          <tr><td>神经衰弱</td><td>精神易兴奋又易疲劳</td></tr>
+          <tr><td>躯体形式障碍</td><td>反复陈述躯体症状</td></tr>
+        </table>
+        <p><strong>许又新神经症评定法：</strong>病程(1-3分) + 精神痛苦程度(1-3分) + 社会功能(1-3分)。总分≥3分=神经症；=2分=可疑神经症。</p>
+        <h4>重性精神障碍</h4>
+        <p><strong>精神分裂症核心症状：</strong>思维障碍（思维散漫、思维破裂、妄想）、情感障碍（情感淡漠、情感倒错）、意志行为障碍、感知障碍（幻觉，尤以幻听最常见）。</p>
+        <p><strong>精神分裂症一级症状（Schneider）：</strong>①争论性幻听 ②评论性幻听 ③思维鸣响/思维回响 ④思维被广播 ⑤思维被夺 ⑥思维插入 ⑦躯体影响妄想/被动体验 ⑧被控制体验 ⑨思维化声。</p>
+        <p><strong>心境障碍：</strong>躁狂发作"三高"（情感高涨、思维奔逸、活动增多）；抑郁发作"三低"（情感低落、思维迟缓、活动减少）；双相障碍（躁狂与抑郁交替）。</p>
+        <p><strong>抑郁发作核心症状：</strong>①情绪低落 ②兴趣丧失/快感缺失 ③精力减退/疲乏感。</p>
+        <h4>人格障碍</h4>
+        <p><strong>常见类型：</strong>偏执型、分裂样、反社会型、冲动型、表演型（癔症型）、强迫型、焦虑型、依赖型、边缘型、自恋型。</p>
+
+        <h3>5.4 心理不健康的分类</h3>
+        <table>
+          <tr><th>类型</th><th>病程</th><th>反应强度</th><th>泛化</th><th>社会功能</th></tr>
+          <tr><td>一般心理问题</td><td>1-2月</td><td>理智控制下</td><td>未泛化</td><td>基本正常</td></tr>
+          <tr><td>严重心理问题</td><td>2-6月</td><td>强烈</td><td>已泛化</td><td>一定受损</td></tr>
+          <tr><td>神经症性心理问题</td><td>可长可短</td><td>强烈且持久</td><td>明显泛化</td><td>明显受损</td></tr>
+        </table>
+        <p><strong>一般心理问题诊断要点：</strong>有现实因素激发；持续时间较短（1-2月）；不良情绪在理智控制下；未泛化；社会功能基本正常；自知力完整。</p>
+        <p><strong>严重心理问题诊断要点：</strong>有强烈现实刺激；持续时间长（2-6月）；情绪反应强烈；已泛化；社会功能一定程度受损；自知力完整。</p>
+        <div class="callout key">关键区分：心理冲突是否变形——变形指冲突内容与现实无关或性质与刺激不符。变形→神经症性；常形→一般/严重心理问题。</div>
+
+        <h3>5.5 应激相关障碍</h3>
+        <table>
+          <tr><th>类型</th><th>表现</th></tr>
+          <tr><td>急性应激障碍</td><td>应激后立即出现，持续数小时至数天</td></tr>
+          <tr><td>PTSD</td><td>延迟出现，持续1月以上。核心：闪回、回避、警觉增高</td></tr>
+          <tr><td>适应障碍</td><td>应激后1-3月内出现，不超过6月</td></tr>
+        </table>
+
+        <h3>5.6 心理健康标准（郭念锋）</h3>
+        <p>①心理活动强度 ②心理活动耐受力 ③周期节律性 ④意识水平 ⑤暗示性（越低越健康）⑥康复能力 ⑦心理自控力 ⑧自信心 ⑨社会交往 ⑩环境适应能力。</p>
+
+        <h3>5.7 压力与健康</h3>
+        <p><strong>压力源种类：</strong>生物性、精神性、社会环境性。</p>
+        <p><strong>塞利一般适应综合征（GAS）：</strong>警觉阶段（交感神经兴奋）→搏斗阶段（试图应对）→衰竭阶段（适应能力耗尽）。</p>
+        <p><strong>认知评价（拉扎勒斯）：</strong>初级评价（判断是否有压力）→次级评价（评估应对资源）→再评价。<strong>应对策略：</strong>问题指向应对（直接处理压力源）、情绪指向应对（调节情绪反应）。</p>
+      </div>
+    </div>
+
+    <!-- Section 6: 咨询心理学 -->
+    <div class="section" id="sec6">
+      <h2><span class="toggle">▼</span> 六、咨询心理学</h2>
+      <div class="section-body">
+        <h3>6.1 心理咨询概述</h3>
+        <p><strong>心理咨询对象：</strong>心理健康者（发展性咨询）、心理不健康者（障碍性咨询）、心理异常者→转介精神科（不属于心理咨询范围）。</p>
+        <div class="callout key">重点：心理咨询的对象不包括精神障碍急性期患者。</div>
+        <p><strong>咨询分类：</strong>按性质（发展咨询、健康咨询）；按规模（个体、团体）；按时程（短程1-3周、中程1-3月、长程3月以上）；按形式（门诊、电话、互联网）。</p>
+
+        <h3>6.2 心理咨询的历史</h3>
+        <ul>
+          <li>1909年，帕森斯《选择职业》——职业指导运动</li>
+          <li>1905年，比奈-西蒙量表——心理测验运动</li>
+          <li>二战后，罗杰斯"以人为中心"疗法推动发展</li>
+          <li>1986年，北京朝阳医院建立第一个心理咨询中心</li>
+          <li>2001年，国家职业资格心理咨询师考试开始</li>
+          <li>2017年，国家取消心理咨询师职业资格统考</li>
+          <li>2023年起，中国心理学会推出心理咨询师水平评价考试</li>
+        </ul>
+
+        <h3>6.3 主要理论流派概述</h3>
+        <table>
+          <tr><th>流派</th><th>创始人</th><th>核心假设</th><th>主要技术</th></tr>
+          <tr><td>精神分析</td><td>弗洛伊德</td><td>潜意识冲突导致心理问题</td><td>自由联想、释梦、移情分析</td></tr>
+          <tr><td>行为主义</td><td>华生/斯金纳/班杜拉</td><td>异常行为是学习的结果</td><td>系统脱敏、冲击疗法、厌恶疗法</td></tr>
+          <tr><td>以人为中心</td><td>罗杰斯</td><td>人有自我实现倾向</td><td>共情、无条件积极关注、真诚</td></tr>
+          <tr><td>认知疗法</td><td>贝克/埃利斯</td><td>情绪由认知决定</td><td>认知重构、ABC分析</td></tr>
+          <tr><td>格式塔</td><td>皮尔斯</td><td>关注此时此地</td><td>空椅技术、觉察训练</td></tr>
+          <tr><td>焦点解决</td><td>德·沙泽尔</td><td>关注解决方案而非问题</td><td>奇迹提问、例外提问</td></tr>
+          <tr><td>森田疗法</td><td>森田正马</td><td>顺其自然，为所当为</td><td>不问症状、重在行动</td></tr>
+        </table>
+        <p><strong>精神分析性心理发展阶段：</strong></p>
+        <table>
+          <tr><th>阶段</th><th>年龄</th><th>敏感区</th><th>固着表现</th></tr>
+          <tr><td>口唇期</td><td>0-1岁</td><td>口唇</td><td>口唇依赖/攻击</td></tr>
+          <tr><td>肛门期</td><td>1-3岁</td><td>肛门</td><td>肛门滞留型/排出型</td></tr>
+          <tr><td>性器期</td><td>3-6岁</td><td>生殖器</td><td>恋母/恋父情结</td></tr>
+          <tr><td>潜伏期</td><td>6-12岁</td><td>无明显</td><td>性冲动压抑</td></tr>
+          <tr><td>生殖期</td><td>12岁+</td><td>生殖器</td><td>正常性关系</td></tr>
+        </table>
+        <p><strong>行为疗法主要技术：</strong></p>
+        <table>
+          <tr><th>技术</th><th>原理</th><th>适用</th></tr>
+          <tr><td>系统脱敏法</td><td>交互抑制（沃尔普）</td><td>恐惧症、焦虑症</td></tr>
+          <tr><td>冲击疗法/满灌</td><td>消退</td><td>恐惧症</td></tr>
+          <tr><td>厌恶疗法</td><td>经典条件反射</td><td>酒精依赖、性变态</td></tr>
+          <tr><td>代币法</td><td>正强化</td><td>精神病院、学校</td></tr>
+          <tr><td>行为塑造法</td><td>逐步强化</td><td>智力落后儿童训练</td></tr>
+          <tr><td>示范法</td><td>观察学习</td><td>儿童恐惧症</td></tr>
+          <tr><td>生物反馈法</td><td>仪器反馈生理信息</td><td>紧张性头痛、高血压</td></tr>
+        </table>
+        <p><strong>埃利斯合理情绪疗法（ABC理论）：</strong></p>
+        <table>
+          <tr><th>要素</th><th>含义</th></tr>
+          <tr><td>A（Activating event）</td><td>诱发事件</td></tr>
+          <tr><td>B（Belief）</td><td>信念（对事件的评价和解释）</td></tr>
+          <tr><td>C（Consequence）</td><td>情绪和行为结果</td></tr>
+          <tr><td>D（Disputing）</td><td>辩论（质疑不合理信念）</td></tr>
+          <tr><td>E（Effect）</td><td>新的效果</td></tr>
+        </table>
+        <div class="callout key">核心理念："人不是被事情本身所困扰，而是被其对事情的看法所困扰"。情绪C不是由事件A直接引起的，而是由信念B引起的。</div>
+        <p><strong>不合理信念特征（埃利斯）：</strong>①绝对化要求（"必须""应该"）②过分概括化（以偏概全）③糟糕至极（灾难化思维）。</p>
+
+        <h3>6.4 不同年龄阶段的心理咨询要点</h3>
+        <table>
+          <tr><th>阶段</th><th>常见问题</th><th>咨询要点</th></tr>
+          <tr><td>婴幼儿/学前</td><td>依恋问题、行为问题</td><td>游戏治疗为主，家长参与</td></tr>
+          <tr><td>学龄儿童</td><td>学校适应、学习障碍、行为问题</td><td>结合家庭和学校系统</td></tr>
+          <tr><td>青春期</td><td>同一性危机、亲子冲突、学业压力</td><td>尊重独立性，建立信任</td></tr>
+          <tr><td>青年期</td><td>婚恋、职业发展、角色适应</td><td>关注角色转换</td></tr>
+          <tr><td>中年期</td><td>中年危机、婚姻问题、职业倦怠</td><td>关注多重角色压力</td></tr>
+          <tr><td>老年期</td><td>退休适应、丧偶、孤独、面对死亡</td><td>支持性为主</td></tr>
+        </table>
+
+        <h3>6.5 婚恋与家庭心理咨询</h3>
+        <p><strong>爱情三角理论（斯腾伯格）：</strong>亲密+激情+承诺=完美爱情。只有亲密=喜欢；只有激情=迷恋；只有承诺=空洞之爱。</p>
+        <p><strong>家庭生命周期：</strong>形成期→扩展期→稳定期→收缩期→空巢期→解组期。</p>
+
+        <h3>6.6 焦点解决短期治疗（SFBT）</h3>
+        <div class="callout warn">官方大纲要求掌握。</div>
+        <p><strong>创始人：</strong>德·沙泽尔（Steve de Shazer）和伯格（Insoo Kim Berg），20世纪80年代创立。</p>
+        <p><strong>核心理念：</strong>关注"解决方案"而非"问题"；来访者是自己生活的专家；小改变引发大改变；有效就多做，无效就做不同的；来访者已有解决问题的资源和优势。</p>
+        <table>
+          <tr><th>SFBT核心技术</th><th>说明</th><th>示例提问</th></tr>
+          <tr><td>奇迹提问</td><td>引导想象问题解决后的状态</td><td>"如果今晚奇迹发生，问题都解决了，明天早上你会注意到什么不同？"</td></tr>
+          <tr><td>例外提问</td><td>探索问题不发生或较轻的时刻</td><td>"什么时候这个问题不那么严重？那时你在做什么？"</td></tr>
+          <tr><td>量尺提问</td><td>用0-10分量化评估</td><td>"0分最糟，10分理想，你现在在几分？需要什么能达到高一分？"</td></tr>
+          <tr><td>应对提问</td><td>肯定来访者的应对努力</td><td>"这么多困难，你是怎么坚持下来的？"</td></tr>
+          <tr><td>关系提问</td><td>从他人视角看待变化</td><td>"如果你的好朋友看到你的变化，他会注意到什么？"</td></tr>
+        </table>
+        <p><strong>SFBT治疗流程：</strong>目标建构（奇迹提问）→例外寻找→量尺评估→给予反馈（赞美+桥梁+建议）→作业布置（小实验）。</p>
+        <div class="callout key">记忆口诀："奇例外量"——奇迹提问、例外提问、量尺提问、应对提问。典型疗程3-10次。</div>
+
+        <h3>6.7 家庭治疗基础</h3>
+        <div class="callout warn">官方大纲要求掌握家庭治疗基础概念。</div>
+        <p><strong>核心假设：</strong>家庭是一个系统，个体问题往往是家庭系统功能失调的表现。"被认定的患者"可能在表达家庭系统的问题。改变家庭互动模式可以改变个体症状。</p>
+        <table>
+          <tr><th>流派</th><th>代表人物</th><th>核心概念</th></tr>
+          <tr><td>系统式家庭治疗</td><td>米兰学派（塞尔维尼）</td><td>悖论干预、正向解读、循环提问</td></tr>
+          <tr><td>结构式家庭治疗</td><td>米纽钦</td><td>家庭结构、边界、子系统、联盟</td></tr>
+          <tr><td>策略式家庭治疗</td><td>哈利</td><td>悖论处方、直接指令</td></tr>
+          <tr><td>经验性家庭治疗</td><td>萨提亚</td><td>家庭雕塑、沟通模式、自尊</td></tr>
+          <tr><td>鲍恩家庭系统理论</td><td>鲍恩</td><td>自我分化、三角化、多代传递</td></tr>
+        </table>
+        <p><strong>结构式家庭治疗核心概念（米纽钦）：</strong></p>
+        <table>
+          <tr><th>概念</th><th>含义</th></tr>
+          <tr><td>家庭结构</td><td>家庭成员间互动的稳定模式</td></tr>
+          <tr><td>边界</td><td>子系统之间的规则和界限</td></tr>
+          <tr><td>僵化边界</td><td>过于严格，成员疏远（疏离型）</td></tr>
+          <tr><td>模糊边界</td><td>过于松散，成员过度卷入（缠结型）</td></tr>
+          <tr><td>子系统</td><td>家庭中的小群体（如夫妻、亲子子系统）</td></tr>
+          <tr><td>联盟</td><td>两个或多个成员联合对抗第三者</td></tr>
+          <tr><td>三角化</td><td>第三方被卷入两人冲突以缓解紧张</td></tr>
+        </table>
+        <table>
+          <tr><th>常用技术</th><th>说明</th></tr>
+          <tr><td>循环提问</td><td>问A对B的看法，揭示互动模式</td></tr>
+          <tr><td>家庭雕塑</td><td>用身体排列呈现家庭关系空间</td></tr>
+          <tr><td>悖论干预</td><td>要求维持症状，揭示其功能</td></tr>
+          <tr><td>正向解读</td><td>将症状重新解读为积极意图</td></tr>
+          <tr><td>边界重建</td><td>调整过于僵化或模糊的子系统边界</td></tr>
+        </table>
+        <div class="callout key">重点区分：家庭治疗不是"全家一起做个体咨询"，而是将家庭作为治疗对象，关注互动模式而非单个成员。</div>
+      </div>
+    </div>
+
+    <div class="part-divider"><h2>下篇：咨询实务（技能科目）</h2></div>
+
+    <!-- Section 7: 心理测量与评估 -->
+    <div class="section" id="sec7">
+      <h2><span class="toggle">▼</span> 七、心理测量与评估</h2>
+      <div class="section-body">
+        <h3>7.1 心理测量基础</h3>
+        <p><strong>心理测量：</strong>依据心理学理论，使用特定操作程序，给人的心理特征确定出一种数量化的价值。</p>
+        <p><strong>心理测量的性质：</strong>间接性（通过行为推测心理特征）、相对性（比较得出，无绝对零点）、客观性（标准化）。</p>
+        <p><strong>心理测验分类：</strong>按功能（智力、人格、神经心理测验）；按对象（个别、团体）；按材料（文字、非文字/操作）；按要求（最高作为、典型作为）。</p>
+
+        <h3>7.2 测验历史</h3>
+        <table>
+          <tr><th>人物</th><th>贡献</th></tr>
+          <tr><td>高尔顿</td><td>最早用问卷法测量心理特征</td></tr>
+          <tr><td>卡特尔</td><td>首次提出"心理测验"一词</td></tr>
+          <tr><td>比奈-西蒙</td><td>1905年编制第一个智力测验</td></tr>
+          <tr><td>推孟</td><td>1916年修订为斯坦福-比奈量表，引入IQ概念</td></tr>
+          <tr><td>韦克斯勒</td><td>编制韦氏智力量表，采用离差智商</td></tr>
+          <tr><td>罗夏</td><td>创立墨迹测验</td></tr>
+          <tr><td>默里与摩根</td><td>编制TAT</td></tr>
+        </table>
+
+        <h3>7.3 信度</h3>
+        <table>
+          <tr><th>类型</th><th>方法</th><th>适用</th></tr>
+          <tr><td>重测信度</td><td>同一测验前后两次施测相关</td><td>速度测验、人格测验</td></tr>
+          <tr><td>复本信度</td><td>两个等值测验相关</td><td>需编制等值复本</td></tr>
+          <tr><td>分半信度</td><td>分成两半求相关</td><td>题目较多时</td></tr>
+          <tr><td>同质性信度(α)</td><td>内部各题目一致性</td><td>评估内部一致性</td></tr>
+          <tr><td>评分者信度</td><td>不同评分者一致性</td><td>主观题</td></tr>
+        </table>
+        <div class="callout key">信度系数 r ≥ 0.70。影响因素：样本异质性（越高信度越高）、测验长度（越长越高）、测验难度、间隔时间。</div>
+
+        <h3>7.4 效度</h3>
+        <table>
+          <tr><th>类型</th><th>含义</th><th>估计方法</th></tr>
+          <tr><td>内容效度</td><td>题目代表性</td><td>专家判断、双向细目表</td></tr>
+          <tr><td>结构效度</td><td>测到理论构念的程度</td><td>因素分析</td></tr>
+          <tr><td>效标效度</td><td>与外部效标的关系</td><td>同时效度、预测效度</td></tr>
+        </table>
+        <div class="callout key">效度是测验最重要指标。效度最大值=√信度。信度是效度的必要条件（信度高，效度不一定高）。</div>
+
+        <h3>7.5 项目分析</h3>
+        <p><strong>难度P：</strong>P越大越容易，适中0.30-0.70。<strong>区分度D：</strong>D=PH-PL（高分组正确率-低分组正确率）。</p>
+        <table>
+          <tr><th>D值</th><th>评价</th></tr>
+          <tr><td>D ≥ 0.40</td><td>很好</td></tr>
+          <tr><td>0.30 ≤ D < 0.40</td><td>良好，修改后更好</td></tr>
+          <tr><td>0.20 ≤ D < 0.30</td><td>尚可，需修改</td></tr>
+          <tr><td>D < 0.20</td><td>差，需淘汰</td></tr>
+        </table>
+        <div class="callout key">中等难度（P≈0.50）时区分度最大。</div>
+
+        <h3>7.6 常模与标准分数</h3>
+        <table>
+          <tr><th>分数类型</th><th>公式</th><th>特征</th></tr>
+          <tr><td>Z分数</td><td>Z=(X-X̄)/S</td><td>M=0, SD=1</td></tr>
+          <tr><td>T分数</td><td>T=10Z+50</td><td>M=50, SD=10</td></tr>
+          <tr><td>标准9分</td><td>5+2Z</td><td>M=5, SD=2</td></tr>
+          <tr><td>离差智商</td><td>100+15Z</td><td>M=100, SD=15</td></tr>
+        </table>
+
+        <h3>7.7 常用智力测验</h3>
+        <h4>韦氏成人智力量表（WAIS-RC）</h4>
+        <p><strong>结构：</strong>言语量表(6个子测验) + 操作量表(5个子测验)。</p>
+        <p><strong>言语量表：</strong>知识、领悟、算术、相似性、数字广度（顺背+倒背）、词汇。<strong>操作量表：</strong>数字符号、图画填充、木块图、图片排列、图形拼凑。</p>
+        <p><strong>计分：</strong>原始分→量表分(M=10,SD=3)→VIQ、PIQ、FIQ，智商为离差智商(M=100,SD=15)。</p>
+        <table>
+          <tr><th>IQ范围</th><th>等级</th><th>理论百分比</th></tr>
+          <tr><td>130以上</td><td>极超常</td><td>2.2%</td></tr>
+          <tr><td>120-129</td><td>超常</td><td>6.7%</td></tr>
+          <tr><td>110-119</td><td>高于平常</td><td>16.1%</td></tr>
+          <tr><td>90-109</td><td>平常</td><td>50.0%</td></tr>
+          <tr><td>80-89</td><td>低于平常</td><td>16.1%</td></tr>
+          <tr><td>70-79</td><td>边界</td><td>6.7%</td></tr>
+          <tr><td>69以下</td><td>智力缺陷</td><td>2.2%</td></tr>
+        </table>
+        <h4>联合型瑞文测验（CRT）</h4>
+        <p>非文字智力测验，测量Spearman的G因素，适合团体施测，5-75岁适用。</p>
+        <h4>中国比奈测验</h4>
+        <p>适用于2-18岁，吴天敏修订，使用比率智商：IQ = MA/CA × 100。</p>
+        <div class="callout key">区分：比奈用比率智商；韦氏用离差智商。</div>
+
+        <h3>7.8 常用人格测验</h3>
+        <h4>MMPI（明尼苏达多项人格调查表）</h4>
+        <p>566题（或399题简版），适用于16岁以上。临床量表10个：Hs疑病、D抑郁、Hy癔症、Pd精神病态、Mf男子气-女子气、Pa偏执、Pt精神衰弱、Sc精神分裂、Ma轻躁狂、Si社会内向。效度量表4个：Q无法回答、L说谎、F诈病、K校正。中国常模T分≥60为异常（美国≥70）。L量表原始分≥10分答卷无效。</p>
+        <h4>16PF（卡特尔16种人格因素问卷）</h4>
+        <p>187题，适用于16岁以上，测量16种根源特质。答案选项：A(是)、B(介于之间)、C(否)。</p>
+        <h4>EPQ（艾森克人格问卷）</h4>
+        <p>88题（成人版），4个量表：</p>
+        <table>
+          <tr><th>量表</th><th>测量内容</th><th>高分特征</th></tr>
+          <tr><td>E（内外倾）</td><td>内外倾性</td><td>外向：好交际、冲动</td></tr>
+          <tr><td>N（神经质）</td><td>情绪稳定性</td><td>情绪不稳定、焦虑</td></tr>
+          <tr><td>P（精神质）</td><td>精神质倾向</td><td>孤独、缺乏同理心</td></tr>
+          <tr><td>L（掩饰性）</td><td>掩饰程度</td><td>测谎（效度量表）</td></tr>
+        </table>
+        <p><strong>EPQ的E-N象限对应气质：</strong>E高N高→胆汁质；E低N高→抑郁质；E低N低→黏液质；E高N低→多血质。</p>
+        <h4>投射测验</h4>
+        <p><strong>罗夏墨迹测验：</strong>10张墨迹图，个别施测，四阶段（自由反应→提问→类比→极限测试）。<strong>TAT主题统觉测验：</strong>默里和摩根编制，30张图片，看图编故事，分析需要和压力。</p>
+
+        <h3>7.9 常用症状评定量表</h3>
+        <h4>SCL-90（90项症状清单）</h4>
+        <p>90题，10个因子：躯体化、强迫、人际敏感、抑郁、焦虑、敌对、恐怖、偏执、精神病性、其他。0-4五级评分。阳性标准：总分≥160，或阳性项目数≥43，或任一因子分≥2。</p>
+        <h4>SDS（抑郁自评量表）</h4>
+        <p>20题，标准分=总分×1.25。分界值53分：53-62轻度，63-72中度，73以上重度。</p>
+        <h4>SAS（焦虑自评量表）</h4>
+        <p>20题，标准分=总分×1.25。分界值50分：50-59轻度，60-69中度，70以上重度。</p>
+        <div class="callout key">重点区分：SDS分界值53分，SAS分界值50分。</div>
+
+        <h3>7.10 测验使用伦理</h3>
+        <ul>
+          <li>标准化原则、保密原则、客观性原则</li>
+          <li>测验结果保密，测验材料不得让来访者带走</li>
+          <li>仅在专业能力范围内使用测验</li>
+          <li>测验结果解释应谨慎客观</li>
+        </ul>
+
+        <h3>7.11 测验报告撰写规范</h3>
+        <div class="callout warn">官方大纲要求掌握测验报告撰写格式与规范。</div>
+        <p><strong>心理测验报告基本结构：</strong></p>
+        <table>
+          <tr><th>部分</th><th>内容</th><th>要点</th></tr>
+          <tr><td>一般信息</td><td>姓名、性别、年龄、教育、施测日期、测验名称</td><td>信息准确完整</td></tr>
+          <tr><td>施测情况</td><td>环境、来访者状态（配合度、疲劳等）</td><td>记录影响因素</td></tr>
+          <tr><td>测验结果</td><td>原始分、量表分、导出分数、剖面图</td><td>分量表分与总分</td></tr>
+          <tr><td>结果解释</td><td>分数含义、剖面图模式分析、量表间比较</td><td>结合常模和理论</td></tr>
+          <tr><td>综合印象</td><td>整合所有结果形成总体印象</td><td>避免仅看单个分数</td></tr>
+          <tr><td>建议</td><td>基于结果提出后续咨询或转介建议</td><td>具体、可操作</td></tr>
+        </table>
+        <p><strong>结果解释书写原则：</strong></p>
+        <table>
+          <tr><th>原则</th><th>说明</th></tr>
+          <tr><td>客观性</td><td>基于数据，不做超出测验能力的推论</td></tr>
+          <tr><td>谨慎性</td><td>使用"倾向于""可能"等措辞，避免绝对化</td></tr>
+          <tr><td>综合性</td><td>不孤立解读单个分数，结合整体模式</td></tr>
+          <tr><td>可理解性</td><td>面向来访者使用通俗语言</td></tr>
+          <tr><td>局限性说明</td><td>说明结果适用范围和限制</td></tr>
+        </table>
+        <p><strong>常见剖面图模式：</strong>MMPI 1-2-3高分=神经症三联（疑病-抑郁-癔症）；6-7-8高分=偏执-精神衰弱-精神分裂。WAIS-RC VIQ与PIQ差异&gt;10分有临床意义。</p>
+        <div class="callout key">注意：不得将原始分数直接告知来访者；测验材料不得随报告交给来访者；报告应注明测验版本和常模；电子报告加密存储。</div>
+      </div>
+    </div>
+
+    <!-- Section 8: 心理咨询通用技术 -->
+    <div class="section" id="sec8">
+      <h2><span class="toggle">▼</span> 八、心理咨询通用技术</h2>
+      <div class="section-body">
+        <h3>8.1 初诊接待</h3>
+        <p><strong>目的：</strong>建立良好咨询关系、收集初步资料、明确求助者问题性质。咨询师态度：平和、诚恳、礼貌。保持社交距离，目光自然。保密原则告知，说明心理咨询性质和限制。</p>
+        <p><strong>保密原则及例外：</strong>保密范围：咨询过程中的所有信息。保密例外：①自杀/自伤危险 ②伤害他人危险 ③法律强制报告 ④未成年人监护人合法知情。处理：泄密范围控制在最小范围内。</p>
+
+        <h3>8.2 摄入性会谈</h3>
+        <p><strong>会谈提纲（桑德伯格）：</strong>身份资料、就诊原因和期望、现状及近况、出生和早年生活、健康和身体状况、家庭背景和婚姻状况、工作和教育背景、性发展状况、价值观和信仰、社会交往、自我评价、重大生活事件、幸福感、期望和未来打算。</p>
+        <p><strong>提问技巧：</strong>开放式提问（"你能谈谈…吗？"）、封闭式提问（"你是否…？"）。避免多重提问、避免"为什么"提问、避免修饰性反问、避免责备性问题。</p>
+        <p><strong>听的技术：</strong>倾听、鼓励、重复、内容反应（释义）、情感反应。<strong>观察技术：</strong>面部表情、目光接触、身体姿态、声音特征、空间距离。</p>
+
+        <h3>8.3 建立咨询关系</h3>
+        <table>
+          <tr><th>条件</th><th>含义</th></tr>
+          <tr><td>尊重</td><td>无条件接纳求助者</td></tr>
+          <tr><td>热情</td><td>表达关心</td></tr>
+          <tr><td>真诚</td><td>表里一致，不伪装</td></tr>
+          <tr><td>共情（同理心）</td><td>设身处地理解求助者</td></tr>
+          <tr><td>积极关注</td><td>关注积极面</td></tr>
+        </table>
+        <p><strong>共情层次：</strong>初级共情（准确反映表达的内容和情绪）、高级共情（反映未表达的潜在情绪和含义）。<strong>共情步骤：</strong>离开自己的参照框架→确认求助者感受→表达理解→检验准确性。</p>
+
+        <h3>8.4 参与性技术</h3>
+        <table>
+          <tr><th>技术</th><th>含义</th></tr>
+          <tr><td>倾听</td><td>全神贯注地听，不打断，适度回应</td></tr>
+          <tr><td>开放式提问</td><td>用"什么""怎么""能否"等提问</td></tr>
+          <tr><td>封闭式提问</td><td>用"是""否"回答，用于澄清和确认</td></tr>
+          <tr><td>鼓励技术</td><td>言语或非言语鼓励继续</td></tr>
+          <tr><td>重复技术</td><td>重复求助者的话，引起注意或澄清</td></tr>
+          <tr><td>内容反应（释义）</td><td>重复求助者言语的主要内容</td></tr>
+          <tr><td>情感反应</td><td>反映求助者的情绪感受</td></tr>
+          <tr><td>具体化</td><td>协助求助者清楚、准确地表达</td></tr>
+          <tr><td>参与性概述</td><td>概括求助者叙述的主要内容</td></tr>
+        </table>
+
+        <h3>8.5 影响性技术</h3>
+        <table>
+          <tr><th>技术</th><th>含义</th></tr>
+          <tr><td>面质（对质/对峙）</td><td>指出求助者矛盾之处，谨慎使用</td></tr>
+          <tr><td>解释</td><td>运用理论解释求助者的问题</td></tr>
+          <tr><td>指导</td><td>直接告诉求助者做什么</td></tr>
+          <tr><td>情感表达</td><td>咨询师表达自己的情绪</td></tr>
+          <tr><td>内容表达</td><td>咨询师传递信息或观点</td></tr>
+          <tr><td>自我开放（自我暴露）</td><td>咨询师分享自己的经历</td></tr>
+          <tr><td>影响性概述</td><td>咨询师概述自己的观点</td></tr>
+        </table>
+        <div class="callout key">参与性技术 vs 影响性技术：参与性技术是"跟随"求助者（倾听、反应），影响性技术是"引导"求助者（面质、解释、指导）。</div>
+
+        <h3>8.6 识别与处理阻抗</h3>
+        <p><strong>阻抗：</strong>求助者在心理咨询过程中对改变的抵抗。</p>
+        <table>
+          <tr><th>类型</th><th>表现</th></tr>
+          <tr><td>讲话程度上的阻抗</td><td>沉默、少言寡语、赘言</td></tr>
+          <tr><td>讲话内容上的阻抗</td><td>理论交谈、情绪发泄、谈论小事、假提问题</td></tr>
+          <tr><td>讲话方式上的阻抗</td><td>心理外归因、健忘、顺从、控制话题、最终暴露</td></tr>
+          <tr><td>咨询关系上的阻抗</td><td>不认真履行安排、诱惑咨询师、请客送礼、过分顺从</td></tr>
+        </table>
+        <p><strong>阻抗产生原因：</strong>①不愿否定自我 ②不愿面对痛苦 ③不愿放弃既得利益 ④对心理咨询有误解 ⑤咨询师自身的问题。</p>
+        <p><strong>处理方法：</strong>正确认识阻抗的正常性→识别表现→分析原因→以真诚态度讨论→调整咨询策略。</p>
+
+        <h3>8.7 识别与处理移情</h3>
+        <p><strong>移情：</strong>求助者将对过去重要人物的情感和态度转移到咨询师身上。</p>
+        <table>
+          <tr><th>类型</th><th>表现</th></tr>
+          <tr><td>正移情</td><td>对咨询师产生友好、爱慕、依赖等积极情感</td></tr>
+          <tr><td>负移情</td><td>对咨询师产生敌意、不满、拒绝等消极情感</td></tr>
+        </table>
+        <p><strong>移情 vs 依赖：</strong>依赖是寻求帮助自己不愿努力；移情是情感投射。<strong>反移情：</strong>咨询师对求助者产生的不适当情感反应，应觉察并避免。</p>
+
+        <h3>8.8 咨询方案制定</h3>
+        <p><strong>咨询方案内容：</strong>咨询目标、双方责任权利义务、次数与时间安排、具体方法过程原理、效果评价手段、费用、其他说明。</p>
+        <table>
+          <tr><th>有效咨询目标特征</th><th>说明</th></tr>
+          <tr><td>具体</td><td>目标明确，可操作</td></tr>
+          <tr><td>可行</td><td>现有条件下可以实现</td></tr>
+          <tr><td>积极</td><td>有助于求助者成长</td></tr>
+          <tr><td>双方可接受</td><td>咨询师和求助者都认同</td></tr>
+          <tr><td>属于心理学性质</td><td>不是生理或物质目标</td></tr>
+          <tr><td>可以评估</td><td>有明确的评估标准</td></tr>
+          <tr><td>多层次统一</td><td>近期与远期目标协调</td></tr>
+        </table>
+
+        <h3>8.9 心理诊断与鉴别诊断</h3>
+        <pre>求助者来访 → 初诊接待 → 摄入性会谈
+    ↓
+是否有精神病性症状？
+    ├── 是 → 排除器质性疾病 → 转介精神科
+    └── 否 → 继续
+    ↓
+心理冲突常形还是变形？
+    ├── 常形（有现实基础）
+    │   ├── 未泛化 + <2月 + 功能正常 → 一般心理问题
+    │   ├── 已泛化 + 2-6月 + 功能受损 → 严重心理问题
+    │   └── 强烈泛化 + 冲突变形化 → 神经症性心理问题
+    └── 变形（无现实基础）
+        └── 许又新≥3分 → 神经症</pre>
+        <p><strong>许又新神经症评定标准：</strong></p>
+        <table>
+          <tr><th>维度</th><th>1分</th><th>2分</th><th>3分</th></tr>
+          <tr><td>病程</td><td>&lt;3个月</td><td>3月-1年</td><td>&gt;1年</td></tr>
+          <tr><td>精神痛苦程度</td><td>自行摆脱</td><td>需他人帮助</td><td>无法摆脱</td></tr>
+          <tr><td>社会功能</td><td>轻微受损</td><td>明显受损</td><td>完全丧失</td></tr>
+        </table>
+        <p>总分≥3分=神经症；=2分=可疑神经症。</p>
+        <p><strong>转介指征：</strong>①问题超出心理咨询范围 ②严重自杀倾向 ③器质性疾病需医学治疗 ④双重关系 ⑤咨询师能力不足 ⑥咨询中无明显改善。</p>
+
+        <h3>8.10 咨询阶段与效果评估</h3>
+        <table>
+          <tr><th>阶段</th><th>任务</th></tr>
+          <tr><td>诊断阶段（初期）</td><td>建立关系、收集资料、明确问题、制定方案</td></tr>
+          <tr><td>咨询阶段（中期）</td><td>实施咨询方案，帮助求助者改变</td></tr>
+          <tr><td>巩固阶段（后期）</td><td>巩固咨询效果，结束咨询</td></tr>
+        </table>
+        <p><strong>效果评估维度：</strong>求助者自评、社会功能恢复、他评、咨询前后测量比较、咨询师观察评定、症状改善程度。</p>
+        <p><strong>结束咨询条件：</strong>①咨询目标已实现 ②求助者已掌握解决问题的方法 ③求助者能够独立应对问题。</p>
+      </div>
+    </div>
+
+    <!-- Section 9: CBT -->
+    <div class="section" id="sec9">
+      <h2><span class="toggle">▼</span> 九、认知行为咨询方法（CBT）</h2>
+      <div class="section-body">
+        <div class="callout warn">⚠️ 官方三级实务核心模块，考试占比高。</div>
+
+        <h3>9.1 CBT理论基础</h3>
+        <p><strong>核心假设：</strong>人的情绪和行为由其对事件的认知决定，而非事件本身。改变适应不良的认知可以改变情绪和行为。认知、情绪和行为三者相互影响。</p>
+        <table>
+          <tr><th>来源</th><th>代表人物</th><th>核心概念</th></tr>
+          <tr><td>贝克认知疗法</td><td>阿伦·贝克</td><td>自动思维→核心信念（图式），认知歪曲</td></tr>
+          <tr><td>合理情绪疗法</td><td>埃利斯</td><td>ABC理论，不合理信念</td></tr>
+        </table>
+
+        <h3>9.2 认知模型</h3>
+        <p><strong>贝克认知模型（三层认知）：</strong></p>
+        <table>
+          <tr><th>层次</th><th>特征</th><th>举例</th></tr>
+          <tr><td>自动思维</td><td>快速、自动浮现，常不自知</td><td>"他一定不喜欢我"</td></tr>
+          <tr><td>中间信念</td><td>态度、规则、假设</td><td>"如果别人不喜欢我，我就毫无价值"</td></tr>
+          <tr><td>核心信念（图式）</td><td>深层、根深蒂固</td><td>"我是不可爱的"</td></tr>
+        </table>
+        <div class="callout key">CBT治疗从识别自动思维入手，逐步深入到核心信念。</div>
+
+        <h3>9.3 常见认知歪曲（10种）</h3>
+        <table>
+          <tr><th>认知歪曲</th><th>含义</th><th>举例</th></tr>
+          <tr><td>任意推断</td><td>无证据就下结论</td><td>"他没打招呼，一定讨厌我"</td></tr>
+          <tr><td>选择性概括</td><td>只关注消极细节</td><td>90分只关注错的10分</td></tr>
+          <tr><td>过度概括</td><td>一件事推广到所有</td><td>"我什么都做不好"</td></tr>
+          <tr><td>夸大或缩小</td><td>不成比例</td><td>小错=灾难</td></tr>
+          <tr><td>个人化</td><td>将无关事件归因于自己</td><td>"同事心情不好因为我"</td></tr>
+          <tr><td>全或无思维</td><td>非黑即白</td><td>"不完美就是失败"</td></tr>
+          <tr><td>贴标签</td><td>给自己/他人贴固定标签</td><td>"我是个失败者"</td></tr>
+          <tr><td>应该陈述</td><td>用"应该""必须"</td><td>"我必须做到最好"</td></tr>
+          <tr><td>情绪推理</td><td>用感受代替事实</td><td>"我觉得无助，所以我无能"</td></tr>
+          <tr><td>读心术</td><td>认为知道别人在想什么</td><td>"他们都在笑话我"</td></tr>
+        </table>
+
+        <h3>9.4 CBT治疗流程</h3>
+        <p><strong>标准CBT治疗结构（通常8-20次）：</strong></p>
+        <table>
+          <tr><th>阶段</th><th>内容</th></tr>
+          <tr><td>评估阶段(1-3次)</td><td>问题评估、建立关系、概念化、心理教育</td></tr>
+          <tr><td>认知干预(4-12次)</td><td>识别自动思维→检验思维→认知重构</td></tr>
+          <tr><td>行为干预</td><td>行为激活、暴露、行为实验</td></tr>
+          <tr><td>结束与防复发(最后2-3次)</td><td>巩固技能、制定复发预防计划</td></tr>
+        </table>
+        <p><strong>单次CBT会谈结构：</strong>情绪检查→设置议程→反馈作业→讨论议程→布置新作业→总结反馈。</p>
+
+        <h3>9.5 CBT核心技术</h3>
+        <h4>认知重构技术</h4>
+        <ul>
+          <li><strong>识别自动思维：</strong>思维记录表（情境A→自动思维B→情绪C）</li>
+          <li><strong>苏格拉底式提问（引导发现法）：</strong>
+            <ul>
+              <li>"支持这个想法的证据是什么？反对的证据是什么？"</li>
+              <li>"有没有其他解释？"</li>
+              <li>"最坏的情况是什么？即使发生也能怎样？"</li>
+              <li>"如果你的朋友有这个想法，你会怎么对他说？"</li>
+            </ul>
+          </li>
+          <li><strong>认知重构：</strong>识别歪曲类型→寻找替代思维→评估可信度→重新评估情绪</li>
+          <li><strong>向下箭头技术：</strong>反复提问"如果这是真的，对你意味着什么？"→挖掘核心信念</li>
+        </ul>
+        <h4>行为技术</h4>
+        <table>
+          <tr><th>技术</th><th>原理</th><th>适用</th></tr>
+          <tr><td>行为激活</td><td>增加活动→打破抑郁恶性循环</td><td>抑郁</td></tr>
+          <tr><td>行为实验</td><td>设计实验检验信念</td><td>各种不合理信念</td></tr>
+          <tr><td>暴露</td><td>面对恐惧刺激不逃避，恐惧自然消退</td><td>焦虑、恐惧、强迫</td></tr>
+          <tr><td>反应预防</td><td>阻止强迫行为</td><td>强迫症</td></tr>
+          <tr><td>放松训练</td><td>渐进肌肉放松/腹式呼吸</td><td>降低焦虑</td></tr>
+          <tr><td>问题解决训练</td><td>定义→头脑风暴→评估→执行→评估</td><td>生活问题</td></tr>
+        </table>
+
+        <h3>9.6 个案概念化</h3>
+        <p><strong>个案概念化：</strong>咨询师对来访者问题的系统性理解框架。贝克个案概念化包含：</p>
+        <ol>
+          <li>相关童年经历</li>
+          <li>核心信念（图式）</li>
+          <li>中间信念（规则、态度、假设）</li>
+          <li>补偿策略</li>
+          <li>自动思维</li>
+          <li>当前触发情境</li>
+          <li>情绪和行为反应</li>
+        </ol>
+
+        <h3>9.7 CBT常见应用</h3>
+        <table>
+          <tr><th>问题</th><th>主要CBT策略</th></tr>
+          <tr><td>抑郁</td><td>行为激活 + 认知重构 + 问题解决</td></tr>
+          <tr><td>焦虑障碍</td><td>暴露 + 认知重构 + 放松训练</td></tr>
+          <tr><td>恐惧症</td><td>渐进暴露（系统脱敏）</td></tr>
+          <tr><td>强迫症</td><td>暴露与反应预防（ERP）</td></tr>
+          <tr><td>惊恐障碍</td><td>内感受暴露 + 认知重构</td></tr>
+          <tr><td>失眠</td><td>刺激控制 + 睡眠限制</td></tr>
+        </table>
+
+        <h3>9.8 第三浪潮CBT</h3>
+        <table>
+          <tr><th>疗法</th><th>代表人物</th><th>核心特点</th></tr>
+          <tr><td>正念认知疗法(MBCT)</td><td>西格尔等</td><td>正念冥想+认知疗法，预防抑郁复发</td></tr>
+          <tr><td>辩证行为疗法(DBT)</td><td>莱恩汉</td><td>针对边缘型人格，接纳与改变并重</td></tr>
+          <tr><td>接纳承诺疗法(ACT)</td><td>海斯</td><td>心理灵活性、认知解离、价值导向</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Section 10: 人本主义 -->
+    <div class="section" id="sec10">
+      <h2><span class="toggle">▼</span> 十、人本主义咨询方法</h2>
+      <div class="section-body">
+        <div class="callout warn">⚠️ 官方三级实务核心模块。</div>
+
+        <h3>10.1 理论基础</h3>
+        <p><strong>代表人物：</strong>卡尔·罗杰斯。核心假设：人有自我实现倾向；人有理解自己、解决问题的能力；心理障碍的原因：价值条件化导致自我不协调；治疗不是"修复"来访者，而是创造安全氛围，促进自我探索和成长。</p>
+
+        <h3>10.2 罗杰斯人格理论</h3>
+        <table>
+          <tr><th>概念</th><th>含义</th></tr>
+          <tr><td>自我概念</td><td>个体对自己的知觉和认识</td></tr>
+          <tr><td>理想自我</td><td>个体希望成为的样子</td></tr>
+          <tr><td>自我不协调</td><td>自我概念与实际经验不一致</td></tr>
+          <tr><td>价值条件化</td><td>为获得他人积极关注而内化他人价值标准</td></tr>
+          <tr><td>无条件积极关注</td><td>不附条件地接纳和尊重</td></tr>
+        </table>
+        <p><strong>自我不协调产生机制：</strong>需要积极关注→重要他人附带条件给予关注→内化条件→经验与价值条件冲突→否认/扭曲经验→自我不协调→焦虑→防御行为→心理问题。</p>
+
+        <h3>10.3 治疗关系三要素</h3>
+        <table>
+          <tr><th>要素</th><th>含义</th><th>具体表现</th></tr>
+          <tr><td>真诚一致</td><td>表里一致，不戴面具</td><td>真实感受与表达一致；不伪装</td></tr>
+          <tr><td>无条件积极关注</td><td>不附条件地接纳尊重</td><td>不评判；不因想法/行为否定价值</td></tr>
+          <tr><td>共情（同理心）</td><td>准确理解来访者内心世界</td><td>设身处地；从来访者参照框架理解</td></tr>
+        </table>
+        <div class="callout key">重点：罗杰斯强调"关系即治疗"。三要素不是技术，而是咨询师的存在方式。治疗关系本身就有治疗性。</div>
+
+        <h3>10.4 治疗过程（来访者变化七阶段）</h3>
+        <table>
+          <tr><th>阶段</th><th>来访者状态</th></tr>
+          <tr><td>阶段1</td><td>不愿交流，封闭，否认问题</td></tr>
+          <tr><td>阶段2</td><td>开始表达，但仍疏远、客观</td></tr>
+          <tr><td>阶段3</td><td>更多自由表达个人感受，但仍有防御</td></tr>
+          <tr><td>阶段4</td><td>开始表达"此时此地"的感受，对经验开放</td></tr>
+          <tr><td>阶段5</td><td>在咨询中能自由表达，但咨询外仍有困难</td></tr>
+          <tr><td>阶段6</td><td>体验到自我的流动和变化，不再僵化</td></tr>
+          <tr><td>阶段7</td><td>在咨询外也能自主成长，自我与经验高度协调</td></tr>
+        </table>
+
+        <h3>10.5 核心技术</h3>
+        <table>
+          <tr><th>技术</th><th>说明</th></tr>
+          <tr><td>情感反映</td><td>准确反映来访者的情绪感受</td></tr>
+          <tr><td>意义探索</td><td>帮助探索经历的意义</td></tr>
+          <tr><td>在场(presence)</td><td>全神贯注地与来访者同在</td></tr>
+          <tr><td>非言语回应</td><td>目光、点头传达关注</td></tr>
+          <tr><td>澄清</td><td>帮助更清楚认识感受和想法</td></tr>
+          <tr><td>总结</td><td>整合来访者的叙述，帮助其看到整体</td></tr>
+        </table>
+        <div class="callout key">注意：人本主义不使用面质、指导、解释等影响性技术。咨询师是"陪伴者"而非"专家"。</div>
+
+        <h3>10.6 适用范围与局限</h3>
+        <p><strong>适用：</strong>自我成长、人际关系、自尊、存在意义、适应性问题。</p>
+        <p><strong>局限：</strong>严重精神障碍不适用；需结构化干预的问题可能不足；治疗过程较长，缺乏标准化结构；急性行为问题见效慢。</p>
+
+        <h3>10.7 与其他流派的关系</h3>
+        <ul>
+          <li>人本主义强调的是治疗关系的基本态度，可以与其他流派技术整合</li>
+          <li>在CBT、焦点解决等流派中，治疗关系同样被视为重要的共同因素</li>
+          <li>罗杰斯的影响超越了人本主义本身，其三要素已成为所有心理咨询的基础</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Section 11: 团体心理辅导 -->
+    <div class="section" id="sec11">
+      <h2><span class="toggle">▼</span> 十一、团体心理辅导</h2>
+      <div class="section-body">
+        <div class="callout warn">⚠️ 官方三级实务核心模块。</div>
+
+        <h3>11.1 团体心理辅导概述</h3>
+        <p><strong>特点：</strong>多向互动、同伴反馈、普遍感、经济高效、模仿学习、实践场域。</p>
+
+        <h3>11.2 团体类型</h3>
+        <table>
+          <tr><th>分类</th><th>类型</th><th>特点</th></tr>
+          <tr><td>按目标</td><td>治疗性/发展性/支持性</td><td>针对不同需求</td></tr>
+          <tr><td>按开放性</td><td>封闭式/开放式</td><td>成员是否固定</td></tr>
+          <tr><td>按时间</td><td>限时/长期</td><td>是否预设结束</td></tr>
+          <tr><td>按规模</td><td>小(5-8)/中(8-12)/大(12+)</td><td>8-12最常见</td></tr>
+        </table>
+
+        <h3>11.3 团体发展阶段</h3>
+        <table>
+          <tr><th>阶段</th><th>特点</th><th>领导者任务</th></tr>
+          <tr><td>定向阶段（形成期）</td><td>焦虑、试探、客气、依赖领导者</td><td>建立安全感、制定规范、明确目标</td></tr>
+          <tr><td>过渡阶段（冲突期）</td><td>成员间冲突、挑战领导者</td><td>处理冲突、接纳负面情绪、促进信任</td></tr>
+          <tr><td>工作阶段（规范期）</td><td>凝聚力增强、深入探索、坦诚反馈</td><td>促进深度互动、鼓励承担更多责任</td></tr>
+          <tr><td>结束阶段</td><td>回顾成长、处理分离焦虑</td><td>总结经验、处理离别情绪、巩固成果</td></tr>
+        </table>
+        <div class="callout key">记忆口诀："定冲作结"</div>
+
+        <h3>11.4 团体动力学</h3>
+        <p><strong>团体凝聚力：</strong>使成员留在团体内并参与活动的力量。凝聚力是团体效果的重要预测因素。</p>
+        <p><strong>团体规范：</strong>制约成员行为的共同标准。包括明文规范和隐性规范。</p>
+        <p><strong>团体角色：</strong>成员在团体中形成的稳定行为模式。</p>
+        <p><strong>亚团体：</strong>团体内的小群体，可能促进或阻碍团体发展。</p>
+
+        <h3>11.5 亚隆团体疗效因子（11个）</h3>
+        <table>
+          <tr><th>因子</th><th>含义</th></tr>
+          <tr><td>普遍性</td><td>发现他人也有类似问题，不再孤独</td></tr>
+          <tr><td>利他主义</td><td>帮助他人使自己感到有价值</td></tr>
+          <tr><td>希望的灌注</td><td>看到他人好转，对自己也产生希望</td></tr>
+          <tr><td>信息传递</td><td>获取直接的建议和信息</td></tr>
+          <tr><td>社交学习</td><td>发展基本社交技能</td></tr>
+          <tr><td>人际学习</td><td>通过反馈认识自己的人际模式</td></tr>
+          <tr><td>团体凝聚力</td><td>归属感和被接纳感</td></tr>
+          <tr><td>情绪宣泄</td><td>自由表达被压抑的情感</td></tr>
+          <tr><td>行为模仿</td><td>学习他人的有效行为</td></tr>
+          <tr><td>存在因子</td><td>面对责任、死亡、孤独等议题</td></tr>
+          <tr><td>原始家庭矫正</td><td>重现家庭关系模式并获得矫正性体验</td></tr>
+        </table>
+
+        <h3>11.6 团体领导者角色与技术</h3>
+        <p><strong>领导者角色：</strong>创设者（创造安全氛围）、促进者（促进互动）、参与者（适度参与）、观察者（关注动力）、规则维护者。</p>
+        <table>
+          <tr><th>技术</th><th>说明</th></tr>
+          <tr><td>联结</td><td>将成员发言与他人经历联系</td></tr>
+          <tr><td>阻止</td><td>阻止有害行为（如攻击性互动）</td></tr>
+          <tr><td>截断</td><td>终止过长独白</td></tr>
+          <tr><td>引导</td><td>引导话题方向</td></tr>
+          <tr><td>聚焦</td><td>帮助聚焦于重要话题</td></tr>
+          <tr><td>绕圈</td><td>邀请每位成员就某话题发言</td></tr>
+          <tr><td>反馈</td><td>给予成员诚实反馈</td></tr>
+          <tr><td>示范</td><td>通过自身行为树立榜样</td></tr>
+        </table>
+
+        <h3>11.7 团体辅导流程</h3>
+        <p><strong>团体前准备：</strong>①确定团体目标 ②筛选成员（排除严重精神障碍急性期、极端自杀倾向、严重攻击性等）③确定规模和次数 ④制定方案 ⑤预备性访谈。</p>
+        <p><strong>团体实施：</strong>第一次（建立规范、破冰、明确目标）→中间各次（按方案推进，处理团体动力）→最后一次（总结、处理分离、评估效果）。</p>
+        <p><strong>团体后评估：</strong>成员自评、领导者观察、标准化量表前后测。</p>
+
+        <h3>11.8 团体伦理</h3>
+        <p>知情同意（了解目标、规则、保密限制）、保密（团体内容保密但难以完全保证）、成员筛选（排除严重精神障碍急性期、极端自杀倾向）、自愿原则、领导者胜任力。</p>
+
+        <h3>11.9 团体活动设计</h3>
+        <div class="callout warn">官方大纲要求掌握团体活动方案设计。</div>
+        <p><strong>设计原则：</strong>目标导向、循序渐进（由浅入深、从低风险到高风险）、参与性（确保人人参与）、安全性（不造成心理伤害）、适应性（灵活调整）、体验性（通过体验促进改变）。</p>
+        <table>
+          <tr><th>团体阶段</th><th>活动类型</th><th>活动目的</th><th>活动示例</th></tr>
+          <tr><td>定向阶段</td><td>破冰、相识活动</td><td>降低焦虑、建立安全感</td><td>名字接龙、两真一假、寻人游戏</td></tr>
+          <tr><td>过渡阶段</td><td>信任活动、轻度自我暴露</td><td>建立信任、处理冲突</td><td>信任倒、盲行、价值观拍卖</td></tr>
+          <tr><td>工作阶段</td><td>深度探索、反馈活动</td><td>促进深度自我探索、人际学习</td><td>Johari窗、空椅技术、生命线、热座</td></tr>
+          <tr><td>结束阶段</td><td>总结、告别活动</td><td>回顾成长、处理分离</td><td>成长回顾、互赠祝福、未来信</td></tr>
+        </table>
+        <p><strong>单次团体活动方案结构：</strong></p>
+        <table>
+          <tr><th>环节</th><th>时间</th><th>内容</th></tr>
+          <tr><td>暖场/签到</td><td>5-10分钟</td><td>情绪检查、回顾作业、暖场活动</td></tr>
+          <tr><td>主题导入</td><td>5-10分钟</td><td>引入主题、说明目的和规则</td></tr>
+          <tr><td>主体活动</td><td>30-45分钟</td><td>核心体验活动（1-2个）</td></tr>
+          <tr><td>分享讨论</td><td>20-30分钟</td><td>成员分享体验感受、相互反馈</td></tr>
+          <tr><td>总结整合</td><td>10-15分钟</td><td>领导者总结、联系生活实际</td></tr>
+          <tr><td>作业布置</td><td>5分钟</td><td>本周练习任务</td></tr>
+          <tr><td>结束仪式</td><td>5分钟</td><td>一句话总结感受</td></tr>
+        </table>
+        <div class="callout key">注意：活动后必须留出足够讨论时间，避免"做了不谈"；对沉默成员适当鼓励但不强迫；设计应考虑文化背景和接受度。</div>
+      </div>
+    </div>
+
+    <!-- Section 12: 伦理实务 -->
+    <div class="section" id="sec12">
+      <h2><span class="toggle">▼</span> 十二、心理咨询伦理实务</h2>
+      <div class="section-body">
+        <div class="callout warn">⚠️ 官方模块名称为"心理咨询伦理实务"。</div>
+
+        <h3>12.1 五大基本原则</h3>
+        <table>
+          <tr><th>原则</th><th>含义</th></tr>
+          <tr><td>善行</td><td>以来访者福祉为首要考虑，不造成伤害</td></tr>
+          <tr><td>责任</td><td>保持专业水准，对专业行为负责</td></tr>
+          <tr><td>诚信</td><td>保持诚实和正直</td></tr>
+          <tr><td>公正</td><td>公平对待所有来访者</td></tr>
+          <tr><td>尊重</td><td>尊重权利、尊严、隐私和自我决定权</td></tr>
+        </table>
+
+        <h3>12.2 知情同意</h3>
+        <p>告知：咨询性质、方法、过程、收益和风险、费用、保密及限制。未成年人需监护人同意。知情同意是持续过程，非一次性签署。</p>
+
+        <h3>12.3 保密与保密例外</h3>
+        <p><strong>保密例外（4种）：</strong>①自杀/自伤严重危险 ②伤害他人明确危险 ③法律强制报告 ④未成年人监护人合法知情。</p>
+        <p><strong>处理原则：</strong>泄密范围最小化；仅透露直接相关信息；事先告知来访者需透露范围；记录保密例外决策过程。案例讨论和教学使用应隐去可识别信息。</p>
+
+        <h3>12.4 专业能力</h3>
+        <p>仅在自身专业能力范围内提供服务；持续参加专业培训和督导；不在能力不足时勉强接案；如实告知专业资质；遇超出能力范围的个案及时转介。</p>
+
+        <h3>12.5 职业关系与界限</h3>
+        <p><strong>双重关系：</strong>咨询师与来访者之间除了咨询关系以外的其他关系。<strong>禁止：</strong>不发展咨询以外的关系、不发生性关系/恋爱关系、不利用咨询关系获取个人利益、咨询结束后一段时间内仍不应发展亲密关系。<strong>界限管理：</strong>不接受贵重礼物、不与来访者有咨询以外的社交接触、不为亲友咨询、不与现任来访者的亲密关系者咨询。</p>
+
+        <h3>12.6 职业界限</h3>
+        <p>不越界进行医学诊断和治疗；需药物治疗者转介精神科；不得开具处方；不得做司法鉴定（除非有相应资质）。</p>
+
+        <h3>12.7 心理测量伦理</h3>
+        <p>结果保密、材料保密（不得让来访者带走）、解释谨慎客观、不滥用、仅专业能力范围内使用、施测前知情同意。</p>
+
+        <h3>12.8 收费伦理</h3>
+        <ul>
+          <li>收费标准应公开透明</li>
+          <li>不得过高收费</li>
+          <li>不得因费用问题影响咨询质量</li>
+          <li>提前告知收费标准</li>
+        </ul>
+
+        <h3>12.9 专业督导</h3>
+        <p>三级咨询师应定期接受督导，在督导下开展个体咨询工作。督导关系中应遵守伦理规范。督导内容保密。</p>
+
+        <h3>12.10 广告与宣传</h3>
+        <ul>
+          <li>不得夸大咨询效果</li>
+          <li>不得诋毁同行</li>
+          <li>宣传内容应真实客观</li>
+          <li>不得使用误导性信息</li>
+        </ul>
+
+        <h3>12.11 相关法律法规</h3>
+        <div class="callout warn">官方大纲要求掌握与执业相关的法律法规。</div>
+        <h4>一、《精神卫生法》（2013年5月1日施行）</h4>
+        <table>
+          <tr><th>条款</th><th>内容</th><th>对咨询师的约束</th></tr>
+          <tr><td>第23条</td><td>心理咨询人员不得从事心理治疗或精神障碍诊断</td><td>明确咨询与治疗界限</td></tr>
+          <tr><td>第51条</td><td>心理咨询活动不得从事心理治疗或诊断、治疗</td><td>禁止超范围执业</td></tr>
+          <tr><td>第17条</td><td>精神障碍诊断应由精神科执业医师作出</td><td>只有精神科医师有权诊断</td></tr>
+          <tr><td>第76条</td><td>未取得资质从事心理治疗的予以警告、罚款</td><td>违法执业的法律后果</td></tr>
+          <tr><td>第30条</td><td>精神障碍住院治疗实行自愿原则</td><td>非自愿住院需符合法定条件</td></tr>
+          <tr><td>第44条</td><td>自愿住院患者可随时要求出院</td><td>尊重患者自主权</td></tr>
+        </table>
+        <div class="callout key">核心记忆：心理咨询师"三不得"——不得从事心理治疗、不得诊断精神障碍、不得开具处方药物。发现可能患精神障碍的来访者应建议其到医疗机构就诊。</div>
+        <h4>二、《个人信息保护法》（2021年11月1日施行）</h4>
+        <table>
+          <tr><th>要点</th><th>说明</th></tr>
+          <tr><td>敏感信息</td><td>心理健康信息属于敏感个人信息，需取得单独同意</td></tr>
+          <tr><td>处理原则</td><td>合法、正当、必要、诚信；最小必要原则</td></tr>
+          <tr><td>知情同意</td><td>收集前告知处理目的、方式、范围、保存期限</td></tr>
+          <tr><td>保密义务</td><td>信息处理者应对从业人员进行保密教育</td></tr>
+          <tr><td>删除权</td><td>来访者有权要求删除其个人信息</td></tr>
+        </table>
+        <h4>三、《未成年人保护法》（2021年修订）</h4>
+        <table>
+          <tr><th>要点</th><th>说明</th></tr>
+          <tr><td>强制报告</td><td>发现未成年人遭受或疑似遭受不法侵害时，应向公安机关报告</td></tr>
+          <tr><td>知情同意</td><td>为未成年人提供咨询应征得监护人同意</td></tr>
+          <tr><td>行为能力</td><td>不满8周岁=无民事行为能力人；8-18周岁=限制民事行为能力人</td></tr>
+        </table>
+        <div class="callout key">重点：发现未成年人遭受虐待（身体/性/精神/忽视）时，有强制报告义务，属于保密例外的法定情形。</div>
+        <h4>四、其他相关法律法规</h4>
+        <table>
+          <tr><th>法律法规</th><th>相关内容</th></tr>
+          <tr><td>《民法典》</td><td>隐私权和个人信息保护（第1032-1039条）</td></tr>
+          <tr><td>《医师法》（2022年）</td><td>心理治疗属于医疗行为，须由取得资质的医师实施</td></tr>
+          <tr><td>《反家庭暴力法》（2016年）</td><td>发现家暴受害者的报告义务</td></tr>
+          <tr><td>《家庭教育促进法》（2022年）</td><td>家庭教育指导可纳入心理咨询服务</td></tr>
+          <tr><td>《残疾人保障法》</td><td>心理康复服务相关条款</td></tr>
+        </table>
+        <h4>五、心理咨询师法律风险防范</h4>
+        <table>
+          <tr><th>风险类型</th><th>防范措施</th></tr>
+          <tr><td>超范围执业</td><td>严格区分咨询与治疗/诊断界限，疑似精神障碍及时转介</td></tr>
+          <tr><td>隐私泄露</td><td>妥善保管咨询记录，电子数据加密，签署保密协议</td></tr>
+          <tr><td>未经知情同意</td><td>咨询前签署知情同意书，未成年人须监护人签字</td></tr>
+          <tr><td>双重关系</td><td>避免与来访者发展其他关系，避免利益冲突</td></tr>
+          <tr><td>未履行报告义务</td><td>遇法定报告情形（如儿童虐待）必须依法报告</td></tr>
+          <tr><td>不当宣传</td><td>不夸大疗效，不使用"治愈""治疗"等医疗用语</td></tr>
+        </table>
+
+        <h3>12.12 伦理决策模型</h3>
+        <div class="callout warn">⚠️ 官方大纲要求掌握"伦理决策"。</div>
+        <p><strong>Forester-Miller & Davis 五步伦理决策模型：</strong></p>
+        <table>
+          <tr><th>步骤</th><th>内容</th><th>关键问题</th></tr>
+          <tr><td>1. 明确问题</td><td>识别伦理困境的性质和涉及的原则</td><td>什么伦理原则之间存在冲突？</td></tr>
+          <tr><td>2. 参照伦理准则</td><td>查阅伦理守则相关条款</td><td>守则对此类情况有何规定？</td></tr>
+          <tr><td>3. 适用伦理原则</td><td>确定最相关的伦理原则并排序优先级</td><td>善行、责任、诚信、公正、尊重——哪个优先？</td></tr>
+          <tr><td>4. 拟定方案并评估</td><td>列出所有可能的行动方案，评估后果</td><td>每种方案对来访者、咨询师、第三方的影响？</td></tr>
+          <tr><td>5. 做出决策并行动</td><td>选择最佳方案，实施并记录决策过程</td><td>决策依据是否充分？是否需要督导或法律咨询？</td></tr>
+        </table>
+        <p><strong>Kitchener 伦理原则优先层级：</strong>善行（不伤害）> 公正与尊重 > 诚信 > 责任 > 其他考虑。来访者安全和福祉是最高考量。</p>
+        <p><strong>常见伦理困境处理：</strong>保密vs安全（安全优先→保密例外→最小披露）；保密vs法律（强制报告→告知来访者→依法报告）；双重关系（避免→如不可避免须知情同意并设界限）；能力不足（诚实告知→转介）；知情同意vs紧急情况（先干预后补签）。</p>
+        <div class="callout key">口诀："问准原方行"——明确问题→参照准则→适用原则→拟定方案→做出决策。决策应记录在案，复杂困境应寻求督导。</div>
+
+        <h3>12.13 伦理守则概述</h3>
+        <p><strong>名称：</strong>《中国心理学会临床与咨询心理学工作伦理守则》（第二版，2018年2月）</p>
+        <p><strong>总则：</strong>善行、责任、诚信、公正、尊重</p>
+        <table>
+          <tr><th>章节</th><th>条款数</th><th>核心内容</th></tr>
+          <tr><td>1.专业关系</td><td>18条</td><td>非歧视、避免伤害、收费、转介、礼物、双重关系</td></tr>
+          <tr><td>2.知情同意</td><td>5条</td><td>★第二版新增，来访者有权了解资质、方法、目标、风险</td></tr>
+          <tr><td>3.隐私权与保密性</td><td>7条</td><td>保密范围、例外、录音录像同意、匿名化</td></tr>
+          <tr><td>4.专业胜任力和专业责任</td><td>6条</td><td>能力范围、继续教育、自我保健</td></tr>
+          <tr><td>5.心理测量与评估</td><td>6条</td><td>测验资质、结果解释、材料保密</td></tr>
+          <tr><td>6.教学培训与督导</td><td>13条</td><td>督导界限、不强制取向、评估公正</td></tr>
+          <tr><td>7.研究和发表</td><td>13条</td><td>知情同意、受试者权利、不剽窃</td></tr>
+          <tr><td>8.远程专业工作</td><td>5条</td><td>★第二版新增，网络/电话咨询设置</td></tr>
+          <tr><td>9.媒体沟通与合作</td><td>6条</td><td>★第二版新增，公众媒体言论规范</td></tr>
+          <tr><td>10.伦理问题处理</td><td>9条</td><td>困境解决、同行监督、投诉处理</td></tr>
+        </table>
+        <div class="callout key">重点：第一版(2007)7章→第二版(2018)10章，新增"知情同意""远程专业工作""媒体沟通与合作"三章。</div>
+
+        <h3>12.14 转介伦理</h3>
+        <p><strong>必须转介的情形：</strong>超出专业能力、价值观冲突、来访者无法获益、来访者主动要求、疑似精神障碍需医学处理、双重关系风险。</p>
+        <table>
+          <tr><th>伦理要求</th><th>说明</th></tr>
+          <tr><td>说明原因</td><td>向来访者坦诚说明转介原因</td></tr>
+          <tr><td>书面记录</td><td>记录转介情况和原因</td></tr>
+          <tr><td>不得收费</td><td>转介至其他专业人士或机构时，不得收取任何转介费用</td></tr>
+          <tr><td>不得向第三方付费</td><td>也不得支付与转介相关的任何费用</td></tr>
+          <tr><td>机构内限制</td><td>未经机构允许不得将来访者转介为个人接诊</td></tr>
+          <tr><td>过渡安排</td><td>做好过渡衔接和情绪处理，非突然中断</td></tr>
+        </table>
+        <div class="callout key">重点："转介不收费，收费不转介"——转介过程中不得有任何经济利益交换。</div>
+
+        <h3>12.15 远程心理咨询伦理</h3>
+        <p><strong>第二版伦理守则新增章节</strong>，规范通过网络视频、电话、文字等电子媒介进行的心理咨询服务。</p>
+        <table>
+          <tr><th>要点</th><th>说明</th></tr>
+          <tr><td>身份验证</td><td>咨询双方验证彼此真实身份和专业资质</td></tr>
+          <tr><td>知情同意</td><td>额外告知远程咨询的局限性、技术风险、保密差异</td></tr>
+          <tr><td>保密技术</td><td>使用加密通信工具，确保信息安全传输</td></tr>
+          <tr><td>适用性评估</td><td>严重精神障碍急性期、高自杀风险者不宜远程咨询</td></tr>
+          <tr><td>应急方案</td><td>提前制定技术故障或紧急情况下的应急联络方案</td></tr>
+          <tr><td>跨地域问题</td><td>注意来访者所在地法律法规和当地资源</td></tr>
+        </table>
+        <div class="callout key">记忆：远程咨询三注意——验证身份、加密保密、应急方案。</div>
+
+        <h3>12.16 媒体沟通与合作伦理</h3>
+        <p><strong>第二版新增章节</strong>，规范咨询师在公众媒体中的专业行为。<strong>核心要求：</strong>言论基于专业文献和事实；不误导公众；不透露来访者信息；区分一般性科普与个体咨询；不夸大效果；专业资质如实陈述。<strong>社交媒体注意：</strong>不在社交媒体讨论个案；不与来访者建立社交媒体好友关系；发布科普内容注意普适性。</p>
+
+        <h3>12.17 礼物处理</h3>
+        <p><strong>决策四要素：</strong>专业关系影响、文化习俗、金钱价值、赠送动机。</p>
+        <table>
+          <tr><th>情境</th><th>处理方式</th></tr>
+          <tr><td>咨询初期送礼</td><td>委婉拒绝，探讨送礼背后的含义</td></tr>
+          <tr><td>咨询结束送象征性礼物（卡片、小手工）</td><td>可酌情接受，讨论礼物意义</td></tr>
+          <tr><td>送贵重礼物（珠宝、大额现金）</td><td>坚决拒绝，讨论动机</td></tr>
+          <tr><td>用礼物试图影响咨询进程</td><td>拒绝并处理行为背后的动力学意义</td></tr>
+        </table>
+        <div class="callout key">口诀："初拒终议贵拒"——初期拒绝、结束讨论、贵重必拒。</div>
+
+        <h3>12.18 伦理投诉与处理</h3>
+        <p><strong>受理机构：</strong>中国心理学会临床心理学注册工作委员会伦理工作组、各级心理学会伦理委员会。</p>
+        <p><strong>处理流程：</strong>受理投诉→调查核实→伦理审议→做出决定→通知当事人→申诉。</p>
+
+        <h3>12.19 危机中的伦理问题</h3>
+        <div class="callout warn">⚠️ 伦理实务与危机干预的交叉考点，案例题常涉及。</div>
+        <p><strong>危机情境中的伦理冲突：</strong></p>
+        <table>
+          <tr><th>冲突类型</th><th>具体情境</th><th>伦理处理</th></tr>
+          <tr><td>保密 vs 生命安全</td><td>来访者透露自杀/杀人计划</td><td><strong>安全优先</strong>，启动保密例外，最小披露</td></tr>
+          <tr><td>知情同意 vs 紧急干预</td><td>来访者处于危机状态无法签署同意书</td><td><strong>先干预后补签</strong>，生命安全高于程序</td></tr>
+          <tr><td>自主权 vs 保护义务</td><td>来访者拒绝接受帮助或转介</td><td>评估决策能力，如无完全行为能力则需启动保护程序</td></tr>
+          <tr><td>咨询能力 vs 危机需求</td><td>来访者危机超出咨询师处理能力</td><td><strong>诚实告知→及时转介→做好过渡安排</strong></td></tr>
+          <tr><td>双重角色 vs 资源匮乏</td><td>偏远地区咨询师需同时承担多个角色</td><td>尽量避免，不可避免时需知情同意+督导+记录</td></tr>
+        </table>
+        <p><strong>危机中保密例外的操作步骤：</strong></p>
+        <ol>
+          <li><strong>评估风险等级</strong> — 评估自杀/伤人风险的严重程度</li>
+          <li><strong>告知来访者</strong> — 如安全允许，告知来访者需要打破保密及范围</li>
+          <li><strong>最小披露</strong> — 仅透露与安全直接相关的必要信息</li>
+          <li><strong>告知对象</strong> — 通知监护人、紧急联系人或相关机构</li>
+          <li><strong>记录过程</strong> — 详细记录保密例外的决策依据和执行过程</li>
+          <li><strong>后续处理</strong> — 危机过后重新评估保密安排，修复治疗关系</li>
+        </ol>
+        <p><strong>危机转介的伦理要求：</strong></p>
+        <ul>
+          <li>非突然抛弃来访者，需做好过渡安排</li>
+          <li>联系接收机构确保对方接受</li>
+          <li>提供必要的咨询记录（经来访者同意）</li>
+          <li>转介后适当跟进来访者情况</li>
+        </ul>
+        <div class="callout key"><strong>核心原则：</strong> 危机伦理的底线——"生命安全高于一切"，但最小披露原则仍需遵守。</div>
+
+        <h3>12.20 教学培训与督导伦理</h3>
+        <div class="callout warn">⚠️ 督导关系中的伦理规范，三级咨询师需接受督导，也可能参与培训工作。</div>
+        <p><strong>督导关系中的伦理要求：</strong></p>
+        <table>
+          <tr><th>要求</th><th>说明</th></tr>
+          <tr><td><strong>明确督导目标</strong></td><td>督导目的是促进受督导者的专业成长</td></tr>
+          <tr><td><strong>不强制理论取向</strong></td><td>督导师不得将自己的理论取向强加给受督导者</td></tr>
+          <tr><td><strong>评估公正</strong></td><td>对受督导者进行能力评估时应实事求是、公平公正</td></tr>
+          <tr><td><strong>界限清晰</strong></td><td>不得与受督导者建立咨询关系或亲密关系</td></tr>
+          <tr><td><strong>不得利用职权</strong></td><td>不得利用督导关系为自身谋取私利</td></tr>
+          <tr><td><strong>知情同意</strong></td><td>督导开始前应说明督导目的、过程、评估方式及标准</td></tr>
+          <tr><td><strong>反馈定期</strong></td><td>督导过程中给予定期反馈</td></tr>
+          <tr><td><strong>保密</strong></td><td>督导中涉及的来访者信息和受督导者信息均需保密</td></tr>
+          <tr><td><strong>紧急情况处理</strong></td><td>明确督导中断、终止等情况的处理办法</td></tr>
+        </table>
+        <p><strong>督导与咨询的区别：</strong></p>
+        <table>
+          <tr><th>维度</th><th>督导关系</th><th>咨询关系</th></tr>
+          <tr><td>目的</td><td>促进专业能力发展</td><td>促进来访者心理健康</td></tr>
+          <tr><td>对象</td><td>受训咨询师/被督导者</td><td>来访者</td></tr>
+          <tr><td>关注点</td><td>专业技能和伦理实践</td><td>来访者的心理问题</td></tr>
+          <tr><td>评估</td><td>督导师评估受督导者能力</td><td>咨询师评估来访者状况</td></tr>
+          <tr><td>关系性质</td><td>教育-评估关系</td><td>治疗-帮助关系</td></tr>
+        </table>
+        <div class="callout warn"><strong>注意：</strong> 督导师和受督导者之间不得发生性关系或亲密关系，也不得与有亲属关系的人建立督导关系。</div>
+
+        <h3>12.21 研究与发表伦理</h3>
+        <div class="callout warn">⚠️ 三级考试可能以判断题形式出现，了解基本原则即可。</div>
+        <p><strong>核心要求：</strong></p>
+        <table>
+          <tr><th>要点</th><th>说明</th></tr>
+          <tr><td><strong>知情同意</strong></td><td>以人为研究对象时须告知研究性质、目的、过程并征得同意</td></tr>
+          <tr><td><strong>退出权</strong></td><td>研究对象有权随时退出，不受强制</td></tr>
+          <tr><td><strong>不欺骗原则</strong></td><td>除非必要且无替代方法，否则不得使用欺骗手段；事后须说明</td></tr>
+          <tr><td><strong>避免伤害</strong></td><td>采取措施避免对研究对象造成躯体、情感或社会性伤害</td></tr>
+          <tr><td><strong>伦理审批</strong></td><td>需要伦理审查的研究应提前提交方案</td></tr>
+          <tr><td><strong>保密</strong></td><td>研究报告中的研究对象身份须保密</td></tr>
+          <tr><td><strong>不剽窃</strong></td><td>引用他人成果须注明出处</td></tr>
+          <tr><td><strong>署名规范</strong></td><td>多作者研究应合理署名；学生为主要贡献者应列为主要作者</td></tr>
+        </table>
+        <div class="callout key"><strong>记忆口诀：</strong> 伦理守则十章记——"专知隐测教研远媒处"——专业关系→知情同意→隐私保密→测量评估→教育培训→研究发表→远程工作→媒体沟通→伦理处理。</div>
+
+      </div>
+    </div>
+
+    <!-- Section 13: 心理危机干预（Ⅰ） -->
+    <div class="section" id="sec13">
+      <h2><span class="toggle">▼</span> 十三、心理危机干预（Ⅰ）</h2>
+      <div class="section-body">
+        <div class="callout warn">⚠️ <strong>官方三级实务核心模块</strong>，原材料完全缺失，以下为新增内容。</div>
+
+        <h3>13.1 危机的定义与特征</h3>
+        <p><strong>心理危机：</strong> 个体面临重大生活事件时，既有的应对机制失效，导致心理失衡状态。</p>
+        <p><strong>危机的特征：</strong></p>
+        <ul>
+          <li><strong>突发性：</strong> 往往由突发事件引发</li>
+          <li><strong>紧迫性：</strong> 需要及时干预</li>
+          <li><strong>无助感：</strong> 个体感到无法应对</li>
+          <li><strong>失衡状态：</strong> 正常的应对机制失效</li>
+          <li><strong>暂时性：</strong> 危机状态通常持续数天到数周</li>
+          <li><strong>双重性：</strong> 危机既是危险也是机遇（成长机会）</li>
+        </ul>
+
+        <h3>13.2 危机类型</h3>
+        <table>
+          <tr><th>类型</th><th>特征</th><th>举例</th></tr>
+          <tr><td>发展性危机</td><td>正常人生发展阶段所经历的危机</td><td>青春期认同危机、中年危机、退休适应</td></tr>
+          <tr><td>境遇性危机</td><td>由突发、意外事件引发</td><td>交通事故、自然灾害、亲人突然去世、被性侵</td></tr>
+          <tr><td>存在性危机</td><td>对人生意义、自由、孤独、死亡等存在问题的内心冲突</td><td>"活着有什么意义？"</td></tr>
+        </table>
+
+        <h3>13.3 危机干预模型</h3>
+        <h4>六步模型（詹姆斯&amp;吉利兰）</h4>
+        <table>
+          <tr><th>步骤</th><th>内容</th></tr>
+          <tr><td>1. 确定问题</td><td>从来访者角度理解危机事件</td></tr>
+          <tr><td>2. 保证来访者安全</td><td>评估危险程度，确保身体安全</td></tr>
+          <tr><td>3. 给予支持</td><td>以接纳、非评判态度提供情感支持</td></tr>
+          <tr><td>4. 提出并验证变通方案</td><td>探索可用的应对资源和方案</td></tr>
+          <tr><td>5. 制定计划</td><td>与来访者共同制定可行的行动计划</td></tr>
+          <tr><td>6. 获得承诺</td><td>获得来访者对计划的承诺</td></tr>
+        </table>
+        <div class="callout key"><strong>记忆口诀：</strong> "定安持变计诺"——确定→安全→支持→变通→计划→承诺。</div>
+        <h4>SAFER-R模型</h4>
+        <table>
+          <tr><th>步骤</th><th>内容</th></tr>
+          <tr><td>S - Stabilize</td><td>稳定情绪</td></tr>
+          <tr><td>A - Acknowledge</td><td>确认危机事件</td></tr>
+          <tr><td>F - Facilitate understanding</td><td>促进理解</td></tr>
+          <tr><td>E - Encourage adaptive coping</td><td>鼓励适应性应对</td></tr>
+          <tr><td>R - Recovery or referral</td><td>恢复或转介</td></tr>
+          <tr><td>R - Review</td><td>回顾</td></tr>
+        </table>
+
+        <h3>13.4 自杀风险评估</h3>
+        <p><strong>自杀风险评估维度：</strong></p>
+        <table>
+          <tr><th>维度</th><th>评估内容</th></tr>
+          <tr><td><strong>自杀意念</strong></td><td>是否有自杀想法？频率？强度？</td></tr>
+          <tr><td><strong>自杀计划</strong></td><td>是否有具体计划？方法？时间？地点？</td></tr>
+          <tr><td><strong>自杀手段</strong></td><td>是否有可使用的手段？</td></tr>
+          <tr><td><strong>既往自杀史</strong></td><td>是否有过自杀尝试？</td></tr>
+          <tr><td><strong>精神状态</strong></td><td>是否伴有抑郁、绝望、精神病性症状？</td></tr>
+          <tr><td><strong>支持系统</strong></td><td>社会支持是否充足？</td></tr>
+          <tr><td><strong>保护因素</strong></td><td>有什么让来访者不想死的理由？（家人、宗教信仰等）</td></tr>
+        </table>
+        <p><strong>自杀危险信号：</strong></p>
+        <ul>
+          <li>直接或间接表达死亡意愿（"活着没意思""你们以后不用操心了"）</li>
+          <li>安排后事（分配财物、写遗书、与亲友道别）</li>
+          <li>突然平静（在严重抑郁后突然变得平静，可能是已做出决定）</li>
+          <li>获取自杀工具</li>
+          <li>绝望感表达</li>
+          <li>物质滥用加重</li>
+          <li>社交退缩</li>
+        </ul>
+        <p><strong>自杀风险分层：</strong></p>
+        <table>
+          <tr><th>风险等级</th><th>特征</th></tr>
+          <tr><td>低风险</td><td>有自杀意念但无计划，有保护因素</td></tr>
+          <tr><td>中风险</td><td>有自杀意念和模糊计划</td></tr>
+          <tr><td>高风险</td><td>有明确计划、获取手段的途径、近期尝试史</td></tr>
+        </table>
+
+        <h3>13.5 自杀干预技术</h3>
+        <p><strong>干预原则：</strong></p>
+        <ul>
+          <li>直接询问自杀意念（不要回避话题）</li>
+          <li>不评判、不说教</li>
+          <li>保持冷静和共情</li>
+          <li>不让来访者独处</li>
+          <li>移除危险物品</li>
+        </ul>
+        <p><strong>干预步骤：</strong></p>
+        <ol>
+          <li><strong>建立联结：</strong> "我在这里，我听到了你的痛苦"</li>
+          <li><strong>评估风险：</strong> 直接询问"你有没有想过结束自己的生命？"</li>
+          <li><strong>如果确认有自杀意念：</strong>
+            <ul>
+              <li>询问是否有计划和手段</li>
+              <li>评估风险等级</li>
+            </ul>
+          </li>
+          <li><strong>降低风险：</strong>
+            <ul>
+              <li>制定安全计划（no-harm agreement）</li>
+              <li>移除自杀工具</li>
+              <li>联系支持系统</li>
+              <li>高风险者转介精神科或急诊</li>
+            </ul>
+          </li>
+          <li><strong>后续跟进：</strong> 持续关注，安排后续接触</li>
+        </ol>
+        <p><strong>安全计划内容：</strong></p>
+        <ul>
+          <li>识别预警信号</li>
+          <li>可使用的自我应对策略</li>
+          <li>可联系的社会支持</li>
+          <li>专业帮助联系方式（危机热线、精神科急诊）</li>
+          <li>确保环境安全（移除危险物品）</li>
+        </ul>
+
+        <h3>13.6 心理急救（PFA）</h3>
+        <p><strong>心理急救（Psychological First Aid）：</strong> 对经历创伤事件的人提供的 humane、支持性、实际的帮助。</p>
+        <p><strong>PFA核心原则：</strong></p>
+        <ul>
+          <li>不强行让对方讲述经历</li>
+          <li>提供安全的环境</li>
+          <li>帮助满足基本需求（食物、水、安全）</li>
+          <li>提供准确信息</li>
+          <li>帮助联系社会支持</li>
+          <li>促进适应性应对</li>
+        </ul>
+        <p><strong>PFA的"做"与"不做"：</strong></p>
+        <table>
+          <tr><th>做</th><th>不做</th></tr>
+          <tr><td>保持冷静</td><td>不强迫讲述创伤经历</td></tr>
+          <tr><td>倾听</td><td>不做空洞承诺（"一切都会好的"）</td></tr>
+          <tr><td>提供实际帮助</td><td>不评判对方的反应</td></tr>
+          <tr><td>尊重对方节奏</td><td>不贴病理标签</td></tr>
+          <tr><td>提供准确信息</td><td>不传播谣言</td></tr>
+        </table>
+
+        <h3>13.7 危机干预中的伦理</h3>
+        <ul>
+          <li><strong>知情同意的调整：</strong> 危机状态下可能无法获得完整的知情同意，应在干预后补充</li>
+          <li><strong>保密例外的优先适用：</strong> 有自杀/伤人危险时优先适用保密例外</li>
+          <li><strong>不伤害原则：</strong> 干预不得加重来访者的创伤</li>
+          <li><strong>转介责任：</strong> 超出能力范围的危机应及时转介</li>
+        </ul>
+
+        <h3>13.8 咨询师的自我照顾</h3>
+        <p><strong>替代性创伤（vicarious trauma）：</strong> 咨询师因长期接触来访者的创伤经历而自身产生的创伤反应。</p>
+        <p><strong>耗竭（burnout）：</strong> 长期工作压力导致的情绪疲惫、去人格化和低成就感。</p>
+        <p><strong>自我照顾策略：</strong></p>
+        <ul>
+          <li>定期接受督导</li>
+          <li>保持工作与生活的平衡</li>
+          <li>限制危机干预工作量</li>
+          <li>建立支持网络</li>
+          <li>自我觉察和监测</li>
+          <li>必要时寻求个人咨询</li>
+        </ul>
+
+      </div>
+    </div>
+
+    <!-- Section 14: 高频考点速记表 -->
+    <div class="section" id="sec14">
+      <h2><span class="toggle">▼</span> 十四、高频考点速记表</h2>
+      <div class="section-body">
+
+        <h3>14.1 易混淆概念对比</h3>
+        <table>
+          <tr><th>对比项</th><th>概念A</th><th>概念B</th></tr>
+          <tr><td>感觉 vs 知觉</td><td>个别属性</td><td>整体反映</td></tr>
+          <tr><td>情绪 vs 情感</td><td>生理需要、短暂、外显</td><td>社会需要、稳定、内隐</td></tr>
+          <tr><td>注意分散 vs 注意转移</td><td>被动消极</td><td>主动积极</td></tr>
+          <tr><td>再认 vs 回忆</td><td>有线索</td><td>无线索</td></tr>
+          <tr><td>一般心理问题 vs 严重心理问题</td><td>未泛化、&lt;2月</td><td>已泛化、2-6月</td></tr>
+          <tr><td>神经症 vs 精神病</td><td>自知力完整、主动求医</td><td>自知力缺失、被动</td></tr>
+          <tr><td>错觉 vs 幻觉</td><td>有客观刺激</td><td>无客观刺激</td></tr>
+          <tr><td>移情 vs 依赖</td><td>情感投射</td><td>寻求帮助</td></tr>
+          <tr><td>前摄抑制 vs 倒摄抑制</td><td>前干扰后</td><td>后干扰前</td></tr>
+          <tr><td>比率智商 vs 离差智商</td><td>MA/CA×100</td><td>100+15Z</td></tr>
+          <tr><td>重测信度 vs 复本信度</td><td>同一测验测两次</td><td>两个等值测验</td></tr>
+          <tr><td>气质 vs 性格</td><td>先天、无好坏</td><td>后天、有好坏</td></tr>
+          <tr><td>参与性技术 vs 影响性技术</td><td>跟随（倾听、反应）</td><td>引导（面质、解释、指导）</td></tr>
+          <tr><td>正移情 vs 负移情</td><td>积极（爱慕、依赖）</td><td>消极（敌意、不满）</td></tr>
+          <tr><td>问题指向应对 vs 情绪指向应对</td><td>直接处理压力源</td><td>调节情绪反应</td></tr>
+        </table>
+
+        <h3>14.2 重要数据速记</h3>
+        <table>
+          <tr><th>项目</th><th>数值</th></tr>
+          <tr><td>短时记忆容量</td><td>7±2组块</td></tr>
+          <tr><td>瞬时记忆保持时间</td><td>0.25-2秒</td></tr>
+          <tr><td>可见光波长</td><td>380-780nm</td></tr>
+          <tr><td>亲密距离</td><td>0-0.45m</td></tr>
+          <tr><td>社交距离</td><td>1.2-3.6m</td></tr>
+          <tr><td>MMPI中国常模T分临界值</td><td>60分</td></tr>
+          <tr><td>MMPI L量表无效临界值</td><td>原始分≥10</td></tr>
+          <tr><td>SDS标准分分界值</td><td>53分</td></tr>
+          <tr><td>SAS标准分分界值</td><td>50分</td></tr>
+          <tr><td>SCL-90总分阳性分界值</td><td>≥160分</td></tr>
+          <tr><td>SCL-90阳性项目数分界值</td><td>≥43项</td></tr>
+          <tr><td>SCL-90因子分阳性分界值</td><td>≥2分</td></tr>
+          <tr><td>T分数</td><td>M=50, SD=10</td></tr>
+          <tr><td>离差智商</td><td>M=100, SD=15</td></tr>
+          <tr><td>一般心理问题病程</td><td>1-2个月</td></tr>
+          <tr><td>严重心理问题病程</td><td>2-6个月</td></tr>
+          <tr><td>神经症病程最低</td><td>3个月</td></tr>
+          <tr><td>信度系数最低要求</td><td>≥0.70</td></tr>
+          <tr><td>区分度D值良好</td><td>≥0.40</td></tr>
+          <tr><td>难度P适中范围</td><td>0.30-0.70</td></tr>
+          <tr><td>16PF题数</td><td>187题</td></tr>
+          <tr><td>EPQ成人版题数</td><td>88题</td></tr>
+          <tr><td>SCL-90题数</td><td>90题</td></tr>
+          <tr><td>SDS/SAS题数</td><td>各20题</td></tr>
+        </table>
+
+        <h3>14.3 重要人物速记</h3>
+        <table>
+          <tr><th>人物</th><th>主要贡献</th></tr>
+          <tr><td>冯特</td><td>1879年建立第一个心理学实验室</td></tr>
+          <tr><td>弗洛伊德</td><td>精神分析、潜意识、人格结构</td></tr>
+          <tr><td>皮亚杰</td><td>认知发展四阶段</td></tr>
+          <tr><td>埃里克森</td><td>心理社会发展八阶段</td></tr>
+          <tr><td>维果茨基</td><td>最近发展区、社会文化理论</td></tr>
+          <tr><td>班杜拉</td><td>社会学习理论、自我效能感</td></tr>
+          <tr><td>马斯洛</td><td>需要层次理论、自我实现</td></tr>
+          <tr><td>罗杰斯</td><td>以人为中心疗法、无条件积极关注</td></tr>
+          <tr><td>斯金纳</td><td>操作性条件反射</td></tr>
+          <tr><td>巴甫洛夫</td><td>经典条件反射</td></tr>
+          <tr><td>艾宾浩斯</td><td>遗忘曲线（先快后慢）</td></tr>
+          <tr><td>米勒</td><td>短时记忆7±2</td></tr>
+          <tr><td>阿希</td><td>从众实验</td></tr>
+          <tr><td>米尔格拉姆</td><td>服从实验</td></tr>
+          <tr><td>科尔伯格</td><td>道德发展三水平六阶段</td></tr>
+          <tr><td>塞利</td><td>一般适应综合征（GAS）</td></tr>
+          <tr><td>拉扎勒斯</td><td>认知评价压力理论</td></tr>
+          <tr><td>费斯廷格</td><td>认知失调理论</td></tr>
+          <tr><td>海德</td><td>平衡理论、归因理论</td></tr>
+          <tr><td>埃利斯</td><td>合理情绪疗法（ABC理论）</td></tr>
+          <tr><td>贝克</td><td>认知疗法、认知歪曲</td></tr>
+          <tr><td>沃尔普</td><td>系统脱敏法</td></tr>
+          <tr><td>韦克斯勒</td><td>韦氏智力量表、离差智商</td></tr>
+          <tr><td>卡特尔</td><td>16PF</td></tr>
+          <tr><td>艾森克</td><td>EPQ</td></tr>
+          <tr><td>罗夏</td><td>墨迹测验</td></tr>
+          <tr><td>默里</td><td>TAT</td></tr>
+          <tr><td>许又新</td><td>神经症评定标准</td></tr>
+          <tr><td>郭念锋</td><td>心理健康十标准</td></tr>
+          <tr><td>斯腾伯格</td><td>爱情三角理论、三元智力理论</td></tr>
+          <tr><td>加德纳</td><td>多元智力理论</td></tr>
+          <tr><td>安斯沃思</td><td>依恋类型（陌生情境法）</td></tr>
+          <tr><td>鲍尔比</td><td>依恋理论</td></tr>
+          <tr><td>亚隆</td><td>团体疗效因子11个</td></tr>
+          <tr><td>洛伦兹</td><td>关键期（印刻现象）</td></tr>
+          <tr><td>霍尔</td><td>人际距离理论</td></tr>
+          <tr><td>贾尼斯</td><td>群体思维</td></tr>
+          <tr><td>帕森斯</td><td>职业指导运动创始</td></tr>
+        </table>
+
+        <h3>14.4 诊断流程速记</h3>
+        <pre>求助者来访
+    ↓
+初诊接待（建立关系、说明保密）
+    ↓
+摄入性会谈（收集资料、了解问题）
+    ↓
+判断：是否有精神病性症状？
+    ├── 是 → 排除器质性疾病后 → 转介精神科
+    └── 否 → 继续
+    ↓
+判断：心理冲突是常形还是变形？
+    ├── 常形（有现实基础）→
+    │   ├── 未泛化 + 病程&lt;2月 + 功能正常 → 一般心理问题
+    │   ├── 已泛化 + 病程2-6月 + 功能受损 → 严重心理问题
+    │   └── 强烈泛化 + 冲突变形化 → 神经症性心理问题
+    └── 变形（无现实基础）→
+        └── 许又新评分 ≥3分 → 神经症
+    ↓
+制定咨询方案 → 实施咨询 → 评估效果 → 结束咨询</pre>
+
+        <h3>14.5 理论流派与技术对应表</h3>
+        <table>
+          <tr><th>流派</th><th>核心技术</th><th>适用问题</th></tr>
+          <tr><td>精神分析</td><td>自由联想、释梦、移情分析</td><td>人格问题、神经症</td></tr>
+          <tr><td>行为主义</td><td>系统脱敏、冲击疗法、厌恶疗法、代币法</td><td>恐惧症、强迫症、不良行为</td></tr>
+          <tr><td>以人为中心</td><td>共情、无条件积极关注、真诚</td><td>自我成长、人际关系</td></tr>
+          <tr><td>认知疗法(CBT)</td><td>认知重构、行为激活、暴露、行为实验</td><td>抑郁、焦虑、恐惧症、强迫症</td></tr>
+          <tr><td>合理情绪疗法</td><td>ABC分析、与不合理信念辩论</td><td>焦虑、抑郁、愤怒</td></tr>
+          <tr><td>格式塔</td><td>空椅技术、觉察训练</td><td>未完成事件、自我觉察</td></tr>
+          <tr><td>焦点解决(SFBT)</td><td>奇迹提问、例外提问、量尺提问、应对提问</td><td>短期问题解决、发展性咨询</td></tr>
+          <tr><td>家庭治疗</td><td>循环提问、家庭雕塑、边界重建、悖论干预</td><td>家庭冲突、青少年问题、亲子关系</td></tr>
+          <tr><td>森田疗法</td><td>顺其自然、为所当为</td><td>神经症、强迫症</td></tr>
+        </table>
+
+        <h3>14.6 团体辅导速记</h3>
+        <table>
+          <tr><th>考点</th><th>内容</th></tr>
+          <tr><td>团体发展阶段</td><td>定向→冲突→工作→结束</td></tr>
+          <tr><td>亚隆疗效因子数</td><td>11个</td></tr>
+          <tr><td>常见团体规模</td><td>8-12人</td></tr>
+          <tr><td>团体领导者技术</td><td>联结、阻止、截断、引导、聚焦、绕圈</td></tr>
+          <tr><td>单次团体活动结构</td><td>暖场→导入→主体→分享→总结→作业→结束</td></tr>
+          <tr><td>破冰活动示例</td><td>名字接龙、两真一假、寻人游戏</td></tr>
+          <tr><td>深度探索活动</td><td>Johari窗、生命线、热座、空椅技术</td></tr>
+          <tr><td>团体活动设计原则</td><td>目标导向、循序渐进、参与性、安全性、适应性、体验性</td></tr>
+        </table>
+
+        <h3>14.7 CBT速记</h3>
+        <table>
+          <tr><th>考点</th><th>内容</th></tr>
+          <tr><td>CBT三层认知</td><td>自动思维→中间信念→核心信念</td></tr>
+          <tr><td>常见认知歪曲数</td><td>10种</td></tr>
+          <tr><td>苏格拉底提问核心</td><td>引导发现，而非直接告知</td></tr>
+          <tr><td>行为激活适用</td><td>抑郁</td></tr>
+          <tr><td>暴露与反应预防适用</td><td>强迫症</td></tr>
+          <tr><td>CBT通常疗程</td><td>8-20次</td></tr>
+          <tr><td>第三浪潮CBT</td><td>MBCT、DBT、ACT</td></tr>
+          <tr><td>个案概念化要素</td><td>童年经历→核心信念→中间信念→补偿策略→自动思维→触发情境</td></tr>
+        </table>
+
+        <h3>14.8 危机干预速记</h3>
+        <table>
+          <tr><th>考点</th><th>内容</th></tr>
+          <tr><td>危机类型</td><td>发展性、境遇性、存在性</td></tr>
+          <tr><td>六步模型</td><td>定安持变计诺</td></tr>
+          <tr><td>自杀风险评估维度</td><td>意念、计划、手段、既往史、精神状态、支持系统、保护因素</td></tr>
+          <tr><td>PFA核心原则</td><td>不强迫讲述、提供安全、满足基本需求</td></tr>
+          <tr><td>替代性创伤</td><td>咨询师因接触来访者创伤而自身产生创伤反应</td></tr>
+        </table>
+
+        <h3>14.9 SFBT与家庭治疗速记</h3>
+        <table>
+          <tr><th>考点</th><th>内容</th></tr>
+          <tr><td>SFBT创始人</td><td>德·沙泽尔、伯格</td></tr>
+          <tr><td>SFBT核心理念</td><td>关注解决方案而非问题</td></tr>
+          <tr><td>SFBT四大提问</td><td>奇迹提问、例外提问、量尺提问、应对提问</td></tr>
+          <tr><td>SFBT典型疗程</td><td>3-10次</td></tr>
+          <tr><td>家庭治疗核心假设</td><td>个体问题反映家庭系统功能失调</td></tr>
+          <tr><td>结构式家庭治疗</td><td>米纽钦：边界、子系统、联盟、三角化</td></tr>
+          <tr><td>家庭治疗常用技术</td><td>循环提问、家庭雕塑、悖论干预、正向解读</td></tr>
+        </table>
+
+        <h3>14.10 法律法规速记</h3>
+        <table>
+          <tr><th>考点</th><th>内容</th></tr>
+          <tr><td>精神卫生法施行日</td><td>2013年5月1日</td></tr>
+          <tr><td>心理咨询师"三不得"</td><td>不得心理治疗、不得诊断、不得开药</td></tr>
+          <tr><td>精神障碍诊断权</td><td>仅精神科执业医师</td></tr>
+          <tr><td>个人信息保护法施行日</td><td>2021年11月1日</td></tr>
+          <tr><td>心理健康信息属性</td><td>敏感个人信息</td></tr>
+          <tr><td>未成年人强制报告</td><td>发现虐待必须向公安机关报告</td></tr>
+          <tr><td>未成年人知情同意</td><td>须监护人同意</td></tr>
+          <tr><td>未成年人无行为能力</td><td>不满8周岁</td></tr>
+          <tr><td>未成年人限制行为能力</td><td>8-18周岁</td></tr>
+        </table>
+
+        <h3>14.11 伦理实务补充速记</h3>
+        <table>
+          <tr><th>考点</th><th>内容</th></tr>
+          <tr><td>伦理守则名称</td><td>《中国心理学会临床与咨询心理学工作伦理守则》（第二版）</td></tr>
+          <tr><td>伦理守则发布时间</td><td>2018年2月</td></tr>
+          <tr><td>伦理守则总章节数</td><td>10章</td></tr>
+          <tr><td>第一版章节数</td><td>7章</td></tr>
+          <tr><td>第二版新增章节</td><td>知情同意、远程专业工作、媒体沟通与合作</td></tr>
+          <tr><td>伦理总则</td><td>善行、责任、诚信、公正、尊重</td></tr>
+          <tr><td>转介核心规则</td><td>不得收取转介费用，不得向第三方支付转介费用</td></tr>
+          <tr><td>远程咨询三注意</td><td>验证身份、加密保密、应急方案</td></tr>
+          <tr><td>礼物决策四要素</td><td>专业关系、文化习俗、金钱价值、赠送动机</td></tr>
+          <tr><td>礼物口诀</td><td>"初拒终议贵拒"</td></tr>
+          <tr><td>伦理投诉受理机构</td><td>注册工作委员会伦理工作组</td></tr>
+          <tr><td>伦理投诉处理流程</td><td>受理→调查→审议→决定→通知→申诉</td></tr>
+          <tr><td>发现同行违规处理</td><td>先规劝→反映→报告→配合调查</td></tr>
+          <tr><td>危机伦理底线</td><td>生命安全高于一切，但最小披露原则仍需遵守</td></tr>
+          <tr><td>督导伦理核心</td><td>不强制理论取向、评估公正、界限清晰</td></tr>
+          <tr><td>伦理守则十章口诀</td><td>"专知隐测教研远媒处"</td></tr>
+        </table>
+
+        <h3>附录：记忆口诀汇总（31条）</h3>
+        <ol>
+          <li><strong>马斯洛需要层次：</strong> "生安爱尊现"</li>
+          <li><strong>埃里克森八阶段：</strong> "信自主勤同亲繁完"</li>
+          <li><strong>皮亚杰四阶段：</strong> "感前具形"</li>
+          <li><strong>四种气质：</strong> "胆多黏抑"——张飞、王熙凤、林冲、林黛玉</li>
+          <li><strong>情绪三状态：</strong> "心激应"——心境、激情、应激</li>
+          <li><strong>情感三类型：</strong> "道美理"</li>
+          <li><strong>ABC态度模型：</strong> A情感+B行为+C认知</li>
+          <li><strong>ABC理论：</strong> A事件+B信念+C结果+D辩论+E效果</li>
+          <li><strong>SCL-90十个因子：</strong> "躯强人抑焦敌恐偏精其"</li>
+          <li><strong>罗杰斯三条件：</strong> "真无共"——真诚、无条件积极关注、共情</li>
+          <li><strong>布洛卡 vs 威尔尼克：</strong> "布说威听"</li>
+          <li><strong>SSRS三维度：</strong> "客主用"</li>
+          <li><strong>大五人格OCEAN：</strong> Openness、Conscientiousness、Extraversion、Agreeableness、Neuroticism</li>
+          <li><strong>抑郁三低：</strong> 情绪低落、思维迟缓、活动减少</li>
+          <li><strong>躁狂三高：</strong> 情感高涨、思维奔逸、活动增多</li>
+          <li><strong>团体发展四阶段：</strong> "定冲作结"</li>
+          <li><strong>危机干预六步：</strong> "定安持变计诺"</li>
+          <li><strong>CBT三层认知：</strong> 自动思维→中间信念→核心信念</li>
+          <li><strong>正常与异常三原则：</strong> "统协稳"——统一、协调、稳定</li>
+          <li><strong>正常/异常区分框架：</strong> 心理正常（健康/不健康）vs 心理异常（精神障碍）</li>
+          <li><strong>SFBT四大提问：</strong> "奇例外量"——奇迹提问、例外提问、量尺提问、应对提问</li>
+          <li><strong>家庭治疗结构概念：</strong> "边子联三"——边界、子系统、联盟、三角化（米纽钦）</li>
+          <li><strong>团体活动结构：</strong> "暖导主分总作束"——暖场→导入→主体→分享→总结→作业→结束</li>
+          <li><strong>咨询师法律边界"三不得"：</strong> 不得心理治疗、不得诊断精神障碍、不得开处方药</li>
+          <li><strong>SFBT核心理念：</strong> 关注解决方案而非问题——"有效多做，无效换法"</li>
+          <li><strong>伦理决策五步：</strong> "问准原方行"——明确问题→参照准则→适用原则→拟定方案→做出决策</li>
+          <li><strong>伦理守则十章：</strong> "专知隐测教研远媒处"——专业关系→知情同意→隐私保密→测量评估→教育培训→研究发表→远程工作→媒体沟通→伦理处理</li>
+          <li><strong>礼物处理：</strong> "初拒终议贵拒"——初期拒绝、结束讨论、贵重必拒</li>
+          <li><strong>转介伦理：</strong> "转介不收费，收费不转介"</li>
+          <li><strong>远程咨询：</strong> "验证身份、加密保密、应急方案"</li>
+          <li><strong>危机伦理底线：</strong> "生命安全高于一切，最小披露不可少"</li>
+        </ol>
+
+      </div>
+    </div>
+
+    <div class="callout key" style="margin-bottom: 24px;">
+      <strong>声明：</strong> 本材料依据中国心理学会心理咨询师水平评价考试（三级）官方大纲模块编写。理论知识部分基于标准心理学教材体系，可查可靠。实务技能部分（尤其CBT、人本主义、团体辅导、危机干预）需结合官方教材和实务培训课程深入学习。考生应以官方教材和考纲为准，祝考试顺利！
+    </div>
+
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.section h2').forEach(function(h2) {
+    h2.addEventListener('click', function() {
+      var section = h2.closest('.section');
+      section.classList.toggle('collapsed');
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1668 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>心理学综合 · 复习记忆材料</title>
+<style>
+:root {
+  --primary: #4a6fa5;
+  --primary-light: #4a6fa515;
+  --primary-dark: #4a6fa5dd;
+  --bg: #f8f9fa;
+  --card-bg: #ffffff;
+  --text: #2c3e50;
+  --text-muted: #6c757d;
+  --border: #e2e8f0;
+  --success: #28a745;
+  --danger: #dc3545;
+  --warning: #ffc107;
+  --sidebar-w: 290px;
+}
+
+html { scroll-behavior: smooth; }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  font-size: 15px;
+}
+
+/* Sidebar */
+#sidebar {
+  position: fixed;
+  top: 0; left: 0;
+  width: var(--sidebar-w);
+  height: 100vh;
+  background: var(--card-bg);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  padding: 0;
+  z-index: 100;
+  transition: transform 0.3s;
+}
+
+.sidebar-header {
+  padding: 20px 20px 16px;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary);
+  background: var(--primary-light);
+  border-bottom: 2px solid var(--primary);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.sidebar-module {
+  border-bottom: 1px solid var(--border);
+}
+
+.sidebar-mod-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.15s;
+  cursor: pointer;
+}
+
+.sidebar-mod-link:hover {
+  background: var(--primary-light);
+  color: var(--primary);
+  padding-left: 24px;
+}
+
+.sidebar-mod-link.active {
+  background: var(--primary-light);
+  color: var(--primary);
+  border-left: 3px solid var(--primary);
+  padding-left: 17px;
+}
+
+.badge {
+  background: var(--border);
+  color: var(--text-muted);
+  font-size: 11px;
+  padding: 1px 7px;
+  border-radius: 10px;
+  font-weight: 400;
+  min-width: 22px;
+  text-align: center;
+}
+
+.sidebar-subs {
+  padding: 4px 0 8px;
+  background: #fafbfc;
+}
+
+.sidebar-sub {
+  display: block;
+  padding: 4px 20px 4px 36px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 13px;
+  transition: all 0.15s;
+  border-left: 2px solid transparent;
+}
+
+.sidebar-sub:hover {
+  color: var(--primary);
+  background: var(--primary-light);
+  border-left-color: var(--primary);
+}
+
+.sidebar-sub.active {
+  color: var(--primary);
+  font-weight: 600;
+  border-left-color: var(--primary);
+}
+
+.sidebar-footer {
+  padding: 16px 20px;
+  font-size: 12px;
+  color: var(--text-muted);
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+
+/* Search */
+#search-box {
+  padding: 12px 16px 8px;
+  position: sticky;
+  top: 53px;
+  background: var(--card-bg);
+  z-index: 9;
+  border-bottom: 1px solid var(--border);
+}
+#search-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+#search-input:focus {
+  border-color: var(--primary);
+}
+
+/* Toggle button */
+#sidebar-toggle {
+  display: none;
+  position: fixed;
+  top: 12px; left: 12px;
+  z-index: 200;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* Main content */
+#main {
+  margin-left: var(--sidebar-w);
+  padding: 30px 40px 60px;
+  max-width: 900px;
+}
+
+#main h1 {
+  color: var(--primary);
+  font-size: 26px;
+  margin: 30px 0 16px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid var(--primary);
+}
+
+#main h2 {
+  color: var(--text);
+  font-size: 21px;
+  margin: 36px 0 14px;
+  padding: 8px 16px;
+  background: var(--primary-light);
+  border-left: 4px solid var(--primary);
+  border-radius: 0 6px 6px 0;
+  scroll-margin-top: 20px;
+}
+
+#main h3 {
+  color: var(--primary-dark);
+  font-size: 17px;
+  margin: 24px 0 10px;
+  scroll-margin-top: 20px;
+  cursor: pointer;
+  user-select: none;
+}
+
+#main h3:hover {
+  text-decoration: underline;
+}
+
+#main h3::before {
+  content: '▶ ';
+  font-size: 11px;
+  color: var(--text-muted);
+  transition: transform 0.2s;
+  display: inline-block;
+}
+
+#main h3.collapsed::before {
+  transform: rotate(-90deg);
+}
+
+#main h4 {
+  font-size: 15px;
+  margin: 16px 0 8px;
+  color: var(--text);
+}
+
+#main p {
+  margin: 8px 0;
+}
+
+#main ul, #main ol {
+  margin: 8px 0 8px 24px;
+}
+
+#main li {
+  margin: 4px 0;
+}
+
+#main strong {
+  color: var(--primary-dark);
+}
+
+#main code {
+  background: #f1f3f5;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-family: "Fira Code", "Consolas", monospace;
+}
+
+#main pre {
+  background: #f1f3f5;
+  padding: 12px 16px;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin: 12px 0;
+}
+
+#main pre code {
+  background: none;
+  padding: 0;
+}
+
+#main hr {
+  border: none;
+  border-top: 2px dashed var(--border);
+  margin: 32px 0;
+}
+
+#main table.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0;
+  font-size: 14px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+#main table.data-table th {
+  background: var(--primary);
+  color: white;
+  padding: 8px 12px;
+  text-align: left;
+  font-weight: 600;
+}
+
+#main table.data-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+#main table.data-table tr:nth-child(even) {
+  background: #f8f9fa;
+}
+
+#main table.data-table tr:hover {
+  background: var(--primary-light);
+}
+
+#main .callout {
+  padding: 12px 16px;
+  margin: 12px 0;
+  border-radius: 6px;
+  border-left: 4px solid var(--primary);
+  background: var(--primary-light);
+  font-size: 14px;
+}
+
+#main .callout.key {
+  border-left-color: var(--warning);
+  background: #fff8e1;
+}
+
+#main .callout.warn {
+  border-left-color: var(--danger);
+  background: #fff5f5;
+}
+
+/* Collapsible section content */
+.section-content {
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.section-content.hidden {
+  display: none;
+}
+
+/* Back to top */
+#back-top {
+  position: fixed;
+  bottom: 30px; right: 30px;
+  width: 44px; height: 44px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 99;
+}
+#back-top.show {
+  opacity: 1;
+}
+
+/* Index card grid */
+.index-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.index-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.index-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  transform: translateY(-1px);
+}
+
+.index-card-title {
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.index-card-list {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  #sidebar {
+    transform: translateX(-100%);
+  }
+  #sidebar.open {
+    transform: translateX(0);
+  }
+  #sidebar-toggle {
+    display: block;
+  }
+  #main {
+    margin-left: 0;
+    padding: 50px 16px 40px;
+  }
+}
+</style>
+</head>
+<body>
+
+<button id="sidebar-toggle">☰</button>
+
+<nav id="sidebar">
+  <div class="sidebar-header">心理学综合<br><span style="font-size:12px;font-weight:400;color:var(--text-muted)">复习记忆材料</span></div>
+  <div id="search-box">
+    <input type="text" id="search-input" placeholder="搜索章节..." oninput="filterSidebar()">
+  </div>
+  <div class="sidebar-header">心理学综合</div>
+
+        <div class="sidebar-module" id="nav-mod-一">
+          <a href="#mod-一" class="sidebar-mod-link">一、心理学导论 <span class="badge">11</span></a>
+          <div class="sidebar-subs" style="display:none">
+            <a href="#sec-1.1" class="sidebar-sub" data-mod="mod-一">1.1 心理学的研究对象与方法</a><a href="#sec-1.2" class="sidebar-sub" data-mod="mod-一">1.2 心理活动的生理基础</a><a href="#sec-1.3" class="sidebar-sub" data-mod="mod-一">1.3 感觉与知觉</a><a href="#sec-1.4" class="sidebar-sub" data-mod="mod-一">1.4 记忆</a><a href="#sec-1.5" class="sidebar-sub" data-mod="mod-一">1.5 思维</a><a href="#sec-1.6" class="sidebar-sub" data-mod="mod-一">1.6 言语</a><a href="#sec-1.7" class="sidebar-sub" data-mod="mod-一">1.7 表象与想象</a><a href="#sec-1.8" class="sidebar-sub" data-mod="mod-一">1.8 情绪与情感</a><a href="#sec-1.9" class="sidebar-sub" data-mod="mod-一">1.9 意识与注意</a><a href="#sec-1.10" class="sidebar-sub" data-mod="mod-一">1.10 需要与动机</a><a href="#sec-1.11" class="sidebar-sub" data-mod="mod-一">1.11 能力</a>
+          </div>
+        </div>
+
+        <div class="sidebar-module" id="nav-mod-二">
+          <a href="#mod-二" class="sidebar-mod-link">二、社会心理学 <span class="badge">7</span></a>
+          <div class="sidebar-subs" style="display:none">
+            <a href="#sec-2.1" class="sidebar-sub" data-mod="mod-二">2.1 社会化与自我概念</a><a href="#sec-2.2" class="sidebar-sub" data-mod="mod-二">2.2 社会知觉与印象管理</a><a href="#sec-2.3" class="sidebar-sub" data-mod="mod-二">2.3 社会动机与社交情绪</a><a href="#sec-2.4" class="sidebar-sub" data-mod="mod-二">2.4 态度</a><a href="#sec-2.5" class="sidebar-sub" data-mod="mod-二">2.5 沟通与人际关系</a><a href="#sec-2.6" class="sidebar-sub" data-mod="mod-二">2.6 社会影响</a><a href="#sec-2.7" class="sidebar-sub" data-mod="mod-二">2.7 群体心理</a>
+          </div>
+        </div>
+
+        <div class="sidebar-module" id="nav-mod-三">
+          <a href="#mod-三" class="sidebar-mod-link">三、人格心理学 <span class="badge">7</span></a>
+          <div class="sidebar-subs" style="display:none">
+            <a href="#sec-3.1" class="sidebar-sub" data-mod="mod-三">3.1 人格概述</a><a href="#sec-3.2" class="sidebar-sub" data-mod="mod-三">3.2 气质</a><a href="#sec-3.3" class="sidebar-sub" data-mod="mod-三">3.3 性格</a><a href="#sec-3.4" class="sidebar-sub" data-mod="mod-三">3.4 人格特质理论</a><a href="#sec-3.5" class="sidebar-sub" data-mod="mod-三">3.5 精神分析人格理论</a><a href="#sec-3.6" class="sidebar-sub" data-mod="mod-三">3.6 人本主义人格理论</a><a href="#sec-3.7" class="sidebar-sub" data-mod="mod-三">3.7 人格测评</a>
+          </div>
+        </div>
+
+        <div class="sidebar-module" id="nav-mod-四">
+          <a href="#mod-四" class="sidebar-mod-link">四、发展心理学 <span class="badge">9</span></a>
+          <div class="sidebar-subs" style="display:none">
+            <a href="#sec-4.1" class="sidebar-sub" data-mod="mod-四">4.1 概述</a><a href="#sec-4.2" class="sidebar-sub" data-mod="mod-四">4.2 主要发展理论</a><a href="#sec-4.3" class="sidebar-sub" data-mod="mod-四">4.3 婴儿期（0-3岁）</a><a href="#sec-4.4" class="sidebar-sub" data-mod="mod-四">4.4 幼儿期（3-6岁）</a><a href="#sec-4.5" class="sidebar-sub" data-mod="mod-四">4.5 童年期（6-12岁）</a><a href="#sec-4.6" class="sidebar-sub" data-mod="mod-四">4.6 青春期（12-18岁）</a><a href="#sec-4.7" class="sidebar-sub" data-mod="mod-四">4.7 青年期（18-35岁）</a><a href="#sec-4.8" class="sidebar-sub" data-mod="mod-四">4.8 中年期（35-60岁）</a><a href="#sec-4.9" class="sidebar-sub" data-mod="mod-四">4.9 老年期（60岁以上）</a>
+          </div>
+        </div>
+
+        <div class="sidebar-module" id="nav-mod-五">
+          <a href="#mod-五" class="sidebar-mod-link">五、异常心理学 <span class="badge">7</span></a>
+          <div class="sidebar-subs" style="display:none">
+            <a href="#sec-5.1" class="sidebar-sub" data-mod="mod-五">5.1 心理正常与异常的区分</a><a href="#sec-5.2" class="sidebar-sub" data-mod="mod-五">5.2 常见异常心理症状</a><a href="#sec-5.3" class="sidebar-sub" data-mod="mod-五">5.3 常见精神障碍</a><a href="#sec-5.4" class="sidebar-sub" data-mod="mod-五">5.4 心理不健康的分类</a><a href="#sec-5.5" class="sidebar-sub" data-mod="mod-五">5.5 应激相关障碍</a><a href="#sec-5.6" class="sidebar-sub" data-mod="mod-五">5.6 心理健康标准（郭念锋）</a><a href="#sec-5.7" class="sidebar-sub" data-mod="mod-五">5.7 压力与健康</a>
+          </div>
+        </div>
+
+        <div class="sidebar-module" id="nav-mod-六">
+          <a href="#mod-六" class="sidebar-mod-link">六、咨询心理学 <span class="badge">12</span></a>
+          <div class="sidebar-subs" style="display:none">
+            <a href="#sec-6.1" class="sidebar-sub" data-mod="mod-六">6.1 心理咨询概述</a><a href="#sec-6.2" class="sidebar-sub" data-mod="mod-六">6.2 心理咨询的历史</a><a href="#sec-6.3" class="sidebar-sub" data-mod="mod-六">6.3 心理咨询主要理论流派概述</a><a href="#sec-6.4" class="sidebar-sub" data-mod="mod-六">6.4 不同年龄阶段的心理咨询要点</a><a href="#sec-6.5" class="sidebar-sub" data-mod="mod-六">6.5 婚恋与家庭心理咨询</a><a href="#sec-6.6" class="sidebar-sub" data-mod="mod-六">6.6 焦点解决短期治疗（SFBT）</a><a href="#sec-6.7" class="sidebar-sub" data-mod="mod-六">6.7 家庭治疗基础</a><a href="#sec-14.1" class="sidebar-sub" data-mod="mod-六">14.1 易混淆概念对比</a><a href="#sec-14.2" class="sidebar-sub" data-mod="mod-六">14.2 重要数据速记</a><a href="#sec-14.3" class="sidebar-sub" data-mod="mod-六">14.3 重要人物速记</a><a href="#sec-14.4" class="sidebar-sub" data-mod="mod-六">14.4 诊断流程速记</a><a href="#sec-14.5" class="sidebar-sub" data-mod="mod-六">14.5 理论流派与技术对应表</a>
+          </div>
+        </div>
+
+        <div class="sidebar-module">
+          <a href="#speed-tables" class="sidebar-mod-link">速记速查表 <span class="badge">5</span></a>
+          <div class="sidebar-subs" style="display:none">
+            <a href="#sec-14.1" class="sidebar-sub">14.1 易混淆概念对比</a><a href="#sec-14.2" class="sidebar-sub">14.2 重要数据速记</a><a href="#sec-14.3" class="sidebar-sub">14.3 重要人物速记</a><a href="#sec-14.4" class="sidebar-sub">14.4 诊断流程速记</a><a href="#sec-14.5" class="sidebar-sub">14.5 理论流派与技术对应表</a>
+          </div>
+        </div>
+
+    <div class="sidebar-module">
+      <a href="#mnemonics" class="sidebar-mod-link">记忆口诀汇总 <span class="badge">15</span></a>
+    </div>
+<div class="sidebar-footer">共 6 模块 · 53 知识点 · 15 口诀</div>
+</nav>
+
+<main id="main">
+<h1 id="心理学综合-复习记忆材料">心理学综合 · 复习记忆材料</h1>
+<div class="callout"><strong>中国心理学会心理咨询师水平评价考试（三级）</strong> &gt; <strong>科目：心理学综合（理论科目）</strong> &gt; 考试题型：单选150题(0.4分) + 多选50题(0.6分) + 判断50题(0.2分) = 100分 &gt; ≥60分合格，单科成绩3年有效</div>
+<hr>
+<h2 id="目录索引">📑 目录索引</h2>
+<h3 id="一-心理学导论">一、心理学导论</h3>
+<ul>
+<li><strong>1.1</strong> 心理学的研究对象与方法</li>
+<li><strong>1.2</strong> 心理活动的生理基础</li>
+<li><strong>1.3</strong> 感觉与知觉</li>
+<li><strong>1.4</strong> 记忆</li>
+<li><strong>1.5</strong> 思维</li>
+<li><strong>1.6</strong> 言语</li>
+<li><strong>1.7</strong> 表象与想象</li>
+<li><strong>1.8</strong> 情绪与情感</li>
+<li><strong>1.9</strong> 意识与注意</li>
+<li><strong>1.10</strong> 需要与动机</li>
+<li><strong>1.11</strong> 能力</li>
+</ul>
+<h3 id="二-社会心理学">二、社会心理学</h3>
+<ul>
+<li><strong>2.1</strong> 社会化与自我概念</li>
+<li><strong>2.2</strong> 社会知觉与印象管理</li>
+<li><strong>2.3</strong> 社会动机与社交情绪</li>
+<li><strong>2.4</strong> 态度</li>
+<li><strong>2.5</strong> 沟通与人际关系</li>
+<li><strong>2.6</strong> 社会影响</li>
+<li><strong>2.7</strong> 群体心理</li>
+</ul>
+<h3 id="三-人格心理学">三、人格心理学</h3>
+<ul>
+<li><strong>3.1</strong> 人格概述</li>
+<li><strong>3.2</strong> 气质</li>
+<li><strong>3.3</strong> 性格</li>
+<li><strong>3.4</strong> 人格特质理论</li>
+<li><strong>3.5</strong> 精神分析人格理论</li>
+<li><strong>3.6</strong> 人本主义人格理论</li>
+<li><strong>3.7</strong> 人格测评</li>
+</ul>
+<h3 id="四-发展心理学">四、发展心理学</h3>
+<ul>
+<li><strong>4.1</strong> 概述</li>
+<li><strong>4.2</strong> 主要发展理论</li>
+<li><strong>4.3</strong> 婴儿期（0-3岁）</li>
+<li><strong>4.4</strong> 幼儿期（3-6岁）</li>
+<li><strong>4.5</strong> 童年期（6-12岁）</li>
+<li><strong>4.6</strong> 青春期（12-18岁）</li>
+<li><strong>4.7</strong> 青年期（18-35岁）</li>
+<li><strong>4.8</strong> 中年期（35-60岁）</li>
+<li><strong>4.9</strong> 老年期（60岁以上）</li>
+</ul>
+<h3 id="五-异常心理学">五、异常心理学</h3>
+<ul>
+<li><strong>5.1</strong> 心理正常与异常的区分</li>
+<li><strong>5.2</strong> 常见异常心理症状</li>
+<li><strong>5.3</strong> 常见精神障碍</li>
+<li><strong>5.4</strong> 心理不健康的分类</li>
+<li><strong>5.5</strong> 应激相关障碍</li>
+<li><strong>5.6</strong> 心理健康标准（郭念锋）</li>
+<li><strong>5.7</strong> 压力与健康</li>
+</ul>
+<h3 id="六-咨询心理学">六、咨询心理学</h3>
+<ul>
+<li><strong>6.1</strong> 心理咨询概述</li>
+<li><strong>6.2</strong> 心理咨询的历史</li>
+<li><strong>6.3</strong> 心理咨询主要理论流派概述</li>
+<li><strong>6.4</strong> 不同年龄阶段的心理咨询要点</li>
+<li><strong>6.5</strong> 婚恋与家庭心理咨询</li>
+<li><strong>6.6</strong> 焦点解决短期治疗（SFBT）</li>
+<li><strong>6.7</strong> 家庭治疗基础</li>
+</ul>
+<div class="callout">共 6 个模块 · 48 个知识点</div>
+<h3 id="速记速查表">速记速查表</h3>
+<ul>
+<li><strong>14.1</strong> 易混淆概念对比- <strong>14.2</strong> 重要数据速记- <strong>14.3</strong> 重要人物速记- <strong>14.4</strong> 诊断流程速记- <strong>14.5</strong> 理论流派与技术对应表</li>
+</ul>
+<div class="callout">记忆口诀 16 条</div>
+<hr>
+<h1 id="上篇-心理学综合-理论科目">上篇：心理学综合（理论科目）</h1>
+<hr>
+<h2 id="mod-一">一、心理学导论</h2>
+<h3 id="sec-1.1">1.1 心理学的研究对象与方法</h3>
+<p><strong>心理学的研究对象：</strong> 心理现象及其规律。</p>
+<p><strong>心理现象的结构：</strong></p>
+<pre><code>心理现象
+├── 心理过程（动态）
+│   ├── 认知过程：感觉、知觉、记忆、思维、言语、想象
+│   ├── 情绪情感过程：喜怒哀惧等
+│   └── 意志过程：自觉确定目的，克服困难
+├── 心理状态（相对静止）
+│   └── 注意、灵感、疲劳等
+└── 个性心理（稳定）
+    ├── 个性倾向性：需要、动机、兴趣、信念、价值观
+    └── 个性心理特征：能力、气质、性格</code></pre>
+<div class="callout warn"><strong>记忆口诀：</strong> &quot;过程状态个性&quot;——认知情绪意志是过程，注意是状态，倾向性和特征是个性。</div>
+<p><strong>心理学简史：</strong></p>
+<table class="data-table">
+<tr><th>阶段</th><th>时间</th><th>代表人物</th><th>核心观点</th></tr>
+<tr><td>构造主义</td><td>1879年起</td><td>冯特（创立科学心理学）、铁钦纳</td><td>研究意识的构造（元素）</td></tr>
+<tr><td>机能主义</td><td>19世纪末</td><td>詹姆斯、杜威</td><td>研究意识的功能</td></tr>
+<tr><td>行为主义</td><td>20世纪初</td><td>华生、斯金纳</td><td>只研究可观察的行为</td></tr>
+<tr><td>格式塔心理学</td><td>20世纪初</td><td>韦特海默、考夫卡</td><td>整体大于部分之和</td></tr>
+<tr><td>精神分析</td><td>19世纪末</td><td>弗洛伊德</td><td>研究无意识（潜意识）</td></tr>
+<tr><td>人本主义</td><td>20世纪中</td><td>马斯洛、罗杰斯</td><td>强调人的潜能和自我实现</td></tr>
+<tr><td>认知心理学</td><td>20世纪50年代</td><td>奈瑟、皮亚杰</td><td>研究认知过程（信息加工）</td></tr>
+</table>
+<div class="callout key"><strong>重点：</strong> 1879年冯特在莱比锡大学建立第一个心理学实验室，标志科学心理学诞生。</div>
+<h3 id="sec-1.2">1.2 心理活动的生理基础</h3>
+<p><strong>神经系统构造：</strong></p>
+<ul>
+<li><strong>中枢神经系统：</strong> 脑（大脑、间脑、脑干、小脑）+ 脊髓</li>
+<li><strong>周围神经系统：</strong> 12对脑神经 + 31对脊神经</li>
+</ul>
+<p><strong>大脑皮层功能分区：</strong></p>
+<table class="data-table">
+<tr><th>区域</th><th>功能</th></tr>
+<tr><td>额叶</td><td>运动控制、语言表达（布洛卡区）、思维决策</td></tr>
+<tr><td>顶叶</td><td>躯体感觉</td></tr>
+<tr><td>颞叶</td><td>听觉、语言理解（威尔尼克区）</td></tr>
+<tr><td>枕叶</td><td>视觉</td></tr>
+</table>
+<p><strong>大脑两半球功能不对称性：</strong></p>
+<table class="data-table">
+<tr><th>左半球</th><th>右半球</th></tr>
+<tr><td>言语、阅读、书写、逻辑推理</td><td>空间知觉、音乐、美术、情绪表达</td></tr>
+<tr><td>积极情绪</td><td>消极情绪</td></tr>
+</table>
+<p><strong>巴甫洛夫高级神经活动学说：</strong></p>
+<ul>
+<li><strong>基本过程：</strong> 兴奋与抑制</li>
+<li><strong>反射弧：</strong> 感受器 → 传入神经 → 中枢神经 → 传出神经 → 效应器</li>
+<li><strong>两种信号系统：</strong> 第一信号系统（具体刺激，人与动物共有）；第二信号系统（语词，人类特有）</li>
+</ul>
+<p><strong>神经活动类型与气质对应：</strong></p>
+<table class="data-table">
+<tr><th>神经活动类型</th><th>强度</th><th>平衡性</th><th>灵活性</th><th>对应气质</th></tr>
+<tr><td>强·平衡·灵活</td><td>强</td><td>平衡</td><td>灵活</td><td>多血质</td></tr>
+<tr><td>强·平衡·不灵活</td><td>强</td><td>平衡</td><td>不灵活</td><td>黏液质</td></tr>
+<tr><td>强·不平衡</td><td>强</td><td>不平衡</td><td>—</td><td>胆汁质</td></tr>
+<tr><td>弱</td><td>弱</td><td>—</td><td>—</td><td>抑郁质</td></tr>
+</table>
+<h3 id="sec-1.3">1.3 感觉与知觉</h3>
+<p><strong>感觉：</strong> 人脑对直接作用于感觉器官的客观事物个别属性的反映。</p>
+<p><strong>感觉规律：</strong></p>
+<table class="data-table">
+<tr><th>规律</th><th>含义</th></tr>
+<tr><td>感受性与感觉阈限</td><td>成反比关系：阈限越低，感受性越高</td></tr>
+<tr><td>绝对感觉阈限</td><td>刚刚能引起感觉的最小刺激强度</td></tr>
+<tr><td>差别感觉阈限</td><td>刚刚能引起差别感觉的最小差异（韦伯定律：ΔI/I = K）</td></tr>
+<tr><td>感觉适应</td><td>刺激持续作用下感受性发生变化（如暗适应）</td></tr>
+<tr><td>感觉对比</td><td>不同刺激作用于同一感觉器官，感受性发生变化</td></tr>
+<tr><td>联觉</td><td>一种刺激引起多种感觉的心理现象</td></tr>
+</table>
+<p><strong>视觉：</strong> 可见光波长380-780nm。色觉理论：杨-赫尔姆霍兹三色说（红绿蓝）、黑林对立过程理论。</p>
+<p><strong>听觉：</strong> 声波频率16-20000Hz。</p>
+<p><strong>知觉：</strong> 人脑对直接作用于感觉器官的客观事物整体的反映。</p>
+<p><strong>知觉的基本特性：</strong></p>
+<table class="data-table">
+<tr><th>特性</th><th>含义</th></tr>
+<tr><td>整体性</td><td>格式塔原则：接近、相似、连续、封闭</td></tr>
+<tr><td>选择性</td><td>从背景中选择出对象</td></tr>
+<tr><td>恒常性</td><td>条件变化知觉映象保持稳定（大小、形状、颜色、明度）</td></tr>
+<tr><td>理解性</td><td>用已有经验解释知觉对象</td></tr>
+</table>
+<p><strong>知觉的种类：</strong> 空间知觉、时间知觉、运动知觉（似动现象：φ现象、诱发运动、自主运动、运动后效）、错觉。</p>
+<h3 id="sec-1.4">1.4 记忆</h3>
+<p><strong>记忆的过程：</strong> 识记 → 保持 → 再认/回忆（再现）</p>
+<p><strong>记忆的三级信息加工模型（阿特金森-希夫林）：</strong></p>
+<table class="data-table">
+<tr><th>阶段</th><th>保持时间</th><th>容量</th><th>编码方式</th></tr>
+<tr><td>瞬时记忆（感觉记忆）</td><td>0.25-2秒</td><td>大</td><td>物理特征</td></tr>
+<tr><td>短时记忆</td><td>5秒-1分钟</td><td>7±2组块</td><td>听觉编码为主</td></tr>
+<tr><td>长时记忆</td><td>1分钟以上至终生</td><td>无限</td><td>语义编码为主</td></tr>
+</table>
+<div class="callout key"><strong>重点：</strong> 短时记忆容量7±2（米勒提出&quot;组块&quot;概念）。</div>
+<p><strong>遗忘规律（艾宾浩斯遗忘曲线）：</strong> 遗忘进程不均衡——先快后慢。</p>
+<p><strong>前摄抑制与倒摄抑制：</strong></p>
+<ul>
+<li>前摄抑制：先前学习干扰后来学习</li>
+<li>倒摄抑制：后来学习干扰先前学习</li>
+<li>系列位置效应：首因效应 + 近因效应</li>
+</ul>
+<h3 id="sec-1.5">1.5 思维</h3>
+<p><strong>思维的特征：</strong> 间接性（借助媒介认识事物）、概括性（抽取共同特征）。</p>
+<p><strong>思维的过程：</strong> 分析与综合、比较与分类、抽象与概括。</p>
+<p><strong>问题解决：</strong></p>
+<ul>
+<li>四阶段：发现问题 → 分析问题 → 提出假设 → 检验假设</li>
+<li>影响因素：迁移（正/负）、原型启发、定势（功能固着）、动机强度（耶克斯-多德森定律：中等强度最好）</li>
+</ul>
+<p><strong>概念形成：</strong> 布鲁纳人工概念实验，策略有保守性聚焦、冒险性聚焦、同时性扫描、继时性扫描。</p>
+<h3 id="sec-1.6">1.6 言语</h3>
+<p><strong>言语 vs 语言：</strong> 语言是社会现象（交际工具）；言语是个体现象（心理活动）。</p>
+<p><strong>言语活动中枢：</strong></p>
+<table class="data-table">
+<tr><th>中枢</th><th>位置</th><th>受损表现</th></tr>
+<tr><td>布洛卡区（运动性言语中枢）</td><td>左额叶</td><td>表达性失语症：能听懂但说不出</td></tr>
+<tr><td>威尔尼克区（听觉性言语中枢）</td><td>左颞叶</td><td>接受性失语症：能说话但听不懂</td></tr>
+<tr><td>视觉性言语中枢（阅读中枢）</td><td>左顶叶</td><td>失读症</td></tr>
+<tr><td>书写性言语中枢</td><td>左额叶</td><td>失写症</td></tr>
+</table>
+<div class="callout"><strong>记忆口诀：</strong> &quot;布说威听&quot;——布洛卡管说，威尔尼克管听。</div>
+<h3 id="sec-1.7">1.7 表象与想象</h3>
+<p><strong>表象：</strong> 感知过的事物在头脑中再现的形象。特征：直观性、概括性、可操作性（心理旋转实验）。</p>
+<p><strong>想象的种类：</strong></p>
+<ul>
+<li>无意想象：梦、幻觉</li>
+<li>有意想象：再造想象、创造想象、幻想（科学幻想、理想、空想）</li>
+</ul>
+<h3 id="sec-1.8">1.8 情绪与情感</h3>
+<p><strong>情绪与情感的区别：</strong></p>
+<table class="data-table">
+<tr><th>维度</th><th>情绪</th><th>情感</th></tr>
+<tr><td>需要</td><td>生理需要</td><td>社会需要</td></tr>
+<tr><td>发生</td><td>早（人与动物共有）</td><td>晚（人类特有）</td></tr>
+<tr><td>稳定性</td><td>情境性、短暂</td><td>深刻性、稳定</td></tr>
+</table>
+<p><strong>情绪状态分类：</strong></p>
+<table class="data-table">
+<tr><th>类型</th><th>特点</th></tr>
+<tr><td>心境</td><td>微弱、持久、弥漫性</td></tr>
+<tr><td>激情</td><td>强烈、短暂、爆发性</td></tr>
+<tr><td>应激</td><td>对意外刺激作出的适应性反应</td></tr>
+</table>
+<p><strong>情感的分类：</strong> 道德感、美感、理智感。</p>
+<p><strong>情绪理论：</strong></p>
+<table class="data-table">
+<tr><th>理论</th><th>代表人物</th><th>核心观点</th></tr>
+<tr><td>詹姆斯-兰格理论</td><td>詹姆斯、兰格</td><td>情绪是对生理变化的知觉</td></tr>
+<tr><td>坎农-巴德理论</td><td>坎农、巴德</td><td>生理反应和情绪体验同时产生</td></tr>
+<tr><td>沙赫特-辛格理论</td><td>沙赫特、辛格</td><td>情绪=生理唤醒×认知标签</td></tr>
+<tr><td>阿诺德评定-兴奋理论</td><td>阿诺德</td><td>情绪产生于对刺激的评估</td></tr>
+<tr><td>拉扎勒斯认知-评价理论</td><td>拉扎勒斯</td><td>情绪是人与环境相互作用的产物</td></tr>
+<tr><td>伊扎德动机-分化理论</td><td>伊扎德</td><td>情绪具有动机功能</td></tr>
+</table>
+<h3 id="sec-1.9">1.9 意识与注意</h3>
+<p><strong>意识水平：</strong> 无意识（潜意识）→ 前意识 → 意识。</p>
+<p><strong>注意：</strong> 心理活动对一定对象的指向和集中。注意不是独立的心理过程，是伴随心理过程的状态。</p>
+<p><strong>注意的种类：</strong></p>
+<table class="data-table">
+<tr><th>类型</th><th>特点</th></tr>
+<tr><td>无意注意</td><td>无预定目的、不需意志努力</td></tr>
+<tr><td>有意注意</td><td>有预定目的、需意志努力</td></tr>
+<tr><td>有意后注意</td><td>有目的、不需意志努力</td></tr>
+</table>
+<p><strong>注意的品质：</strong></p>
+<table class="data-table">
+<tr><th>品质</th><th>含义</th></tr>
+<tr><td>广度（范围）</td><td>同一时间内能清楚把握的对象数量</td></tr>
+<tr><td>稳定性</td><td>注意保持在一定对象上的时间</td></tr>
+<tr><td>转移</td><td>主动从一对象转向另一对象</td></tr>
+<tr><td>分配</td><td>同时指向多种活动</td></tr>
+</table>
+<div class="callout warn"><strong>区分：</strong> 注意分散（被动、消极）≠ 注意转移（主动、积极）。</div>
+<h3 id="sec-1.10">1.10 需要与动机</h3>
+<p><strong>马斯洛需要层次理论（由低到高）：</strong></p>
+<div class="callout"><strong>记忆口诀：</strong> &quot;生安爱尊现&quot;——生理→安全→归属与爱→尊重→自我实现。前四层为缺失性需要，最高层为成长性需要。</div>
+<p><strong>动机的产生条件：</strong> 内在条件（需要）+ 外在条件（诱因）。</p>
+<p><strong>动机理论：</strong></p>
+<ul>
+<li>本能理论（麦独孤）</li>
+<li>驱力减少理论（赫尔）</li>
+<li>唤醒理论（赫布和柏林）</li>
+<li>期望价值理论（托尔曼）</li>
+<li>成就动机理论（阿特金森：追求成功 vs 避免失败）</li>
+<li>归因理论（韦纳：内部-外部、稳定-不稳定、可控-不可控）</li>
+</ul>
+<h3 id="sec-1.11">1.11 能力</h3>
+<p><strong>能力的分类：</strong></p>
+<ul>
+<li>一般能力（智力）vs 特殊能力</li>
+<li>流体能力（先天、20岁后下降）vs 晶体能力（后天、持续增长）</li>
+<li>模仿能力 vs 创造能力</li>
+</ul>
+<p><strong>能力结构理论：</strong></p>
+<table class="data-table">
+<tr><th>理论</th><th>代表人物</th><th>核心内容</th></tr>
+<tr><td>二因素论</td><td>斯皮尔曼</td><td>G因素（一般）+ S因素（特殊）</td></tr>
+<tr><td>群因素论</td><td>瑟斯顿</td><td>7种基本心理能力</td></tr>
+<tr><td>三维结构模型</td><td>吉尔福特</td><td>内容×操作×产物=120种智力</td></tr>
+<tr><td>流体-晶体智力</td><td>卡特尔</td><td>流体智力（先天）+ 晶体智力（后天）</td></tr>
+<tr><td>多元智力理论</td><td>加德纳</td><td>8种智力</td></tr>
+<tr><td>三元智力理论</td><td>斯腾伯格</td><td>组合性+经验性+实用性智力</td></tr>
+</table>
+<hr>
+<h2 id="mod-二">二、社会心理学</h2>
+<h3 id="sec-2.1">2.1 社会化与自我概念</h3>
+<p><strong>社会化：</strong> 个体从自然人成长为社会人的过程。</p>
+<p><strong>社会化类型：</strong> 早期社会化（儿童期）、预期社会化（青年期）、继续社会化（成年后）、再社会化（改变原有价值观，如罪犯改造）。</p>
+<p><strong>社会化的载体：</strong> 家庭、学校、大众传媒、参照群体。</p>
+<p><strong>自我概念：</strong> 个体对自己存在状态的认知。</p>
+<p><strong>自我的结构（詹姆斯）：</strong> 物质自我、社会自我、心理自我。</p>
+<p><strong>自我概念的功能：</strong> 保持内在一致性、解释经验、决定期望。</p>
+<h3 id="sec-2.2">2.2 社会知觉与印象管理</h3>
+<p><strong>印象形成的效应：</strong></p>
+<table class="data-table">
+<tr><th>效应</th><th>含义</th></tr>
+<tr><td>首因效应</td><td>第一印象的作用（对陌生人）</td></tr>
+<tr><td>近因效应</td><td>最新信息的影响（对熟人）</td></tr>
+<tr><td>光环效应（晕轮效应）</td><td>一好百好、一坏百坏</td></tr>
+<tr><td>刻板印象</td><td>对某一群体的固定看法</td></tr>
+<tr><td>投射效应</td><td>以己度人</td></tr>
+</table>
+<p><strong>印象管理策略：</strong> 逢迎/讨好、自我抬高、显示、申辩/辩护、威胁。</p>
+<h3 id="sec-2.3">2.3 社会动机与社交情绪</h3>
+<p><strong>主要社会动机：</strong> 亲和动机、成就动机、权力动机、侵犯动机、利他动机。</p>
+<p><strong>社交情绪：</strong></p>
+<table class="data-table">
+<tr><th>情绪</th><th>含义</th></tr>
+<tr><td>社交焦虑</td><td>与他人交往时感到不舒服、不自然</td></tr>
+<tr><td>妒忌</td><td>与他人比较发现自己不如时产生的复杂情绪</td></tr>
+<tr><td>羞耻</td><td>个体觉得自己不好时产生的痛苦体验</td></tr>
+<tr><td>内疚</td><td>个体觉得自己伤害了他人时产生的体验</td></tr>
+</table>
+<h3 id="sec-2.4">2.4 态度</h3>
+<p><strong>态度的ABC模型：</strong></p>
+<ul>
+<li>A（Affect）情感成分</li>
+<li>B（Behavior）行为倾向成分</li>
+<li>C（Cognition）认知成分</li>
+</ul>
+<div class="callout"><strong>记忆：</strong> ABC = 情感+行为倾向+认知。情感成分是态度的核心。</div>
+<p><strong>态度形成三阶段：</strong> 依从 → 认同 → 内化。</p>
+<p><strong>态度改变理论：</strong></p>
+<table class="data-table">
+<tr><th>理论</th><th>代表人物</th><th>核心内容</th></tr>
+<tr><td>平衡理论</td><td>海德</td><td>P-O-X三角关系平衡</td></tr>
+<tr><td>认知失调理论</td><td>费斯廷格</td><td>认知不一致产生紧张，驱使个体改变</td></tr>
+<tr><td>社会交换理论</td><td>霍曼斯</td><td>态度改变基于收益与代价的比较</td></tr>
+</table>
+<h3 id="sec-2.5">2.5 沟通与人际关系</h3>
+<p><strong>人际沟通结构：</strong> 信息源 → 信息 → 通道 → 信息接收者 → 反馈 → 障碍 → 背景。</p>
+<p><strong>人际距离（霍尔）：</strong></p>
+<table class="data-table">
+<tr><th>距离类型</th><th>距离范围</th><th>适用对象</th></tr>
+<tr><td>亲密距离</td><td>0-0.45m</td><td>亲密关系</td></tr>
+<tr><td>个人距离</td><td>0.45-1.2m</td><td>朋友</td></tr>
+<tr><td>社交距离</td><td>1.2-3.6m</td><td>工作关系</td></tr>
+<tr><td>公众距离</td><td>3.6m以上</td><td>公共场合</td></tr>
+</table>
+<p><strong>人际吸引因素：</strong> 外貌、相似性、互补性、邻近性、熟悉性。</p>
+<h3 id="sec-2.6">2.6 社会影响</h3>
+<p><strong>从众：</strong> 个体在群体压力下，行为与群体保持一致。实验：阿希线段判断实验。</p>
+<p><strong>从众类型：</strong> 真从众、权宜从众、反从众。</p>
+<p><strong>服从：</strong> 在他人或群体的直接命令下做出行为。实验：米尔格拉姆电击实验。</p>
+<p><strong>社会促进 vs 社会抑制：</strong> 他人在场提高/降低活动效率。</p>
+<p><strong>社会懈怠：</strong> 群体中个体努力程度下降（责任分散）。</p>
+<p><strong>群体极化：</strong> 群体讨论后观点更加极端化。</p>
+<p><strong>群体思维（贾尼斯）：</strong> 群体决策时为追求一致而忽视不同意见。</p>
+<h3 id="sec-2.7">2.7 群体心理</h3>
+<p><strong>群体分类：</strong> 正式群体 vs 非正式群体；大群体 vs 小群体；实属群体 vs 参照群体。</p>
+<p><strong>角色冲突：</strong> 角色内冲突、角色间冲突。</p>
+<hr>
+<h2 id="mod-三">三、人格心理学</h2>
+<div class="callout warn">⚠️ <strong>注意：</strong> 官方大纲将人格心理学独立为单独模块，不再附属于心理学导论。</div>
+<h3 id="sec-3.1">3.1 人格概述</h3>
+<p><strong>人格：</strong> 各种心理特征的总和，是各种心理特性的相对稳定的组织结构。</p>
+<p><strong>人格的特征：</strong></p>
+<ol>
+<li><strong>独特性：</strong> &quot;人心不同，各如其面&quot;</li>
+<li><strong>整体性：</strong> 各成分有机统一</li>
+<li><strong>稳定性：</strong> 跨时间和跨情境的一致性</li>
+<li><strong>功能性：</strong> 人格决定个体的行为方式</li>
+<li><strong>自然性与社会性的统一：</strong> 生物学基础+社会环境塑造</li>
+</ol>
+<h3 id="sec-3.2">3.2 气质</h3>
+<p><strong>气质：</strong> 表现在心理活动的强度、速度、灵活性与指向性等方面的一种稳定的心理特征。气质是先天的，无好坏之分。</p>
+<p><strong>四种气质类型：</strong></p>
+<table class="data-table">
+<tr><th>气质类型</th><th>特点</th><th>神经类型</th><th>代表</th></tr>
+<tr><td>胆汁质</td><td>强而不平衡，精力旺盛、冲动、直率</td><td>强·不平衡</td><td>张飞</td></tr>
+<tr><td>多血质</td><td>强而平衡灵活，活泼好动、反应快、不稳定</td><td>强·平衡·灵活</td><td>王熙凤</td></tr>
+<tr><td>黏液质</td><td>强而平衡不灵活，安静稳重、迟缓、踏实</td><td>强·平衡·不灵活</td><td>林冲</td></tr>
+<tr><td>抑郁质</td><td>弱型，敏感细腻、孤僻、多愁善感</td><td>弱</td><td>林黛玉</td></tr>
+</table>
+<div class="callout"><strong>记忆口诀：</strong> &quot;胆多黏抑&quot;——张飞、王熙凤、林冲、林黛玉。气质无好坏之分，不决定成就。</div>
+<h3 id="sec-3.3">3.3 性格</h3>
+<p><strong>性格：</strong> 人对现实的稳定态度和习惯化了的行为方式。性格是人格的核心，是后天形成的，有好坏之分。</p>
+<p><strong>性格结构特征：</strong></p>
+<ul>
+<li><strong>态度特征：</strong> 对人对事的态度（如诚实、自私）</li>
+<li><strong>意志特征：</strong> 自觉控制行为（如果断、犹豫）</li>
+<li><strong>情绪特征：</strong> 情绪的控制与表现（如乐观、悲观）</li>
+<li><strong>理智特征：</strong> 认知活动中的特点（如独立思考、盲从）</li>
+</ul>
+<h3 id="sec-3.4">3.4 人格特质理论</h3>
+<table class="data-table">
+<tr><th>理论</th><th>代表人物</th><th>核心内容</th></tr>
+<tr><td>特质论</td><td>奥尔波特</td><td>共同特质 + 个人特质（首要、中心、次要特质）</td></tr>
+<tr><td>16PF</td><td>卡特尔</td><td>16种根源特质，因素分析法编制</td></tr>
+<tr><td>大五人格</td><td>科斯塔&amp;麦格雷</td><td>OCEAN：开放性、尽责性、外倾性、宜人性、神经质</td></tr>
+<tr><td>人格类型论</td><td>荣格</td><td>内倾型 + 外倾型</td></tr>
+</table>
+<p><strong>大五人格OCEAN详解：</strong></p>
+<table class="data-table">
+<tr><th>维度</th><th>高分特征</th><th>低分特征</th></tr>
+<tr><td>O 开放性</td><td>好奇、创造、审美</td><td>保守、务实、传统</td></tr>
+<tr><td>C 尽责性</td><td>有序、负责、自律</td><td>随意、松散、不靠谱</td></tr>
+<tr><td>E 外倾性</td><td>热情、社交、活跃</td><td>安静、内向、矜持</td></tr>
+<tr><td>A 宜人性</td><td>信任、利他、合作</td><td>多疑、竞争、不合作</td></tr>
+<tr><td>N 神经质</td><td>焦虑、情绪不稳</td><td>平静、情绪稳定</td></tr>
+</table>
+<h3 id="sec-3.5">3.5 精神分析人格理论</h3>
+<p><strong>弗洛伊德人格结构：</strong></p>
+<table class="data-table">
+<tr><th>结构</th><th>原则</th><th>功能</th></tr>
+<tr><td>本我（Id）</td><td>快乐原则</td><td>先天本能冲动，追求即时满足</td></tr>
+<tr><td>自我（Ego）</td><td>现实原则</td><td>调节本我与超我，适应现实</td></tr>
+<tr><td>超我（Superego）</td><td>道德原则</td><td>内化的道德标准，追求完美</td></tr>
+</table>
+<p><strong>心理防御机制：</strong></p>
+<table class="data-table">
+<tr><th>机制</th><th>含义</th></tr>
+<tr><td>压抑</td><td>将痛苦经历推入潜意识（最基本的防御机制）</td></tr>
+<tr><td>投射</td><td>将自己不接受的欲望归因于他人</td></tr>
+<tr><td>合理化（文饰）</td><td>为不可接受的行为找合理借口（酸葡萄/甜柠檬）</td></tr>
+<tr><td>反向形成</td><td>以相反的行为表现真实欲望</td></tr>
+<tr><td>升华</td><td>将不可接受的欲望转化为社会认可的行为</td></tr>
+<tr><td>替代（置换）</td><td>将情绪发泄到安全对象上</td></tr>
+<tr><td>否认</td><td>拒绝承认痛苦现实</td></tr>
+<tr><td>退化</td><td>退回早期发展阶段的行为方式</td></tr>
+<tr><td>认同</td><td>采纳他人特征</td></tr>
+<tr><td>固着</td><td>停留在某一发展阶段</td></tr>
+</table>
+<h3 id="sec-3.6">3.6 人本主义人格理论</h3>
+<p><strong>马斯洛自我实现理论：</strong></p>
+<ul>
+<li>自我实现是人格发展的最高目标</li>
+<li>自我实现者的特征：准确感知现实、自我接纳、自然自发性、问题中心而非自我中心、有高峰体验、深层人际关系、创造性</li>
+</ul>
+<p><strong>罗杰斯自我理论：</strong></p>
+<ul>
+<li><strong>自我概念：</strong> 个体对自己的知觉和认识</li>
+<li><strong>理想自我：</strong> 个体希望成为的样子</li>
+<li><strong>自我不协调：</strong> 自我概念与经验不一致时产生焦虑</li>
+<li><strong>价值条件化：</strong> 个体为获得他人积极关注而内化他人的价值标准，导致自我不协调</li>
+<li><strong>无条件积极关注：</strong> 促进自我协调和健康成长的关键</li>
+</ul>
+<h3 id="sec-3.7">3.7 人格测评</h3>
+<p>主要方法见&quot;心理测量与评估&quot;模块中的相关量表：MMPI、16PF、EPQ、罗夏墨迹测验、TAT。</p>
+<hr>
+<h2 id="mod-四">四、发展心理学</h2>
+<h3 id="sec-4.1">4.1 概述</h3>
+<p><strong>心理发展的基本性质：</strong></p>
+<ul>
+<li>连续性与阶段性统一</li>
+<li>方向性和顺序性</li>
+<li>不平衡性（关键期/敏感期）</li>
+<li>个体差异性</li>
+</ul>
+<p><strong>关键期（洛伦兹）：</strong> 印刻现象。在特定时期对特定刺激特别敏感，错过则难以弥补。</p>
+<h3 id="sec-4.2">4.2 主要发展理论</h3>
+<p><strong>皮亚杰认知发展理论：</strong></p>
+<p>核心概念：图式、同化（将新信息纳入已有图式）、顺应（改变图式以适应新信息）、平衡。</p>
+<table class="data-table">
+<tr><th>阶段</th><th>年龄</th><th>特点</th></tr>
+<tr><td>感知运动阶段</td><td>0-2岁</td><td>通过感觉和动作认识世界，获得客体永久性</td></tr>
+<tr><td>前运算阶段</td><td>2-7岁</td><td>象征性思维，自我中心，不可逆，泛灵论</td></tr>
+<tr><td>具体运算阶段</td><td>7-11岁</td><td>守恒概念获得，去自我中心，可逆性</td></tr>
+<tr><td>形式运算阶段</td><td>11岁以上</td><td>抽象逻辑思维，假设演绎推理</td></tr>
+</table>
+<div class="callout key"><strong>重点：</strong> 客体永久性（9-12个月出现）、自我中心（三山实验）、守恒（7岁左右获得）。</div>
+<p><strong>埃里克森心理社会发展理论：</strong></p>
+<table class="data-table">
+<tr><th>阶段</th><th>年龄</th><th>发展任务</th><th>人格品质</th></tr>
+<tr><td>婴儿期</td><td>0-1.5岁</td><td>信任 vs 不信任</td><td>希望</td></tr>
+<tr><td>儿童早期</td><td>1.5-3岁</td><td>自主 vs 羞怯疑虑</td><td>意志</td></tr>
+<tr><td>学前期</td><td>3-6岁</td><td>主动 vs 内疚</td><td>目的</td></tr>
+<tr><td>学龄期</td><td>6-12岁</td><td>勤奋 vs 自卑</td><td>能力</td></tr>
+<tr><td>青年期</td><td>12-18岁</td><td>同一性 vs 角色混乱</td><td>忠诚</td></tr>
+<tr><td>早期成人</td><td>18-25岁</td><td>亲密 vs 孤独</td><td>爱</td></tr>
+<tr><td>成人中期</td><td>25-65岁</td><td>繁衍 vs 停滞</td><td>关心</td></tr>
+<tr><td>成人后期</td><td>65岁以上</td><td>完善 vs 绝望</td><td>智慧</td></tr>
+</table>
+<div class="callout"><strong>记忆口诀：</strong> &quot;信自主勤同亲繁完&quot;。</div>
+<p><strong>维果茨基社会文化理论：</strong></p>
+<ul>
+<li>最近发展区：儿童现有水平与可能达到水平之间的差距</li>
+<li>&quot;教学应当走在发展的前面&quot;</li>
+<li>言语是思维的工具</li>
+</ul>
+<p><strong>班杜拉社会学习理论：</strong></p>
+<ul>
+<li>观察学习（替代学习）：注意、保持、再现、动机四个过程</li>
+<li>自我效能感：个体对自己能否完成某行为的信念</li>
+<li>替代强化、直接强化、自我强化</li>
+</ul>
+<p><strong>科尔伯格道德发展理论：</strong></p>
+<table class="data-table">
+<tr><th>水平</th><th>阶段</th><th>内容</th></tr>
+<tr><td>前习俗水平</td><td>1.惩罚与服从</td><td>避免惩罚</td></tr>
+<tr><td>2.功利取向</td><td>满足自己的需要</td></tr>
+<tr><td>习俗水平</td><td>3.好孩子取向</td><td>获得他人赞许</td></tr>
+<tr><td>4.维护社会秩序</td><td>遵守法律和秩序</td></tr>
+<tr><td>后习俗水平</td><td>5.社会契约</td><td>法律可修改以维护社会利益</td></tr>
+<tr><td>6.普遍伦理</td><td>以普遍道德原则为标准</td></tr>
+</table>
+<h3 id="sec-4.3">4.3 婴儿期（0-3岁）</h3>
+<p><strong>动作发展规律：</strong> 头尾原则、近远原则、大小原则。</p>
+<p><strong>动作发展时间线：</strong> 2月抬头、6月坐、8月爬、12月站走、24月跑跳。</p>
+<div class="callout"><strong>口诀：</strong> &quot;二抬四翻六会坐，七滚八爬周会走&quot;。</div>
+<p><strong>依恋发展（鲍尔比/安斯沃斯）：</strong></p>
+<table class="data-table">
+<tr><th>阶段</th><th>年龄</th><th>特点</th></tr>
+<tr><td>无差别的社会反应</td><td>0-3月</td><td>对所有人反应相同</td></tr>
+<tr><td>有差别的社会反应</td><td>3-6月</td><td>对母亲更偏爱</td></tr>
+<tr><td>特殊情感联结</td><td>6月-2岁</td><td>对母亲形成依恋，分离焦虑</td></tr>
+<tr><td>目标调整的伙伴关系</td><td>2岁后</td><td>理解母亲需要</td></tr>
+</table>
+<p><strong>依恋类型（安斯沃斯陌生情境法）：</strong></p>
+<ul>
+<li>安全型依恋（B型，约65%）</li>
+<li>回避型依恋（A型，约20%）</li>
+<li>反抗型/矛盾型依恋（C型，约10-15%）</li>
+</ul>
+<h3 id="sec-4.4">4.4 幼儿期（3-6岁）</h3>
+<p><strong>游戏是主导活动。</strong> 游戏种类：机能游戏、象征性游戏（角色扮演）、规则性游戏。</p>
+<p><strong>思维特点：</strong> 具体形象思维为主、自我中心、泛灵论、不可逆性。</p>
+<p><strong>第一反抗期（3-4岁）：</strong> 幼儿要求独立，常说&quot;不&quot;。</p>
+<h3 id="sec-4.5">4.5 童年期（6-12岁）</h3>
+<p><strong>学习成为主导活动。</strong></p>
+<p><strong>思维发展：</strong> 从具体形象思维向抽象逻辑思维过渡，转折年龄约9-10岁（四年级）。</p>
+<p><strong>记忆发展：</strong> 有意识记超过无意识记（约7-8岁转折）、意义识记超过机械识记。</p>
+<h3 id="sec-4.6">4.6 青春期（12-18岁）</h3>
+<p><strong>思维发展：</strong> 抽象逻辑思维占主导、形式运算阶段、假设演绎推理。</p>
+<p><strong>自我意识特点：</strong> 强烈关注形象、重视同伴评价、自我意识高涨、出现&quot;成人感&quot;。</p>
+<p><strong>第二反抗期：</strong> 硬抵抗、软抵抗、反抗迁移。</p>
+<p><strong>同一性发展（玛西亚）：</strong></p>
+<ul>
+<li>同一性获得：经过探索并做出承诺</li>
+<li>同一性延缓：正在探索但未承诺</li>
+<li>同一性早闭：未探索但有承诺（接受他人安排）</li>
+<li>同一性扩散：既未探索也未承诺</li>
+</ul>
+<h3 id="sec-4.7">4.7 青年期（18-35岁）</h3>
+<p><strong>认知发展：</strong> 抽象逻辑思维成熟、辩证思维发展、创造性思维高峰。</p>
+<p><strong>发展任务（埃里克森）：</strong> 亲密 vs 孤独。</p>
+<h3 id="sec-4.8">4.8 中年期（35-60岁）</h3>
+<p><strong>认知变化：</strong> 晶体智力继续增长、流体智力开始下降。</p>
+<p><strong>中年危机：</strong> 事业与家庭冲突、身体机能下降、&quot;空巢&quot;问题、更年期。</p>
+<p><strong>发展任务（埃里克森）：</strong> 繁衍 vs 停滞。</p>
+<h3 id="sec-4.9">4.9 老年期（60岁以上）</h3>
+<p><strong>认知变化：</strong> 感知觉退化、近期记忆差远期记忆好、晶体智力维持流体智力下降。</p>
+<p><strong>发展任务（埃里克森）：</strong> 完善 vs 绝望。</p>
+<p><strong>老化理论：</strong> 离脱理论（自然退出社会角色）、活动理论（保持社会活动有利于身心健康）。</p>
+<hr>
+<h2 id="mod-五">五、异常心理学</h2>
+<div class="callout warn">⚠️ <strong>注意：</strong> 官方模块名称为&quot;异常心理学&quot;，不再使用&quot;变态心理学&quot;。</div>
+<h3 id="sec-5.1">5.1 心理正常与异常的区分</h3>
+<p><strong>区分三原则：</strong></p>
+<table class="data-table">
+<tr><th>原则</th><th>内容</th></tr>
+<tr><td>主观世界与客观世界统一性原则</td><td>心理活动与客观环境一致（有无幻觉、妄想）</td></tr>
+<tr><td>心理活动内在协调性原则</td><td>知、情、意协调一致</td></tr>
+<tr><td>人格相对稳定性原则</td><td>人格特征突然改变则为异常</td></tr>
+</table>
+<div class="callout"><strong>核心记忆：</strong> &quot;统一、协调、稳定&quot;。</div>
+<p><strong>心理正常与异常的框架：</strong></p>
+<pre><code>心理活动
+├── 心理正常
+│   ├── 心理健康
+│   └── 心理不健康
+│       ├── 一般心理问题
+│       ├── 严重心理问题
+│       └── 神经症性心理问题（可疑神经症）
+└── 心理异常（精神障碍）
+    ├── 神经症
+    ├── 重性精神障碍
+    └── 人格障碍等</code></pre>
+<div class="callout key"><strong>重点区分：</strong> 心理不健康 ≠ 心理异常。一般心理问题、严重心理问题、神经症性心理问题属于心理正常但不健康。</div>
+<h3 id="sec-5.2">5.2 常见异常心理症状</h3>
+<h4 id="5-2-1-感知障碍">5.2.1 感知障碍</h4>
+<table class="data-table">
+<tr><th>类型</th><th>具体表现</th></tr>
+<tr><td>感觉过敏</td><td>对刺激感受性异常增高</td></tr>
+<tr><td>感觉减退</td><td>对刺激感受性降低</td></tr>
+<tr><td>感觉倒错</td><td>对刺激产生相反感觉</td></tr>
+<tr><td>内感性不适</td><td>体内产生各种不适感</td></tr>
+</table>
+<p><strong>知觉障碍：</strong></p>
+<ul>
+<li>错觉：对客观事物的歪曲知觉（正常人也可有）</li>
+<li>幻觉：无客观刺激产生的知觉（精神分裂症等）</li>
+</ul>
+<p><strong>幻觉分类：</strong></p>
+<ul>
+<li>按感觉器官：幻听（最常见）、幻视、幻嗅、幻味、幻触、内脏性幻觉</li>
+<li>按来源：真性幻觉（外部）、假性幻觉（内部）</li>
+</ul>
+<h4 id="5-2-2-思维障碍">5.2.2 思维障碍</h4>
+<p><strong>思维形式障碍：</strong> 思维奔逸、思维迟缓、思维贫乏、思维散漫、思维破裂、思维不连贯、思维中断、思维插入、思维被夺、思维云集、病理性赘述。</p>
+<p><strong>思维内容障碍：</strong> 妄想、超价观念、强迫观念。</p>
+<p><strong>常见妄想：</strong></p>
+<table class="data-table">
+<tr><th>妄想类型</th><th>含义</th></tr>
+<tr><td>被害妄想</td><td>坚信被跟踪、迫害</td></tr>
+<tr><td>关系妄想</td><td>认为无关事件与自己有关</td></tr>
+<tr><td>夸大妄想</td><td>坚信自己有非凡能力</td></tr>
+<tr><td>罪恶妄想</td><td>坚信自己犯了罪</td></tr>
+<tr><td>疑病妄想</td><td>坚信自己患了不治之症</td></tr>
+<tr><td>嫉妒妄想</td><td>坚信配偶不忠</td></tr>
+<tr><td>钟情妄想</td><td>坚信被他人爱恋</td></tr>
+<tr><td>物理影响妄想</td><td>认为自己被外力控制</td></tr>
+<tr><td>被洞悉感</td><td>认为自己的想法被别人知道</td></tr>
+</table>
+<div class="callout"><strong>妄想特征：</strong> 坚信不疑、自我卷入、个人独有、不可动摇。</div>
+<h4 id="5-2-3-情感障碍">5.2.3 情感障碍</h4>
+<table class="data-table">
+<tr><th>类型</th><th>具体表现</th></tr>
+<tr><td>情感高涨</td><td>心情异常愉快</td></tr>
+<tr><td>情感低落</td><td>心情异常低落</td></tr>
+<tr><td>焦虑</td><td>无明确对象的恐惧</td></tr>
+<tr><td>恐惧</td><td>有明确对象的害怕</td></tr>
+<tr><td>情感淡漠</td><td>对外界刺激无反应</td></tr>
+<tr><td>情感倒错</td><td>情感反应与刺激不协调</td></tr>
+</table>
+<h4 id="5-2-4-意志行为障碍">5.2.4 意志行为障碍</h4>
+<table class="data-table">
+<tr><th>类型</th><th>具体表现</th></tr>
+<tr><td>意志增强/减退/缺乏</td><td>意志活动的异常</td></tr>
+<tr><td>木僵</td><td>不动不语不吃不喝</td></tr>
+<tr><td>刻板动作</td><td>重复单一动作</td></tr>
+<tr><td>模仿动作</td><td>模仿他人动作</td></tr>
+<tr><td>强迫动作</td><td>明知不必要但无法控制</td></tr>
+<tr><td>违拗症</td><td>对要求做出相反反应</td></tr>
+</table>
+<p><strong>自知力：</strong> 对自身精神状态的认识和判断能力。自知力完整是病情好转的标志。</p>
+<h3 id="sec-5.3">5.3 常见精神障碍</h3>
+<h4 id="5-3-1-神经症">5.3.1 神经症</h4>
+<p><strong>神经症的特征：</strong></p>
+<ul>
+<li>持久的精神冲突</li>
+<li>痛苦感明显，主动求医</li>
+<li>自知力完整</li>
+<li>无器质性病变基础</li>
+<li>社会功能受损但基本保持</li>
+</ul>
+<table class="data-table">
+<tr><th>类型</th><th>核心症状</th></tr>
+<tr><td>焦虑症</td><td>广泛性焦虑、惊恐发作</td></tr>
+<tr><td>恐惧症</td><td>场所恐惧、社交恐惧、特定恐惧</td></tr>
+<tr><td>强迫症</td><td>强迫观念 + 强迫行为</td></tr>
+<tr><td>疑病症</td><td>坚信自己患病，反复就医</td></tr>
+<tr><td>神经衰弱</td><td>精神易兴奋又易疲劳</td></tr>
+<tr><td>躯体形式障碍</td><td>反复陈述躯体症状</td></tr>
+</table>
+<p><strong>神经症与正常心理的区分（许又新评定法）：</strong></p>
+<p>评分维度（每项1-3分，总分≥3分为神经症）：</p>
+<ol>
+<li>病程：不到3个月为1分，3个月-1年为2分，1年以上为3分</li>
+<li>精神痛苦程度：自己能摆脱为1分，需别人帮助为2分，无法摆脱为3分</li>
+<li>社会功能：轻微受损为1分，明显受损为2分，完全丧失为3分</li>
+</ol>
+<h4 id="5-3-2-重性精神障碍">5.3.2 重性精神障碍</h4>
+<p><strong>精神分裂症：</strong></p>
+<p>核心症状：思维障碍（思维散漫、思维破裂、妄想）、情感障碍（情感淡漠、情感倒错）、意志行为障碍、感知障碍（幻觉，尤以幻听最常见）。</p>
+<p><strong>精神分裂症一级症状（K. Schneider）：</strong></p>
+<ol>
+<li>争论性幻听 2. 评论性幻听 3. 思维鸣响/思维回响 4. 思维被广播 5. 思维被夺 6. 思维插入 7. 躯体影响妄想/被动体验 8. 被控制体验 9. 思维化声</li>
+</ol>
+<p><strong>心境障碍（情感性精神障碍）：</strong></p>
+<ul>
+<li>躁狂发作：情感高涨、思维奔逸、活动增多（&quot;三高&quot;）</li>
+<li>抑郁发作：情感低落、思维迟缓、活动减少（&quot;三低&quot;）</li>
+<li>双相障碍：躁狂与抑郁交替发作</li>
+</ul>
+<p><strong>抑郁发作核心症状：</strong></p>
+<ol>
+<li>情绪低落 2. 兴趣丧失/快感缺失 3. 精力减退/疲乏感</li>
+</ol>
+<h4 id="5-3-3-人格障碍">5.3.3 人格障碍</h4>
+<p><strong>常见类型：</strong> 偏执型、分裂样、反社会型、冲动型、表演型（癔症型）、强迫型、焦虑型、依赖型、边缘型、自恋型。</p>
+<h3 id="sec-5.4">5.4 心理不健康的分类</h3>
+<table class="data-table">
+<tr><th>类型</th><th>病程</th><th>反应强度</th><th>是否泛化</th><th>社会功能</th></tr>
+<tr><td>一般心理问题</td><td>1-2个月以内</td><td>理智控制下</td><td>未泛化</td><td>基本正常</td></tr>
+<tr><td>严重心理问题</td><td>2-6个月</td><td>强烈</td><td>已泛化</td><td>一定受损</td></tr>
+<tr><td>神经症性心理问题</td><td>可长可短</td><td>强烈且持久</td><td>明显泛化</td><td>明显受损</td></tr>
+</table>
+<p><strong>一般心理问题诊断要点：</strong></p>
+<ul>
+<li>有现实因素激发</li>
+<li>持续时间较短（1-2月）</li>
+<li>不良情绪反应在理智控制下</li>
+<li>不良情绪未泛化</li>
+<li>社会功能基本正常</li>
+<li>自知力完整</li>
+</ul>
+<p><strong>严重心理问题诊断要点：</strong></p>
+<ul>
+<li>有强烈现实刺激</li>
+<li>持续时间长（2-6月）</li>
+<li>情绪反应强烈</li>
+<li>情绪已泛化</li>
+<li>社会功能一定程度受损</li>
+<li>自知力完整</li>
+</ul>
+<div class="callout"><strong>关键区分：</strong> 心理冲突是否变形——变形指冲突内容与现实无关或冲突性质与刺激不符。变形→神经症性；常形→一般/严重心理问题。</div>
+<h3 id="sec-5.5">5.5 应激相关障碍</h3>
+<table class="data-table">
+<tr><th>类型</th><th>表现</th></tr>
+<tr><td>急性应激障碍</td><td>应激后立即出现，持续数小时至数天</td></tr>
+<tr><td>创伤后应激障碍PTSD</td><td>应激后延迟出现，持续1个月以上。核心症状：闪回、回避、警觉性增高</td></tr>
+<tr><td>适应障碍</td><td>应激后1-3月内出现，持续不超过6个月</td></tr>
+</table>
+<h3 id="sec-5.6">5.6 心理健康标准（郭念锋）</h3>
+<ol>
+<li>心理活动强度 2. 心理活动耐受力 3. 周期节律性 4. 意识水平 5. 暗示性（越低越健康） 6. 康复能力 7. 心理自控力 8. 自信心 9. 社会交往 10. 环境适应能力</li>
+</ol>
+<h3 id="sec-5.7">5.7 压力与健康</h3>
+<p><strong>压力源种类：</strong> 生物性压力源、精神性压力源、社会环境性压力源。</p>
+<p><strong>塞利一般适应综合征（GAS）：</strong></p>
+<table class="data-table">
+<tr><th>阶段</th><th>表现</th></tr>
+<tr><td>警觉阶段</td><td>交感神经兴奋，肾上腺素分泌增加</td></tr>
+<tr><td>搏斗阶段</td><td>个体试图应对压力</td></tr>
+<tr><td>衰竭阶段</td><td>适应能力耗尽，可能出现疾病</td></tr>
+</table>
+<p><strong>认知评价（拉扎勒斯）：</strong> 初级评价（判断是否有压力）→ 次级评价（评估应对资源）→ 再评价。</p>
+<p><strong>应对策略：</strong> 问题指向应对（直接处理压力源）、情绪指向应对（调节情绪反应）。</p>
+<hr>
+<h2 id="mod-六">六、咨询心理学</h2>
+<h3 id="sec-6.1">6.1 心理咨询概述</h3>
+<p><strong>心理咨询：</strong> 心理咨询师运用心理学理论和技术，帮助求助者解决心理问题、增进心理健康的过程。</p>
+<p><strong>心理咨询的对象：</strong></p>
+<ul>
+<li>心理健康者——发展性咨询</li>
+<li>心理不健康者——障碍性咨询</li>
+<li>心理异常者——转介精神科（不属于心理咨询范围）</li>
+</ul>
+<div class="callout key"><strong>重点：</strong> 心理咨询的对象不包括精神障碍急性期患者。</div>
+<p><strong>咨询分类：</strong></p>
+<ul>
+<li>按性质：发展咨询、健康咨询</li>
+<li>按规模：个体咨询、团体咨询</li>
+<li>按时程：短程（1-3周）、中程（1-3月）、长程（3月以上）</li>
+<li>按形式：门诊、电话、互联网</li>
+</ul>
+<h3 id="sec-6.2">6.2 心理咨询的历史</h3>
+<ul>
+<li>1909年，帕森斯《选择职业》——职业指导运动</li>
+<li>1905年，比奈-西蒙量表——心理测验运动</li>
+<li>二战后，罗杰斯&quot;以人为中心&quot;疗法推动发展</li>
+<li>1986年，北京朝阳医院建立第一个心理咨询中心</li>
+<li>2001年，国家职业资格心理咨询师考试开始</li>
+<li>2017年，国家取消心理咨询师职业资格统考</li>
+<li>2023年起，中国心理学会推出心理咨询师水平评价考试</li>
+</ul>
+<h3 id="sec-6.3">6.3 心理咨询主要理论流派概述</h3>
+<table class="data-table">
+<tr><th>流派</th><th>创始人</th><th>核心假设</th><th>主要技术</th></tr>
+<tr><td>精神分析</td><td>弗洛伊德</td><td>潜意识冲突导致心理问题</td><td>自由联想、释梦、移情分析</td></tr>
+<tr><td>行为主义</td><td>华生/斯金纳/班杜拉</td><td>异常行为是学习的结果</td><td>系统脱敏、冲击疗法、厌恶疗法</td></tr>
+<tr><td>以人为中心</td><td>罗杰斯</td><td>人有自我实现倾向</td><td>共情、无条件积极关注、真诚</td></tr>
+<tr><td>认知疗法</td><td>贝克/埃利斯</td><td>情绪由认知决定</td><td>认知重构、ABC分析</td></tr>
+<tr><td>格式塔</td><td>皮尔斯</td><td>关注此时此地</td><td>空椅技术、觉察训练</td></tr>
+<tr><td>焦点解决</td><td>德·沙泽尔</td><td>关注解决方案而非问题</td><td>奇迹提问、例外提问</td></tr>
+<tr><td>森田疗法</td><td>森田正马</td><td>顺其自然，为所当为</td><td>不问症状、重在行动</td></tr>
+</table>
+<p><strong>精神分析性心理发展阶段：</strong></p>
+<table class="data-table">
+<tr><th>阶段</th><th>年龄</th><th>敏感区</th><th>固着表现</th></tr>
+<tr><td>口唇期</td><td>0-1岁</td><td>口唇</td><td>口唇依赖/攻击</td></tr>
+<tr><td>肛门期</td><td>1-3岁</td><td>肛门</td><td>肛门滞留型/排出型</td></tr>
+<tr><td>性器期</td><td>3-6岁</td><td>生殖器</td><td>恋母/恋父情结</td></tr>
+<tr><td>潜伏期</td><td>6-12岁</td><td>无明显</td><td>性冲动压抑</td></tr>
+<tr><td>生殖期</td><td>12岁+</td><td>生殖器</td><td>正常性关系</td></tr>
+</table>
+<p><strong>行为疗法主要技术：</strong></p>
+<table class="data-table">
+<tr><th>技术</th><th>原理</th><th>适用</th></tr>
+<tr><td>系统脱敏法</td><td>交互抑制（沃尔普）</td><td>恐惧症、焦虑症</td></tr>
+<tr><td>冲击疗法/满灌疗法</td><td>消退</td><td>恐惧症</td></tr>
+<tr><td>厌恶疗法</td><td>经典条件反射</td><td>酒精依赖、性变态</td></tr>
+<tr><td>代币法</td><td>正强化</td><td>精神病院、学校</td></tr>
+<tr><td>行为塑造法</td><td>逐步强化</td><td>智力落后儿童训练</td></tr>
+<tr><td>示范法</td><td>观察学习</td><td>儿童恐惧症</td></tr>
+<tr><td>生物反馈法</td><td>仪器反馈生理信息</td><td>紧张性头痛、高血压</td></tr>
+</table>
+<p><strong>埃利斯合理情绪疗法（ABC理论）：</strong></p>
+<table class="data-table">
+<tr><th>要素</th><th>含义</th></tr>
+<tr><td>A（Activating event）</td><td>诱发事件</td></tr>
+<tr><td>B（Belief）</td><td>信念（对事件的评价和解释）</td></tr>
+<tr><td>C（Consequence）</td><td>情绪和行为结果</td></tr>
+<tr><td>D（Disputing）</td><td>辩论（质疑不合理信念）</td></tr>
+<tr><td>E（Effect）</td><td>新的效果</td></tr>
+</table>
+<div class="callout"><strong>核心理念：</strong> &quot;人不是被事情本身所困扰，而是被其对事情的看法所困扰&quot;（爱比克泰德）。情绪C不是由事件A直接引起的，而是由信念B引起的。</div>
+<p><strong>不合理信念的特征（埃利斯）：</strong></p>
+<ol>
+<li>绝对化要求（&quot;必须&quot;&quot;应该&quot;）</li>
+<li>过分概括化（以偏概全）</li>
+<li>糟糕至极（灾难化思维）</li>
+</ol>
+<h3 id="sec-6.4">6.4 不同年龄阶段的心理咨询要点</h3>
+<table class="data-table">
+<tr><th>阶段</th><th>常见问题</th><th>咨询要点</th></tr>
+<tr><td>婴幼儿/学前</td><td>依恋问题、行为问题</td><td>游戏治疗为主，家长参与</td></tr>
+<tr><td>学龄儿童</td><td>学校适应、学习障碍、行为问题</td><td>结合家庭和学校系统</td></tr>
+<tr><td>青春期</td><td>同一性危机、亲子冲突、学业压力</td><td>尊重独立性，建立信任</td></tr>
+<tr><td>青年期</td><td>婚恋、职业发展、角色适应</td><td>关注角色转换</td></tr>
+<tr><td>中年期</td><td>中年危机、婚姻问题、职业倦怠</td><td>关注多重角色压力</td></tr>
+<tr><td>老年期</td><td>退休适应、丧偶、孤独、面对死亡</td><td>支持性为主</td></tr>
+</table>
+<h3 id="sec-6.5">6.5 婚恋与家庭心理咨询</h3>
+<p><strong>爱情三角理论（斯腾伯格）：</strong></p>
+<table class="data-table">
+<tr><th>组合</th><th>类型</th></tr>
+<tr><td>亲密+激情+承诺</td><td>完美爱情</td></tr>
+<tr><td>亲密+激情</td><td>浪漫之爱</td></tr>
+<tr><td>亲密+承诺</td><td>友谊之爱</td></tr>
+<tr><td>激情+承诺</td><td>愚昧之爱</td></tr>
+<tr><td>只有亲密</td><td>喜欢</td></tr>
+<tr><td>只有激情</td><td>迷恋</td></tr>
+<tr><td>只有承诺</td><td>空洞之爱</td></tr>
+</table>
+<p><strong>家庭生命周期：</strong> 形成期 → 扩展期 → 稳定期 → 收缩期 → 空巢期 → 解组期。</p>
+<h3 id="sec-6.6">6.6 焦点解决短期治疗（SFBT）</h3>
+<div class="callout warn">⚠️ 官方大纲要求掌握，以下为补充内容。</div>
+<p><strong>概述：</strong> 焦点解决短期治疗（Solution-Focused Brief Therapy）由史蒂夫·德·沙泽尔（Steve de Shazer）和茵素·金·伯格（Insoo Kim Berg）于20世纪80年代在密尔沃基短期家庭治疗中心创立。</p>
+<p><strong>核心理念：</strong></p>
+<ul>
+<li>关注&quot;解决方案&quot;而非&quot;问题&quot;——不深究问题成因，聚焦如何改变</li>
+<li>来访者是自己生活的专家——咨询师不充当&quot;专家&quot;角色</li>
+<li>小改变引发大改变——蝴蝶效应</li>
+<li>如果有效就多做，如果无效就做不同的</li>
+<li>来访者已有解决问题的资源和优势</li>
+</ul>
+<p><strong>SFBT与问题取向治疗的区别：</strong></p>
+<table class="data-table">
+<tr><th>维度</th><th>问题取向治疗</th><th>焦点解决治疗</th></tr>
+<tr><td>关注点</td><td>问题成因</td><td>解决方案</td></tr>
+<tr><td>提问方向</td><td>&quot;为什么会有这个问题？&quot;</td><td>&quot;你希望有什么不同？&quot;</td></tr>
+<tr><td>治疗师角色</td><td>专家诊断分析</td><td>合作者、询问者</td></tr>
+<tr><td>治疗时长</td><td>通常较长</td><td>短期（3-10次）</td></tr>
+<tr><td>对阻抗的态度</td><td>需要分析和处理阻抗</td><td>不存在阻抗，只是方法需要调整</td></tr>
+</table>
+<p><strong>SFBT核心技术：</strong></p>
+<table class="data-table">
+<tr><th>技术</th><th>说明</th><th>示例提问</th></tr>
+<tr><td><strong>奇迹提问</strong></td><td>引导来访者想象问题解决后的状态，明确治疗目标</td><td>&quot;如果今晚奇迹发生，你的问题都解决了，明天早上你会注意到什么不同？&quot;</td></tr>
+<tr><td><strong>例外提问</strong></td><td>探索问题不发生或较轻的时刻，寻找已有资源</td><td>&quot;什么时候这个问题不那么严重？那时你在做什么？&quot;</td></tr>
+<tr><td><strong>量尺提问</strong></td><td>用0-10分量化评估现状、目标和进步</td><td>&quot;如果0分是最糟，10分是理想状态，你现在在几分？需要什么能达到高一分？&quot;</td></tr>
+<tr><td><strong>应对提问</strong></td><td>肯定来访者在困难中的应对努力</td><td>&quot;这么多困难，你是怎么坚持下来的？&quot;</td></tr>
+<tr><td><strong>关系提问</strong></td><td>从他人视角看待变化</td><td>&quot;如果你的好朋友看到你的变化，他会注意到什么不同？&quot;</td></tr>
+<tr><td><strong>赞美</strong></td><td>真诚认可来访者的优势和努力</td><td>&quot;你在这么困难的情况下仍然照顾孩子，这需要很大的勇气&quot;</td></tr>
+<tr><td><strong>第一讯号提问</strong></td><td>会谈开始时了解来访者积极变化</td><td>&quot;自上次见面以来，有什么好的变化吗？&quot;</td></tr>
+</table>
+<p><strong>SFBT治疗流程：</strong></p>
+<ol>
+<li>目标建构——通过奇迹提问明确来访者想要的未来</li>
+<li>例外寻找——探索已有的成功经验和资源</li>
+<li>量尺评估——量化当前状态和目标距离</li>
+<li>给予反馈——赞美+桥梁+建议</li>
+<li>作业布置——基于例外的&quot;小实验&quot;</li>
+</ol>
+<div class="callout"><strong>记忆口诀：</strong> &quot;奇例外量应&quot;——奇迹提问、例外提问、量尺提问、应对提问。</div>
+<h3 id="sec-6.7">6.7 家庭治疗基础</h3>
+<div class="callout warn">⚠️ 官方大纲要求掌握家庭治疗基础概念，以下为补充内容。</div>
+<p><strong>家庭治疗概述：</strong> 家庭治疗将家庭视为一个系统，认为个体的问题往往不是个人的，而是家庭系统功能失调的表现。治疗目标是通过改变家庭互动模式来解决个体问题。</p>
+<p><strong>家庭治疗的核心假设：</strong></p>
+<ul>
+<li>家庭是一个系统，成员间相互影响</li>
+<li>&quot; Identified Patient&quot;（被认定的患者）可能是在表达家庭系统的问题</li>
+<li>改变家庭互动模式可以改变个体症状</li>
+<li>症状具有家庭功能（如维持家庭平衡）</li>
+</ul>
+<p><strong>主要流派：</strong></p>
+<table class="data-table">
+<tr><th>流派</th><th>代表人物</th><th>核心概念</th></tr>
+<tr><td><strong>系统式家庭治疗</strong></td><td>米兰学派（塞尔维尼·帕拉佐利）</td><td>悖论干预、正向解读、循环提问</td></tr>
+<tr><td><strong>结构式家庭治疗</strong></td><td>萨尔瓦多·米纽钦</td><td>家庭结构、边界、子系统、联盟</td></tr>
+<tr><td><strong>策略式家庭治疗</strong></td><td>杰伊·哈利</td><td>悖论处方、直接指令</td></tr>
+<tr><td><strong>经验性家庭治疗</strong></td><td>弗吉尼亚·萨提亚</td><td>家庭雕塑、沟通模式、自尊</td></tr>
+<tr><td><strong>鲍恩家庭系统理论</strong></td><td>默里·鲍恩</td><td>自我分化、三角化、多代传递</td></tr>
+</table>
+<p><strong>结构式家庭治疗核心概念（米纽钦）：</strong></p>
+<table class="data-table">
+<tr><th>概念</th><th>含义</th></tr>
+<tr><td><strong>家庭结构</strong></td><td>家庭成员间互动的稳定模式</td></tr>
+<tr><td><strong>边界</strong></td><td>子系统之间的规则和界限</td></tr>
+<tr><td><strong>僵化边界</strong></td><td>边界过于严格，成员间疏远、缺乏交流（疏离型）</td></tr>
+<tr><td><strong>模糊边界</strong></td><td>边界过于松散，成员过度卷入（缠结型）</td></tr>
+<tr><td><strong>子系统</strong></td><td>家庭中的小群体（如夫妻子系统、亲子子系统）</td></tr>
+<tr><td><strong>联盟</strong></td><td>两个或多个成员联合对抗第三者（如母亲和孩子联盟对抗父亲）</td></tr>
+<tr><td><strong>三角化</strong></td><td>第三方被卷入两人冲突以缓解紧张</td></tr>
+</table>
+<p><strong>家庭治疗的常用技术：</strong></p>
+<table class="data-table">
+<tr><th>技术</th><th>说明</th></tr>
+<tr><td><strong>循环提问</strong></td><td>问A对B的看法，问B对C的看法，揭示互动模式</td></tr>
+<tr><td><strong>家庭雕塑</strong></td><td>让成员用身体排列呈现家庭关系空间</td></tr>
+<tr><td><strong>悖论干预</strong></td><td>要求家庭维持症状，揭示症状的功能</td></tr>
+<tr><td><strong>正向解读</strong></td><td>将症状重新解读为积极意图</td></tr>
+<tr><td><strong>边界重建</strong></td><td>调整过于僵化或模糊的子系统边界</td></tr>
+<tr><td><strong>家庭作业</strong></td><td>布置行为任务改变互动模式</td></tr>
+</table>
+<p><strong>家庭治疗的适应症：</strong></p>
+<ul>
+<li>青少年行为问题（厌学、网络成瘾、叛逆等）</li>
+<li>夫妻关系冲突</li>
+<li>亲子沟通障碍</li>
+<li>家庭生命周期过渡期的适应问题</li>
+<li>成员患有精神障碍或物质依赖的家庭</li>
+</ul>
+<div class="callout key"><strong>重点区分：</strong> 家庭治疗不是&quot;全家一起来做个体咨询&quot;，而是将家庭作为治疗对象，关注互动模式而非单个成员。</div>
+<hr>
+<h1 id="下篇-咨询实务-技能科目">下篇：咨询实务（技能科目）</h1>
+<hr>
+<hr>
+</h2>
+<h3 id="sec-14.1">14.1 易混淆概念对比</h3>
+<table class="data-table">
+<tr><th>对比项</th><th>概念A</th><th>概念B</th></tr>
+<tr><td>感觉 vs 知觉</td><td>个别属性</td><td>整体反映</td></tr>
+<tr><td>情绪 vs 情感</td><td>生理需要、短暂、外显</td><td>社会需要、稳定、内隐</td></tr>
+<tr><td>注意分散 vs 注意转移</td><td>被动消极</td><td>主动积极</td></tr>
+<tr><td>再认 vs 回忆</td><td>有线索</td><td>无线索</td></tr>
+<tr><td>一般心理问题 vs 严重心理问题</td><td>未泛化、&lt;2月</td><td>已泛化、2-6月</td></tr>
+<tr><td>神经症 vs 精神病</td><td>自知力完整、主动求医</td><td>自知力缺失、被动</td></tr>
+<tr><td>错觉 vs 幻觉</td><td>有客观刺激</td><td>无客观刺激</td></tr>
+<tr><td>移情 vs 依赖</td><td>情感投射</td><td>寻求帮助</td></tr>
+<tr><td>前摄抑制 vs 倒摄抑制</td><td>前干扰后</td><td>后干扰前</td></tr>
+<tr><td>比率智商 vs 离差智商</td><td>MA/CA×100</td><td>100+15Z</td></tr>
+<tr><td>重测信度 vs 复本信度</td><td>同一测验测两次</td><td>两个等值测验</td></tr>
+<tr><td>气质 vs 性格</td><td>先天、无好坏</td><td>后天、有好坏</td></tr>
+<tr><td>参与性技术 vs 影响性技术</td><td>跟随（倾听、反应）</td><td>引导（面质、解释、指导）</td></tr>
+<tr><td>正移情 vs 负移情</td><td>积极（爱慕、依赖）</td><td>消极（敌意、不满）</td></tr>
+<tr><td>问题指向应对 vs 情绪指向应对</td><td>直接处理压力源</td><td>调节情绪反应</td></tr>
+</table>
+<h3 id="sec-14.2">14.2 重要数据速记</h3>
+<table class="data-table">
+<tr><th>项目</th><th>数值</th></tr>
+<tr><td>短时记忆容量</td><td>7±2组块</td></tr>
+<tr><td>瞬时记忆保持时间</td><td>0.25-2秒</td></tr>
+<tr><td>可见光波长</td><td>380-780nm</td></tr>
+<tr><td>亲密距离</td><td>0-0.45m</td></tr>
+<tr><td>社交距离</td><td>1.2-3.6m</td></tr>
+<tr><td>MMPI中国常模T分临界值</td><td>60分</td></tr>
+<tr><td>MMPI L量表无效临界值</td><td>原始分≥10</td></tr>
+<tr><td>SDS标准分分界值</td><td>53分</td></tr>
+<tr><td>SAS标准分分界值</td><td>50分</td></tr>
+<tr><td>SCL-90总分阳性分界值</td><td>≥160分</td></tr>
+<tr><td>SCL-90阳性项目数分界值</td><td>≥43项</td></tr>
+<tr><td>SCL-90因子分阳性分界值</td><td>≥2分</td></tr>
+<tr><td>T分数</td><td>M=50, SD=10</td></tr>
+<tr><td>离差智商</td><td>M=100, SD=15</td></tr>
+<tr><td>一般心理问题病程</td><td>1-2个月</td></tr>
+<tr><td>严重心理问题病程</td><td>2-6个月</td></tr>
+<tr><td>神经症病程最低</td><td>3个月</td></tr>
+<tr><td>信度系数最低要求</td><td>≥0.70</td></tr>
+<tr><td>区分度D值良好</td><td>≥0.40</td></tr>
+<tr><td>难度P适中范围</td><td>0.30-0.70</td></tr>
+<tr><td>16PF题数</td><td>187题</td></tr>
+<tr><td>EPQ成人版题数</td><td>88题</td></tr>
+<tr><td>SCL-90题数</td><td>90题</td></tr>
+<tr><td>SDS/SAS题数</td><td>各20题</td></tr>
+</table>
+<h3 id="sec-14.3">14.3 重要人物速记</h3>
+<table class="data-table">
+<tr><th>人物</th><th>主要贡献</th></tr>
+<tr><td>冯特</td><td>1879年建立第一个心理学实验室</td></tr>
+<tr><td>弗洛伊德</td><td>精神分析、潜意识、人格结构</td></tr>
+<tr><td>皮亚杰</td><td>认知发展四阶段</td></tr>
+<tr><td>埃里克森</td><td>心理社会发展八阶段</td></tr>
+<tr><td>维果茨基</td><td>最近发展区、社会文化理论</td></tr>
+<tr><td>班杜拉</td><td>社会学习理论、自我效能感</td></tr>
+<tr><td>马斯洛</td><td>需要层次理论、自我实现</td></tr>
+<tr><td>罗杰斯</td><td>以人为中心疗法、无条件积极关注</td></tr>
+<tr><td>斯金纳</td><td>操作性条件反射</td></tr>
+<tr><td>巴甫洛夫</td><td>经典条件反射</td></tr>
+<tr><td>艾宾浩斯</td><td>遗忘曲线（先快后慢）</td></tr>
+<tr><td>米勒</td><td>短时记忆7±2</td></tr>
+<tr><td>阿希</td><td>从众实验</td></tr>
+<tr><td>米尔格拉姆</td><td>服从实验</td></tr>
+<tr><td>科尔伯格</td><td>道德发展三水平六阶段</td></tr>
+<tr><td>塞利</td><td>一般适应综合征（GAS）</td></tr>
+<tr><td>拉扎勒斯</td><td>认知评价压力理论</td></tr>
+<tr><td>费斯廷格</td><td>认知失调理论</td></tr>
+<tr><td>海德</td><td>平衡理论、归因理论</td></tr>
+<tr><td>埃利斯</td><td>合理情绪疗法（ABC理论）</td></tr>
+<tr><td>贝克</td><td>认知疗法、认知歪曲</td></tr>
+<tr><td>沃尔普</td><td>系统脱敏法</td></tr>
+<tr><td>韦克斯勒</td><td>韦氏智力量表、离差智商</td></tr>
+<tr><td>卡特尔</td><td>16PF</td></tr>
+<tr><td>艾森克</td><td>EPQ</td></tr>
+<tr><td>罗夏</td><td>墨迹测验</td></tr>
+<tr><td>默里</td><td>TAT</td></tr>
+<tr><td>许又新</td><td>神经症评定标准</td></tr>
+<tr><td>郭念锋</td><td>心理健康十标准</td></tr>
+<tr><td>斯腾伯格</td><td>爱情三角理论、三元智力理论</td></tr>
+<tr><td>加德纳</td><td>多元智力理论</td></tr>
+<tr><td>安斯沃斯</td><td>依恋类型（陌生情境法）</td></tr>
+<tr><td>鲍尔比</td><td>依恋理论</td></tr>
+<tr><td>亚隆</td><td>团体疗效因子11个</td></tr>
+<tr><td>洛伦兹</td><td>关键期（印刻现象）</td></tr>
+<tr><td>霍尔</td><td>人际距离理论</td></tr>
+<tr><td>贾尼斯</td><td>群体思维</td></tr>
+<tr><td>帕森斯</td><td>职业指导运动创始</td></tr>
+</table>
+<h3 id="sec-14.4">14.4 诊断流程速记</h3>
+<pre><code>求助者来访
+    ↓
+初诊接待（建立关系、说明保密）
+    ↓
+摄入性会谈（收集资料、了解问题）
+    ↓
+判断：是否有精神病性症状？
+    ├── 是 → 排除器质性疾病后 → 转介精神科
+    └── 否 → 继续
+    ↓
+判断：心理冲突是常形还是变形？
+    ├── 常形（有现实基础）→
+    │   ├── 未泛化 + 病程&lt;2月 + 功能正常 → 一般心理问题
+    │   ├── 已泛化 + 病程2-6月 + 功能受损 → 严重心理问题
+    │   └── 强烈泛化 + 冲突变形化 → 神经症性心理问题
+    └── 变形（无现实基础）→
+        └── 许又新评分 ≥3分 → 神经症
+    ↓
+制定咨询方案 → 实施咨询 → 评估效果 → 结束咨询</code></pre>
+<h3 id="sec-14.5">14.5 理论流派与技术对应表</h3>
+<table class="data-table">
+<tr><th>流派</th><th>核心技术</th><th>适用问题</th></tr>
+<tr><td>精神分析</td><td>自由联想、释梦、移情分析</td><td>人格问题、神经症</td></tr>
+<tr><td>行为主义</td><td>系统脱敏、冲击疗法、厌恶疗法、代币法</td><td>恐惧症、强迫症、不良行为</td></tr>
+<tr><td>以人为中心</td><td>共情、无条件积极关注、真诚</td><td>自我成长、人际关系</td></tr>
+<tr><td>认知疗法(CBT)</td><td>认知重构、行为激活、暴露、行为实验</td><td>抑郁、焦虑、恐惧症、强迫症</td></tr>
+<tr><td>合理情绪疗法</td><td>ABC分析、与不合理信念辩论</td><td>焦虑、抑郁、愤怒</td></tr>
+<tr><td>格式塔</td><td>空椅技术、觉察训练</td><td>未完成事件、自我觉察</td></tr>
+<tr><td>焦点解决(SFBT)</td><td>奇迹提问、例外提问、量尺提问、应对提问</td><td>短期问题解决、发展性咨询</td></tr>
+<tr><td>家庭治疗</td><td>循环提问、家庭雕塑、边界重建、悖论干预</td><td>家庭冲突、青少年问题、亲子关系</td></tr>
+<tr><td>森田疗法</td><td>顺其自然、为所当为</td><td>神经症、强迫症</td></tr>
+</table>
+<hr>
+<h2 id="mnemonics">记忆口诀汇总-心理学综合部分">记忆口诀汇总（心理学综合部分）</h2>
+<ol>
+<li><strong>马斯洛需要层次：</strong> &quot;生安爱尊现&quot;</li>
+<li><strong>埃里克森八阶段：</strong> &quot;信自主勤同亲繁完&quot;</li>
+<li><strong>皮亚杰四阶段：</strong> &quot;感前具形&quot;</li>
+<li><strong>四种气质：</strong> &quot;胆多黏抑&quot;——张飞、王熙凤、林冲、林黛玉</li>
+<li><strong>情绪三状态：</strong> &quot;心激应&quot;——心境、激情、应激</li>
+<li><strong>情感三类型：</strong> &quot;道美理&quot;</li>
+<li><strong>ABC态度模型：</strong> A情感+B行为+C认知</li>
+<li><strong>布洛卡 vs 威尔尼克：</strong> &quot;布说威听&quot;</li>
+<li><strong>大五人格OCEAN：</strong> Openness、Conscientiousness、Extraversion、Agreeableness、Neuroticism</li>
+<li><strong>抑郁三低：</strong> 情绪低落、思维迟缓、活动减少</li>
+<li><strong>躁狂三高：</strong> 情感高涨、思维奔逸、活动增多</li>
+<li><strong>正常与异常三原则：</strong> &quot;统协稳&quot;——统一、协调、稳定</li>
+<li><strong>正常/异常区分框架：</strong> 心理正常（健康/不健康）vs 心理异常（精神障碍）</li>
+<li><strong>SFBT四大提问：</strong> &quot;奇例外量&quot;——奇迹提问、例外提问、量尺提问、应对提问</li>
+<li><strong>家庭治疗结构概念：</strong> &quot;边子联三&quot;——边界、子系统、联盟、三角化（米纽钦）</li>
+</ol>
+<hr>
+<div class="callout"><strong>声明：</strong> 本材料依据中国心理学会心理咨询师水平评价考试（三级）官方大纲模块编写。考生应以官方教材和考纲为准，祝考试顺利！</div>
+</main>
+
+<button id="back-top" onclick="scrollToTop()">↑</button>
+
+<script>
+// Toggle sidebar on mobile
+document.getElementById('sidebar-toggle').addEventListener('click', function() {
+  document.getElementById('sidebar').classList.toggle('open');
+});
+
+// Collapsible sections: click h3 to toggle
+document.querySelectorAll('#main h3').forEach(function(h3) {
+  h3.addEventListener('click', function(e) {
+    // Don't toggle if clicking a link inside
+    if (e.target.tagName === 'A') return;
+    h3.classList.toggle('collapsed');
+    let next = h3.nextElementSibling;
+    while (next && next.tagName !== 'H2' && next.tagName !== 'H3') {
+      if (next.classList) {
+        next.classList.toggle('hidden');
+      }
+      next = next.nextElementSibling;
+    }
+  });
+});
+
+// Toggle sidebar sub-items on module click — also navigate to section
+document.querySelectorAll('.sidebar-mod-link').forEach(function(link) {
+  link.addEventListener('click', function(e) {
+    let subs = this.nextElementSibling;
+    if (subs && subs.classList.contains('sidebar-subs')) {
+      // Allow default anchor navigation — don't call preventDefault
+      if (subs.style.display === 'none') {
+        subs.style.display = 'block';
+        this.classList.add('active');
+      } else {
+        subs.style.display = 'none';
+        this.classList.remove('active');
+      }
+    }
+  });
+});
+
+// Sub-item click: close other expanded modules for cleaner UX
+document.querySelectorAll('.sidebar-sub').forEach(function(link) {
+  link.addEventListener('click', function() {
+    document.querySelectorAll('.sidebar-subs').forEach(function(subs) {
+      if (subs !== link.closest('.sidebar-subs')) {
+        subs.style.display = 'none';
+        if (subs.previousElementSibling) {
+          subs.previousElementSibling.classList.remove('active');
+        }
+      }
+    });
+  });
+});
+
+// Highlight current section on scroll
+window.addEventListener('scroll', function() {
+  let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  // Back to top button
+  let backTop = document.getElementById('back-top');
+  if (scrollTop > 300) {
+    backTop.classList.add('show');
+  } else {
+    backTop.classList.remove('show');
+  }
+
+  // Highlight current section
+  let sections = document.querySelectorAll('#main h2, #main h3');
+  let current = '';
+  sections.forEach(function(sec) {
+    if (sec.offsetTop - 60 <= scrollTop) {
+      current = sec.id || '';
+    }
+  });
+  document.querySelectorAll('.sidebar-sub, .sidebar-mod-link').forEach(function(link) {
+    link.classList.remove('active');
+  });
+  if (current) {
+    let activeLink = document.querySelector('.sidebar-sub[href="#' + current + '"]');
+    if (activeLink) {
+      activeLink.classList.add('active');
+      // Also expand parent
+      let parent = activeLink.closest('.sidebar-subs');
+      if (parent && parent.style.display === 'none') {
+        parent.style.display = 'block';
+        parent.previousElementSibling.classList.add('active');
+      }
+    }
+  }
+});
+
+// Search filter
+function filterSidebar() {
+  let query = document.getElementById('search-input').value.toLowerCase().trim();
+  document.querySelectorAll('.sidebar-module').forEach(function(mod) {
+    let modText = mod.textContent.toLowerCase();
+    let subs = mod.querySelector('.sidebar-subs');
+    let hasMatch = false;
+    if (subs) {
+      subs.querySelectorAll('.sidebar-sub').forEach(function(sub) {
+        let subText = sub.textContent.toLowerCase();
+        if (query === '' || subText.includes(query) || modText.includes(query)) {
+          sub.style.display = '';
+          if (query && subText.includes(query)) hasMatch = true;
+        } else {
+          sub.style.display = 'none';
+        }
+      });
+      if (query === '') {
+        subs.style.display = 'none';
+        mod.style.display = '';
+      } else if (hasMatch || modText.includes(query)) {
+        subs.style.display = 'block';
+        mod.style.display = '';
+      } else {
+        mod.style.display = 'none';
+      }
+    } else {
+      // No subs (like mnemonics)
+      mod.style.display = (query === '' || modText.includes(query)) ? '' : 'none';
+    }
+  });
+}
+
+// Scroll to top
+function scrollToTop() {
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+// Close sidebar on mobile after clicking any navigation link
+document.querySelectorAll('#sidebar a[href^="#"]').forEach(function(link) {
+  link.addEventListener('click', function() {
+    document.getElementById('sidebar').classList.remove('open');
+  });
+});
+</script>
+</body>
+</html>
