@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>心理咨询师三级模拟卷考点整理</title>
+<style>
+  :root {
+    --primary: #2563eb;
+    --primary-light: #dbeafe;
+    --primary-dark: #1e40af;
+    --accent: #7c3aed;
+    --accent-light: #ede9fe;
+    --bg: #f8fafc;
+    --card-bg: #ffffff;
+    --text: #1e293b;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+    --code-bg: #f1f5f9;
+    --success: #16a34a;
+    --warning: #d97706;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    font-size: 15px;
+  }
+  .header {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    color: #fff;
+    padding: 28px 36px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  }
+  .header h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+  .header .subtitle { font-size: 13px; opacity: 0.9; }
+  .container { max-width: 900px; margin: 0 auto; padding: 24px 32px; }
+  .section {
+    background: var(--card-bg); border-radius: 12px; padding: 24px 28px;
+    margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); border: 1px solid var(--border);
+  }
+  .section h2 {
+    font-size: 18px; color: var(--primary-dark); border-bottom: 3px solid var(--primary);
+    padding-bottom: 8px; margin-bottom: 16px; cursor: pointer; display: flex; align-items: center; gap: 8px;
+  }
+  .section h2 .toggle { font-size: 13px; color: var(--text-muted); transition: transform 0.2s; }
+  .section.collapsed .toggle { transform: rotate(-90deg); }
+  .section.collapsed .section-body { display: none; }
+  .section h3 {
+    font-size: 16px; color: var(--accent); margin-top: 20px; margin-bottom: 10px;
+    padding-left: 10px; border-left: 4px solid var(--accent);
+  }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 14px; }
+  th { background: var(--primary); color: #fff; padding: 8px 12px; text-align: left; font-weight: 600; }
+  td { padding: 6px 12px; border-bottom: 1px solid var(--border); }
+  tr:nth-child(even) td { background: #f8fafc; }
+  tr:hover td { background: var(--primary-light); }
+  pre { background: var(--code-bg); border: 1px solid var(--border); border-radius: 8px; padding: 14px; overflow-x: auto; margin: 10px 0; font-size: 13px; line-height: 1.6; }
+  code { background: var(--code-bg); padding: 2px 6px; border-radius: 4px; font-size: 13px; }
+  .callout { background: var(--primary-light); border-left: 4px solid var(--primary); border-radius: 4px; padding: 10px 14px; margin: 10px 0; font-size: 14px; }
+  .callout.warn { background: #fef3c7; border-color: var(--warning); }
+  ul, ol { padding-left: 22px; margin: 6px 0; }
+  li { margin-bottom: 3px; }
+  strong { color: var(--primary-dark); }
+  .toc {
+    background: var(--card-bg); border-radius: 10px; padding: 16px 24px;
+    margin-bottom: 16px; border: 1px solid var(--border);
+  }
+  .toc h3 { font-size: 14px; color: var(--text-muted); margin-bottom: 8px; }
+  .toc a {
+    display: inline-block; padding: 3px 10px; margin: 2px; text-decoration: none;
+    color: var(--text); font-size: 13px; border-radius: 4px; background: var(--bg); transition: all 0.15s;
+  }
+  .toc a:hover { background: var(--primary-light); color: var(--primary-dark); }
+  @media (max-width: 768px) {
+    .container { padding: 12px; }
+    .section { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>心理咨询师三级模拟卷考点整理</h1>
+  <div class="subtitle">基于4套模拟卷（心理学综合×2 + 咨询实务×2，共918题）提炼的核心考点</div>
+</div>
+
+<div class="container">
+
+  <div class="toc">
+    <h3>目录导航</h3>
+    <a href="#s1">一、心理学导论</a>
+    <a href="#s2">二、社会心理学</a>
+    <a href="#s3">三、人格心理学</a>
+    <a href="#s4">四、发展心理学</a>
+    <a href="#s5">五、异常心理学</a>
+    <a href="#s6">六、咨询心理学</a>
+    <a href="#s7">七、心理测量与评估</a>
+    <a href="#s8">八、咨询通用技术</a>
+    <a href="#s9">九、团体辅导</a>
+    <a href="#s10">十、伦理实务</a>
+    <a href="#s11">十一、危机干预</a>
+    <a href="#s12">十二、诊断流程</a>
+    <a href="#s13">十三、易错点</a>
+  </div>
+
+  <div class="section" id="s1">
+    <h2><span class="toggle">▼</span> 一、心理学导论高频考点</h2>
+    <div class="section-body">
+      <h3>神经系统</h3>
+      <ul>
+        <li><strong>神经元结构</strong>：胞体、树突、轴突（不含突触和神经胶质细胞）</li>
+        <li><strong>布洛卡区</strong>：运动性语言中枢（说），受损→表达性失语症</li>
+        <li><strong>威尔尼克区</strong>：听觉性语言中枢（听），受损→接受性失语症</li>
+        <li><strong>脑电波</strong>：α波（安静放松）、β波（清醒紧张）、θ波（困倦）、δ波（深睡）</li>
+      </ul>
+      <h3>感觉与知觉</h3>
+      <ul>
+        <li><strong>感觉适应</strong>：暗适应（视紫红质合成，30-40分钟）、明适应（1-2分钟）</li>
+        <li><strong>知觉特性</strong>：整体性、选择性、恒常性（大小、形状、亮度）、理解性</li>
+        <li><strong>知觉组织原则</strong>：接近性、相似性、闭合性、连续性、共同命运（无"等价性"）</li>
+        <li><strong>错觉</strong>：有客观刺激作用下的歪曲知觉（不同于幻觉）</li>
+      </ul>
+      <h3>记忆</h3>
+      <ul>
+        <li><strong>瞬时记忆</strong>：0.25-2秒，容量较大</li>
+        <li><strong>短时记忆</strong>：7±2组块，保持1分钟以内，听觉编码为主</li>
+        <li><strong>长时记忆</strong>：容量无限，语义编码为主</li>
+        <li><strong>艾宾浩斯遗忘曲线</strong>：先快后慢，最初遗忘最快</li>
+        <li><strong>前摄抑制</strong>：前学习材料对后学习材料的干扰；<strong>倒摄抑制</strong>：后干扰前</li>
+      </ul>
+      <h3>情绪与情感</h3>
+      <ul>
+        <li><strong>情绪三状态</strong>：心境（微弱持久）、激情（强烈短暂）、应激（紧急应对）</li>
+        <li><strong>激情特征</strong>：意识狭窄（大脑皮层调节控制降低）</li>
+        <li><strong>情绪功能</strong>：适应、动机、组织、信号</li>
+        <li><strong>情感三类型</strong>：道德感、理智感、美感</li>
+      </ul>
+      <h3>动机与意志</h3>
+      <ul>
+        <li><strong>意志品质</strong>：自觉性、果断性、坚韧性、自制性</li>
+        <li><strong>意志行动前提</strong>：有自觉的行动目的</li>
+        <li><strong>双趋冲突</strong>：两个都想要；<strong>双避冲突</strong>：两个都不想要；<strong>趋避冲突</strong>：既想又怕</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section" id="s2">
+    <h2><span class="toggle">▼</span> 二、社会心理学高频考点</h2>
+    <div class="section-body">
+      <h3>社会认知</h3>
+      <ul>
+        <li><strong>首因效应</strong>：第一印象（陌生人）；<strong>近因效应</strong>：最新信息（熟悉的人）</li>
+        <li><strong>晕轮效应</strong>：一好百好；<strong>刻板印象</strong>：对某群体的固定看法</li>
+      </ul>
+      <h3>归因理论</h3>
+      <ul>
+        <li><strong>海德</strong>：内归因（个人因素）+ 外归因（情境因素）</li>
+        <li><strong>韦纳</strong>：内部/外部、稳定/不稳定、可控/不可控</li>
+        <li><strong>基本归因错误</strong>：高估个人因素、低估情境因素</li>
+        <li><strong>自利偏差</strong>：成功归因于内、失败归因于外</li>
+      </ul>
+      <h3>态度</h3>
+      <ul>
+        <li><strong>ABC模型</strong>：Affect（情感）+ Behavior（行为）+ Cognition（认知）</li>
+        <li><strong>认知失调理论</strong>（费斯廷格）：行为与认知不一致→改变认知或行为</li>
+      </ul>
+      <h3>人际关系与社会影响</h3>
+      <ul>
+        <li><strong>人际距离</strong>：亲密距离（0-0.45m）、个人距离（0.45-1.2m）、社交距离（1.2-3.6m）、公众距离（3.6m+）</li>
+        <li><strong>从众</strong>（阿希实验）：群体压力下的行为改变</li>
+        <li><strong>服从</strong>（米尔格拉姆实验）：权威命令下的行为改变</li>
+        <li><strong>社会促进</strong>：他人在场提高简单任务表现；<strong>社会抑制</strong>：降低复杂任务表现</li>
+        <li><strong>群体思维</strong>（贾尼斯）：群体追求一致而忽视现实</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section" id="s3">
+    <h2><span class="toggle">▼</span> 三、人格心理学高频考点</h2>
+    <div class="section-body">
+      <h3>气质类型</h3>
+      <table>
+        <tr><th>类型</th><th>特点</th><th>代表人物</th></tr>
+        <tr><td>胆汁质</td><td>精力旺盛、直率、易冲动</td><td>张飞</td></tr>
+        <tr><td>多血质</td><td>活泼好动、反应快、不稳定</td><td>王熙凤</td></tr>
+        <tr><td>黏液质</td><td>安静稳重、反应慢、踏实</td><td>林冲</td></tr>
+        <tr><td>抑郁质</td><td>敏感细腻、孤僻、多愁善感</td><td>林黛玉</td></tr>
+      </table>
+      <h3>大五人格（OCEAN）</h3>
+      <ul>
+        <li><strong>O</strong>penness（开放性）、<strong>C</strong>onscientiousness（尽责性）、<strong>E</strong>xtraversion（外向性）、<strong>A</strong>greeableness（宜人性）、<strong>N</strong>euroticism（神经质）</li>
+      </ul>
+      <h3>弗洛伊德人格理论</h3>
+      <ul>
+        <li><strong>人格结构</strong>：本我（快乐原则）→ 自我（现实原则）→ 超我（道德原则）</li>
+        <li><strong>防御机制</strong>：压抑、投射、反向形成、合理化、升华、否认、转移</li>
+      </ul>
+      <h3>人格理论流派</h3>
+      <ul>
+        <li><strong>卡特尔</strong>：16PF，根源特质</li>
+        <li><strong>艾森克</strong>：EPQ，内外倾+神经质+精神质</li>
+        <li><strong>罗杰斯</strong>：自我概念、实现倾向</li>
+        <li><strong>班杜拉</strong>：观察学习、自我效能感</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section" id="s4">
+    <h2><span class="toggle">▼</span> 四、发展心理学高频考点</h2>
+    <div class="section-body">
+      <h3>皮亚杰认知发展四阶段</h3>
+      <table>
+        <tr><th>阶段</th><th>年龄</th><th>特征</th></tr>
+        <tr><td>感知运动阶段</td><td>0-2岁</td><td>客体永久性</td></tr>
+        <tr><td>前运算阶段</td><td>2-7岁</td><td>自我中心、泛灵论</td></tr>
+        <tr><td>具体运算阶段</td><td>7-11岁</td><td>守恒、去自我中心</td></tr>
+        <tr><td>形式运算阶段</td><td>11岁以上</td><td>抽象逻辑思维</td></tr>
+      </table>
+      <h3>埃里克森心理社会发展八阶段</h3>
+      <table>
+        <tr><th>阶段</th><th>年龄</th><th>核心冲突</th></tr>
+        <tr><td>婴儿期</td><td>0-1岁</td><td>信任 vs 不信任</td></tr>
+        <tr><td>幼儿期</td><td>1-3岁</td><td>自主 vs 羞怯怀疑</td></tr>
+        <tr><td>学前期</td><td>3-6岁</td><td>主动 vs 内疚</td></tr>
+        <tr><td>学龄期</td><td>6-12岁</td><td>勤奋 vs 自卑</td></tr>
+        <tr><td>青春期</td><td>12-18岁</td><td>同一性 vs 角色混乱</td></tr>
+        <tr><td>成年早期</td><td>18-25岁</td><td>亲密 vs 孤独</td></tr>
+        <tr><td>成年中期</td><td>25-50岁</td><td>繁衍 vs 停滞</td></tr>
+        <tr><td>成年晚期</td><td>50岁以上</td><td>完善 vs 绝望</td></tr>
+      </table>
+      <h3>依恋理论与道德发展</h3>
+      <ul>
+        <li><strong>安斯沃思</strong>：安全型、回避型、矛盾型（陌生情境法）</li>
+        <li><strong>维果茨基</strong>：最近发展区（ZPD）、社会文化理论</li>
+        <li><strong>科尔伯格</strong>：前习俗→习俗→后习俗（三水平六阶段）</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section" id="s5">
+    <h2><span class="toggle">▼</span> 五、异常心理学高频考点</h2>
+    <div class="section-body">
+      <h3>正常与异常区分三原则</h3>
+      <div class="callout">"统协稳"——统一性、协调性、稳定性</div>
+      <h3>心理问题分类</h3>
+      <table>
+        <tr><th>类型</th><th>病程</th><th>泛化</th><th>社会功能</th></tr>
+        <tr><td>一般心理问题</td><td>1-2个月</td><td>未泛化</td><td>正常</td></tr>
+        <tr><td>严重心理问题</td><td>2-6个月</td><td>已泛化</td><td>受损</td></tr>
+        <tr><td>神经症性心理问题</td><td>—</td><td>强烈泛化</td><td>受损</td></tr>
+        <tr><td>神经症</td><td>≥3个月</td><td>冲突变形</td><td>明显受损</td></tr>
+      </table>
+      <h3>许又新神经症评定</h3>
+      <ul>
+        <li>病程：<3月=1分，3月-1年=2分，>1年=3分</li>
+        <li>痛苦程度：自扰=1分，需他人帮助=2分，无法摆脱=3分</li>
+        <li>社会功能：轻微受损=1分，明显受损=2分，完全丧失=3分</li>
+        <li>总分≥3分疑诊，≥5分确诊</li>
+      </ul>
+      <h3>常见障碍核心症状</h3>
+      <ul>
+        <li><strong>抑郁症三低</strong>：情绪低落、思维迟缓、活动减少（特征：早醒、晨重夜轻）</li>
+        <li><strong>躁狂症三高</strong>：情感高涨、思维奔逸、活动增多</li>
+        <li><strong>精神分裂症</strong>：幻觉、妄想（阳性）；情感淡漠、意志减退（阴性）；自知力缺失</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section" id="s6">
+    <h2><span class="toggle">▼</span> 六、咨询心理学高频考点</h2>
+    <div class="section-body">
+      <h3>各流派核心技术</h3>
+      <table>
+        <tr><th>流派</th><th>核心技术</th></tr>
+        <tr><td>精神分析</td><td>自由联想、释梦、移情分析</td></tr>
+        <tr><td>以人为中心</td><td>共情、无条件积极关注、真诚一致</td></tr>
+        <tr><td>行为主义</td><td>系统脱敏、冲击疗法、厌恶疗法、代币法</td></tr>
+        <tr><td>CBT</td><td>认知重构、行为激活、暴露、行为实验</td></tr>
+        <tr><td>合理情绪疗法</td><td>ABC分析、与不合理信念辩论</td></tr>
+        <tr><td>SFBT</td><td>奇迹提问、例外提问、量尺提问、应对提问</td></tr>
+        <tr><td>家庭治疗</td><td>循环提问、家庭雕塑、边界重建</td></tr>
+      </table>
+      <h3>贝克认知歪曲10种</h3>
+      <ul>
+        <li>非此即彼、过度概括、心理过滤、贬低积极、跳到结论（读心术/预测未来）</li>
+        <li>放大与缩小、情绪推理、"应该"陈述、贴标签、个性化与指责</li>
+      </ul>
+      <h3>ABC理论（埃利斯）</h3>
+      <div class="callout">A事件 → B信念 → C结果 → D辩论 → E效果</div>
+    </div>
+  </div>
+
+  <div class="section" id="s7">
+    <h2><span class="toggle">▼</span> 七、心理测量与评估高频考点</h2>
+    <div class="section-body">
+      <h3>信度类型</h3>
+      <ul>
+        <li><strong>重测信度</strong>：同一测验测两次，适用于稳定特质（智力、人格）</li>
+        <li><strong>复本信度</strong>：两个等值测验测一次</li>
+        <li><strong>内部一致性</strong>：Cronbach's α ≥ 0.70</li>
+      </ul>
+      <h3>常用量表关键数据</h3>
+      <table>
+        <tr><th>量表</th><th>题数</th><th>分界值</th></tr>
+        <tr><td>MMPI</td><td>550</td><td>T=60；L≥10无效</td></tr>
+        <tr><td>16PF</td><td>187</td><td>—</td></tr>
+        <tr><td>EPQ</td><td>88</td><td>—</td></tr>
+        <tr><td>SCL-90</td><td>90</td><td>总分≥160/阳性≥43项/因子≥2</td></tr>
+        <tr><td>SDS</td><td>20</td><td>标准分53</td></tr>
+        <tr><td>SAS</td><td>20</td><td>标准分50</td></tr>
+        <tr><td>WAIS-RC</td><td>—</td><td>IQ=100+15Z（SD=15）</td></tr>
+      </table>
+      <h3>难度与区分度</h3>
+      <ul>
+        <li>难度P适中范围：0.30-0.70</li>
+        <li>区分度D良好：≥0.40</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section" id="s8">
+    <h2><span class="toggle">▼</span> 八、咨询通用技术高频考点</h2>
+    <div class="section-body">
+      <h3>参与性技术（跟随）</h3>
+      <ul>
+        <li>倾听、开放式/封闭式提问、内容反映（释义）、情感反映、澄清、具体化、总结</li>
+      </ul>
+      <h3>影响性技术（引导）</h3>
+      <ul>
+        <li>面质、解释、指导、情感表达、内容表达、自我暴露、即时性</li>
+      </ul>
+      <div class="callout">参与性技术 = 跟随（倾听、反应）；影响性技术 = 引导（面质、解释、指导）</div>
+      <h3>阻抗与移情</h3>
+      <ul>
+        <li><strong>阻抗</strong>：沉默、迟到、遗忘、话题转移、过度理智化</li>
+        <li><strong>正移情</strong>：积极情感投射（爱慕、依赖）；<strong>负移情</strong>：消极情感投射（敌意、不满）</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section" id="s9">
+    <h2><span class="toggle">▼</span> 九、团体心理辅导高频考点</h2>
+    <div class="section-body">
+      <ul>
+        <li><strong>团体发展阶段</strong>：定向→冲突→工作→结束</li>
+        <li><strong>亚隆疗效因子</strong>：11个</li>
+        <li><strong>团体规模</strong>：8-12人</li>
+        <li><strong>领导者技术</strong>：联结、阻止、截断、引导、聚焦、绕圈</li>
+        <li><strong>活动结构</strong>：暖场→导入→主体→分享→总结→作业→结束</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section" id="s10">
+    <h2><span class="toggle">▼</span> 十、心理咨询伦理实务高频考点</h2>
+    <div class="section-body">
+      <h3>五大基本原则</h3>
+      <div class="callout">善行、责任、诚信、公正、尊重</div>
+      <h3>保密例外</h3>
+      <ul>
+        <li>自杀/自伤危险 ②伤害他人危险 ③虐待未成年人/老人 ④法律强制要求</li>
+        <li><strong>最小披露原则</strong>：仅透露与安全直接相关的必要信息</li>
+      </ul>
+      <h3>关键法律与伦理规范</h3>
+      <ul>
+        <li><strong>精神卫生法</strong>（2013.5.1）：咨询师"三不得"——不得心理治疗、不得诊断、不得开药</li>
+        <li><strong>伦理守则</strong>：第二版2018年2月，共10章，口诀"专知隐测教研远媒处"</li>
+        <li><strong>转介伦理</strong>："转介不收费，收费不转介"</li>
+        <li><strong>礼物处理</strong>：四要素（专业关系、文化习俗、金钱价值、赠送动机），口诀"初拒终议贵拒"</li>
+        <li><strong>远程咨询</strong>：验证身份、加密保密、应急方案</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section" id="s11">
+    <h2><span class="toggle">▼</span> 十一、心理危机干预高频考点</h2>
+    <div class="section-body">
+      <ul>
+        <li><strong>危机类型</strong>：发展性、境遇性、存在性</li>
+        <li><strong>六步模型</strong>：确定问题→保证安全→给予支持→验证变通→制定计划→获得承诺</li>
+        <li><strong>口诀</strong>："定安持变计诺"</li>
+        <li><strong>自杀评估维度</strong>：意念、计划、手段、既往史、精神状态、支持系统、保护因素</li>
+        <li><strong>PFA原则</strong>：不强迫讲述、提供安全、满足基本需求</li>
+        <li><strong>替代性创伤</strong>：咨询师因接触来访者创伤而自身产生创伤反应</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section" id="s12">
+    <h2><span class="toggle">▼</span> 十二、诊断流程核心框架</h2>
+    <div class="section-body">
+      <pre>求助者来访 → 初诊接待 → 摄入性会谈
+    ↓
+是否有精神病性症状？
+    ├── 是 → 排除器质性 → 转介精神科
+    └── 否 → 继续
+    ↓
+心理冲突是常形还是变形？
+    ├── 常形（有现实基础）→
+    │   ├── 未泛化 + <2月 + 功能正常 → 一般心理问题
+    │   ├── 已泛化 + 2-6月 + 功能受损 → 严重心理问题
+    │   └── 强烈泛化 + 冲突变形化 → 神经症性心理问题
+    └── 变形（无现实基础）→
+        └── 许又新评分 ≥3分 → 神经症</pre>
+    </div>
+  </div>
+
+  <div class="section" id="s13">
+    <h2><span class="toggle">▼</span> 十三、模拟卷高频易错点</h2>
+    <div class="section-body">
+      <h3>易错概念对比</h3>
+      <table>
+        <tr><th>对比项</th><th>区别关键</th></tr>
+        <tr><td>感觉 vs 知觉</td><td>个别属性 vs 整体反映</td></tr>
+        <tr><td>情绪 vs 情感</td><td>生理需要/短暂 vs 社会需要/稳定</td></tr>
+        <tr><td>一般心理问题 vs 严重心理问题</td><td>未泛化/<2月 vs 已泛化/2-6月</td></tr>
+        <tr><td>神经症 vs 精神病</td><td>自知力完整/主动 vs 自知力缺失/被动</td></tr>
+        <tr><td>错觉 vs 幻觉</td><td>有刺激 vs 无刺激</td></tr>
+        <tr><td>移情 vs 依赖</td><td>情感投射 vs 寻求帮助</td></tr>
+        <tr><td>正移情 vs 负移情</td><td>积极(爱慕) vs 消极(敌意)</td></tr>
+        <tr><td>比率智商 vs 离差智商</td><td>MA/CA×100 vs 100+15Z</td></tr>
+        <tr><td>重测信度 vs 复本信度</td><td>同一测验测两次 vs 两个等值测验</td></tr>
+        <tr><td>气质 vs 性格</td><td>先天/无好坏 vs 后天/有好坏</td></tr>
+        <tr><td>参与性技术 vs 影响性技术</td><td>跟随 vs 引导</td></tr>
+      </table>
+      <div class="callout warn"><strong>使用建议：</strong> 先做模拟卷→对照答案→标注错题→回看本材料对应模块→复习巩固。4套卷子覆盖了大纲绝大部分考点，反复练习+理解记忆是通关关键。</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  document.querySelectorAll('.section h2').forEach(function(h2) {
+    h2.addEventListener('click', function() {
+      h2.closest('.section').classList.toggle('collapsed');
+    });
+  });
+</script>
+
+</body>
+</html>

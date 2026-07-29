@@ -1,0 +1,2165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>咨询实务 · 复习记忆材料</title>
+<style>
+:root {
+  --primary: #2d8659;
+  --primary-light: #2d865915;
+  --primary-dark: #2d8659dd;
+  --bg: #f8f9fa;
+  --card-bg: #ffffff;
+  --text: #2c3e50;
+  --text-muted: #6c757d;
+  --border: #e2e8f0;
+  --success: #28a745;
+  --danger: #dc3545;
+  --warning: #ffc107;
+  --sidebar-w: 290px;
+}
+
+html { scroll-behavior: smooth; }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  font-size: 15px;
+}
+
+/* Sidebar */
+#sidebar {
+  position: fixed;
+  top: 0; left: 0;
+  width: var(--sidebar-w);
+  height: 100vh;
+  background: var(--card-bg);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  padding: 0;
+  z-index: 100;
+  transition: transform 0.3s;
+}
+
+.sidebar-header {
+  padding: 20px 20px 16px;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary);
+  background: var(--primary-light);
+  border-bottom: 2px solid var(--primary);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.sidebar-module {
+  border-bottom: 1px solid var(--border);
+}
+
+.sidebar-mod-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.15s;
+  cursor: pointer;
+}
+
+.sidebar-mod-link:hover {
+  background: var(--primary-light);
+  color: var(--primary);
+  padding-left: 24px;
+}
+
+.sidebar-mod-link.active {
+  background: var(--primary-light);
+  color: var(--primary);
+  border-left: 3px solid var(--primary);
+  padding-left: 17px;
+}
+
+.badge {
+  background: var(--border);
+  color: var(--text-muted);
+  font-size: 11px;
+  padding: 1px 7px;
+  border-radius: 10px;
+  font-weight: 400;
+  min-width: 22px;
+  text-align: center;
+}
+
+.sidebar-subs {
+  padding: 4px 0 8px;
+  background: #fafbfc;
+}
+
+.sidebar-sub {
+  display: block;
+  padding: 4px 20px 4px 36px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 13px;
+  transition: all 0.15s;
+  border-left: 2px solid transparent;
+}
+
+.sidebar-sub:hover {
+  color: var(--primary);
+  background: var(--primary-light);
+  border-left-color: var(--primary);
+}
+
+.sidebar-sub.active {
+  color: var(--primary);
+  font-weight: 600;
+  border-left-color: var(--primary);
+}
+
+.sidebar-footer {
+  padding: 16px 20px;
+  font-size: 12px;
+  color: var(--text-muted);
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+
+/* Search */
+#search-box {
+  padding: 12px 16px 8px;
+  position: sticky;
+  top: 53px;
+  background: var(--card-bg);
+  z-index: 9;
+  border-bottom: 1px solid var(--border);
+}
+#search-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+#search-input:focus {
+  border-color: var(--primary);
+}
+
+/* Toggle button */
+#sidebar-toggle {
+  display: none;
+  position: fixed;
+  top: 12px; left: 12px;
+  z-index: 200;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* Main content */
+#main {
+  margin-left: var(--sidebar-w);
+  padding: 30px 40px 60px;
+  max-width: 900px;
+}
+
+#main h1 {
+  color: var(--primary);
+  font-size: 26px;
+  margin: 30px 0 16px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid var(--primary);
+}
+
+#main h2 {
+  color: var(--text);
+  font-size: 21px;
+  margin: 36px 0 14px;
+  padding: 8px 16px;
+  background: var(--primary-light);
+  border-left: 4px solid var(--primary);
+  border-radius: 0 6px 6px 0;
+  scroll-margin-top: 20px;
+}
+
+#main h3 {
+  color: var(--primary-dark);
+  font-size: 17px;
+  margin: 24px 0 10px;
+  scroll-margin-top: 20px;
+  cursor: pointer;
+  user-select: none;
+}
+
+#main h3:hover {
+  text-decoration: underline;
+}
+
+#main h3::before {
+  content: '▶ ';
+  font-size: 11px;
+  color: var(--text-muted);
+  transition: transform 0.2s;
+  display: inline-block;
+}
+
+#main h3.collapsed::before {
+  transform: rotate(-90deg);
+}
+
+#main h4 {
+  font-size: 15px;
+  margin: 16px 0 8px;
+  color: var(--text);
+}
+
+#main p {
+  margin: 8px 0;
+}
+
+#main ul, #main ol {
+  margin: 8px 0 8px 24px;
+}
+
+#main li {
+  margin: 4px 0;
+}
+
+#main strong {
+  color: var(--primary-dark);
+}
+
+#main code {
+  background: #f1f3f5;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-family: "Fira Code", "Consolas", monospace;
+}
+
+#main pre {
+  background: #f1f3f5;
+  padding: 12px 16px;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin: 12px 0;
+}
+
+#main pre code {
+  background: none;
+  padding: 0;
+}
+
+#main hr {
+  border: none;
+  border-top: 2px dashed var(--border);
+  margin: 32px 0;
+}
+
+#main table.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0;
+  font-size: 14px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+#main table.data-table th {
+  background: var(--primary);
+  color: white;
+  padding: 8px 12px;
+  text-align: left;
+  font-weight: 600;
+}
+
+#main table.data-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+#main table.data-table tr:nth-child(even) {
+  background: #f8f9fa;
+}
+
+#main table.data-table tr:hover {
+  background: var(--primary-light);
+}
+
+#main .callout {
+  padding: 12px 16px;
+  margin: 12px 0;
+  border-radius: 6px;
+  border-left: 4px solid var(--primary);
+  background: var(--primary-light);
+  font-size: 14px;
+}
+
+#main .callout.key {
+  border-left-color: var(--warning);
+  background: #fff8e1;
+}
+
+#main .callout.warn {
+  border-left-color: var(--danger);
+  background: #fff5f5;
+}
+
+/* Collapsible section content */
+.section-content {
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.section-content.hidden {
+  display: none;
+}
+
+/* Back to top */
+#back-top {
+  position: fixed;
+  bottom: 30px; right: 30px;
+  width: 44px; height: 44px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 99;
+}
+#back-top.show {
+  opacity: 1;
+}
+
+/* Index card grid */
+.index-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.index-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.index-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  transform: translateY(-1px);
+}
+
+.index-card-title {
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.index-card-list {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  #sidebar {
+    transform: translateX(-100%);
+  }
+  #sidebar.open {
+    transform: translateX(0);
+  }
+  #sidebar-toggle {
+    display: block;
+  }
+  #main {
+    margin-left: 0;
+    padding: 50px 16px 40px;
+  }
+}
+</style>
+</head>
+<body>
+
+<button id="sidebar-toggle">☰</button>
+
+<nav id="sidebar">
+  <div class="sidebar-header">咨询实务<br><span style="font-size:12px;font-weight:400;color:var(--text-muted)">复习记忆材料</span></div>
+  <div id="search-box">
+    <input type="text" id="search-input" placeholder="搜索章节..." oninput="filterSidebar()">
+  </div>
+  <div class="sidebar-header">咨询实务</div>
+
+        <div class="sidebar-module" id="nav-mod-七">
+          <a href="#mod-七" class="sidebar-mod-link">七、心理测量与评估 <span class="badge">11</span></a>
+          <div class="sidebar-subs" style="display:none">
+            <a href="#sec-7.1" class="sidebar-sub" data-mod="mod-七">7.1 心理测量基础</a><a href="#sec-7.2" class="sidebar-sub" data-mod="mod-七">7.2 测验历史</a><a href="#sec-7.3" class="sidebar-sub" data-mod="mod-七">7.3 信度</a><a href="#sec-7.4" class="sidebar-sub" data-mod="mod-七">7.4 效度</a><a href="#sec-7.5" class="sidebar-sub" data-mod="mod-七">7.5 项目分析</a><a href="#sec-7.6" class="sidebar-sub" data-mod="mod-七">7.6 常模与标准分数</a><a href="#sec-7.7" class="sidebar-sub" data-mod="mod-七">7.7 常用智力测验</a><a href="#sec-7.8" class="sidebar-sub" data-mod="mod-七">7.8 常用人格测验</a><a href="#sec-7.9" class="sidebar-sub" data-mod="mod-七">7.9 常用症状评定量表</a><a href="#sec-7.10" class="sidebar-sub" data-mod="mod-七">7.10 测验使用伦理</a><a href="#sec-7.11" class="sidebar-sub" data-mod="mod-七">7.11 测验报告撰写规范</a>
+          </div>
+        </div>
+
+        <div class="sidebar-module" id="nav-mod-八">
+          <a href="#mod-八" class="sidebar-mod-link">八、心理咨询通用技术 <span class="badge">10</span></a>
+          <div class="sidebar-subs" style="display:none">
+            <a href="#sec-8.1" class="sidebar-sub" data-mod="mod-八">8.1 初诊接待</a><a href="#sec-8.2" class="sidebar-sub" data-mod="mod-八">8.2 摄入性会谈</a><a href="#sec-8.3" class="sidebar-sub" data-mod="mod-八">8.3 建立咨询关系</a><a href="#sec-8.4" class="sidebar-sub" data-mod="mod-八">8.4 参与性技术</a><a href="#sec-8.5" class="sidebar-sub" data-mod="mod-八">8.5 影响性技术</a><a href="#sec-8.6" class="sidebar-sub" data-mod="mod-八">8.6 识别与处理阻抗</a><a href="#sec-8.7" class="sidebar-sub" data-mod="mod-八">8.7 识别与处理移情</a><a href="#sec-8.8" class="sidebar-sub" data-mod="mod-八">8.8 咨询方案制定</a><a href="#sec-8.9" class="sidebar-sub" data-mod="mod-八">8.9 心理诊断与鉴别诊断</a><a href="#sec-8.10" class="sidebar-sub" data-mod="mod-八">8.10 咨询阶段与效果评估</a>
+          </div>
+        </div>
+
+        <div class="sidebar-module" id="nav-mod-九">
+          <a href="#mod-九" class="sidebar-mod-link">九、认知行为咨询方法（CBT） <span class="badge">8</span></a>
+          <div class="sidebar-subs" style="display:none">
+            <a href="#sec-9.1" class="sidebar-sub" data-mod="mod-九">9.1 CBT理论基础</a><a href="#sec-9.2" class="sidebar-sub" data-mod="mod-九">9.2 认知模型</a><a href="#sec-9.3" class="sidebar-sub" data-mod="mod-九">9.3 常见认知歪曲</a><a href="#sec-9.4" class="sidebar-sub" data-mod="mod-九">9.4 CBT治疗流程</a><a href="#sec-9.5" class="sidebar-sub" data-mod="mod-九">9.5 CBT核心技术</a><a href="#sec-9.6" class="sidebar-sub" data-mod="mod-九">9.6 个案概念化</a><a href="#sec-9.7" class="sidebar-sub" data-mod="mod-九">9.7 CBT常见应用</a><a href="#sec-9.8" class="sidebar-sub" data-mod="mod-九">9.8 第三浪潮CBT</a>
+          </div>
+        </div>
+
+        <div class="sidebar-module" id="nav-mod-十">
+          <a href="#mod-十" class="sidebar-mod-link">十、人本主义咨询方法 <span class="badge">7</span></a>
+          <div class="sidebar-subs" style="display:none">
+            <a href="#sec-10.1" class="sidebar-sub" data-mod="mod-十">10.1 理论基础</a><a href="#sec-10.2" class="sidebar-sub" data-mod="mod-十">10.2 罗杰斯人格理论</a><a href="#sec-10.3" class="sidebar-sub" data-mod="mod-十">10.3 治疗关系三要素</a><a href="#sec-10.4" class="sidebar-sub" data-mod="mod-十">10.4 人本主义治疗过程</a><a href="#sec-10.5" class="sidebar-sub" data-mod="mod-十">10.5 人本主义核心技术</a><a href="#sec-10.6" class="sidebar-sub" data-mod="mod-十">10.6 人本主义适用范围与局限</a><a href="#sec-10.7" class="sidebar-sub" data-mod="mod-十">10.7 与其他流派的关系</a>
+          </div>
+        </div>
+
+        <div class="sidebar-module" id="nav-mod-十一">
+          <a href="#mod-十一" class="sidebar-mod-link">十一、团体心理辅导 <span class="badge">9</span></a>
+          <div class="sidebar-subs" style="display:none">
+            <a href="#sec-11.1" class="sidebar-sub" data-mod="mod-十一">11.1 团体心理辅导概述</a><a href="#sec-11.2" class="sidebar-sub" data-mod="mod-十一">11.2 团体类型</a><a href="#sec-11.3" class="sidebar-sub" data-mod="mod-十一">11.3 团体发展阶段</a><a href="#sec-11.4" class="sidebar-sub" data-mod="mod-十一">11.4 团体动力学</a><a href="#sec-11.5" class="sidebar-sub" data-mod="mod-十一">11.5 亚隆团体疗效因子</a><a href="#sec-11.6" class="sidebar-sub" data-mod="mod-十一">11.6 团体领导者角色与技术</a><a href="#sec-11.7" class="sidebar-sub" data-mod="mod-十一">11.7 团体辅导流程</a><a href="#sec-11.8" class="sidebar-sub" data-mod="mod-十一">11.8 团体伦理</a><a href="#sec-11.9" class="sidebar-sub" data-mod="mod-十一">11.9 团体活动设计</a>
+          </div>
+        </div>
+
+        <div class="sidebar-module" id="nav-mod-十二">
+          <a href="#mod-十二" class="sidebar-mod-link">十二、心理咨询伦理实务 <span class="badge">21</span></a>
+          <div class="sidebar-subs" style="display:none">
+            <a href="#sec-12.1" class="sidebar-sub" data-mod="mod-十二">12.1 心理咨询师伦理基本原则</a><a href="#sec-12.2" class="sidebar-sub" data-mod="mod-十二">12.2 知情同意</a><a href="#sec-12.3" class="sidebar-sub" data-mod="mod-十二">12.3 保密与保密例外</a><a href="#sec-12.4" class="sidebar-sub" data-mod="mod-十二">12.4 专业能力</a><a href="#sec-12.5" class="sidebar-sub" data-mod="mod-十二">12.5 职业关系与界限</a><a href="#sec-12.6" class="sidebar-sub" data-mod="mod-十二">12.6 职业界限</a><a href="#sec-12.7" class="sidebar-sub" data-mod="mod-十二">12.7 心理测量伦理</a><a href="#sec-12.8" class="sidebar-sub" data-mod="mod-十二">12.8 收费伦理</a><a href="#sec-12.9" class="sidebar-sub" data-mod="mod-十二">12.9 专业督导</a><a href="#sec-12.10" class="sidebar-sub" data-mod="mod-十二">12.10 广告与宣传</a><a href="#sec-12.11" class="sidebar-sub" data-mod="mod-十二">12.11 相关法律法规</a><a href="#sec-12.12" class="sidebar-sub" data-mod="mod-十二">12.12 伦理决策模型</a><a href="#sec-12.13" class="sidebar-sub" data-mod="mod-十二">12.13 伦理守则概述</a><a href="#sec-12.14" class="sidebar-sub" data-mod="mod-十二">12.14 转介伦理</a><a href="#sec-12.15" class="sidebar-sub" data-mod="mod-十二">12.15 远程心理咨询伦理（网络/电话咨询）</a><a href="#sec-12.16" class="sidebar-sub" data-mod="mod-十二">12.16 媒体沟通与合作伦理</a><a href="#sec-12.17" class="sidebar-sub" data-mod="mod-十二">12.17 礼物处理</a><a href="#sec-12.18" class="sidebar-sub" data-mod="mod-十二">12.18 伦理投诉与处理</a><a href="#sec-12.19" class="sidebar-sub" data-mod="mod-十二">12.19 危机中的伦理问题</a><a href="#sec-12.20" class="sidebar-sub" data-mod="mod-十二">12.20 教学培训与督导伦理</a><a href="#sec-12.21" class="sidebar-sub" data-mod="mod-十二">12.21 研究与发表伦理</a>
+          </div>
+        </div>
+
+        <div class="sidebar-module" id="nav-mod-十三">
+          <a href="#mod-十三" class="sidebar-mod-link">十三、心理危机干预（Ⅰ） <span class="badge">14</span></a>
+          <div class="sidebar-subs" style="display:none">
+            <a href="#sec-13.1" class="sidebar-sub" data-mod="mod-十三">13.1 危机的定义与特征</a><a href="#sec-13.2" class="sidebar-sub" data-mod="mod-十三">13.2 危机类型</a><a href="#sec-13.3" class="sidebar-sub" data-mod="mod-十三">13.3 危机干预模型</a><a href="#sec-13.4" class="sidebar-sub" data-mod="mod-十三">13.4 自杀风险评估</a><a href="#sec-13.5" class="sidebar-sub" data-mod="mod-十三">13.5 自杀干预技术</a><a href="#sec-13.6" class="sidebar-sub" data-mod="mod-十三">13.6 心理急救（PFA）</a><a href="#sec-13.7" class="sidebar-sub" data-mod="mod-十三">13.7 危机干预中的伦理</a><a href="#sec-13.8" class="sidebar-sub" data-mod="mod-十三">13.8 咨询师的自我照顾</a><a href="#sec-14.6" class="sidebar-sub" data-mod="mod-十三">14.6 团体辅导速记</a><a href="#sec-14.7" class="sidebar-sub" data-mod="mod-十三">14.7 CBT速记</a><a href="#sec-14.8" class="sidebar-sub" data-mod="mod-十三">14.8 危机干预速记</a><a href="#sec-14.9" class="sidebar-sub" data-mod="mod-十三">14.9 SFBT与家庭治疗速记</a><a href="#sec-14.10" class="sidebar-sub" data-mod="mod-十三">14.10 法律法规速记</a><a href="#sec-14.11" class="sidebar-sub" data-mod="mod-十三">14.11 伦理实务补充速记</a>
+          </div>
+        </div>
+
+        <div class="sidebar-module">
+          <a href="#speed-tables" class="sidebar-mod-link">速记速查表 <span class="badge">6</span></a>
+          <div class="sidebar-subs" style="display:none">
+            <a href="#sec-14.6" class="sidebar-sub">14.6 团体辅导速记</a><a href="#sec-14.7" class="sidebar-sub">14.7 CBT速记</a><a href="#sec-14.8" class="sidebar-sub">14.8 危机干预速记</a><a href="#sec-14.9" class="sidebar-sub">14.9 SFBT与家庭治疗速记</a><a href="#sec-14.10" class="sidebar-sub">14.10 法律法规速记</a><a href="#sec-14.11" class="sidebar-sub">14.11 伦理实务补充速记</a>
+          </div>
+        </div>
+
+    <div class="sidebar-module">
+      <a href="#mnemonics" class="sidebar-mod-link">记忆口诀汇总 <span class="badge">16</span></a>
+    </div>
+<div class="sidebar-footer">共 7 模块 · 80 知识点 · 16 口诀</div>
+</nav>
+
+<main id="main">
+<h1 id="咨询实务-复习记忆材料">咨询实务 · 复习记忆材料</h1>
+<div class="callout"><strong>中国心理学会心理咨询师水平评价考试（三级）</strong> &gt; <strong>科目：咨询实务（技能科目）</strong> &gt; 考试题型：单选140题(0.4分) + 多选60题(0.6分) + 不定项案例题10题(0.8分) = 100分 &gt; ≥60分合格，单科成绩3年有效</div>
+<hr>
+<h2 id="目录索引">📑 目录索引</h2>
+<h3 id="七-心理测量与评估">七、心理测量与评估</h3>
+<ul>
+<li><strong>7.1</strong> 心理测量基础</li>
+<li><strong>7.2</strong> 测验历史</li>
+<li><strong>7.3</strong> 信度</li>
+<li><strong>7.4</strong> 效度</li>
+<li><strong>7.5</strong> 项目分析</li>
+<li><strong>7.6</strong> 常模与标准分数</li>
+<li><strong>7.7</strong> 常用智力测验</li>
+<li><strong>7.8</strong> 常用人格测验</li>
+<li><strong>7.9</strong> 常用症状评定量表</li>
+<li><strong>7.10</strong> 测验使用伦理</li>
+<li><strong>7.11</strong> 测验报告撰写规范</li>
+</ul>
+<h3 id="八-心理咨询通用技术">八、心理咨询通用技术</h3>
+<ul>
+<li><strong>8.1</strong> 初诊接待</li>
+<li><strong>8.2</strong> 摄入性会谈</li>
+<li><strong>8.3</strong> 建立咨询关系</li>
+<li><strong>8.4</strong> 参与性技术</li>
+<li><strong>8.5</strong> 影响性技术</li>
+<li><strong>8.6</strong> 识别与处理阻抗</li>
+<li><strong>8.7</strong> 识别与处理移情</li>
+<li><strong>8.8</strong> 咨询方案制定</li>
+<li><strong>8.9</strong> 心理诊断与鉴别诊断</li>
+<li><strong>8.10</strong> 咨询阶段与效果评估</li>
+</ul>
+<h3 id="九-认知行为咨询方法-cbt">九、认知行为咨询方法（CBT）</h3>
+<ul>
+<li><strong>9.1</strong> CBT理论基础</li>
+<li><strong>9.2</strong> 认知模型</li>
+<li><strong>9.3</strong> 常见认知歪曲</li>
+<li><strong>9.4</strong> CBT治疗流程</li>
+<li><strong>9.5</strong> CBT核心技术</li>
+<li><strong>9.6</strong> 个案概念化</li>
+<li><strong>9.7</strong> CBT常见应用</li>
+<li><strong>9.8</strong> 第三浪潮CBT</li>
+</ul>
+<h3 id="十-人本主义咨询方法">十、人本主义咨询方法</h3>
+<ul>
+<li><strong>10.1</strong> 理论基础</li>
+<li><strong>10.2</strong> 罗杰斯人格理论</li>
+<li><strong>10.3</strong> 治疗关系三要素</li>
+<li><strong>10.4</strong> 人本主义治疗过程</li>
+<li><strong>10.5</strong> 人本主义核心技术</li>
+<li><strong>10.6</strong> 人本主义适用范围与局限</li>
+<li><strong>10.7</strong> 与其他流派的关系</li>
+</ul>
+<h3 id="十一-团体心理辅导">十一、团体心理辅导</h3>
+<ul>
+<li><strong>11.1</strong> 团体心理辅导概述</li>
+<li><strong>11.2</strong> 团体类型</li>
+<li><strong>11.3</strong> 团体发展阶段</li>
+<li><strong>11.4</strong> 团体动力学</li>
+<li><strong>11.5</strong> 亚隆团体疗效因子</li>
+<li><strong>11.6</strong> 团体领导者角色与技术</li>
+<li><strong>11.7</strong> 团体辅导流程</li>
+<li><strong>11.8</strong> 团体伦理</li>
+<li><strong>11.9</strong> 团体活动设计</li>
+</ul>
+<h3 id="十二-心理咨询伦理实务">十二、心理咨询伦理实务</h3>
+<ul>
+<li><strong>12.1</strong> 心理咨询师伦理基本原则</li>
+<li><strong>12.2</strong> 知情同意</li>
+<li><strong>12.3</strong> 保密与保密例外</li>
+<li><strong>12.4</strong> 专业能力</li>
+<li><strong>12.5</strong> 职业关系与界限</li>
+<li><strong>12.6</strong> 职业界限</li>
+<li><strong>12.7</strong> 心理测量伦理</li>
+<li><strong>12.8</strong> 收费伦理</li>
+<li><strong>12.9</strong> 专业督导</li>
+<li><strong>12.10</strong> 广告与宣传</li>
+<li><strong>12.11</strong> 相关法律法规</li>
+<li><strong>12.12</strong> 伦理决策模型</li>
+<li><strong>12.13</strong> 伦理守则概述</li>
+<li><strong>12.14</strong> 转介伦理</li>
+<li><strong>12.15</strong> 远程心理咨询伦理（网络/电话咨询）</li>
+<li><strong>12.16</strong> 媒体沟通与合作伦理</li>
+<li><strong>12.17</strong> 礼物处理</li>
+<li><strong>12.18</strong> 伦理投诉与处理</li>
+<li><strong>12.19</strong> 危机中的伦理问题</li>
+<li><strong>12.20</strong> 教学培训与督导伦理</li>
+<li><strong>12.21</strong> 研究与发表伦理</li>
+</ul>
+<h3 id="十三-心理危机干预-ⅰ">十三、心理危机干预（Ⅰ）</h3>
+<ul>
+<li><strong>13.1</strong> 危机的定义与特征</li>
+<li><strong>13.2</strong> 危机类型</li>
+<li><strong>13.3</strong> 危机干预模型</li>
+<li><strong>13.4</strong> 自杀风险评估</li>
+<li><strong>13.5</strong> 自杀干预技术</li>
+<li><strong>13.6</strong> 心理急救（PFA）</li>
+<li><strong>13.7</strong> 危机干预中的伦理</li>
+<li><strong>13.8</strong> 咨询师的自我照顾</li>
+</ul>
+<div class="callout">共 7 个模块 · 74 个知识点</div>
+<h3 id="速记速查表">速记速查表</h3>
+<ul>
+<li><strong>14.6</strong> 团体辅导速记- <strong>14.7</strong> CBT速记- <strong>14.8</strong> 危机干预速记- <strong>14.9</strong> SFBT与家庭治疗速记- <strong>14.10</strong> 法律法规速记- <strong>14.11</strong> 伦理实务补充速记</li>
+</ul>
+<div class="callout">记忆口诀 16 条</div>
+<hr>
+<h1 id="下篇-咨询实务-技能科目">下篇：咨询实务（技能科目）</h1>
+<hr>
+<h2 id="mod-七">七、心理测量与评估</h2>
+<h3 id="sec-7.1">7.1 心理测量基础</h3>
+<p><strong>心理测量：</strong> 依据心理学理论，使用特定操作程序，给人的心理特征确定出一种数量化的价值。</p>
+<p><strong>心理测量的性质：</strong></p>
+<ul>
+<li>间接性：通过行为推测心理特征</li>
+<li>相对性：比较得出（无绝对零点）</li>
+<li>客观性：标准化</li>
+</ul>
+<p><strong>心理测验的分类：</strong></p>
+<ul>
+<li>按功能：智力测验、人格测验、神经心理测验</li>
+<li>按对象：个别测验、团体测验</li>
+<li>按材料：文字测验、非文字（操作）测验</li>
+<li>按要求：最高作为测验、典型作为测验</li>
+</ul>
+<h3 id="sec-7.2">7.2 测验历史</h3>
+<table class="data-table">
+<tr><th>人物</th><th>贡献</th></tr>
+<tr><td>高尔顿</td><td>最早用问卷法测量心理特征</td></tr>
+<tr><td>卡特尔</td><td>首次提出&quot;心理测验&quot;一词</td></tr>
+<tr><td>比奈-西蒙</td><td>1905年编制第一个智力测验</td></tr>
+<tr><td>推孟</td><td>1916年修订为斯坦福-比奈量表，引入IQ概念</td></tr>
+<tr><td>韦克斯勒</td><td>编制韦氏智力量表，采用离差智商</td></tr>
+<tr><td>罗夏</td><td>创立墨迹测验</td></tr>
+<tr><td>默里与摩根</td><td>编制TAT</td></tr>
+</table>
+<h3 id="sec-7.3">7.3 信度</h3>
+<p><strong>信度：</strong> 测量结果的可靠性和一致性程度。</p>
+<table class="data-table">
+<tr><th>类型</th><th>方法</th><th>适用条件</th></tr>
+<tr><td>重测信度</td><td>同一测验前后两次施测的相关</td><td>速度测验、人格测验</td></tr>
+<tr><td>复本信度</td><td>两个等值测验的相关</td><td>需要编制等值复本</td></tr>
+<tr><td>分半信度</td><td>将测验分成两半求相关</td><td>题目较多时</td></tr>
+<tr><td>同质性信度（α系数）</td><td>测验内部各题目间的一致性</td><td>评估内部一致性</td></tr>
+<tr><td>评分者信度</td><td>不同评分者评分的一致性</td><td>主观题测验</td></tr>
+</table>
+<p><strong>信度系数（r）：</strong> 一般要求 r ≥ 0.70。</p>
+<p><strong>影响信度的因素：</strong> 样本异质性（越高信度越高）、测验长度（越长越高）、测验难度、间隔时间。</p>
+<h3 id="sec-7.4">7.4 效度</h3>
+<p><strong>效度：</strong> 测验能够测量到所要测量的心理特质的程度。效度是测验的最重要指标。</p>
+<table class="data-table">
+<tr><th>类型</th><th>含义</th><th>估计方法</th></tr>
+<tr><td>内容效度</td><td>题目对测量内容的代表性</td><td>专家判断、双向细目表</td></tr>
+<tr><td>结构效度</td><td>测验能测到理论构念的程度</td><td>因素分析、与理论预期比较</td></tr>
+<tr><td>效标效度</td><td>测验分数与外部效标的关系</td><td>同时效度、预测效度</td></tr>
+</table>
+<p><strong>效度与信度的关系：</strong></p>
+<ul>
+<li>信度是效度的必要条件（信度高，效度不一定高）</li>
+<li>效度受信度制约：效度最大值 = √信度</li>
+</ul>
+<h3 id="sec-7.5">7.5 项目分析</h3>
+<p><strong>难度（P）：</strong> P值越大题目越容易。一般要求P在0.30-0.70之间。</p>
+<p><strong>区分度（D）：</strong> D = PH - PL（高分组正确率 - 低分组正确率）</p>
+<table class="data-table">
+<tr><th>D值</th><th>评价</th></tr>
+<tr><td>D ≥ 0.40</td><td>很好</td></tr>
+<tr><td>0.30 ≤ D &lt; 0.40</td><td>良好，修改后更好</td></tr>
+<tr><td>0.20 ≤ D &lt; 0.30</td><td>尚可，需修改</td></tr>
+<tr><td>D &lt; 0.20</td><td>差，需淘汰</td></tr>
+</table>
+<div class="callout">中等难度（P≈0.50）时区分度最大。</div>
+<h3 id="sec-7.6">7.6 常模与标准分数</h3>
+<table class="data-table">
+<tr><th>分数类型</th><th>公式</th><th>特征</th></tr>
+<tr><td>Z分数</td><td>Z = (X - X̄) / S</td><td>M=0, SD=1</td></tr>
+<tr><td>T分数</td><td>T = 10Z + 50</td><td>M=50, SD=10</td></tr>
+<tr><td>标准9分</td><td>5 + 2Z</td><td>M=5, SD=2</td></tr>
+<tr><td>离差智商</td><td>100 + 15Z</td><td>M=100, SD=15</td></tr>
+</table>
+<div class="callout key"><strong>重点：</strong> T分数 M=50, SD=10；离差智商 M=100, SD=15。</div>
+<h3 id="sec-7.7">7.7 常用智力测验</h3>
+<h4 id="韦氏成人智力量表-wais-rc">韦氏成人智力量表（WAIS-RC）</h4>
+<p><strong>结构：</strong> 言语量表（6个子测验）+ 操作量表（5个子测验）</p>
+<p><strong>言语量表：</strong> 知识、领悟、算术、相似性、数字广度（顺背+倒背）、词汇</p>
+<p><strong>操作量表：</strong> 数字符号、图画填充、木块图、图片排列、图形拼凑</p>
+<p><strong>计分：</strong> 原始分 → 量表分(M=10, SD=3) → 言语智商(VIQ)、操作智商(PIQ)、全量表智商(FIQ)，智商为离差智商(M=100, SD=15)</p>
+<p><strong>智商分类：</strong></p>
+<table class="data-table">
+<tr><th>IQ范围</th><th>等级</th><th>理论百分比</th></tr>
+<tr><td>130以上</td><td>极超常</td><td>2.2%</td></tr>
+<tr><td>120-129</td><td>超常</td><td>6.7%</td></tr>
+<tr><td>110-119</td><td>高于平常</td><td>16.1%</td></tr>
+<tr><td>90-109</td><td>平常</td><td>50.0%</td></tr>
+<tr><td>80-89</td><td>低于平常</td><td>16.1%</td></tr>
+<tr><td>70-79</td><td>边界</td><td>6.7%</td></tr>
+<tr><td>69以下</td><td>智力缺陷</td><td>2.2%</td></tr>
+</table>
+<h4 id="联合型瑞文测验-crt">联合型瑞文测验（CRT）</h4>
+<ul>
+<li>非文字智力测验，测量Spearman的G因素</li>
+<li>适合团体施测，5-75岁适用</li>
+</ul>
+<h4 id="中国比奈测验">中国比奈测验</h4>
+<ul>
+<li>适用于2-18岁，吴天敏修订</li>
+<li>使用比率智商：IQ = MA/CA × 100</li>
+</ul>
+<div class="callout"><strong>区分：</strong> 比奈用比率智商；韦氏用离差智商。</div>
+<h3 id="sec-7.8">7.8 常用人格测验</h3>
+<h4 id="mmpi-明尼苏达多项人格调查表">MMPI（明尼苏达多项人格调查表）</h4>
+<ul>
+<li>566题（或399题简版），适用于16岁以上</li>
+<li>临床量表10个：Hs疑病、D抑郁、Hy癔症、Pd精神病态、Mf男子气-女子气、Pa偏执、Pt精神衰弱、Sc精神分裂、Ma轻躁狂、Si社会内向</li>
+<li>效度量表4个：Q无法回答、L说谎、F诈病、K校正</li>
+<li>中国常模T分≥60为异常（美国常模≥70）</li>
+<li>L量表原始分≥10分答卷无效</li>
+</ul>
+<h4 id="16pf-卡特尔16种人格因素问卷">16PF（卡特尔16种人格因素问卷）</h4>
+<ul>
+<li>187题，适用于16岁以上</li>
+<li>测量16种根源特质</li>
+<li>答案选项：A(是)、B(介于之间)、C(否)</li>
+<li>16种特质：A乐群性、B聪慧性、C稳定性、E恃强性、F兴奋性、G有恒性、H敢为性、I敏感性、L怀疑性、M幻想性、N世故性、O忧虑性、Q1实验性、Q2独立性、Q3自律性、Q4紧张性</li>
+</ul>
+<h4 id="epq-艾森克人格问卷">EPQ（艾森克人格问卷）</h4>
+<ul>
+<li>88题（成人版），4个量表：</li>
+</ul>
+<table class="data-table">
+<tr><th>量表</th><th>测量内容</th><th>高分特征</th></tr>
+<tr><td>E（内外倾）</td><td>内外倾性</td><td>外向：好交际、冲动</td></tr>
+<tr><td>N（神经质）</td><td>情绪稳定性</td><td>情绪不稳定、焦虑</td></tr>
+<tr><td>P（精神质）</td><td>精神质倾向</td><td>孤独、缺乏同理心</td></tr>
+<tr><td>L（掩饰性）</td><td>掩饰程度</td><td>测谎（效度量表）</td></tr>
+</table>
+<p><strong>EPQ的E-N象限对应气质：</strong> E高N高→胆汁质；E低N高→抑郁质；E低N低→黏液质；E高N低→多血质。</p>
+<h4 id="投射测验">投射测验</h4>
+<ul>
+<li><strong>罗夏墨迹测验：</strong> 10张墨迹图，个别施测，四阶段（自由反应→提问→类比→极限测试）</li>
+<li><strong>TAT主题统觉测验：</strong> 默里和摩根编制，30张图片，看图编故事，分析需要和压力</li>
+</ul>
+<h3 id="sec-7.9">7.9 常用症状评定量表</h3>
+<h4 id="scl-90-90项症状清单">SCL-90（90项症状清单）</h4>
+<ul>
+<li>90题，10个因子：躯体化、强迫、人际敏感、抑郁、焦虑、敌对、恐怖、偏执、精神病性、其他</li>
+<li>0-4五级评分</li>
+<li>阳性标准：总分≥160，或阳性项目数≥43，或任一因子分≥2</li>
+</ul>
+<h4 id="sds-抑郁自评量表">SDS（抑郁自评量表）</h4>
+<ul>
+<li>20题，标准分 = 总分 × 1.25</li>
+<li>分界值53分：53-62轻度，63-72中度，73以上重度</li>
+</ul>
+<h4 id="sas-焦虑自评量表">SAS（焦虑自评量表）</h4>
+<ul>
+<li>20题，标准分 = 总分 × 1.25</li>
+<li>分界值50分：50-59轻度，60-69中度，70以上重度</li>
+</ul>
+<div class="callout key"><strong>重点区分：</strong> SDS分界值53分，SAS分界值50分。</div>
+<h3 id="sec-7.10">7.10 测验使用伦理</h3>
+<ul>
+<li>标准化原则、保密原则、客观性原则</li>
+<li>测验结果保密，测验材料不得让来访者带走</li>
+<li>仅在专业能力范围内使用测验</li>
+<li>测验结果解释应谨慎客观</li>
+</ul>
+<h3 id="sec-7.11">7.11 测验报告撰写规范</h3>
+<div class="callout warn">⚠️ 官方大纲要求掌握测验报告的撰写格式与规范，以下为补充内容。</div>
+<p><strong>心理测验报告的基本结构：</strong></p>
+<table class="data-table">
+<tr><th>部分</th><th>内容</th><th>要点</th></tr>
+<tr><td><strong>一般信息</strong></td><td>来访者姓名、性别、年龄、教育程度、施测日期、施测者、测验名称</td><td>确保信息准确完整</td></tr>
+<tr><td><strong>施测情况</strong></td><td>施测环境、来访者状态（配合度、疲劳、焦虑等）、施测方式（个别/团体）</td><td>记录可能影响结果的因素</td></tr>
+<tr><td><strong>测验结果</strong></td><td>各分测验原始分、量表分、导出分数（如IQ、T分）、剖面图分析</td><td>分量表分与总分的呈现</td></tr>
+<tr><td><strong>结果解释</strong></td><td>分数含义解释、剖面图模式分析、各量表间比较</td><td>结合常模和理论框架解释</td></tr>
+<tr><td><strong>综合印象</strong></td><td>整合所有测验结果形成总体印象</td><td>避免仅看单个分数</td></tr>
+<tr><td><strong>建议</strong></td><td>基于测验结果提出后续咨询或转介建议</td><td>建议应具体、可操作</td></tr>
+</table>
+<p><strong>施测记录要求：</strong></p>
+<ul>
+<li>记录施测时间、地点、环境条件</li>
+<li>记录来访者的配合程度和特殊行为（如犹豫、反复修改、情绪反应）</li>
+<li>记录施测过程中出现的异常情况（如中断、时间超限）</li>
+<li>原始答题纸应归档保存</li>
+</ul>
+<p><strong>结果解释书写规范：</strong></p>
+<table class="data-table">
+<tr><th>原则</th><th>说明</th><th>示例</th></tr>
+<tr><td><strong>客观性</strong></td><td>基于数据说话，不做超出测验能力的推论</td><td>&quot;该被试VIQ=88，低于平均水平&quot; 而非 &quot;该被试智力差&quot;</td></tr>
+<tr><td><strong>谨慎性</strong></td><td>使用&quot;倾向于&quot;&quot;可能&quot;等措辞，避免绝对化判断</td><td>&quot;该结果提示可能存在……倾向&quot;</td></tr>
+<tr><td><strong>综合性</strong></td><td>不孤立解读单个分数，结合整体模式</td><td>&quot;虽然D量表偏高，但结合临床访谈……&quot;</td></tr>
+<tr><td><strong>可理解性</strong></td><td>面向来访者时使用通俗语言，避免术语堆砌</td><td>&quot;在情绪方面，您目前可能有些低落&quot; 而非 &quot;D量表T=68&quot;</td></tr>
+<tr><td><strong>局限性说明</strong></td><td>说明测验结果的适用范围和限制</td><td>&quot;本次结果仅反映当前状态，不代表长期特征&quot;</td></tr>
+</table>
+<p><strong>剖面图分析方法：</strong></p>
+<ul>
+<li><strong>高低点分析：</strong> 识别最高分和最低分量表，分析其意义</li>
+<li><strong>模式分析：</strong> 观察量表分数的整体模式（如MMPI的&quot;神经症性V型&quot;）</li>
+<li><strong>临界值比较：</strong> 标注超出临界值的量表</li>
+<li><strong>量表间差异：</strong> 比较相关量表间的差异（如VIQ vs PIQ差异&gt;10分有临床意义）</li>
+</ul>
+<p><strong>常见剖面图模式：</strong></p>
+<table class="data-table">
+<tr><th>测验</th><th>模式</th><th>含义</th></tr>
+<tr><td>MMPI</td><td>1-2-3高分期（神经症三联）</td><td>疑病-抑郁-癔症模式</td></tr>
+<tr><td>MMPI</td><td>6-7-8高分期</td><td>偏执-精神衰弱-精神分裂模式</td></tr>
+<tr><td>WAIS-RC</td><td>VIQ &gt; PIQ（差&gt;10分）</td><td>言语能力优于操作能力</td></tr>
+<tr><td>WAIS-RC</td><td>PIQ &gt; VIQ（差&gt;10分）</td><td>操作能力优于言语能力</td></tr>
+</table>
+<p><strong>报告注意事项：</strong></p>
+<ul>
+<li>测验报告应由施测者本人撰写或签字确认</li>
+<li>不得将原始分数直接告知来访者，应转化为可理解的信息</li>
+<li>测验材料（题目册、答题纸）不得随报告交给来访者</li>
+<li>报告中应注明所用测验版本和常模</li>
+<li>电子版报告应加密存储，保护来访者隐私</li>
+</ul>
+<hr>
+<h2 id="mod-八">八、心理咨询通用技术</h2>
+<h3 id="sec-8.1">8.1 初诊接待</h3>
+<p><strong>目的：</strong> 建立良好咨询关系、收集初步资料、明确求助者问题性质。</p>
+<p><strong>注意事项：</strong></p>
+<ul>
+<li>咨询师态度：平和、诚恳、礼貌</li>
+<li>保持社交距离，目光自然</li>
+<li>保密原则告知</li>
+<li>说明心理咨询性质和限制</li>
+</ul>
+<p><strong>保密原则及例外：</strong></p>
+<ul>
+<li>保密范围：咨询过程中的所有信息</li>
+<li>保密例外：①求助者有自杀/自伤危险；②求助者有伤害他人危险；③法律规定的强制报告义务；④监护人有合法知情权（未成年人）</li>
+<li>处理：将泄密范围控制在最小范围内</li>
+</ul>
+<h3 id="sec-8.2">8.2 摄入性会谈</h3>
+<p><strong>会谈提纲（桑德伯格）：</strong> 身份资料、就诊原因和期望、现状及近况、出生和早年生活、健康和身体状况、家庭背景和婚姻状况、工作和教育背景、性发展状况、价值观和信仰、社会交往、自我评价、重大生活事件、幸福感、期望和未来打算。</p>
+<p><strong>提问技巧：</strong></p>
+<ul>
+<li>开放式提问：&quot;你能谈谈……吗？&quot;</li>
+<li>封闭式提问：&quot;你是否……？&quot;</li>
+<li>避免多重提问、避免&quot;为什么&quot;提问（带指责性）、避免修饰性反问、避免责备性问题</li>
+</ul>
+<p><strong>听的技术：</strong> 倾听、鼓励、重复、内容反应（释义）、情感反应。</p>
+<p><strong>观察技术：</strong> 面部表情、目光接触、身体姿态、声音特征、空间距离。</p>
+<h3 id="sec-8.3">8.3 建立咨询关系</h3>
+<p><strong>建立良好咨询关系的条件（罗杰斯）：</strong></p>
+<table class="data-table">
+<tr><th>条件</th><th>含义</th></tr>
+<tr><td>尊重</td><td>无条件接纳求助者</td></tr>
+<tr><td>热情</td><td>对求助者表达关心</td></tr>
+<tr><td>真诚</td><td>表里一致，不伪装</td></tr>
+<tr><td>共情（同理心）</td><td>设身处地理解求助者</td></tr>
+<tr><td>积极关注</td><td>关注求助者的积极面</td></tr>
+</table>
+<p><strong>共情的层次：</strong></p>
+<ul>
+<li>初级共情：准确反映求助者表达的内容和情绪</li>
+<li>高级共情：反映求助者未表达的潜在情绪和含义</li>
+</ul>
+<p><strong>共情的步骤：</strong></p>
+<ol>
+<li>咨询师离开自己的参照框架</li>
+<li>确认求助者的感受</li>
+<li>向求助者表达理解</li>
+<li>检验共情的准确性</li>
+</ol>
+<h3 id="sec-8.4">8.4 参与性技术</h3>
+<table class="data-table">
+<tr><th>技术</th><th>含义</th></tr>
+<tr><td>倾听</td><td>全神贯注地听，不打断，适度回应</td></tr>
+<tr><td>开放式提问</td><td>用&quot;什么&quot;&quot;怎么&quot;&quot;能否&quot;等提问</td></tr>
+<tr><td>封闭式提问</td><td>用&quot;是&quot;&quot;否&quot;回答，用于澄清和确认</td></tr>
+<tr><td>鼓励技术</td><td>言语或非言语鼓励继续</td></tr>
+<tr><td>重复技术</td><td>重复求助者的话，引起注意或澄清</td></tr>
+<tr><td>内容反应（释义）</td><td>重复求助者言语的主要内容</td></tr>
+<tr><td>情感反应</td><td>反映求助者的情绪感受</td></tr>
+<tr><td>具体化</td><td>协助求助者清楚、准确地表达</td></tr>
+<tr><td>参与性概述</td><td>概括求助者叙述的主要内容</td></tr>
+</table>
+<h3 id="sec-8.5">8.5 影响性技术</h3>
+<table class="data-table">
+<tr><th>技术</th><th>含义</th></tr>
+<tr><td>面质（对质/对峙）</td><td>指出求助者矛盾之处，谨慎使用</td></tr>
+<tr><td>解释</td><td>运用理论解释求助者的问题</td></tr>
+<tr><td>指导</td><td>直接告诉求助者做什么</td></tr>
+<tr><td>情感表达</td><td>咨询师表达自己的情绪</td></tr>
+<tr><td>内容表达</td><td>咨询师传递信息或观点</td></tr>
+<tr><td>自我开放（自我暴露）</td><td>咨询师分享自己的经历</td></tr>
+<tr><td>影响性概述</td><td>咨询师概述自己的观点</td></tr>
+</table>
+<div class="callout"><strong>参与性技术 vs 影响性技术：</strong> 参与性技术是&quot;跟随&quot;求助者（倾听、反应），影响性技术是&quot;引导&quot;求助者（面质、解释、指导）。</div>
+<h3 id="sec-8.6">8.6 识别与处理阻抗</h3>
+<p><strong>阻抗：</strong> 求助者在心理咨询过程中对改变的抵抗。</p>
+<p><strong>阻抗的表现形式：</strong></p>
+<table class="data-table">
+<tr><th>类型</th><th>表现</th></tr>
+<tr><td>讲话程度上的阻抗</td><td>沉默、少言寡语、赘言</td></tr>
+<tr><td>讲话内容上的阻抗</td><td>理论交谈、情绪发泄、谈论小事、假提问题</td></tr>
+<tr><td>讲话方式上的阻抗</td><td>心理外归因、健忘、顺从、控制话题、最终暴露</td></tr>
+<tr><td>咨询关系上的阻抗</td><td>不认真履行安排、诱惑咨询师、请客送礼、过分顺从</td></tr>
+</table>
+<p><strong>阻抗产生的原因：</strong></p>
+<ol>
+<li>不愿否定自我</li>
+<li>不愿面对痛苦</li>
+<li>不愿放弃既得利益</li>
+<li>对心理咨询有误解</li>
+<li>咨询师自身的问题</li>
+</ol>
+<p><strong>处理方法：</strong> 正确认识阻抗的正常性 → 识别表现 → 分析原因 → 以真诚态度讨论 → 调整咨询策略。</p>
+<h3 id="sec-8.7">8.7 识别与处理移情</h3>
+<p><strong>移情：</strong> 求助者将对过去重要人物的情感和态度转移到咨询师身上。</p>
+<table class="data-table">
+<tr><th>类型</th><th>表现</th></tr>
+<tr><td>正移情</td><td>对咨询师产生友好、爱慕、依赖等积极情感</td></tr>
+<tr><td>负移情</td><td>对咨询师产生敌意、不满、拒绝等消极情感</td></tr>
+</table>
+<p><strong>移情 vs 依赖：</strong> 依赖是寻求帮助自己不愿努力；移情是情感投射。</p>
+<p><strong>反移情：</strong> 咨询师对求助者产生的不适当情感反应，应觉察并避免。</p>
+<h3 id="sec-8.8">8.8 咨询方案制定</h3>
+<p><strong>咨询方案内容：</strong> 咨询目标、双方责任权利义务、次数与时间安排、具体方法过程原理、效果评价手段、费用、其他说明。</p>
+<p><strong>有效咨询目标的特征：</strong></p>
+<table class="data-table">
+<tr><th>特征</th><th>说明</th></tr>
+<tr><td>具体</td><td>目标明确，可操作</td></tr>
+<tr><td>可行</td><td>现有条件下可以实现</td></tr>
+<tr><td>积极</td><td>有助于求助者成长</td></tr>
+<tr><td>双方可接受</td><td>咨询师和求助者都认同</td></tr>
+<tr><td>属于心理学性质</td><td>不是生理或物质目标</td></tr>
+<tr><td>可以评估</td><td>有明确的评估标准</td></tr>
+<tr><td>多层次统一</td><td>近期与远期目标协调</td></tr>
+</table>
+<h3 id="sec-8.9">8.9 心理诊断与鉴别诊断</h3>
+<p><strong>诊断流程：</strong></p>
+<pre><code>求助者来访
+    ↓
+初诊接待（建立关系、说明保密）
+    ↓
+摄入性会谈（收集资料、了解问题）
+    ↓
+判断：是否有精神病性症状？
+    ├── 是 → 排除器质性疾病后 → 转介精神科
+    └── 否 → 继续
+    ↓
+判断：心理冲突是常形还是变形？
+    ├── 常形（有现实基础）→
+    │   ├── 未泛化 + 病程&lt;2月 + 功能正常 → 一般心理问题
+    │   ├── 已泛化 + 病程2-6月 + 功能受损 → 严重心理问题
+    │   └── 强烈泛化 + 冲突变形化 → 神经症性心理问题
+    └── 变形（无现实基础）→
+        └── 许又新评分 ≥3分 → 神经症
+    ↓
+制定咨询方案 → 实施咨询 → 评估效果 → 结束咨询</code></pre>
+<p><strong>许又新神经症评定标准：</strong></p>
+<table class="data-table">
+<tr><th>维度</th><th>1分</th><th>2分</th><th>3分</th></tr>
+<tr><td>病程</td><td>&lt;3个月</td><td>3月-1年</td><td>&gt;1年</td></tr>
+<tr><td>精神痛苦程度</td><td>自行摆脱</td><td>需他人帮助</td><td>无法摆脱</td></tr>
+<tr><td>社会功能</td><td>轻微受损</td><td>明显受损</td><td>完全丧失</td></tr>
+</table>
+<ul>
+<li>总分 ≥ 3分：神经症</li>
+<li>总分 = 2分：可疑神经症（神经症性心理问题）</li>
+</ul>
+<p><strong>转介指征：</strong></p>
+<ol>
+<li>问题超出心理咨询范围（精神障碍急性期）</li>
+<li>严重自杀倾向</li>
+<li>器质性疾病需医学治疗</li>
+<li>双重关系</li>
+<li>咨询师能力不足</li>
+<li>咨询中无明显改善</li>
+</ol>
+<h3 id="sec-8.10">8.10 咨询阶段与效果评估</h3>
+<p><strong>心理咨询基本阶段：</strong></p>
+<table class="data-table">
+<tr><th>阶段</th><th>任务</th></tr>
+<tr><td>诊断阶段（初期）</td><td>建立关系、收集资料、明确问题、制定方案</td></tr>
+<tr><td>咨询阶段（中期）</td><td>实施咨询方案，帮助求助者改变</td></tr>
+<tr><td>巩固阶段（后期）</td><td>巩固咨询效果，结束咨询</td></tr>
+</table>
+<p><strong>效果评估维度：</strong> 求助者自评、社会功能恢复、他评、咨询前后测量比较、咨询师观察评定、症状改善程度。</p>
+<p><strong>结束咨询的条件：</strong></p>
+<ol>
+<li>咨询目标已实现</li>
+<li>求助者已掌握解决问题的方法</li>
+<li>求助者能够独立应对问题</li>
+</ol>
+<hr>
+<h2 id="mod-九">九、认知行为咨询方法（CBT）</h2>
+<div class="callout warn">⚠️ <strong>官方三级实务核心模块</strong>，考试占比高，需重点掌握。</div>
+<h3 id="sec-9.1">9.1 CBT理论基础</h3>
+<p><strong>认知行为疗法（CBT）的核心假设：</strong></p>
+<ul>
+<li>人的情绪和行为由其对事件的认知（想法、信念）决定，而非事件本身</li>
+<li>改变适应不良的认知可以改变情绪和行为</li>
+<li>认知、情绪和行为三者相互影响</li>
+</ul>
+<p><strong>两大理论来源：</strong></p>
+<table class="data-table">
+<tr><th>来源</th><th>代表人物</th><th>核心概念</th></tr>
+<tr><td>贝克认知疗法</td><td>阿伦·贝克（A.T. Beck）</td><td>自动思维→核心信念（图式），认知歪曲</td></tr>
+<tr><td>埃利斯合理情绪疗法</td><td>阿尔伯特·埃利斯</td><td>ABC理论，不合理信念</td></tr>
+</table>
+<h3 id="sec-9.2">9.2 认知模型</h3>
+<p><strong>贝克的认知模型（三层认知）：</strong></p>
+<table class="data-table">
+<tr><th>层次</th><th>特征</th><th>例子</th></tr>
+<tr><td>自动思维</td><td>快速、自动浮现的想法，个体常不自知</td><td>&quot;他一定不喜欢我&quot;</td></tr>
+<tr><td>中间信念</td><td>态度、规则、假设</td><td>&quot;如果别人不喜欢我，我就毫无价值&quot;</td></tr>
+<tr><td>核心信念（图式）</td><td>深层、根深蒂固的关于自我、他人、世界的信念</td><td>&quot;我是不可爱的&quot;</td></tr>
+</table>
+<div class="callout key"><strong>重点：</strong> 自动思维是最表层的，核心信念是最深层的。CBT治疗通常从识别自动思维入手，逐步深入到核心信念。</div>
+<h3 id="sec-9.3">9.3 常见认知歪曲</h3>
+<table class="data-table">
+<tr><th>认知歪曲</th><th>含义</th><th>举例</th></tr>
+<tr><td>任意推断</td><td>无证据就下结论</td><td>&quot;他没跟我打招呼，一定讨厌我&quot;</td></tr>
+<tr><td>选择性概括</td><td>只关注消极细节</td><td>考试90分，只关注错的10分</td></tr>
+<tr><td>过度概括</td><td>一件事推广到所有事</td><td>一次失败=&quot;我什么都做不好&quot;</td></tr>
+<tr><td>夸大或缩小</td><td>不成比例地放大或缩小</td><td>小错=灾难；大成就=不算什么</td></tr>
+<tr><td>个人化</td><td>将无关事件归因于自己</td><td>同事心情不好一定是因为我</td></tr>
+<tr><td>全或无思维</td><td>非黑即白，没有中间地带</td><td>&quot;不完美就是失败&quot;</td></tr>
+<tr><td>贴标签</td><td>给自己或他人贴固定标签</td><td>&quot;我是个失败者&quot;</td></tr>
+<tr><td>应该陈述</td><td>用&quot;应该&quot;&quot;必须&quot;要求自己或他人</td><td>&quot;我必须做到最好&quot;</td></tr>
+<tr><td>情绪推理</td><td>用感受代替事实</td><td>&quot;我觉得无助，所以我一定无能&quot;</td></tr>
+<tr><td>读心术</td><td>认为自己知道别人在想什么</td><td>&quot;他们都在笑话我&quot;</td></tr>
+</table>
+<h3 id="sec-9.4">9.4 CBT治疗流程</h3>
+<p><strong>标准CBT治疗结构（通常8-20次）：</strong></p>
+<table class="data-table">
+<tr><th>阶段</th><th>内容</th></tr>
+<tr><td>评估阶段（1-3次）</td><td>问题评估、建立关系、概念化、 psychoeducation（心理教育）</td></tr>
+<tr><td>认知干预阶段（4-12次）</td><td>识别自动思维→检验思维→认知重构</td></tr>
+<tr><td>行为干预阶段</td><td>行为激活、暴露、行为实验</td></tr>
+<tr><td>结束与预防复发（最后2-3次）</td><td>巩固技能、制定复发预防计划</td></tr>
+</table>
+<p><strong>单次CBT会谈结构：</strong></p>
+<ol>
+<li>情绪检查（简短量表）</li>
+<li>设置议程</li>
+<li>反馈上一次作业</li>
+<li>讨论议程项目</li>
+<li>布置新作业</li>
+<li>总结和反馈</li>
+</ol>
+<h3 id="sec-9.5">9.5 CBT核心技术</h3>
+<h4 id="9-5-1-认知重构技术">9.5.1 认知重构技术</h4>
+<p><strong>（1）识别自动思维</strong></p>
+<ul>
+<li>方法：思维记录表（ABC记录表）</li>
+<li>让来访者记录：情境(A) → 自动思维(B) → 情绪/行为(C)</li>
+</ul>
+<p><strong>（2）检验自动思维</strong></p>
+<ul>
+<li><strong>苏格拉底式提问（引导发现法）：</strong></li>
+</ul>
+<p>- &quot;支持这个想法的证据是什么？&quot;</p>
+<p>- &quot;反对这个想法的证据是什么？&quot;</p>
+<p>- &quot;有没有其他解释？&quot;</p>
+<p>- &quot;最坏的情况是什么？即使发生也能怎样？&quot;</p>
+<p>- &quot;如果你的朋友有这个想法，你会怎么对他说？&quot;</p>
+<p><strong>（3）认知重构</strong></p>
+<ul>
+<li>识别歪曲认知类型</li>
+<li>寻找替代思维（更平衡、更现实的想法）</li>
+<li>评估想法的可信度（0-100%）</li>
+<li>重新评估情绪强度</li>
+</ul>
+<p><strong>（4）向下箭头技术</strong></p>
+<ul>
+<li>用于挖掘核心信念</li>
+<li>反复提问：&quot;如果这是真的，对你意味着什么？&quot;</li>
+<li>直到达到底层核心信念</li>
+</ul>
+<h4 id="9-5-2-行为技术">9.5.2 行为技术</h4>
+<p><strong>（1）行为激活</strong></p>
+<ul>
+<li>适用于抑郁来访者</li>
+<li>原理：抑郁者活动减少→强化减少→抑郁加重（恶性循环）</li>
+<li>方法：制定活动计划，逐步增加愉悦活动和成就感活动</li>
+<li>活动监测 → 活动计划 → 逐步执行</li>
+</ul>
+<p><strong>（2）行为实验</strong></p>
+<ul>
+<li>检验来访者的信念是否准确</li>
+<li>方法：设计实验来检验某个预测</li>
+</ul>
+<p>- 步骤1：明确要检验的信念</p>
+<p>- 步骤2：制定实验计划</p>
+<p>- 步骤3：执行实验</p>
+<p>- 步骤4：记录结果</p>
+<p>- 步骤5：讨论结论，更新信念</p>
+<p><strong>（3）暴露技术</strong></p>
+<ul>
+<li>适用于焦虑、恐惧、强迫等问题</li>
+<li>类型：</li>
+</ul>
+<p>- <strong>想象暴露：</strong> 在想象中面对恐惧情境</p>
+<p>- <strong>现场暴露：</strong> 实际面对恐惧情境</p>
+<p>- <strong>反应预防：</strong> 阻止强迫行为（用于强迫症）</p>
+<ul>
+<li>原理：通过反复接触恐惧刺激而不逃避，恐惧自然消退</li>
+<li>关键：暴露要持续足够时间，直至焦虑自然下降</li>
+</ul>
+<p><strong>（4）放松训练</strong></p>
+<ul>
+<li>渐进性肌肉放松</li>
+<li>腹式呼吸</li>
+<li>用于降低焦虑水平</li>
+</ul>
+<p><strong>（5）问题解决训练</strong></p>
+<ul>
+<li>步骤：定义问题→头脑风暴方案→评估方案→选择并执行→评估效果</li>
+</ul>
+<h3 id="sec-9.6">9.6 个案概念化</h3>
+<p><strong>个案概念化：</strong> 咨询师对来访者问题的系统性理解框架。</p>
+<p><strong>贝克个案概念化包含：</strong></p>
+<ol>
+<li>相关童年经历</li>
+<li>核心信念（图式）</li>
+<li>中间信念（规则、态度、假设）</li>
+<li>补偿策略</li>
+<li>自动思维</li>
+<li>当前触发情境</li>
+<li>情绪和行为反应</li>
+</ol>
+<h3 id="sec-9.7">9.7 CBT常见应用</h3>
+<table class="data-table">
+<tr><th>问题</th><th>主要CBT策略</th></tr>
+<tr><td>抑郁</td><td>行为激活 + 认知重构 + 问题解决</td></tr>
+<tr><td>焦虑障碍</td><td>暴露 + 认知重构 + 放松训练</td></tr>
+<tr><td>恐惧症</td><td>渐进暴露（系统脱敏）</td></tr>
+<tr><td>强迫症</td><td>暴露与反应预防（ERP）</td></tr>
+<tr><td>惊恐障碍</td><td>内感受暴露 + 认知重构</td></tr>
+<tr><td>失眠</td><td>刺激控制 + 睡眠限制</td></tr>
+</table>
+<h3 id="sec-9.8">9.8 第三浪潮CBT</h3>
+<table class="data-table">
+<tr><th>疗法</th><th>代表人物</th><th>核心特点</th></tr>
+<tr><td>正念认知疗法（MBCT）</td><td>西格尔、威廉姆斯、蒂斯代尔</td><td>结合正念冥想和认知疗法，预防抑郁复发</td></tr>
+<tr><td>辩证行为疗法（DBT）</td><td>玛莎·莱恩汉</td><td>针对边缘型人格障碍，强调接纳与改变并重</td></tr>
+<tr><td>接纳承诺疗法（ACT）</td><td>海斯</td><td>心理灵活性、认知解离、价值导向行动</td></tr>
+</table>
+<hr>
+<h2 id="mod-十">十、人本主义咨询方法</h2>
+<div class="callout warn">⚠️ <strong>官方三级实务核心模块</strong>，需重点掌握。</div>
+<h3 id="sec-10.1">10.1 理论基础</h3>
+<p><strong>代表人物：</strong> 卡尔·罗杰斯（Carl Rogers）</p>
+<p><strong>核心假设：</strong></p>
+<ul>
+<li>人有自我实现的倾向（actualizing tendency）——个体内在的成长和完善的动力</li>
+<li>人有理解自己、解决自己问题的能力</li>
+<li>心理障碍的原因：价值条件化导致自我不协调</li>
+<li>治疗不是&quot;修复&quot;来访者，而是创造安全氛围，促进来访者自我探索和成长</li>
+</ul>
+<h3 id="sec-10.2">10.2 罗杰斯人格理论</h3>
+<p><strong>关键概念：</strong></p>
+<table class="data-table">
+<tr><th>概念</th><th>含义</th></tr>
+<tr><td>自我概念</td><td>个体对自己的知觉和认识（&quot;我是怎样的人&quot;）</td></tr>
+<tr><td>理想自我</td><td>个体希望成为的样子</td></tr>
+<tr><td>自我不协调</td><td>自我概念与实际经验不一致时产生的状态</td></tr>
+<tr><td>价值条件化</td><td>个体为获得他人积极关注而内化他人的价值标准</td></tr>
+<tr><td>无条件积极关注</td><td>不附带条件地接纳和尊重来访者</td></tr>
+</table>
+<p><strong>自我不协调的产生机制：</strong></p>
+<ol>
+<li>个体有先天需要：积极关注的需要</li>
+<li>重要他人（父母等）给予积极关注时附带条件（&quot;你听话才爱你&quot;）</li>
+<li>个体内化这些条件→形成价值条件化</li>
+<li>当个体经验与价值条件化冲突时→否认或扭曲经验→自我不协调</li>
+<li>自我不协调→焦虑→防御行为→心理问题</li>
+</ol>
+<h3 id="sec-10.3">10.3 治疗关系三要素</h3>
+<p>罗杰斯认为，治疗师需要提供三个核心条件，这是治疗有效性的关键：</p>
+<table class="data-table">
+<tr><th>要素</th><th>含义</th><th>具体表现</th></tr>
+<tr><td><strong>真诚一致</strong></td><td>咨询师表里一致，不戴面具</td><td>真实感受与表达一致；不伪装专业姿态；适度的自我暴露</td></tr>
+<tr><td><strong>无条件积极关注</strong></td><td>不附带条件地接纳和尊重来访者</td><td>不评判；不因来访者的想法或行为而否定其价值；接纳来访者的所有感受</td></tr>
+<tr><td><strong>共情（同理心）</strong></td><td>准确理解来访者的内心世界，如同自己身在其中</td><td>设身处地；从来访者的参照框架理解；将理解传达给来访者</td></tr>
+</table>
+<div class="callout key"><strong>重点：</strong> 罗杰斯强调&quot;关系即治疗&quot;。这三个条件不是技术，而是咨询师的存在方式。治疗关系本身就有治疗性。</div>
+<h3 id="sec-10.4">10.4 人本主义治疗过程</h3>
+<p>罗杰斯描述的治疗过程中来访者的变化：</p>
+<table class="data-table">
+<tr><th>阶段</th><th>来访者状态</th></tr>
+<tr><td>阶段1</td><td>不愿交流，封闭，否认问题</td></tr>
+<tr><td>阶段2</td><td>开始表达，但仍疏远、客观</td></tr>
+<tr><td>阶段3</td><td>更多自由表达个人感受，但仍有防御</td></tr>
+<tr><td>阶段4</td><td>开始表达&quot;此时此地&quot;的感受，对经验开放</td></tr>
+<tr><td>阶段5</td><td>在咨询中能自由表达，但咨询外仍有困难</td></tr>
+<tr><td>阶段6</td><td>体验到自我的流动和变化，不再僵化</td></tr>
+<tr><td>阶段7</td><td>在咨询外也能自主成长，自我与经验高度协调</td></tr>
+</table>
+<h3 id="sec-10.5">10.5 人本主义核心技术</h3>
+<table class="data-table">
+<tr><th>技术</th><th>说明</th></tr>
+<tr><td>情感反映</td><td>准确反映来访者的情绪感受（&quot;你感到很失望&quot;）</td></tr>
+<tr><td>意义探索</td><td>帮助来访者探索其经历的意义</td></tr>
+<tr><td>在场（presence）</td><td>咨询师全神贯注地与来访者同在</td></tr>
+<tr><td>非言语回应</td><td>通过目光、点头等传达关注和理解</td></tr>
+<tr><td>澄清</td><td>帮助来访者更清楚地认识自己的感受和想法</td></tr>
+<tr><td>总结</td><td>整合来访者的叙述，帮助其看到整体</td></tr>
+</table>
+<div class="callout warn"><strong>注意：</strong> 人本主义不使用面质、指导、解释等影响性技术。咨询师是&quot;陪伴者&quot;而非&quot;专家&quot;。</div>
+<h3 id="sec-10.6">10.6 人本主义适用范围与局限</h3>
+<p><strong>适用：</strong></p>
+<ul>
+<li>自我成长和发展问题</li>
+<li>人际关系问题</li>
+<li>自尊问题</li>
+<li>存在意义问题</li>
+<li>适应性问题</li>
+</ul>
+<p><strong>局限：</strong></p>
+<ul>
+<li>对严重精神障碍（如精神分裂症急性期）不适用</li>
+<li>对需要结构化干预的问题（如恐惧症的暴露治疗）可能不足</li>
+<li>治疗过程较长，缺乏标准化结构</li>
+<li>对急性行为问题见效较慢</li>
+</ul>
+<h3 id="sec-10.7">10.7 与其他流派的关系</h3>
+<ul>
+<li>人本主义强调的是治疗关系的基本态度，可以与其他流派技术整合</li>
+<li>在CBT、焦点解决等流派中，治疗关系同样被视为重要的共同因素</li>
+<li>罗杰斯的影响超越了人本主义本身，其三要素已成为所有心理咨询的基础</li>
+</ul>
+<hr>
+<h2 id="mod-十一">十一、团体心理辅导</h2>
+<div class="callout warn">⚠️ <strong>官方三级实务核心模块</strong>，原材料完全缺失，以下为新增内容。</div>
+<h3 id="sec-11.1">11.1 团体心理辅导概述</h3>
+<p><strong>团体心理辅导：</strong> 由咨询师（领导者）引导，通过团体成员间的互动，帮助成员解决问题、促进成长的心理咨询形式。</p>
+<p><strong>团体辅导的特点：</strong></p>
+<ul>
+<li><strong>多向互动：</strong> 不仅咨询师-成员互动，成员间也互动</li>
+<li><strong>同伴反馈：</strong> 成员间提供真实反馈，效果独特</li>
+<li><strong>普遍感：</strong> 成员发现&quot;不是只有我有这样的问题&quot;</li>
+<li><strong>经济高效：</strong> 同时帮助多人</li>
+<li><strong>模仿学习：</strong> 观察他人的应对方式</li>
+<li><strong>实践场域：</strong> 团体是社会的微缩，可在团体中练习社交技能</li>
+</ul>
+<h3 id="sec-11.2">11.2 团体类型</h3>
+<table class="data-table">
+<tr><th>分类标准</th><th>类型</th><th>特点</th></tr>
+<tr><td>按目标</td><td>治疗性团体</td><td>针对特定心理问题</td></tr>
+<tr><td>发展性团体</td><td>促进个人成长</td></tr>
+<tr><td>支持性团体</td><td>提供情感支持（如丧亲者支持团体）</td></tr>
+<tr><td>按开放性</td><td>封闭式团体</td><td>成员固定不变</td></tr>
+<tr><td>开放式团体</td><td>成员可随时加入/退出</td></tr>
+<tr><td>按时间</td><td>限时团体</td><td>预先设定次数</td></tr>
+<tr><td>长期团体</td><td>不预设结束时间</td></tr>
+<tr><td>按规模</td><td>小团体（5-8人）</td><td>互动充分</td></tr>
+<tr><td>中团体（8-12人）</td><td>最常见</td></tr>
+<tr><td>大团体（12人以上）</td><td>需要特殊管理</td></tr>
+</table>
+<h3 id="sec-11.3">11.3 团体发展阶段</h3>
+<table class="data-table">
+<tr><th>阶段</th><th>特点</th><th>领导者任务</th></tr>
+<tr><td>定向阶段（形成期）</td><td>成员焦虑、试探、客气、依赖领导者</td><td>建立安全感、制定规范、明确目标</td></tr>
+<tr><td>过渡阶段（冲突期）</td><td>成员间出现冲突、挑战领导者、表达不满</td><td>处理冲突、接纳负面情绪、促进信任</td></tr>
+<tr><td>工作阶段（规范期）</td><td>凝聚力增强、深入探索、坦诚反馈</td><td>促进深度互动、鼓励成员承担更多责任</td></tr>
+<tr><td>结束阶段</td><td>回顾成长、处理分离焦虑、展望未来</td><td>总结经验、处理离别情绪、巩固成果</td></tr>
+</table>
+<div class="callout"><strong>记忆口诀：</strong> &quot;定冲作结&quot;——定向→冲突→工作→结束。</div>
+<h3 id="sec-11.4">11.4 团体动力学</h3>
+<p><strong>团体凝聚力：</strong> 使成员留在团体内并参与团体活动的力量。凝聚力是团体效果的重要预测因素。</p>
+<p><strong>团体规范：</strong> 制约成员行为的共同标准。包括明文规范和隐性规范。</p>
+<p><strong>团体角色：</strong> 成员在团体中形成的稳定行为模式。</p>
+<p><strong>亚团体：</strong> 团体内的小群体，可能促进或阻碍团体发展。</p>
+<h3 id="sec-11.5">11.5 亚隆团体疗效因子</h3>
+<p>欧文·亚隆（Irvin Yalom）提出的11个团体治疗疗效因子：</p>
+<table class="data-table">
+<tr><th>因子</th><th>含义</th></tr>
+<tr><td>普遍性</td><td>发现他人也有类似问题，不再孤独</td></tr>
+<tr><td>利他主义</td><td>帮助他人使自己感到有价值</td></tr>
+<tr><td>希望的灌注</td><td>看到他人好转，对自己也产生希望</td></tr>
+<tr><td>信息传递</td><td>获取直接的建议和信息</td></tr>
+<tr><td>社交学习</td><td>发展基本社交技能</td></tr>
+<tr><td>人际学习</td><td>通过团体反馈认识自己的人际模式</td></tr>
+<tr><td>团体凝聚力</td><td>归属感和被接纳感</td></tr>
+<tr><td>情绪宣泄</td><td>自由表达被压抑的情感</td></tr>
+<tr><td>行为模仿</td><td>学习和采纳他人的有效行为</td></tr>
+<tr><td>存在因子</td><td>面对责任、死亡、孤独等存在议题</td></tr>
+<tr><td>原始家庭矫正</td><td>重现家庭关系模式并获得矫正性体验</td></tr>
+</table>
+<div class="callout key"><strong>重点：</strong> 亚隆11个疗效因子是高频考点，需熟记。</div>
+<h3 id="sec-11.6">11.6 团体领导者角色与技术</h3>
+<p><strong>领导者角色：</strong></p>
+<ul>
+<li>创设者：创造安全的团体氛围</li>
+<li>促进者：促进成员间的互动</li>
+<li>参与者：适度参与，作为团体一员</li>
+<li>观察者：关注团体动力和个体状态</li>
+<li>规则维护者：维护团体规范</li>
+</ul>
+<p><strong>领导者基本技术：</strong></p>
+<table class="data-table">
+<tr><th>技术</th><th>说明</th></tr>
+<tr><td>联结</td><td>将成员的发言与他人的经历联系起来</td></tr>
+<tr><td>阻止</td><td>阻止有害行为（如成员间的攻击性互动）</td></tr>
+<tr><td>截断</td><td>适时终止过长的独白</td></tr>
+<tr><td>引导</td><td>引导话题方向</td></tr>
+<tr><td>聚焦</td><td>帮助团体聚焦于重要话题</td></tr>
+<tr><td>绕圈</td><td>邀请每位成员就某话题发言</td></tr>
+<tr><td>反馈</td><td>领导者给予成员诚实反馈</td></tr>
+<tr><td>示范</td><td>通过自身行为为成员树立榜样</td></tr>
+</table>
+<h3 id="sec-11.7">11.7 团体辅导流程</h3>
+<p><strong>团体前准备：</strong></p>
+<ol>
+<li>确定团体目标</li>
+<li>筛选成员（排除不适合者：严重精神障碍急性期、极端自杀倾向、严重攻击性等）</li>
+<li>确定团体规模和次数</li>
+<li>制定团体方案</li>
+<li>预备性访谈（与每位成员单独见面）</li>
+</ol>
+<p><strong>团体实施：</strong></p>
+<ol>
+<li>第一次团体：建立规范、破冰、明确目标</li>
+<li>中间各次：按方案推进，处理团体动力</li>
+<li>最后一次：总结、处理分离、评估效果</li>
+</ol>
+<p><strong>团体后评估：</strong></p>
+<ul>
+<li>成员自评</li>
+<li>领导者观察</li>
+<li>标准化量表前后测</li>
+</ul>
+<h3 id="sec-11.8">11.8 团体伦理</h3>
+<ul>
+<li><strong>知情同意：</strong> 成员需了解团体目标、规则、保密限制</li>
+<li><strong>保密：</strong> 团体内容保密，但难以完全保证（需告知成员）</li>
+<li><strong>成员筛选：</strong> 不适合者应予以排除并个别说明</li>
+<li><strong>自愿原则：</strong> 成员有权退出</li>
+<li><strong>领导者胜任力：</strong> 需接受过团体辅导专业训练</li>
+</ul>
+<h3 id="sec-11.9">11.9 团体活动设计</h3>
+<div class="callout warn">⚠️ 官方大纲要求掌握团体活动方案设计，以下为补充内容。</div>
+<p><strong>团体活动设计原则：</strong></p>
+<table class="data-table">
+<tr><th>原则</th><th>说明</th></tr>
+<tr><td><strong>目标导向</strong></td><td>每次活动都应服务于团体总体目标和本次主题</td></tr>
+<tr><td><strong>循序渐进</strong>**</td><td>活动由浅入深，从低风险到高风险，从认知到情感</td></tr>
+<tr><td><strong>参与性</strong></td><td>确保每位成员都有参与机会，避免少数人主导</td></tr>
+<tr><td><strong>安全性</strong></td><td>活动不得对成员造成心理伤害，敏感话题需谨慎处理</td></tr>
+<tr><td><strong>适应性</strong></td><td>根据团体动力和成员状态灵活调整方案</td></tr>
+<tr><td><strong>体验性</strong></td><td>通过体验而非说教促进改变</td></tr>
+</table>
+<p><strong>团体活动类型与阶段对应：</strong></p>
+<table class="data-table">
+<tr><th>团体阶段</th><th>活动类型</th><th>活动目的</th><th>活动示例</th></tr>
+<tr><td>定向阶段（第1-2次）</td><td>破冰活动、相识活动</td><td>降低焦虑、建立安全感、相互认识</td><td>&quot;名字接龙&quot;&quot;两真一假&quot;&quot;寻人游戏&quot;</td></tr>
+<tr><td>过渡阶段（第3-4次）</td><td>信任活动、轻度自我暴露</td><td>建立信任、处理冲突</td><td>&quot;信任倒&quot;&quot;盲行&quot;&quot;价值观拍卖&quot;</td></tr>
+<tr><td>工作阶段（第5-N次）</td><td>深度探索活动、反馈活动</td><td>促进深度自我探索、人际学习</td><td>&quot; Johari窗&quot;&quot;空椅技术&quot;&quot;生命线&quot;&quot;热座&quot;&quot;绕圈发言&quot;</td></tr>
+<tr><td>结束阶段（最后1-2次）</td><td>总结活动、告别活动</td><td>回顾成长、处理分离、展望未来</td><td>&quot;成长回顾&quot;&quot;互赠祝福&quot;&quot;团体纪念&quot;&quot;未来信&quot;</td></tr>
+</table>
+<p><strong>单次团体活动方案结构：</strong></p>
+<table class="data-table">
+<tr><th>环节</th><th>时间分配</th><th>内容</th></tr>
+<tr><td><strong>暖场/签到</strong></td><td>5-10分钟</td><td>情绪检查、回顾上周作业、简短暖场活动</td></tr>
+<tr><td><strong>主题导入</strong></td><td>5-10分钟</td><td>引入本次主题、说明活动目的和规则</td></tr>
+<tr><td><strong>主体活动</strong></td><td>30-45分钟</td><td>核心体验活动（1-2个）</td></tr>
+<tr><td><strong>分享讨论</strong></td><td>20-30分钟</td><td>成员分享体验感受、相互反馈</td></tr>
+<tr><td><strong>总结整合</strong></td><td>10-15分钟</td><td>领导者总结、联系生活实际</td></tr>
+<tr><td><strong>作业布置</strong></td><td>5分钟</td><td>布置本周练习任务</td></tr>
+<tr><td><strong>结束仪式</strong></td><td>5分钟</td><td>简短结束仪式（如一句话总结今天感受）</td></tr>
+</table>
+<p><strong>常用团体活动介绍：</strong></p>
+<table class="data-table">
+<tr><th>活动</th><th>适用阶段</th><th>说明</th></tr>
+<tr><td><strong>名字接龙</strong></td><td>破冰</td><td>成员依次说出自己的名字和一个形容词，后一人需重复前面所有人</td></tr>
+<tr><td><strong>两真一假</strong></td><td>破冰</td><td>每人说三个关于自己的陈述（两真一假），其他人猜哪个是假</td></tr>
+<tr><td><strong>信任漫步</strong></td><td>信任建立</td><td>两人一组，一人蒙眼，另一人引导行走，体验信任与被信任</td></tr>
+<tr><td><strong>价值观拍卖</strong></td><td>价值观探索</td><td>给每人虚拟金钱，拍卖价值观清单（如健康、爱情、自由等）</td></tr>
+<tr><td><strong>Johari窗</strong></td><td>自我认知</td><td>通过自我披露和他人反馈扩大&quot;公开区&quot;</td></tr>
+<tr><td><strong>生命线</strong></td><td>人生回顾</td><td>画出自己生命的高低谷，在团体中分享</td></tr>
+<tr><td><strong>热座</strong></td><td>深度反馈</td><td>一人坐中间，其他成员轮流给予真诚反馈</td></tr>
+<tr><td><strong>绕圈发言</strong></td><td>确保参与</td><td>每位成员就某一话题简短发言，确保人人参与</td></tr>
+<tr><td><strong>空椅技术</strong></td><td>角色探索</td><td>对着空椅想象某人坐在那里，表达未说出的话</td></tr>
+<tr><td><strong>团体雕塑</strong></td><td>关系呈现</td><td>用身体空间排列呈现家庭或人际关系的动态</td></tr>
+</table>
+<p><strong>团体活动设计注意事项：</strong></p>
+<ul>
+<li>每次活动前准备充足的材料和道具</li>
+<li>设定明确的时间限制，避免活动拖沓</li>
+<li>对可能引发强烈情绪的活动提前预警</li>
+<li>活动后必须留出足够的讨论时间，避免&quot;做了不谈&quot;</li>
+<li>对沉默成员适当鼓励但不强迫</li>
+<li>活动设计应考虑文化背景和成员接受度</li>
+</ul>
+<hr>
+<h2 id="mod-十二">十二、心理咨询伦理实务</h2>
+<div class="callout warn">⚠️ <strong>官方模块名称为&quot;心理咨询伦理实务&quot;</strong>，比原&quot;职业道德&quot;更聚焦实务场景。</div>
+<h3 id="sec-12.1">12.1 心理咨询师伦理基本原则</h3>
+<table class="data-table">
+<tr><th>原则</th><th>含义</th></tr>
+<tr><td><strong>善行</strong></td><td>以来访者福祉为首要考虑，帮助来访者，不造成伤害</td></tr>
+<tr><td><strong>责任</strong></td><td>保持专业水准，对自己的专业行为负责</td></tr>
+<tr><td><strong>诚信</strong></td><td>在工作中保持诚实和正直</td></tr>
+<tr><td><strong>公正</strong></td><td>公平地对待所有来访者</td></tr>
+<tr><td><strong>尊重</strong></td><td>尊重来访者的权利、尊严、隐私和自我决定权</td></tr>
+</table>
+<h3 id="sec-12.2">12.2 知情同意</h3>
+<ul>
+<li>咨询前应告知来访者：咨询性质、方法、过程、可能的收益和风险、费用、保密及限制</li>
+<li>征得来访者知情同意后方可开始咨询</li>
+<li>未成年人需征得监护人同意</li>
+<li>知情同意是一个持续过程，非一次性签署</li>
+</ul>
+<h3 id="sec-12.3">12.3 保密与保密例外</h3>
+<p><strong>保密范围：</strong> 咨询过程中的所有信息（谈话内容、测验结果、个人资料等）。</p>
+<p><strong>保密例外（必须打破保密的情况）：</strong></p>
+<ol>
+<li>来访者有自杀或自伤的严重危险</li>
+<li>来访者有伤害他人的明确危险</li>
+<li>法律法规要求的强制报告（如虐待儿童、老年人）</li>
+<li>未成年人的监护人合法知情需求</li>
+</ol>
+<p><strong>保密例外处理原则：</strong></p>
+<ul>
+<li>将信息透露范围限制在最小必要范围内</li>
+<li>仅透露与例外情况直接相关的信息</li>
+<li>事先告知来访者需要透露的信息范围（如安全）</li>
+<li>记录保密例外的决策过程</li>
+</ul>
+<p><strong>案例讨论和教学使用：</strong> 应隐去可识别信息。</p>
+<h3 id="sec-12.4">12.4 专业能力</h3>
+<ul>
+<li>咨询师应仅在自身专业能力范围内提供服务</li>
+<li>持续参加专业培训和督导</li>
+<li>不在能力不足时勉强接案</li>
+<li>如实告知来访者自己的专业资质</li>
+<li>遇超出能力范围的个案应及时转介</li>
+</ul>
+<h3 id="sec-12.5">12.5 职业关系与界限</h3>
+<p><strong>双重关系：</strong> 咨询师与来访者之间除了咨询关系以外的其他关系（如朋友、商业伙伴、师生等）。</p>
+<p><strong>禁止的行为：</strong></p>
+<ul>
+<li>不与来访者发展咨询以外的关系</li>
+<li>不与来访者发生性关系或恋爱关系</li>
+<li>不利用咨询关系获取个人利益</li>
+<li>咨询结束后一段时间内仍不应发展亲密关系</li>
+</ul>
+<p><strong>界限管理：</strong></p>
+<ul>
+<li>不接受来访者的贵重礼物</li>
+<li>不与来访者有咨询以外的社交接触</li>
+<li>不为亲友做咨询</li>
+<li>不与现任来访者的亲密关系者做咨询</li>
+</ul>
+<h3 id="sec-12.6">12.6 职业界限</h3>
+<ul>
+<li>明确咨询的心理学性质，不越界进行医学诊断和治疗</li>
+<li>需要药物治疗的来访者应转介精神科医生</li>
+<li>咨询师不得开具处方</li>
+<li>咨询师不得做司法鉴定（除非有相应资质）</li>
+</ul>
+<h3 id="sec-12.7">12.7 心理测量伦理</h3>
+<ul>
+<li>测验结果保密</li>
+<li>测验材料保密（不得让来访者带走测验材料）</li>
+<li>测验结果解释应谨慎客观</li>
+<li>不得滥用测验</li>
+<li>仅在专业能力范围内使用测验</li>
+<li>施测前获得知情同意</li>
+</ul>
+<h3 id="sec-12.8">12.8 收费伦理</h3>
+<ul>
+<li>收费标准应公开透明</li>
+<li>不得过高收费</li>
+<li>不得因费用问题影响咨询质量</li>
+<li>提前告知收费标准</li>
+</ul>
+<h3 id="sec-12.9">12.9 专业督导</h3>
+<ul>
+<li>咨询师应定期接受专业督导</li>
+<li>督导关系中应遵守伦理规范</li>
+<li>督导内容应保密</li>
+<li>三级咨询师应在督导下开展个体咨询工作</li>
+</ul>
+<h3 id="sec-12.10">12.10 广告与宣传</h3>
+<ul>
+<li>不得夸大咨询效果</li>
+<li>不得诋毁同行</li>
+<li>宣传内容应真实客观</li>
+<li>不得使用误导性信息</li>
+</ul>
+<h3 id="sec-12.11">12.11 相关法律法规</h3>
+<div class="callout warn">⚠️ 官方大纲要求心理咨询师掌握与执业相关的法律法规，以下为补充内容。</div>
+<p><strong>一、《中华人民共和国精神卫生法》（2013年5月1日施行）</strong></p>
+<p>与心理咨询师相关的核心条款：</p>
+<table class="data-table">
+<tr><th>条款</th><th>内容</th><th>对咨询师的约束</th></tr>
+<tr><td>第23条</td><td>心理咨询人员不得从事心理治疗或精神障碍的诊断</td><td>心理咨询师不能做诊断，不能做心理治疗</td></tr>
+<tr><td>第51条</td><td>心理咨询活动不得从事心理治疗或精神障碍的诊断、治疗</td><td>明确咨询与治疗的界限</td></tr>
+<tr><td>第76条</td><td>未取得资质从事心理治疗的，由县级以上卫生部门予以警告、罚款</td><td>违法执业的法律后果</td></tr>
+<tr><td>第17条</td><td>精神障碍的诊断应当由精神科执业医师作出</td><td>只有精神科医师有权诊断</td></tr>
+<tr><td>第30条</td><td>精神障碍的住院治疗实行自愿原则</td><td>非自愿住院需符合法定条件</td></tr>
+<tr><td>第44条</td><td>自愿住院治疗的精神障碍患者可以随时要求出院</td><td>尊重患者自主权</td></tr>
+<tr><td>第82条</td><td>精神障碍患者或其监护人、近亲属认为合法权益被侵害的，可依法提起诉讼</td><td>患者法律救济途径</td></tr>
+</table>
+<div class="callout warn"><strong>重点记忆：</strong> 心理咨询师可以从事心理咨询，但不得从事心理治疗和精神障碍诊断。发现可能患有精神障碍的来访者应建议其到医疗机构就诊。</div>
+<p><strong>二、《中华人民共和国个人信息保护法》（2021年11月1日施行）</strong></p>
+<p>与心理咨询相关的要点：</p>
+<table class="data-table">
+<tr><th>要点</th><th>说明</th></tr>
+<tr><td><strong>个人信息定义</strong></td><td>来访者的姓名、身份证号、联系方式、咨询记录等均属于个人信息</td></tr>
+<tr><td><strong>敏感信息</strong></td><td>心理健康信息属于敏感个人信息，需取得单独同意</td></tr>
+<tr><td><strong>处理原则</strong></td><td>合法、正当、必要、诚信原则；最小必要原则</td></tr>
+<tr><td><strong>知情同意</strong>**</td><td>收集个人信息前应告知处理目的、方式、范围、保存期限</td></tr>
+<tr><td><strong>保密义务</strong></td><td>信息处理者应对从业人员进行保密教育</td></tr>
+<tr><td><strong>数据安全</strong></td><td>采取必要措施保障个人信息安全</td></tr>
+<tr><td><strong>删除权</strong></td><td>来访者有权要求删除其个人信息</td></tr>
+</table>
+<p><strong>三、《中华人民共和国未成年人保护法》（2021年修订）</strong></p>
+<p>与心理咨询相关的要点：</p>
+<table class="data-table">
+<tr><th>要点</th><th>说明</th></tr>
+<tr><td><strong>强制报告制度</strong></td><td>发现未成年人遭受或疑似遭受不法侵害时，应当向公安机关报告</td></tr>
+<tr><td><strong>知情同意</strong></td><td>为未成年人提供心理咨询应征得监护人同意</td></tr>
+<tr><td><strong>隐私保护</strong></td><td>未成年人隐私受法律保护，但涉及侵害时需依法报告</td></tr>
+<tr><td><strong>年龄分级</strong></td><td>不满8周岁为无民事行为能力人；8-18周岁为限制民事行为能力人</td></tr>
+</table>
+<div class="callout key"><strong>重点：</strong> 心理咨询师发现未成年人遭受虐待（包括身体虐待、性侵害、精神虐待、忽视）时，有强制报告义务，这属于保密例外的法定情形。</div>
+<p><strong>四、其他相关法律法规</strong></p>
+<table class="data-table">
+<tr><th>法律法规</th><th>相关内容</th></tr>
+<tr><td>《民法典》</td><td>隐私权和个人信息保护（第1032-1039条）；知情同意的民事行为能力要求</td></tr>
+<tr><td>《医师法》（2022年）</td><td>明确心理治疗属于医疗行为，须由取得资质的医师实施</td></tr>
+<tr><td>《家庭教育促进法》（2022年）</td><td>家庭教育指导可纳入心理咨询服务范畴</td></tr>
+<tr><td>《反家庭暴力法》（2016年）</td><td>发现家暴受害者的报告义务</td></tr>
+<tr><td>《残疾人保障法》</td><td>心理康复服务相关条款</td></tr>
+</table>
+<p><strong>五、心理咨询师法律风险防范</strong></p>
+<table class="data-table">
+<tr><th>风险类型</th><th>防范措施</th></tr>
+<tr><td><strong>超范围执业</strong></td><td>严格区分咨询与治疗/诊断的界限，疑似精神障碍及时转介</td></tr>
+<tr><td><strong>隐私泄露</strong></td><td>妥善保管咨询记录，电子数据加密，签署保密协议</td></tr>
+<tr><td><strong>未经知情同意</strong></td><td>咨询前签署知情同意书，未成年人须监护人签字</td></tr>
+<tr><td><strong>双重关系</strong></td><td>避免与来访者发展其他关系，避免利益冲突</td></tr>
+<tr><td><strong>未履行报告义务</strong></td><td>遇法定报告情形（如儿童虐待）必须依法报告</td></tr>
+<tr><td><strong>不当宣传</strong></td><td>不夸大疗效，不使用&quot;治愈&quot;&quot;治疗&quot;等医疗用语</td></tr>
+</table>
+<div class="callout warn"><strong>核心记忆：</strong> 心理咨询师的法律边界——&quot;三不得&quot;：不得从事心理治疗、不得诊断精神障碍、不得开具处方药物。</div>
+<h3 id="sec-12.12">12.12 伦理决策模型</h3>
+<div class="callout warn">⚠️ 官方大纲在伦理实务模块中要求掌握&quot;伦理决策&quot;，以下为补充内容。</div>
+<p><strong>伦理决策的意义：</strong> 当咨询师面临伦理困境（如保密与安全的冲突、双重关系的诱惑、价值观差异等）时，需要一套系统的决策流程来做出符合伦理的判断。</p>
+<p><strong>Forester-Miller &amp; Davis 五步伦理决策模型：</strong></p>
+<table class="data-table">
+<tr><th>步骤</th><th>内容</th><th>关键问题</th></tr>
+<tr><td><strong>1. 明确问题</strong></td><td>识别伦理困境的性质和涉及的原则</td><td>什么伦理原则之间存在冲突？</td></tr>
+<tr><td><strong>2. 参照伦理准则</strong></td><td>查阅中国心理学会临床与咨询心理学伦理守则相关条款</td><td>守则对此类情况有何规定？</td></tr>
+<tr><td><strong>3. 适用伦理原则</strong></td><td>确定最相关的伦理原则并排序优先级</td><td>善行、责任、诚信、公正、尊重——哪个优先？</td></tr>
+<tr><td><strong>4. 拟定方案并评估</strong></td><td>列出所有可能的行动方案，评估每种方案的后果</td><td>每种方案对来访者、咨询师、第三方的影响？</td></tr>
+<tr><td><strong>5. 做出决策并行动</strong></td><td>选择最佳方案，实施并记录决策过程</td><td>决策依据是否充分？是否需要督导或法律咨询？</td></tr>
+</table>
+<p><strong>Kitchener 五伦理原则优先层级（当原则冲突时）：</strong></p>
+<table class="data-table">
+<tr><th>优先级</th><th>原则</th><th>理由</th></tr>
+<tr><td>1</td><td><strong>善行（不伤害）</strong></td><td>来访者安全和福祉是最高考量</td></tr>
+<tr><td>2</td><td><strong>公正与尊重</strong></td><td>尊重来访者的自主权和权利</td></tr>
+<tr><td>3</td><td><strong>诚信</strong></td><td>诚实是信任关系的基础</td></tr>
+<tr><td>4</td><td><strong>责任</strong></td><td>专业胜任力和专业行为</td></tr>
+<tr><td>5</td><td><strong>其他考虑</strong></td><td>法律要求、机构政策等</td></tr>
+</table>
+<p><strong>常见伦理困境及处理思路：</strong></p>
+<table class="data-table">
+<tr><th>困境类型</th><th>冲突点</th><th>决策方向</th></tr>
+<tr><td>保密 vs 安全</td><td>来访者透露自杀意念</td><td>安全优先→保密例外→评估风险→最小披露</td></tr>
+<tr><td>保密 vs 法律</td><td>发现未成年人受虐待</td><td>法律强制报告→告知来访者需报告→向公安机关报告</td></tr>
+<tr><td>双重关系</td><td>来访者是同事的亲友</td><td>避免双重关系→如不可避免需获得知情同意并设置清晰界限</td></tr>
+<tr><td>价值观冲突</td><td>来访者的价值观与咨询师不同</td><td>尊重来访者→如无法保持客观则转介</td></tr>
+<tr><td>能力不足</td><td>来访者问题超出咨询师专业范围</td><td>诚实告知→及时转介→不勉强接案</td></tr>
+<tr><td>知情同意 vs 紧急情况</td><td>危机状态下无法获得知情同意</td><td>先提供必要的危机干预→事后补充知情同意</td></tr>
+</table>
+<p><strong>伦理决策注意事项：</strong></p>
+<ul>
+<li>决策过程应记录在案，包括困境描述、考虑的方案、选择理由</li>
+<li>遇复杂困境应及时寻求督导意见</li>
+<li>必要时咨询法律专业人士</li>
+<li>决策应以来访者福祉为核心，而非咨询师自身利益</li>
+<li>伦理决策不是一次性事件，需持续评估和调整</li>
+</ul>
+<div class="callout"><strong>记忆口诀：</strong> &quot;问准原方行&quot;——明确问题→参照准则→适用原则→拟定方案→做出决策。</div>
+<h3 id="sec-12.13">12.13 伦理守则概述</h3>
+<div class="callout warn">⚠️ 考试可能考查伦理守则的名称、结构和核心总则。</div>
+<p><strong>伦理守则名称：</strong> 《中国心理学会临床与咨询心理学工作伦理守则》（第二版，2018年2月由中国心理学会常务理事会审议通过）</p>
+<p><strong>总则（五原则）：</strong> 善行、责任、诚信、公正、尊重（已在12.1详述）</p>
+<p><strong>守则结构（十章）：</strong></p>
+<table class="data-table">
+<tr><th>序号</th><th>章节</th><th>条款数</th><th>核心内容</th></tr>
+<tr><td>1</td><td>专业关系</td><td>18条</td><td>非歧视、避免伤害、收费、转介、礼物、双重关系、性关系禁止</td></tr>
+<tr><td>2</td><td>知情同意</td><td>5条</td><td><strong>第二版新增章节</strong>，来访者有权了解资质、方法、目标、风险</td></tr>
+<tr><td>3</td><td>隐私权与保密性</td><td>7条</td><td>保密范围、保密例外、录音录像同意、案例讨论匿名化</td></tr>
+<tr><td>4</td><td>专业胜任力和专业责任</td><td>6条</td><td>能力范围、继续教育、自我保健、职业能力评估</td></tr>
+<tr><td>5</td><td>心理测量与评估</td><td>6条</td><td>测验使用资质、结果解释、材料保密、不滥用</td></tr>
+<tr><td>6</td><td>教学培训与督导</td><td>13条</td><td>督导关系界限、不强制理论取向、评估公正</td></tr>
+<tr><td>7</td><td>研究和发表</td><td>13条</td><td>知情同意、受试者权利、不剽窃、署名规范</td></tr>
+<tr><td>8</td><td><strong>远程专业工作</strong>（网络/电话咨询）</td><td>5条</td><td><strong>第二版新增</strong>，网络咨询设置、身份验证、保密技术</td></tr>
+<tr><td>9</td><td><strong>媒体沟通与合作</strong></td><td>6条</td><td><strong>第二版新增</strong>，公众媒体言论规范、不误导公众</td></tr>
+<tr><td>10</td><td>伦理问题处理</td><td>9条</td><td>伦理困境解决、同行监督、伦理投诉处理</td></tr>
+</table>
+<div class="callout key"><strong>重点记忆：</strong> 第一版（2007年）7章 → 第二版（2018年）10章，新增&quot;知情同意&quot;&quot;远程专业工作&quot;&quot;媒体沟通与合作&quot;三个独立章节。</div>
+<h3 id="sec-12.14">12.14 转介伦理</h3>
+<div class="callout warn">⚠️ 转介是三级咨询师常见实务场景，考试高频考点。</div>
+<p><strong>转介的定义：</strong> 咨询师将来访者转交给另一位专业人士或机构继续提供服务。</p>
+<p><strong>必须转介的情形：</strong></p>
+<table class="data-table">
+<tr><th>情形</th><th>说明</th></tr>
+<tr><td>超出专业能力范围</td><td>来访者问题不在咨询师受训领域内</td></tr>
+<tr><td>价值观冲突影响客观性</td><td>咨询师无法保持中立</td></tr>
+<tr><td>来访者无法获益</td><td>当前咨询关系无法促进来访者改变</td></tr>
+<tr><td>来访者主动要求</td><td>来访者希望更换咨询师</td></tr>
+<tr><td>疑似精神障碍</td><td>需要医学诊断和治疗，应转介精神科</td></tr>
+<tr><td>双重关系风险</td><td>发现与来访者存在潜在利益冲突</td></tr>
+</table>
+<p><strong>转介的伦理要求：</strong></p>
+<table class="data-table">
+<tr><th>要求</th><th>具体内容</th></tr>
+<tr><td><strong>说明原因</strong></td><td>向来访者坦诚说明转介原因，不隐瞒</td></tr>
+<tr><td><strong>负责任转介</strong></td><td>本着对来访者负责的态度，推荐合适的专业人士或机构</td></tr>
+<tr><td><strong>书面记录</strong></td><td>记录转介情况和原因</td></tr>
+<tr><td><strong>不得收取费用</strong></td><td>转介至其他专业人士或机构时，不得收取任何转介费用</td></tr>
+<tr><td><strong>不得向第三方付费</strong></td><td>也不得向第三方支付与转介相关的任何费用</td></tr>
+<tr><td><strong>机构内限制</strong></td><td>机构中心理师未经机构允许，不得将来访者转介为个人接诊</td></tr>
+<tr><td><strong>同行关系</strong></td><td>如来访者已有咨询师且未终止，应建议其继续在原咨询师处寻求帮助</td></tr>
+<tr><td><strong>过渡安排</strong></td><td>转介非突然中断，应做好过渡衔接和情绪处理</td></tr>
+</table>
+<div class="callout warn"><strong>重点：</strong> &quot;转介不收费，收费不转介&quot;——转介过程中不得有任何经济利益交换。</div>
+<h3 id="sec-12.15">12.15 远程心理咨询伦理（网络/电话咨询）</h3>
+<div class="callout warn">⚠️ 第二版伦理守则新增章节，反映在线咨询发展趋势，考试可能涉及。</div>
+<p><strong>远程咨询的界定：</strong> 通过网络视频、电话、文字等电子媒介进行的心理咨询服务。</p>
+<p><strong>远程咨询的伦理要求：</strong></p>
+<table class="data-table">
+<tr><th>要点</th><th>具体内容</th></tr>
+<tr><td><strong>身份验证</strong></td><td>咨询双方应验证彼此真实身份和专业资质</td></tr>
+<tr><td><strong>知情同意</strong></td><td>需额外告知远程咨询的局限性、技术风险、保密差异</td></tr>
+<tr><td><strong>保密技术</strong></td><td>使用加密通信工具，确保信息安全传输</td></tr>
+<tr><td><strong>适用性评估</strong></td><td>评估来访者是否适合远程咨询（严重精神障碍急性期、高自杀风险等不宜）</td></tr>
+<tr><td><strong>应急方案</strong></td><td>需提前制定技术故障或紧急情况下的应急联络方案</td></tr>
+<tr><td><strong>跨地域问题</strong></td><td>注意来访者所在地的法律法规和资源（如当地精神卫生服务机构）</td></tr>
+<tr><td><strong>专业设置</strong></td><td>远程咨询同样需要明确的咨询设置（时间、频率、费用、取消政策）</td></tr>
+<tr><td><strong>记录保存</strong></td><td>远程咨询记录（文字、录音等）的保存和保密需格外注意</td></tr>
+</table>
+<p><strong>远程咨询的局限性：</strong></p>
+<ul>
+<li>无法观察来访者全部非言语信息（如肢体语言）</li>
+<li>技术故障可能中断咨询进程</li>
+<li>建立治疗联盟可能比面询更慢</li>
+<li>紧急情况下的干预受限（如无法直接呼叫急救）</li>
+</ul>
+<div class="callout warn"><strong>记忆要点：</strong> 远程咨询三注意——验证身份、加密保密、应急方案。</div>
+<h3 id="sec-12.16">12.16 媒体沟通与合作伦理</h3>
+<div class="callout warn">⚠️ 第二版新增章节，规范咨询师在公众媒体中的专业行为。</div>
+<p><strong>核心原则：</strong> 咨询师以专业身份通过公众媒体（讲座、电视、电台、网络、社交媒体等）提供信息或评论时，应遵循专业伦理。</p>
+<p><strong>具体要求：</strong></p>
+<table class="data-table">
+<tr><th>要求</th><th>说明</th></tr>
+<tr><td><strong>基于事实</strong></td><td>言论应基于恰当的专业文献和实践，尊重事实</td></tr>
+<tr><td><strong>不误导公众</strong></td><td>不得以虚假、误导、欺骗方式宣传</td></tr>
+<tr><td><strong>保护隐私</strong></td><td>媒体中不得透露可识别来访者身份的信息</td></tr>
+<tr><td><strong>区分角色</strong></td><td>在媒体中提供一般性信息≠对具体个体的心理咨询</td></tr>
+<tr><td><strong>不夸大效果</strong></td><td>不使用&quot;治愈&quot;&quot;包治&quot;等绝对化用语</td></tr>
+<tr><td><strong>专业资质如实陈述</strong></td><td>介绍自己时应实事求是说明专业资质</td></tr>
+</table>
+<p><strong>社交媒体注意事项：</strong></p>
+<ul>
+<li>不在社交媒体上讨论个案</li>
+<li>不与来访者建立社交媒体好友关系（避免双重关系）</li>
+<li>发布心理健康科普内容时注意普适性，不针对特定个体</li>
+<li>个人社交媒体中注意区分专业身份与私人生活</li>
+</ul>
+<h3 id="sec-12.17">12.17 礼物处理</h3>
+<div class="callout warn">⚠️ 礼物问题是伦理考试常见案例题类型。</div>
+<p><strong>礼物处理原则：</strong> 咨询师应清楚了解来访者赠送礼物对专业关系的影响。</p>
+<p><strong>考虑因素（决策四要素）：</strong></p>
+<table class="data-table">
+<tr><th>因素</th><th>考虑内容</th></tr>
+<tr><td><strong>专业关系</strong></td><td>接受礼物是否会影响咨询关系的专业性</td></tr>
+<tr><td><strong>文化习俗</strong></td><td>在某些文化中拒绝礼物可能被视为不尊重</td></tr>
+<tr><td><strong>金钱价值</strong></td><td>贵重礼物应拒绝；象征性小礼物可酌情接受</td></tr>
+<tr><td><strong>赠送动机</strong></td><td>来访者是表达感谢还是试图影响咨询关系</td></tr>
+</table>
+<p><strong>处理策略：</strong></p>
+<table class="data-table">
+<tr><th>情境</th><th>处理方式</th></tr>
+<tr><td>来访者在咨询初期送礼</td><td>委婉拒绝，探讨送礼背后的含义</td></tr>
+<tr><td>来访者在咨询结束时送象征性感谢礼物（如手写卡片、小手工）</td><td>可酌情接受，讨论礼物的意义</td></tr>
+<tr><td>来访者送贵重礼物（如珠宝、大额现金、奢侈品）</td><td>坚决拒绝，讨论动机</td></tr>
+<tr><td>来访者试图用礼物影响咨询进程</td><td>拒绝并处理这一行为背后的动力学意义</td></tr>
+</table>
+<div class="callout"><strong>记忆口诀：</strong> &quot;初拒终议贵拒&quot;——初期拒绝、结束讨论、贵重必拒。</div>
+<h3 id="sec-12.18">12.18 伦理投诉与处理</h3>
+<div class="callout warn">⚠️ 了解伦理投诉流程，考试可能以判断题或多选题考查。</div>
+<p><strong>伦理投诉的受理机构：</strong></p>
+<ul>
+<li>中国心理学会临床心理学注册工作委员会伦理工作组</li>
+<li>各级心理学会伦理委员会</li>
+<li>行业协会伦理委员会</li>
+</ul>
+<p><strong>伦理投诉的处理流程：</strong></p>
+<table class="data-table">
+<tr><th>步骤</th><th>内容</th></tr>
+<tr><td>1. 受理投诉</td><td>伦理委员会收到书面投诉后进行初步审查</td></tr>
+<tr><td>2. 调查核实</td><td>对投诉内容进行调查，听取被投诉方陈述</td></tr>
+<tr><td>3. 伦理审议</td><td>伦理委员会根据守则进行审议</td></tr>
+<tr><td>4. 做出决定</td><td>根据违规程度做出处理决定</td></tr>
+<tr><td>5. 通知当事人</td><td>将处理决定通知投诉方和被投诉方</td></tr>
+<tr><td>6. 申诉</td><td>当事人对处理决定不服，可按规定申诉</td></tr>
+</table>
+<p><strong>违规处理方式：</strong></p>
+<table class="data-table">
+<tr><th>违规程度</th><th>处理方式</th></tr>
+<tr><td>轻微违规</td><td>警告、要求参加伦理培训</td></tr>
+<tr><td>中度违规</td><td>暂停注册资格、限期整改</td></tr>
+<tr><td>严重违规</td><td>取消注册资格、永久除名</td></tr>
+<tr><td>涉嫌违法</td><td>移交司法机关处理</td></tr>
+</table>
+<p><strong>咨询师发现同行违反伦理的处理：</strong></p>
+<ol>
+<li>首先应予以规劝</li>
+<li>规劝无效时通过适当渠道反映</li>
+<li>严重违规应向伦理委员会报告</li>
+<li>配合伦理委员会的调查工作</li>
+</ol>
+<div class="callout warn"><strong>注意：</strong> 不得以报复或不公正态度提出伦理申诉。</div>
+<h3 id="sec-12.19">12.19 危机中的伦理问题</h3>
+<div class="callout warn">⚠️ 伦理实务与危机干预的交叉考点，案例题常涉及。</div>
+<p><strong>危机情境中的伦理冲突：</strong></p>
+<table class="data-table">
+<tr><th>冲突类型</th><th>具体情境</th><th>伦理处理</th></tr>
+<tr><td>保密 vs 生命安全</td><td>来访者透露自杀/杀人计划</td><td><strong>安全优先</strong>，启动保密例外，最小披露</td></tr>
+<tr><td>知情同意 vs 紧急干预</td><td>来访者处于危机状态无法签署同意书</td><td><strong>先干预后补签</strong>，生命安全高于程序</td></tr>
+<tr><td>自主权 vs 保护义务</td><td>来访者拒绝接受帮助或转介</td><td>评估决策能力，如无完全行为能力则需启动保护程序</td></tr>
+<tr><td>咨询能力 vs 危机需求</td><td>来访者危机超出咨询师处理能力</td><td><strong>诚实告知→及时转介→做好过渡安排</strong></td></tr>
+<tr><td>双重角色 vs 资源匮乏</td><td>偏远地区咨询师需同时承担多个角色</td><td>尽量避免，不可避免时需知情同意+督导+记录</td></tr>
+</table>
+<p><strong>危机中保密例外的操作步骤：</strong></p>
+<ol>
+<li><strong>评估风险等级</strong> — 评估自杀/伤人风险的严重程度</li>
+<li><strong>告知来访者</strong> — 如安全允许，告知来访者需要打破保密及范围</li>
+<li><strong>最小披露</strong> — 仅透露与安全直接相关的必要信息</li>
+<li><strong>告知对象</strong> — 通知监护人、紧急联系人或相关机构</li>
+<li><strong>记录过程</strong> — 详细记录保密例外的决策依据和执行过程</li>
+<li><strong>后续处理</strong> — 危机过后重新评估保密安排，修复治疗关系</li>
+</ol>
+<p><strong>危机转介的伦理要求：</strong></p>
+<ul>
+<li>非突然抛弃来访者，需做好过渡安排</li>
+<li>联系接收机构确保对方接受</li>
+<li>提供必要的咨询记录（经来访者同意）</li>
+<li>转介后适当跟进来访者情况</li>
+</ul>
+<div class="callout"><strong>核心原则：</strong> 危机伦理的底线——&quot;生命安全高于一切&quot;，但最小披露原则仍需遵守。</div>
+<h3 id="sec-12.20">12.20 教学培训与督导伦理</h3>
+<div class="callout warn">⚠️ 督导关系中的伦理规范，三级咨询师需接受督导，也可能参与培训工作。</div>
+<p><strong>督导关系中的伦理要求：</strong></p>
+<table class="data-table">
+<tr><th>要求</th><th>说明</th></tr>
+<tr><td><strong>明确督导目标</strong></td><td>督导目的是促进受督导者的专业成长</td></tr>
+<tr><td><strong>不强制理论取向</strong></td><td>督导师不得将自己的理论取向强加给受督导者</td></tr>
+<tr><td><strong>评估公正</strong></td><td>对受督导者进行能力评估时应实事求是、公平公正</td></tr>
+<tr><td><strong>界限清晰</strong></td><td>不得与受督导者建立咨询关系或亲密关系</td></tr>
+<tr><td><strong>不得利用职权</strong></td><td>不得利用督导关系为自身谋取私利</td></tr>
+<tr><td><strong>知情同意</strong></td><td>督导开始前应说明督导目的、过程、评估方式及标准</td></tr>
+<tr><td><strong>反馈定期</strong></td><td>督导过程中给予定期反馈</td></tr>
+<tr><td><strong>保密</strong></td><td>督导中涉及的来访者信息和受督导者信息均需保密</td></tr>
+<tr><td><strong>紧急情况处理</strong></td><td>明确督导中断、终止等情况的处理办法</td></tr>
+</table>
+<p><strong>督导与咨询的区别：</strong></p>
+<table class="data-table">
+<tr><th>维度</th><th>督导关系</th><th>咨询关系</th></tr>
+<tr><td>目的</td><td>促进专业能力发展</td><td>促进来访者心理健康</td></tr>
+<tr><td>对象</td><td>受训咨询师/被督导者</td><td>来访者</td></tr>
+<tr><td>关注点</td><td>专业技能和伦理实践</td><td>来访者的心理问题</td></tr>
+<tr><td>评估</td><td>督导师评估受督导者能力</td><td>咨询师评估来访者状况</td></tr>
+<tr><td>关系性质</td><td>教育-评估关系</td><td>治疗-帮助关系</td></tr>
+</table>
+<div class="callout warn"><strong>注意：</strong> 督导师和受督导者之间不得发生性关系或亲密关系，也不得与有亲属关系的人建立督导关系。</div>
+<h3 id="sec-12.21">12.21 研究与发表伦理</h3>
+<div class="callout warn">⚠️ 三级考试可能以判断题形式出现，了解基本原则即可。</div>
+<p><strong>核心要求：</strong></p>
+<table class="data-table">
+<tr><th>要点</th><th>说明</th></tr>
+<tr><td><strong>知情同意</strong></td><td>以人为研究对象时须告知研究性质、目的、过程并征得同意</td></tr>
+<tr><td><strong>退出权</strong></td><td>研究对象有权随时退出，不受强制</td></tr>
+<tr><td><strong>不欺骗原则</strong></td><td>除非必要且无替代方法，否则不得使用欺骗手段；事后须说明</td></tr>
+<tr><td><strong>避免伤害</strong></td><td>采取措施避免对研究对象造成躯体、情感或社会性伤害</td></tr>
+<tr><td><strong>伦理审批</strong></td><td>需要伦理审查的研究应提前提交方案</td></tr>
+<tr><td><strong>保密</strong></td><td>研究报告中的研究对象身份须保密</td></tr>
+<tr><td><strong>不剽窃</strong></td><td>引用他人成果须注明出处</td></tr>
+<tr><td><strong>署名规范</strong></td><td>多作者研究应合理署名；学生为主要贡献者应列为主要作者</td></tr>
+</table>
+<div class="callout"><strong>记忆口诀：</strong> 伦理守则十章记——&quot;专知隐测教研远媒处&quot;——专业关系→知情同意→隐私保密→测量评估→教育培训→研究发表→远程工作→媒体沟通→伦理处理。</div>
+<hr>
+<h2 id="mod-十三">十三、心理危机干预（Ⅰ）</h2>
+<div class="callout warn">⚠️ <strong>官方三级实务核心模块</strong>，原材料完全缺失，以下为新增内容。</div>
+<h3 id="sec-13.1">13.1 危机的定义与特征</h3>
+<p><strong>心理危机：</strong> 个体面临重大生活事件时，既有的应对机制失效，导致心理失衡状态。</p>
+<p><strong>危机的特征：</strong></p>
+<ul>
+<li><strong>突发性：</strong> 往往由突发事件引发</li>
+<li><strong>紧迫性：</strong> 需要及时干预</li>
+<li><strong>无助感：</strong> 个体感到无法应对</li>
+<li><strong>失衡状态：</strong> 正常的应对机制失效</li>
+<li><strong>暂时性：</strong> 危机状态通常持续数天到数周</li>
+<li><strong>双重性：</strong> 危机既是危险也是机遇（成长机会）</li>
+</ul>
+<h3 id="sec-13.2">13.2 危机类型</h3>
+<table class="data-table">
+<tr><th>类型</th><th>特征</th><th>举例</th></tr>
+<tr><td>发展性危机</td><td>正常人生发展阶段所经历的危机</td><td>青春期认同危机、中年危机、退休适应</td></tr>
+<tr><td>境遇性危机</td><td>由突发、意外事件引发</td><td>交通事故、自然灾害、亲人突然去世、被性侵</td></tr>
+<tr><td>存在性危机</td><td>对人生意义、自由、孤独、死亡等存在问题的内心冲突</td><td>&quot;活着有什么意义？&quot;</td></tr>
+</table>
+<h3 id="sec-13.3">13.3 危机干预模型</h3>
+<h4 id="六步模型-詹姆斯-吉利兰">六步模型（詹姆斯&amp;吉利兰）</h4>
+<table class="data-table">
+<tr><th>步骤</th><th>内容</th></tr>
+<tr><td>1. 确定问题</td><td>从来访者角度理解危机事件</td></tr>
+<tr><td>2. 保证来访者安全</td><td>评估危险程度，确保身体安全</td></tr>
+<tr><td>3. 给予支持</td><td>以接纳、非评判态度提供情感支持</td></tr>
+<tr><td>4. 提出并验证变通方案</td><td>探索可用的应对资源和方案</td></tr>
+<tr><td>5. 制定计划</td><td>与来访者共同制定可行的行动计划</td></tr>
+<tr><td>6. 获得承诺</td><td>获得来访者对计划的承诺</td></tr>
+</table>
+<div class="callout"><strong>记忆口诀：</strong> &quot;定安持变计诺&quot;——确定→安全→支持→变通→计划→承诺。</div>
+<h4 id="safer-r模型">SAFER-R模型</h4>
+<table class="data-table">
+<tr><th>步骤</th><th>内容</th></tr>
+<tr><td>S - Stabilize</td><td>稳定情绪</td></tr>
+<tr><td>A - Acknowledge</td><td>确认危机事件</td></tr>
+<tr><td>F - Facilitate understanding</td><td>促进理解</td></tr>
+<tr><td>E - Encourage adaptive coping</td><td>鼓励适应性应对</td></tr>
+<tr><td>R - Recovery or referral</td><td>恢复或转介</td></tr>
+<tr><td>R - Review</td><td>回顾</td></tr>
+</table>
+<h3 id="sec-13.4">13.4 自杀风险评估</h3>
+<p><strong>自杀风险评估维度：</strong></p>
+<table class="data-table">
+<tr><th>维度</th><th>评估内容</th></tr>
+<tr><td><strong>自杀意念</strong></td><td>是否有自杀想法？频率？强度？</td></tr>
+<tr><td><strong>自杀计划</strong></td><td>是否有具体计划？方法？时间？地点？</td></tr>
+<tr><td><strong>自杀手段</strong></td><td>是否有可使用的手段？</td></tr>
+<tr><td><strong>既往自杀史</strong></td><td>是否有过自杀尝试？</td></tr>
+<tr><td><strong>精神状态</strong></td><td>是否伴有抑郁、绝望、精神病性症状？</td></tr>
+<tr><td><strong>支持系统</strong></td><td>社会支持是否充足？</td></tr>
+<tr><td><strong>保护因素</strong></td><td>有什么让来访者不想死的理由？（家人、宗教信仰等）</td></tr>
+</table>
+<p><strong>自杀危险信号：</strong></p>
+<ul>
+<li>直接或间接表达死亡意愿（&quot;活着没意思&quot;&quot;你们以后不用操心了&quot;）</li>
+<li>安排后事（分配财物、写遗书、与亲友道别）</li>
+<li>突然平静（在严重抑郁后突然变得平静，可能是已做出决定）</li>
+<li>获取自杀工具</li>
+<li>绝望感表达</li>
+<li>物质滥用加重</li>
+<li>社交退缩</li>
+</ul>
+<p><strong>自杀风险分层：</strong></p>
+<table class="data-table">
+<tr><th>风险等级</th><th>特征</th></tr>
+<tr><td>低风险</td><td>有自杀意念但无计划，有保护因素</td></tr>
+<tr><td>中风险</td><td>有自杀意念和模糊计划</td></tr>
+<tr><td>高风险</td><td>有明确计划、获取手段的途径、近期尝试史</td></tr>
+</table>
+<h3 id="sec-13.5">13.5 自杀干预技术</h3>
+<p><strong>干预原则：</strong></p>
+<ul>
+<li>直接询问自杀意念（不要回避话题）</li>
+<li>不评判、不说教</li>
+<li>保持冷静和共情</li>
+<li>不让来访者独处</li>
+<li>移除危险物品</li>
+</ul>
+<p><strong>干预步骤：</strong></p>
+<ol>
+<li><strong>建立联结：</strong> &quot;我在这里，我听到了你的痛苦&quot;</li>
+<li><strong>评估风险：</strong> 直接询问&quot;你有没有想过结束自己的生命？&quot;</li>
+<li><strong>如果确认有自杀意念：</strong></li>
+</ol>
+<p>- 询问是否有计划和手段</p>
+<p>- 评估风险等级</p>
+<ol>
+<li><strong>降低风险：</strong></li>
+</ol>
+<p>- 制定安全计划（no-harm agreement）</p>
+<p>- 移除自杀工具</p>
+<p>- 联系支持系统</p>
+<p>- 高风险者转介精神科或急诊</p>
+<ol>
+<li><strong>后续跟进：</strong> 持续关注，安排后续接触</li>
+</ol>
+<p><strong>安全计划内容：</strong></p>
+<ul>
+<li>识别预警信号</li>
+<li>可使用的自我应对策略</li>
+<li>可联系的社会支持</li>
+<li>专业帮助联系方式（危机热线、精神科急诊）</li>
+<li>确保环境安全（移除危险物品）</li>
+</ul>
+<h3 id="sec-13.6">13.6 心理急救（PFA）</h3>
+<p><strong>心理急救（Psychological First Aid）：</strong> 对经历创伤事件的人提供的 humane、支持性、实际的帮助。</p>
+<p><strong>PFA核心原则：</strong></p>
+<ul>
+<li>不强行让对方讲述经历</li>
+<li>提供安全的环境</li>
+<li>帮助满足基本需求（食物、水、安全）</li>
+<li>提供准确信息</li>
+<li>帮助联系社会支持</li>
+<li>促进适应性应对</li>
+</ul>
+<p><strong>PFA的&quot;做&quot;与&quot;不做&quot;：</strong></p>
+<table class="data-table">
+<tr><th>做</th><th>不做</th></tr>
+<tr><td>保持冷静</td><td>不强迫讲述创伤经历</td></tr>
+<tr><td>倾听</td><td>不做空洞承诺（&quot;一切都会好的&quot;）</td></tr>
+<tr><td>提供实际帮助</td><td>不评判对方的反应</td></tr>
+<tr><td>尊重对方节奏</td><td>不贴病理标签</td></tr>
+<tr><td>提供准确信息</td><td>不传播谣言</td></tr>
+</table>
+<h3 id="sec-13.7">13.7 危机干预中的伦理</h3>
+<ul>
+<li><strong>知情同意的调整：</strong> 危机状态下可能无法获得完整的知情同意，应在干预后补充</li>
+<li><strong>保密例外的优先适用：</strong> 有自杀/伤人危险时优先适用保密例外</li>
+<li><strong>不伤害原则：</strong> 干预不得加重来访者的创伤</li>
+<li><strong>转介责任：</strong> 超出能力范围的危机应及时转介</li>
+</ul>
+<h3 id="sec-13.8">13.8 咨询师的自我照顾</h3>
+<p><strong>替代性创伤（vicarious trauma）：</strong> 咨询师因长期接触来访者的创伤经历而自身产生的创伤反应。</p>
+<p><strong>耗竭（burnout）：</strong> 长期工作压力导致的情绪疲惫、去人格化和低成就感。</p>
+<p><strong>自我照顾策略：</strong></p>
+<ul>
+<li>定期接受督导</li>
+<li>保持工作与生活的平衡</li>
+<li>限制危机干预工作量</li>
+<li>建立支持网络</li>
+<li>自我觉察和监测</li>
+<li>必要时寻求个人咨询</li>
+</ul>
+<hr>
+<hr>
+</h2>
+<h3 id="sec-14.6">14.6 团体辅导速记</h3>
+<table class="data-table">
+<tr><th>考点</th><th>内容</th></tr>
+<tr><td>团体发展阶段</td><td>定向→冲突→工作→结束</td></tr>
+<tr><td>亚隆疗效因子数</td><td>11个</td></tr>
+<tr><td>常见团体规模</td><td>8-12人</td></tr>
+<tr><td>团体领导者技术</td><td>联结、阻止、截断、引导、聚焦、绕圈</td></tr>
+<tr><td>单次团体活动结构</td><td>暖场→导入→主体→分享→总结→作业→结束</td></tr>
+<tr><td>破冰活动示例</td><td>名字接龙、两真一假、寻人游戏</td></tr>
+<tr><td>深度探索活动</td><td>Johari窗、生命线、热座、空椅技术</td></tr>
+<tr><td>团体活动设计原则</td><td>目标导向、循序渐进、参与性、安全性、适应性、体验性</td></tr>
+</table>
+<h3 id="sec-14.7">14.7 CBT速记</h3>
+<table class="data-table">
+<tr><th>考点</th><th>内容</th></tr>
+<tr><td>CBT三层认知</td><td>自动思维→中间信念→核心信念</td></tr>
+<tr><td>常见认知歪曲数</td><td>10种</td></tr>
+<tr><td>苏格拉底提问核心</td><td>引导发现，而非直接告知</td></tr>
+<tr><td>行为激活适用</td><td>抑郁</td></tr>
+<tr><td>暴露与反应预防适用</td><td>强迫症</td></tr>
+<tr><td>CBT通常疗程</td><td>8-20次</td></tr>
+<tr><td>第三浪潮CBT</td><td>MBCT、DBT、ACT</td></tr>
+<tr><td>个案概念化要素</td><td>童年经历→核心信念→中间信念→补偿策略→自动思维→触发情境</td></tr>
+</table>
+<h3 id="sec-14.8">14.8 危机干预速记</h3>
+<table class="data-table">
+<tr><th>考点</th><th>内容</th></tr>
+<tr><td>危机类型</td><td>发展性、境遇性、存在性</td></tr>
+<tr><td>六步模型</td><td>定安持变计诺</td></tr>
+<tr><td>自杀风险评估维度</td><td>意念、计划、手段、既往史、精神状态、支持系统、保护因素</td></tr>
+<tr><td>PFA核心原则</td><td>不强迫讲述、提供安全、满足基本需求</td></tr>
+<tr><td>替代性创伤</td><td>咨询师因接触来访者创伤而自身产生创伤反应</td></tr>
+</table>
+<h3 id="sec-14.9">14.9 SFBT与家庭治疗速记</h3>
+<table class="data-table">
+<tr><th>考点</th><th>内容</th></tr>
+<tr><td>SFBT创始人</td><td>德·沙泽尔、伯格</td></tr>
+<tr><td>SFBT核心理念</td><td>关注解决方案而非问题</td></tr>
+<tr><td>SFBT四大提问</td><td>奇迹提问、例外提问、量尺提问、应对提问</td></tr>
+<tr><td>SFBT典型疗程</td><td>3-10次</td></tr>
+<tr><td>家庭治疗核心假设</td><td>个体问题反映家庭系统功能失调</td></tr>
+<tr><td>结构式家庭治疗</td><td>米纽钦：边界、子系统、联盟、三角化</td></tr>
+<tr><td>家庭治疗常用技术</td><td>循环提问、家庭雕塑、悖论干预、正向解读</td></tr>
+</table>
+<h3 id="sec-14.10">14.10 法律法规速记</h3>
+<table class="data-table">
+<tr><th>考点</th><th>内容</th></tr>
+<tr><td>精神卫生法施行日</td><td>2013年5月1日</td></tr>
+<tr><td>心理咨询师&quot;三不得&quot;</td><td>不得心理治疗、不得诊断、不得开药</td></tr>
+<tr><td>精神障碍诊断权</td><td>仅精神科执业医师</td></tr>
+<tr><td>个人信息保护法施行日</td><td>2021年11月1日</td></tr>
+<tr><td>心理健康信息属性</td><td>敏感个人信息</td></tr>
+<tr><td>未成年人强制报告</td><td>发现虐待必须向公安机关报告</td></tr>
+<tr><td>未成年人知情同意</td><td>须监护人同意</td></tr>
+<tr><td>未成年人无行为能力</td><td>不满8周岁</td></tr>
+<tr><td>未成年人限制行为能力</td><td>8-18周岁</td></tr>
+</table>
+<h3 id="sec-14.11">14.11 伦理实务补充速记</h3>
+<table class="data-table">
+<tr><th>考点</th><th>内容</th></tr>
+<tr><td>伦理守则名称</td><td>《中国心理学会临床与咨询心理学工作伦理守则》（第二版）</td></tr>
+<tr><td>伦理守则发布时间</td><td>2018年2月</td></tr>
+<tr><td>伦理守则总章节数</td><td>10章</td></tr>
+<tr><td>第一版章节数</td><td>7章</td></tr>
+<tr><td>第二版新增章节</td><td>知情同意、远程专业工作、媒体沟通与合作</td></tr>
+<tr><td>伦理总则</td><td>善行、责任、诚信、公正、尊重</td></tr>
+<tr><td>转介核心规则</td><td>不得收取转介费用，不得向第三方支付转介费用</td></tr>
+<tr><td>远程咨询三注意</td><td>验证身份、加密保密、应急方案</td></tr>
+<tr><td>礼物决策四要素</td><td>专业关系、文化习俗、金钱价值、赠送动机</td></tr>
+<tr><td>礼物口诀</td><td>&quot;初拒终议贵拒&quot;</td></tr>
+<tr><td>伦理投诉受理机构</td><td>注册工作委员会伦理工作组</td></tr>
+<tr><td>伦理投诉处理流程</td><td>受理→调查→审议→决定→通知→申诉</td></tr>
+<tr><td>发现同行违规处理</td><td>先规劝→反映→报告→配合调查</td></tr>
+<tr><td>危机伦理底线</td><td>生命安全高于一切，但最小披露原则仍需遵守</td></tr>
+<tr><td>督导伦理核心</td><td>不强制理论取向、评估公正、界限清晰</td></tr>
+<tr><td>伦理守则十章口诀</td><td>&quot;专知隐测教研远媒处&quot;</td></tr>
+</table>
+<hr>
+<hr>
+<h2 id="mnemonics">记忆口诀汇总-咨询实务部分">记忆口诀汇总（咨询实务部分）</h2>
+<ol>
+<li><strong>ABC理论：</strong> A事件+B信念+C结果+D辩论+E效果</li>
+<li><strong>SCL-90十个因子：</strong> &quot;躯强人抑焦敌恐偏精其&quot;</li>
+<li><strong>罗杰斯三条件：</strong> &quot;真无共&quot;——真诚、无条件积极关注、共情</li>
+<li><strong>SSRS三维度：</strong> &quot;客主用&quot;</li>
+<li><strong>团体发展四阶段：</strong> &quot;定冲作结&quot;</li>
+<li><strong>危机干预六步：</strong> &quot;定安持变计诺&quot;</li>
+<li><strong>CBT三层认知：</strong> 自动思维→中间信念→核心信念</li>
+<li><strong>团体活动结构：</strong> &quot;暖导主分总作束&quot;——暖场→导入→主体→分享→总结→作业→结束</li>
+<li><strong>咨询师法律边界&quot;三不得&quot;：</strong> 不得心理治疗、不得诊断精神障碍、不得开处方药</li>
+<li><strong>SFBT核心理念：</strong> 关注解决方案而非问题——&quot;有效多做，无效换法&quot;</li>
+<li><strong>伦理决策五步：</strong> &quot;问准原方行&quot;——明确问题→参照准则→适用原则→拟定方案→做出决策</li>
+<li><strong>伦理守则十章：</strong> &quot;专知隐测教研远媒处&quot;——专业关系→知情同意→隐私保密→测量评估→教育培训→研究发表→远程工作→媒体沟通→伦理处理</li>
+<li><strong>礼物处理：</strong> &quot;初拒终议贵拒&quot;——初期拒绝、结束讨论、贵重必拒</li>
+<li><strong>转介伦理：</strong> &quot;转介不收费，收费不转介&quot;</li>
+<li><strong>远程咨询：</strong> &quot;验证身份、加密保密、应急方案&quot;</li>
+<li><strong>危机伦理底线：</strong> &quot;生命安全高于一切，最小披露不可少&quot;</li>
+</ol>
+<hr>
+<hr>
+<div class="callout"><strong>声明：</strong> 本材料依据中国心理学会心理咨询师水平评价考试（三级）官方大纲模块编写。考生应以官方教材和考纲为准，祝考试顺利！</div>
+</main>
+
+<button id="back-top" onclick="scrollToTop()">↑</button>
+
+<script>
+// Toggle sidebar on mobile
+document.getElementById('sidebar-toggle').addEventListener('click', function() {
+  document.getElementById('sidebar').classList.toggle('open');
+});
+
+// Collapsible sections: click h3 to toggle
+document.querySelectorAll('#main h3').forEach(function(h3) {
+  h3.addEventListener('click', function(e) {
+    // Don't toggle if clicking a link inside
+    if (e.target.tagName === 'A') return;
+    h3.classList.toggle('collapsed');
+    let next = h3.nextElementSibling;
+    while (next && next.tagName !== 'H2' && next.tagName !== 'H3') {
+      if (next.classList) {
+        next.classList.toggle('hidden');
+      }
+      next = next.nextElementSibling;
+    }
+  });
+});
+
+// Toggle sidebar sub-items on module click — also navigate to section
+document.querySelectorAll('.sidebar-mod-link').forEach(function(link) {
+  link.addEventListener('click', function(e) {
+    let subs = this.nextElementSibling;
+    if (subs && subs.classList.contains('sidebar-subs')) {
+      // Allow default anchor navigation — don't call preventDefault
+      if (subs.style.display === 'none') {
+        subs.style.display = 'block';
+        this.classList.add('active');
+      } else {
+        subs.style.display = 'none';
+        this.classList.remove('active');
+      }
+    }
+  });
+});
+
+// Sub-item click: close other expanded modules for cleaner UX
+document.querySelectorAll('.sidebar-sub').forEach(function(link) {
+  link.addEventListener('click', function() {
+    document.querySelectorAll('.sidebar-subs').forEach(function(subs) {
+      if (subs !== link.closest('.sidebar-subs')) {
+        subs.style.display = 'none';
+        if (subs.previousElementSibling) {
+          subs.previousElementSibling.classList.remove('active');
+        }
+      }
+    });
+  });
+});
+
+// Highlight current section on scroll
+window.addEventListener('scroll', function() {
+  let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  // Back to top button
+  let backTop = document.getElementById('back-top');
+  if (scrollTop > 300) {
+    backTop.classList.add('show');
+  } else {
+    backTop.classList.remove('show');
+  }
+
+  // Highlight current section
+  let sections = document.querySelectorAll('#main h2, #main h3');
+  let current = '';
+  sections.forEach(function(sec) {
+    if (sec.offsetTop - 60 <= scrollTop) {
+      current = sec.id || '';
+    }
+  });
+  document.querySelectorAll('.sidebar-sub, .sidebar-mod-link').forEach(function(link) {
+    link.classList.remove('active');
+  });
+  if (current) {
+    let activeLink = document.querySelector('.sidebar-sub[href="#' + current + '"]');
+    if (activeLink) {
+      activeLink.classList.add('active');
+      // Also expand parent
+      let parent = activeLink.closest('.sidebar-subs');
+      if (parent && parent.style.display === 'none') {
+        parent.style.display = 'block';
+        parent.previousElementSibling.classList.add('active');
+      }
+    }
+  }
+});
+
+// Search filter
+function filterSidebar() {
+  let query = document.getElementById('search-input').value.toLowerCase().trim();
+  document.querySelectorAll('.sidebar-module').forEach(function(mod) {
+    let modText = mod.textContent.toLowerCase();
+    let subs = mod.querySelector('.sidebar-subs');
+    let hasMatch = false;
+    if (subs) {
+      subs.querySelectorAll('.sidebar-sub').forEach(function(sub) {
+        let subText = sub.textContent.toLowerCase();
+        if (query === '' || subText.includes(query) || modText.includes(query)) {
+          sub.style.display = '';
+          if (query && subText.includes(query)) hasMatch = true;
+        } else {
+          sub.style.display = 'none';
+        }
+      });
+      if (query === '') {
+        subs.style.display = 'none';
+        mod.style.display = '';
+      } else if (hasMatch || modText.includes(query)) {
+        subs.style.display = 'block';
+        mod.style.display = '';
+      } else {
+        mod.style.display = 'none';
+      }
+    } else {
+      // No subs (like mnemonics)
+      mod.style.display = (query === '' || modText.includes(query)) ? '' : 'none';
+    }
+  });
+}
+
+// Scroll to top
+function scrollToTop() {
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+// Close sidebar on mobile after clicking any navigation link
+document.querySelectorAll('#sidebar a[href^="#"]').forEach(function(link) {
+  link.addEventListener('click', function() {
+    document.getElementById('sidebar').classList.remove('open');
+  });
+});
+</script>
+</body>
+</html>
