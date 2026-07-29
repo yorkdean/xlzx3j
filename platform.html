@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>平台题库 · 章节/模拟刷题复习</title>
+<title>平台题库 · 按课程分题库刷题</title>
 <style>
   :root {
     --primary: #0ea5e9;
@@ -30,17 +30,28 @@
   }
   .header {
     background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-    color: #fff; padding: 18px 28px; position: sticky; top: 0; z-index: 100;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.15); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;
+    color: #fff; padding: 16px 22px; position: sticky; top: 0; z-index: 200;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
   }
-  .header h1 { font-size: 19px; font-weight: 700; }
+  .header h1 { font-size: 18px; font-weight: 700; }
   .header .sub { font-size: 12px; opacity: 0.9; margin-top:2px; }
-  .header .cov { font-size:12px; background:rgba(255,255,255,0.18); padding:4px 12px; border-radius:20px; }
+  .header-bottom { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; margin-top:10px; }
+  .cov { font-size:12px; background:rgba(255,255,255,0.18); padding:4px 12px; border-radius:20px; }
+  /* 顶部始终可见的题库下拉选择框 */
+  .bank-select-wrap { display:flex; align-items:center; gap:8px; }
+  .bank-select-wrap label { font-size:13px; opacity:0.95; white-space:nowrap; }
+  #bankSelect {
+    max-width: 360px; padding:7px 12px; border-radius:8px; border:1px solid rgba(255,255,255,0.6);
+    background:#fff; color:var(--text); font-size:14px; font-weight:500; min-width:220px;
+  }
+  #bankSelect optgroup { font-weight:700; color:var(--primary-dark); }
+  #bankSelect option { color:var(--text); }
+
   .layout { display: flex; align-items: flex-start; }
   .sidebar {
-    width: 280px; min-width: 280px; height: calc(100vh - 70px); overflow-y: auto;
+    width: 280px; min-width: 280px; height: calc(100vh - 116px); overflow-y: auto;
     background: var(--card-bg); border-right: 1px solid var(--border); padding: 12px;
-    position: sticky; top: 70px;
+    position: sticky; top: 116px;
   }
   .sidebar h3 { font-size: 13px; color: var(--text-muted); margin: 10px 8px 6px; }
   .bank-item {
@@ -63,6 +74,23 @@
   }
   .tbtn:hover { background: var(--primary-light); }
   .tbtn.primary { background: var(--primary); color:#fff; border-color:var(--primary); }
+
+  /* 全部题库目录卡片墙 */
+  .catalog { display:grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap:14px; }
+  .cat-group-title { grid-column:1/-1; font-size:15px; font-weight:700; color:var(--primary-dark); margin:6px 0 2px; display:flex; align-items:center; gap:8px; }
+  .cat-group-title::before { content:''; width:4px; height:16px; background:var(--primary); border-radius:2px; display:inline-block; }
+  .cat-card {
+    background: var(--card-bg); border:1px solid var(--border); border-radius:12px; padding:16px 18px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04); cursor:pointer; transition:all .15s;
+    display:flex; flex-direction:column; gap:8px;
+  }
+  .cat-card:hover { transform: translateY(-2px); box-shadow:0 6px 16px rgba(14,165,233,0.18); border-color:var(--primary); }
+  .cat-card .ct-name { font-size:15px; font-weight:700; }
+  .cat-card .ct-course { font-size:11px; padding:2px 8px; border-radius:4px; background:var(--accent-light); color:var(--accent); font-weight:600; align-self:flex-start; }
+  .cat-card .ct-stats { font-size:12.5px; color:var(--text-muted); }
+  .cat-card .ct-bar { height:6px; background:var(--border); border-radius:3px; overflow:hidden; }
+  .cat-card .ct-bar > span { display:block; height:100%; background:var(--primary); }
+
   .q-card {
     background: var(--card-bg); border:1px solid var(--border); border-radius:12px;
     padding: 18px 20px; margin-bottom: 14px; box-shadow: 0 1px 4px rgba(0,0,0,0.04);
@@ -94,42 +122,56 @@
   .no-ans { font-size:13px; color: var(--warning); }
   .progress-wrap { height:6px; background:var(--border); border-radius:3px; overflow:hidden; margin:8px 0 0; }
   .progress-bar { height:100%; background:var(--primary); width:0; transition:width .3s; }
-  @media (max-width: 768px) {
+  .back-catalog { font-size:13px; color:var(--primary); cursor:pointer; font-weight:600; }
+  .back-catalog:hover { text-decoration:underline; }
+  @media (max-width: 900px) {
     .sidebar { display:none; }
+  }
+  @media (max-width: 768px) {
     .main { padding:14px; }
+    .header h1 { font-size:16px; }
+    #bankSelect { min-width:160px; max-width:60vw; }
   }
 </style>
 </head>
 <body>
 <div class="header">
   <div>
-    <h1>平台题库 · 章节 / 模拟刷题复习</h1>
-    <div class="sub">来源：生生课堂 · 基础理论 + 三级实务（含模拟卷），逐题附官方解析与教材出处</div>
+    <h1>平台题库 · 按课程分题库刷题</h1>
+    <div class="sub">来源：生生课堂 · 基础理论 + 三级实务 + 模拟卷，每个课程独立成库，逐题附官方解析与教材出处</div>
   </div>
-  <div class="cov" id="cov">1397/2317 题有答案，817/2317 题有解析</div>
+  <div class="header-bottom">
+    <div class="bank-select-wrap">
+      <label for="bankSelect">选择题库：</label>
+      <select id="bankSelect"></select>
+    </div>
+    <div class="cov" id="cov">1397/2317 题有答案，817/2317 题有解析</div>
+  </div>
 </div>
 <div class="layout">
   <div class="sidebar" id="sidebar">
-    <h3>理论章节</h3>
+    <h3>基础理论</h3>
     <div id="theory-banks"></div>
-    <h3>实务章节</h3>
+    <h3>三级实务</h3>
     <div id="shiwu-banks"></div>
     <h3>模拟试卷</h3>
     <div id="mock-banks"></div>
   </div>
   <div class="main">
-    <div class="main-head">
+    <div class="main-head" id="main-head" style="display:none;">
       <div>
         <h2 id="cur-title">请选择左侧题库</h2>
         <div class="meta" id="cur-meta"></div>
       </div>
       <div class="toolbar">
+        <span class="back-catalog" id="back-catalog">← 返回全部题库</span>
         <button class="tbtn" id="toggle-all">全部显示答案</button>
         <button class="tbtn primary" id="scroll-top">回到顶部</button>
       </div>
     </div>
-    <div class="progress-wrap"><div class="progress-bar" id="pbar"></div></div>
-    <div id="qlist"></div>
+    <div class="progress-wrap" id="pbar-wrap" style="display:none;"><div class="progress-bar" id="pbar"></div></div>
+    <div id="catalog" class="catalog"></div>
+    <div id="qlist" style="display:none;"></div>
   </div>
 </div>
 
@@ -139,34 +181,110 @@ const BANKS = [{"name": "（基础理论）心理学导论", "qs": [{"n": 1, "ty
 const typeIsMulti = (t) => (t === '多选' || t === '不定项');
 function ansSet(a){ return (a||'').split('').filter(c=>/[A-Z]/.test(c)); }
 
+// 课程分类（用于下拉框 optgroup 与目录分组）
+function courseOf(name){
+  if(/模拟卷/.test(name)) return '模拟试卷';
+  if(/三级实务/.test(name)) return '三级实务';
+  return '基础理论';
+}
+const COURSE_ORDER = ['基础理论','三级实务','模拟试卷'];
+
 let curBank = null;
 let showAll = false;
 
 const sidebarT = document.getElementById('theory-banks');
 const sidebarS = document.getElementById('shiwu-banks');
 const sidebarM = document.getElementById('mock-banks');
+const bankSelect = document.getElementById('bankSelect');
+
+function cleanName(n){ return (n||'').replace(/（.*?）/g,''); }
+
 function bankEl(b, idx){
   const div = document.createElement('div');
   div.className = 'bank-item';
   div.dataset.idx = idx;
   const answered = b.qs.filter(q=>q.answer).length;
-  div.innerHTML = `<span class="bn">${b.name.replace(/（.*?）/g,'').replace(/（四级\)$/,'')}</span><span class="bc">${answered}/${b.qs.length}</span>`;
+  div.innerHTML = `<span class="bn">${cleanName(b.name)}</span><span class="bc">${answered}/${b.qs.length}</span>`;
   div.onclick = () => selectBank(idx);
   return div;
 }
 BANKS.forEach((b,i)=>{
-  const isMock = /模拟卷/.test(b.name);
-  const isShiwu = /三级实务/.test(b.name);
-  if(isMock) sidebarM.appendChild(bankEl(b,i));
-  else if(isShiwu) sidebarS.appendChild(bankEl(b,i));
+  const c = courseOf(b.name);
+  if(c==='模拟试卷') sidebarM.appendChild(bankEl(b,i));
+  else if(c==='三级实务') sidebarS.appendChild(bankEl(b,i));
   else sidebarT.appendChild(bankEl(b,i));
 });
 
+// 顶部下拉选择框（始终可见，按课程分组）
+function buildSelect(){
+  const optAll = document.createElement('option');
+  optAll.value = '-1';
+  optAll.textContent = '📚 全部题库（目录）';
+  bankSelect.appendChild(optAll);
+  COURSE_ORDER.forEach(c=>{
+    const og = document.createElement('optgroup');
+    og.label = c;
+    BANKS.forEach((b,i)=>{
+      if(courseOf(b.name)!==c) return;
+      const o = document.createElement('option');
+      o.value = i;
+      const answered = b.qs.filter(q=>q.answer).length;
+      o.textContent = `${cleanName(b.name)} (${answered}/${b.qs.length})`;
+      og.appendChild(o);
+    });
+    bankSelect.appendChild(og);
+  });
+  bankSelect.onchange = () => {
+    const v = bankSelect.value;
+    if(v === '-1') showCatalog();
+    else selectBank(parseInt(v,10));
+  };
+}
+
+function showCatalog(){
+  curBank = null;
+  document.querySelectorAll('.bank-item').forEach(el=>el.classList.remove('active'));
+  bankSelect.value = '-1';
+  document.getElementById('main-head').style.display = 'none';
+  document.getElementById('pbar-wrap').style.display = 'none';
+  document.getElementById('qlist').style.display = 'none';
+  const cat = document.getElementById('catalog');
+  cat.style.display = 'grid';
+  cat.innerHTML = '';
+  COURSE_ORDER.forEach(c=>{
+    const title = document.createElement('div');
+    title.className = 'cat-group-title';
+    title.textContent = c;
+    cat.appendChild(title);
+    BANKS.forEach((b,i)=>{
+      if(courseOf(b.name)!==c) return;
+      const answered = b.qs.filter(q=>q.answer).length;
+      const withAn = b.qs.filter(q=>q.analysis).length;
+      const pct = b.qs.length? Math.round(answered/b.qs.length*100):0;
+      const card = document.createElement('div');
+      card.className = 'cat-card';
+      card.innerHTML = `
+        <span class="ct-course">${c}</span>
+        <div class="ct-name">${cleanName(b.name)}</div>
+        <div class="ct-stats">共 ${b.qs.length} 题 · 有答案 ${answered} · 有解析 ${withAn}</div>
+        <div class="ct-bar"><span style="width:${pct}%"></span></div>
+      `;
+      card.onclick = () => selectBank(i);
+      cat.appendChild(card);
+    });
+  });
+}
+
 function selectBank(idx){
   curBank = idx;
+  bankSelect.value = String(idx);
   document.querySelectorAll('.bank-item').forEach(el=>{
     el.classList.toggle('active', el.dataset.idx == idx);
   });
+  document.getElementById('catalog').style.display = 'none';
+  document.getElementById('qlist').style.display = 'block';
+  document.getElementById('main-head').style.display = 'flex';
+  document.getElementById('pbar-wrap').style.display = 'block';
   render(idx);
 }
 
@@ -202,11 +320,10 @@ function render(idx){
         ${q.analysis ? `<div class="analysis">${escapeHtml(q.analysis)}</div>` : (q.answer?`<div class="no-ans">（暂无官方解析）</div>`:'')}
       </div>
     `;
-    // option click (self-test)
     const optEls = card.querySelectorAll('.opt');
     optEls.forEach(oe=>{
       oe.onclick = ()=>{
-        if(card.querySelector('.answer-box').classList.contains('show')) return; // locked after reveal
+        if(card.querySelector('.answer-box').classList.contains('show')) return;
         if(multi){
           oe.classList.toggle('sel');
         } else {
@@ -221,7 +338,6 @@ function render(idx){
       box.classList.toggle('show');
       if(box.classList.contains('show')){
         btn.textContent = '隐藏答案与解析';
-        // mark correctness
         const sel = card.querySelectorAll('.opt.sel');
         const selSet = Array.from(sel).map(e=>e.dataset.opt).sort().join('');
         const corr = set.slice().sort().join('');
@@ -231,7 +347,6 @@ function render(idx){
         });
         if(sel.length){
           if(selSet === corr){
-            // all good
           } else {
             sel.forEach(e=>{ if(!set.includes(e.dataset.opt)) e.classList.add('wrong'); });
           }
@@ -266,9 +381,11 @@ document.getElementById('toggle-all').onclick = ()=>{
   if(curBank!==null) render(curBank);
 };
 document.getElementById('scroll-top').onclick = ()=>window.scrollTo({top:0,behavior:'smooth'});
+document.getElementById('back-catalog').onclick = ()=>showCatalog();
 
-// default: select first bank
-selectBank(0);
+// 初始化：构建下拉框 + 默认显示全部题库目录
+buildSelect();
+showCatalog();
 </script>
 </body>
 </html>
