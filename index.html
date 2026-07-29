@@ -228,6 +228,7 @@ body {
     <button class="nav-link" data-page="theory" onclick="loadPage('theory')">心理学综合</button>
     <button class="nav-link" data-page="practice" onclick="loadPage('practice')">咨询实务</button>
     <button class="nav-link" data-page="keypoints" onclick="loadPage('keypoints')">考点整理</button>
+    <button class="nav-link" data-page="platform" onclick="loadPage('platform')">平台题库</button>
   </div>
 </nav>
 
@@ -281,6 +282,17 @@ body {
         <span>可折叠</span>
       </div>
     </div>
+
+    <div class="module-card" style="--card-color:#0ea5e9;--card-color-light:#e0f2fe;" onclick="loadPage('platform')">
+      <div class="card-icon">&#128218;</div>
+      <h3>平台题库</h3>
+      <p>生生课堂官方章节练习与模拟卷，每题附官方解析与教材出处，可自测后对照答案</p>
+      <div class="card-meta">
+        <span>2003题</span>
+        <span>官方解析</span>
+        <span>自测对照</span>
+      </div>
+    </div>
   </div>
 
   <div class="hero-footer">
@@ -297,7 +309,8 @@ body {
     exam:      'exam.html',
     theory:    'theory.html',
     practice:  'practice.html',
-    keypoints: 'keypoints.html'
+    keypoints: 'keypoints.html',
+    platform:  'platform.html'
   };
   var currentPage = null;
 
