@@ -2160,6 +2160,19 @@ document.querySelectorAll('#sidebar a[href^="#"]').forEach(function(link) {
     document.getElementById('sidebar').classList.remove('open');
   });
 });
+
+// ===== 修复：页内锚点跳转（原生 #hash 在 iframe/srcdoc 离线版里会触发导航使模块内容丢失） =====
+// 改用 JS 滚动，避免依赖浏览器原生片段导航
+document.addEventListener('click', function(e) {
+  var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+  if (!a) return;
+  var href = a.getAttribute('href');
+  if (!href || href.length < 2) return;
+  var el = document.getElementById(href.slice(1));
+  if (!el) return;
+  e.preventDefault();
+  el.scrollIntoView({behavior: 'smooth', block: 'start'});
+});
 </script>
 </body>
 </html>
