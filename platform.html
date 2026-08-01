@@ -205,7 +205,7 @@ function bankEl(b, idx){
   div.dataset.idx = idx;
   const answered = b.qs.filter(q=>q.answer).length;
   div.innerHTML = `<span class="bn">${cleanName(b.name)}</span><span class="bc">${answered}/${b.qs.length}</span>`;
-  div.onclick = () => selectBank(idx);
+  div.dataset.idx = idx;
   return div;
 }
 BANKS.forEach((b,i)=>{
@@ -263,13 +263,13 @@ function showCatalog(){
       const pct = b.qs.length? Math.round(answered/b.qs.length*100):0;
       const card = document.createElement('div');
       card.className = 'cat-card';
+      card.dataset.idx = i;
       card.innerHTML = `
         <span class="ct-course">${c}</span>
         <div class="ct-name">${cleanName(b.name)}</div>
         <div class="ct-stats">共 ${b.qs.length} 题 · 有答案 ${answered} · 有解析 ${withAn}</div>
         <div class="ct-bar"><span style="width:${pct}%"></span></div>
       `;
-      card.onclick = () => selectBank(i);
       cat.appendChild(card);
     });
   });
@@ -386,6 +386,26 @@ document.getElementById('back-catalog').onclick = ()=>showCatalog();
 // 初始化：构建下拉框 + 默认显示全部题库目录
 buildSelect();
 showCatalog();
+
+// 事件委托：在稳定父容器上统一监听点击，兼容各浏览器对“动态生成元素逐个绑 onclick”的兼容差异
+function handleIndexClick(e){
+  var el = e.target.closest('.cat-card, .bank-item');
+  if(!el) return;
+  var idx = el.getAttribute('data-idx');
+  if(idx !== null && idx !== '') selectBank(parseInt(idx, 10));
+}
+function handleIndexKey(e){
+  if(e.key !== 'Enter' && e.key !== ' ') return;
+  var el = e.target.closest('.cat-card, .bank-item');
+  if(!el) return;
+  e.preventDefault();
+  var idx = el.getAttribute('data-idx');
+  if(idx !== null && idx !== '') selectBank(parseInt(idx, 10));
+}
+document.getElementById('catalog').addEventListener('click', handleIndexClick);
+document.getElementById('catalog').addEventListener('keydown', handleIndexKey);
+document.getElementById('sidebar').addEventListener('click', handleIndexClick);
+document.getElementById('sidebar').addEventListener('keydown', handleIndexKey);
 </script>
 </body>
 </html>
